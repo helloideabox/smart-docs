@@ -1,0 +1,278 @@
+article{
+	position: relative;
+}
+
+article svg{
+	display: inline-block !important;
+	position: absolute;
+	bottom: 1px;
+}
+
+.ed-live-search{
+	padding: 25px 0px;
+	border-top: 1px solid #e8e8e8;
+	border-bottom: 1px solid #e8e8e8;
+	background-color: #f5f5f5;
+}
+
+.ed-search-form-container{
+	max-width: 1240px;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.ed-search-form{
+	width: 100%;
+	display: block;
+	border: 1px solid #d1d1d1;
+	position: relative;
+	border-radius: 7px;
+	background-color: #ffffff;
+}
+
+#ed-sq{
+	width: 100%;
+	background: none;
+	color: #595959;
+	font-size: 1em;
+	padding: 20px 25px;
+	border: none;
+	box-shadow: none;
+	position: relative;
+	outline: 0;
+}
+
+.wrap{
+	max-width: 1240px;
+	margin: auto;
+	display: block;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.ed-archive-post-head{
+	margin: 30px 0px 0px 20px;
+	border-bottom: 1px solid #e6e6e6;
+	padding: 0px 0px 30px;
+}
+
+.ed-head{
+	font-size: 8.4rem;
+	font-weight: 800;
+	letter-spacing: 0em;
+}
+
+.ed-categories-wrap{
+	display: flex;
+	margin: 30px 0px;
+	flex-wrap: wrap;
+}
+
+/* For parent category */
+.ed-archive-post{
+	flex-basis: 25%;
+}
+
+/* For child category */
+.ed-categories-post{
+	flex-basis: 33.33%;
+}
+
+.ed-sub-archive-post{
+	border: 1px solid #c6c6c6;
+	margin: 20px;
+	color: #4d4d4d;
+	box-shadow: none;
+	padding: 30px 20px;
+	display: block;
+	background: #fbfbfb;
+	transition: all 150ms linear;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 10px;
+}
+
+.ed-sub-archive-post:hover{
+	transform: translateY(-5px);
+	/* box-shadow: 10px 10px 5px #c6c6c6; */
+}
+
+.ed-taxonomy-container, .ed-single-post-container{
+	display: flex;
+}
+
+.ed-category-content-area, .ed-tag-content-area, .ed-main-single-post-container{
+	margin: 45px 0;
+	width: 70%;
+	padding-top: 0;
+	padding-right: 30px;
+}
+
+.ed-category-header, .ed-tag-header{
+	border-bottom: 1px solid #e6e6e6;
+	margin: 0 0 30px;
+	padding: 0 0 0.5em;
+	position: relative;
+}
+
+.ed-title{
+	margin: 0 0 0.5em;
+	line-height: 1.5em;
+}
+
+.ed-post-container > article{
+	position: relative;
+	border-bottom: none;
+	margin: 15px 0;
+}
+
+.ed-entry-title{
+	display: inline-block;
+	font-size: 1em;
+	font-weight: 400;
+	margin: 0;
+	padding: 0 0 0 35px;
+}
+
+.ed-entry-title > a{
+	color: #3a3a3a;
+}
+
+.ed-custom-widget-area{
+	width: 30%;
+	border-left: 1px solid #e6e6e6;
+	margin: 0;
+	padding: 45px 0 40px 30px;
+}
+
+.ed-single-post-header{
+	padding: 0;
+	border-bottom: 1px solid #e6e6e6;
+	margin: 0 0 30px;
+	padding-bottom: 0.5em;
+}
+
+.ed-single-post-header p{
+	margin: 0;
+}
+
+.ed-post-content{
+	font-size: 2.1rem;
+	line-height: 1.5;
+}
+
+.ed-post-content *{
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1.25rem;
+}
+
+.ed-post-content img.attachment-post-thumbnail{
+	max-width: 58rem;
+	width: calc( 100% - 4rem );
+	margin-bottom: 4rem;
+	margin-top: 0;
+}
+
+.ed-post-content p{
+	max-width: 58rem;
+	width: calc( 100% - 4rem );
+	margin-bottom: 4rem;
+}
+
+ul.easy-doc-tag{
+	margin: 2rem 0;
+	list-style: none;
+	display: block;
+}
+
+ul.easy-doc-tag span{
+	font-weight: bold;
+	display: block;
+	margin-bottom: 2rem;
+}
+
+ul.easy-doc-tag li{
+	display: inline-block;
+	padding: 0.3em 0.7em;
+	font-size: 0.9em;
+	margin-right: 7px;
+	margin-left: 25px;
+	background-color: #f5f5f5;
+	color: #636363;
+	border-radius: 3px;
+}
+
+.ed-search-result{
+	position: absolute;
+	background-color: #fff;
+	list-style: none;
+	font-size: 0.9em;
+	top: 20px;
+	left: 5px;
+	margin: 0;
+	padding: 10px 5px;
+	border: 1px solid #f5f5f5;
+	z-index: 9999;
+	border-radius: 5px;
+	min-width: 300px;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.ed-search-result li{
+	display: block;
+	color: #444;
+	padding: 5px 10px;
+	white-space: nowrap;
+}
+
+.ed-search-result:before{
+	content:'';
+	position:absolute;
+	top:-20px; /*should be set to -border-width x 2 */
+	left:30px;
+	width:0;
+	height:0;
+	border-color: transparent transparent #ffffff transparent; /*border color should be same as div div background color*/
+	border-style: solid;
+	border-width: 10px;
+}
+
+.ed-spinner{
+	display: none;
+	float: right;
+	position: absolute;
+	top: 18px;
+	right: 20px;
+	width: 25px;
+	height: 21px;
+	margin: 0;
+}
+
+@media only screen and (max-width:750px){
+	.ed-archive-post, .ed-categories-post{
+		flex-basis: 50%;
+	}
+}
+
+@media only screen and (max-width:500px){
+	.ed-archive-post, .ed-categories-post{
+		flex-basis: 100%;
+	}
+}
+
+@media only screen and (max-width:900px){
+	.ed-taxonomy-container, .ed-single-post-container{
+		display: block;
+	}
+	.ed-category-content-area, .ed-tag-content-area, .ed-main-single-post-container{
+		width: 100%;
+	}
+	.ed-custom-widget-area{
+		width: 100%;
+		border: none;
+		padding: 0;
+		padding-bottom: 40px;
+	}
+}
