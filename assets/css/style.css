@@ -9,6 +9,7 @@ article svg{
 }
 
 .ed-live-search{
+	width: 100%;
 	padding: 25px 0px;
 	border-top: 1px solid #e8e8e8;
 	border-bottom: 1px solid #e8e8e8;
@@ -145,7 +146,6 @@ article svg{
 
 .ed-title{
 	margin: 0 0 0.5em;
-	line-height: 1.5em;
 }
 
 .ed-archive-cat-title{
@@ -155,7 +155,7 @@ article svg{
 .ed-post-container > article{
 	position: relative;
 	border-bottom: none;
-	margin: 15px 0;
+	margin-bottom: 15px;
 }
 
 .ed-entry-title{
@@ -188,9 +188,8 @@ article svg{
 	margin: 0;
 }
 
-.ed-post-content{
-	font-size: 2.1rem;
-	line-height: 1.5;
+.ed-post-content p{
+	font-size: 19px;
 }
 
 .ed-post-content *{
@@ -209,26 +208,20 @@ article svg{
 }
 
 ul.easy-doc-tag{
-	margin: 2rem 0;
 	list-style: none;
 	display: block;
 }
 
 ul.easy-doc-tag span{
-	display: block;
-	font-size: 25px;
+	display: inline-block;
+	font-size: 22px;
 }
 
 ul.easy-doc-tag li{
 	display: inline-block;
-	padding: 0.3em 0.7em;
-	font-size: 0.9em;
-	margin-right: 7px;
-	margin-left: 25px;
-	background-color: #f5f5f5;
+	margin-left: 10px;
 	color: #636363;
-	border-radius: 3px;
-	font-size: 25px;
+	font-size: 22px;
 }
 
 .ed-search-result{
@@ -282,13 +275,14 @@ ul.easy-doc-tag li{
 }
 
 /* for cuurrent category active in widget */
-a[aria-current=page]{
-	font-weight: 700;
+a[aria-current=page]::before{
+	content:'\25BA';
 }
 
 #easy_doc_widget-2{
 	padding-bottom: 15px;
 	border-bottom: 1px solid #e6e6e6;
+	margin-bottom: 2em;
 }
 
 #easy_doc_widget-2 li, #easy_doc_cat_widget-2 li{

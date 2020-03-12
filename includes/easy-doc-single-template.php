@@ -37,7 +37,7 @@ if ( have_posts() ) :
 				<?php the_content(); ?>
 				<?php
 				// To get the related tags of that post.
-				the_terms( get_the_ID(), 'easydoc_tag', '<ul class="easy-doc-tag"><span class="easy-doc-tag-label">Tagged Under: </span><li>', '</li><li>', '</li></ul>' );
+				the_terms( get_the_ID(), 'easydoc_tag', '<ul class="easy-doc-tag"><span class="easy-doc-tag-label">Tagged Under: </span><li>', ',</li><li>', '</li></ul>' );
 				?>
 			</div>
 
