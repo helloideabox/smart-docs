@@ -60,11 +60,12 @@ function ed_load_search_results() {
 	}
 
 	// To show which post to show.
-	$post_types = array( 'easy-doc' );
+	$selected_post_types = get_option( 'ed_post_type_selected' );
+	$selected_post_types = ! $selected_post_types ? array( 'post', 'page' ) : $selected_post_types;
 
 	// WordPress Query arguments.
 	$query_args = array(
-		'post_type'   => $post_types,
+		'post_type'   => $selected_post_types,
 		'post_status' => 'publish',
 		's'           => $query,
 	);

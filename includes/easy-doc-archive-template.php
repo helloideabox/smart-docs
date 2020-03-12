@@ -23,9 +23,16 @@ if ( have_posts() ) {
 	?>
 
 	<div class="wrap ed-archive-post-container">
-		<div class="ed-archive-post-head">
-			<div class="ed-head"><?php esc_attr_e( 'Docs', 'easydoc' ); ?></div>
-		</div>
+			<?php
+			// For selecting the dynamic title for db.
+			$doc_title = get_option( 'ed_archive_page_title' );
+
+			// Checking for empty doc title.
+			if ( '' !== $doc_title ) {
+				?>
+				<h1 class="ed-archive-post-head"><?php echo esc_attr( $doc_title ); ?></h1>
+
+			<?php } ?>
 	<?php if ( $terms ) : ?>
 	<div class="ed-categories-wrap">
 		<?php
@@ -37,10 +44,10 @@ if ( have_posts() ) {
 
 			<div class="ed-archive-post">
 				<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="ed-sub-archive-post">
-					<div class="ed-archive-cat-title">
+					<h4 class="ed-archive-cat-title">
 						<?php echo esc_html( $t->name ); ?>
-					</div>
-					<div class="ed-archive-post-count">
+					</h4>
+					<p class="ed-archive-post-count">
 						<?php
 						// Checking if the Article is greter than 0 or 1.
 						if ( 0 === $t->count ) {
@@ -51,7 +58,7 @@ if ( have_posts() ) {
 							echo esc_html( $article );
 						}
 						?>
-					</div>
+					</p>
 				</a>
 			</div>
 
