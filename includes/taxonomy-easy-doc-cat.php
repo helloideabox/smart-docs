@@ -45,7 +45,7 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 		$terms_children = get_terms( 'easydoc_category', $args );
 		?>
 
-		<div class="wrap ed-archive-post-container">
+		<div class="ed-archive-post-container">
 
 			<?php if ( $terms_children ) : ?>
 			<div class="ed-categories-wrap">
@@ -56,10 +56,10 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 
 					<div class="ed-categories-post">
 						<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="ed-sub-archive-post">
-							<div class="ed-archive-cat-title">
+							<h4 class="ed-archive-cat-title">
 								<?php echo esc_html( $t->name ); ?>
-							</div>
-							<div class="ed-archive-post-count">
+							</h4>
+							<p class="ed-archive-post-count">
 								<?php
 								// Checking if the Article is greter than 0 or 1.
 								if ( 0 === $t->count ) {
@@ -70,7 +70,7 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 									echo esc_html( $article );
 								}
 								?>
-							</div>
+							</p>
 						</a>
 					</div>
 
@@ -110,11 +110,10 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 
 				?>
 				<article id="post-<?php the_ID(); ?>" class="post-<?php the_ID(); ?>">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 30 30" width="30px" height="30px">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 30 30" width="25px" height="100%">
 						<path d="M24.707,8.793l-6.5-6.5C18.019,2.105,17.765,2,17.5,2H7C5.895,2,5,2.895,5,4v22c0,1.105,0.895,2,2,2h16c1.105,0,2-0.895,2-2 V9.5C25,9.235,24.895,8.981,24.707,8.793z M18,21h-8c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h8c0.552,0,1,0.448,1,1 C19,20.552,18.552,21,18,21z M20,17H10c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h10c0.552,0,1,0.448,1,1C21,16.552,20.552,17,20,17 z M18,10c-0.552,0-1-0.448-1-1V3.904L23.096,10H18z"/>
 					</svg>
 					<h3 class="ed-entry-title">
-						<i class="fa fa-file" aria-hidden="true"></i>
 						<a rel="bookmark" href="<?php echo esc_url( the_permalink() ); ?>">	
 							<?php the_title(); ?>
 						</a>
@@ -129,12 +128,18 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 		?>
 	</div>
 
-	<?php // Widget Area. ?>
+	<?php
+	// Widget Area.
+	if ( is_active_sidebar( 'easy-doc-sidebar-1' ) ) {
+		?>
+
 	<div class="ed-custom-widget-area">
 		<div class="ed-sidebar-main-content-area">
 			<?php dynamic_sidebar( 'easy-doc-sidebar-1' ); ?>
 		</div>
 	</div>
+
+	<?php } ?>
 </div>
 
 <?php get_footer(); ?>

@@ -12,10 +12,13 @@ jQuery( document ).ready( function() {
 	let timeout = null;
 	var data;
 	var search = jQuery( '#ed-sq' );
+	var lastValue = '';
 
-	jQuery( '#ed-sq' ).on( 'keyup focus', function() {
-		setTimeout( function() {
-			if ( search.val() != '' ){
+	jQuery( '#ed-sq' ).on( 'focus keyup', function() {
+		console.log( search.val() );
+		if ( search.val() ){
+			if( lastValue != search.val() ){
+			setTimeout( function() {
 				// Clear the timeout if it has already been set.
 				// This will prevent the previous task from executing
 				// if it has been less than <MILLISECONDS>
@@ -34,10 +37,13 @@ jQuery( document ).ready( function() {
 						jQuery( '#jQuery-live-search' ).html( response );
 					} );
 				}, 200 );
-			} else {
-				jQuery( '#jQuery-live-search' ).css( 'display', 'none' );
+
+				lastValue = search.val();
+			}, 400 );
 			}
-		}, 400 );
+		} else {
+			jQuery( '#jQuery-live-search' ).css( 'display', 'none' );
+		}
 	} );
 } );
 

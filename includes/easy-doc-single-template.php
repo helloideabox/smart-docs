@@ -2,7 +2,7 @@
 /**
  * The template for category docs page
  *
- * @author Ideabox
+ * @author IdeaBox
  * @package Documentation/ArchiveTemplate single post
  */
 
@@ -37,22 +37,33 @@ if ( have_posts() ) :
 				<?php the_content(); ?>
 				<?php
 				// To get the related tags of that post.
-				the_terms( get_the_ID(), 'easydoc_tag', '<ul class="easy-doc-tag"><span class="bsf-docs-tag-label">Tagged Under: </span><li>', '</li><li>', '</li></ul>' );
+				the_terms( get_the_ID(), 'easydoc_tag', '<ul class="easy-doc-tag"><span class="easy-doc-tag-label">Tagged Under: </span><li>', '</li><li>', '</li></ul>' );
 				?>
 			</div>
 
-			<?php
+				<?php
+				// If comments are open or we have at least one comment, load up the comment template.
+				$is_comment_template_on = get_option( 'ed_turnoff_doc_comment' );
+				if ( ! ( '1' === $is_comment_template_on ) ) {
+					comments_template();
+				}
 		endwhile;
 		?>
 		</div>
 	</div>
 
-	<?php // Widget Area. ?>
+	<?php
+	// Widget Area.
+	if ( is_active_sidebar( 'easy-doc-sidebar-1' ) ) {
+		?>
+
 	<div class="ed-custom-widget-area">
 		<div class="ed-sidebar-main-content-area">
 			<?php dynamic_sidebar( 'easy-doc-sidebar-1' ); ?>
 		</div>
 	</div>
+
+	<?php } ?>
 </div>
 
 	<?php
