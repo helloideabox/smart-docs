@@ -72,12 +72,18 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 		?>
 	</div>
 
-	<?php // Widget Area. ?>
+	<?php
+	// Widget Area.
+	if ( is_active_sidebar( 'easy-doc-sidebar-1' ) ) {
+		?>
+
 	<div class="ed-custom-widget-area">
 		<div class="ed-sidebar-main-content-area">
 			<?php dynamic_sidebar( 'easy-doc-sidebar-1' ); ?>
 		</div>
 	</div>
+
+	<?php } ?>
 </div>
 
 <?php get_footer(); ?>

@@ -22,7 +22,7 @@ if ( have_posts() ) {
 	$terms = get_terms( 'easydoc_category', $args );
 	?>
 
-	<div class="wrap ed-archive-post-container">
+	<main class="wrap ed-archive-post-container">
 			<?php
 			// For selecting the dynamic title for db.
 			$doc_title = get_option( 'ed_archive_page_title' );
@@ -34,7 +34,7 @@ if ( have_posts() ) {
 
 			<?php } ?>
 	<?php if ( $terms ) : ?>
-	<div class="ed-categories-wrap">
+	<div class="ed-archive-categories-wrap">
 		<?php
 		// Looping through all the terms.
 		foreach ( $terms as $t ) {
@@ -43,7 +43,7 @@ if ( have_posts() ) {
 				?>
 
 			<div class="ed-archive-post">
-				<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="ed-sub-archive-post">
+				<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="ed-sub-archive-categories-post">
 					<h4 class="ed-archive-cat-title">
 						<?php echo esc_html( $t->name ); ?>
 					</h4>
@@ -66,7 +66,7 @@ if ( have_posts() ) {
 			endif;
 		}
 		?>
-	</div>
+	</main>
 	<?php endif ?> 
 	</div>
 
