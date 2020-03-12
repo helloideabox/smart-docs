@@ -66,14 +66,14 @@ if ( have_posts() ) {
 			endif;
 		}
 		?>
-	</main>
-	<?php endif ?> 
 	</div>
+	<?php endif ?> 
+	</main>
 
 	<?php
 } else {
 	// internationalization.
-	esc_html_e( 'Not yet strated.', 'easydoc' );
+	esc_html_e( 'Not yet started.', 'easydoc' );
 }
 
 get_footer();
