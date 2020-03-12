@@ -138,7 +138,7 @@ class  Easy_Doc_Widget extends WP_Widget {
 
 
 	/**
-	 * Function to create custom widget (easy-doc-widget).
+	 * Function to create custom widget (easy-doc-widget) and register sidebar.
 	 */
 	public function easy_doc_widgets_area() {
 		// Register Widget with the same ID as parent construct ID given to widget.

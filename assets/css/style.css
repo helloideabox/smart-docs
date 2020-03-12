@@ -52,10 +52,30 @@ article svg{
 }
 
 .ed-archive-post-head{
-	margin: 20px 0px 0px 20px;
+	margin: 20px 20px 0px 20px;
 	border-bottom: 1px solid #e6e6e6;
 	padding: 0px 0px 20px;
 	letter-spacing: 0.035em;
+}
+
+.ed-archive-categories-wrap{
+	margin-top: 30px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.ed-sub-archive-categories-post{
+	border: 1px solid #c6c6c6;
+	margin: 20px;
+	color: #4d4d4d;
+	box-shadow: none;
+	padding: 30px 20px;
+	display: block;
+	background: #fbfbfb;
+	transition: all 150ms linear;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 5px;
 }
 
 .ed-archive-post-container{
@@ -89,7 +109,6 @@ article svg{
 
 .ed-sub-archive-post{
 	border: 1px solid #c6c6c6;
-	/* margin-right: 20px; */
 	color: #4d4d4d;
 	box-shadow: none;
 	padding: 30px 20px;
@@ -259,7 +278,17 @@ ul.easy-doc-tag li{
 }
 
 .docs-widget-title{
-	margin-bottom: 1.4rem;
+	margin-bottom: 1.1rem;
+}
+
+/* for cuurrent category active in widget */
+a[aria-current=page]{
+	font-weight: 700;
+}
+
+#easy_doc_widget-2{
+	padding-bottom: 15px;
+	border-bottom: 1px solid #e6e6e6;
 }
 
 #easy_doc_widget-2 li, #easy_doc_cat_widget-2 li{
@@ -270,7 +299,7 @@ ul.easy-doc-tag li{
 	display: none;
 }
 
-@media only screen and (max-width:750px){
+@media only screen and (max-width:800px){
 	.ed-archive-post, .ed-categories-post{
 		flex-basis: 50%;
 	}
