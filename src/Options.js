@@ -9,13 +9,11 @@ const { __ } = wp.i18n;
 const {
 	BaseControl,
 	Button,
-	ExternalLink,
 	PanelBody,
 	PanelRow,
-	Placeholder,
 	Spinner,
+	Placeholder,
 	ToggleControl,
-	CheckboxControl
 } = wp.components;
 
 const {
@@ -39,6 +37,8 @@ class Options extends Component {
 			enable_category_and_tag_template : true,
 			turnoff_doc_comment              : false,
 			enable_live_search               : true,
+			isAPILoaded                      : false,
+			isAPISaving                      : false,
 		};
 
 
@@ -51,18 +51,21 @@ class Options extends Component {
 		wp.api.loadPromise.then( () => {
 			this.easydoc = new wp.api.models.Settings();
 
-			this.easydoc.fetch().then( response => {
-				console.log( response );
+			if( ! this.state.isAPILoaded ) {
+				this.easydoc.fetch().then( response => {
+					console.log( response );
 
-				this.setState( {
-					archive_page_title               : response.ed_archive_page_title,
-					post_types                       : response.ed_post_type_selected,
-					enable_single_template           : Boolean( response.ed_enable_single_template ),
-					enable_category_and_tag_template : Boolean( response.ed_enable_category_and_tag_template ),
-					turnoff_doc_comment              : Boolean( response.ed_turnoff_doc_comment ),
-					enable_live_search               : Boolean( response.ed_enable_live_search ),
+					this.setState( {
+						archive_page_title               : response.ed_archive_page_title,
+						post_types                       : response.ed_post_type_selected,
+						enable_single_template           : Boolean( response.ed_enable_single_template ),
+						enable_category_and_tag_template : Boolean( response.ed_enable_category_and_tag_template ),
+						turnoff_doc_comment              : Boolean( response.ed_turnoff_doc_comment ),
+						enable_live_search               : Boolean( response.ed_enable_live_search ),
+						isAPILoaded                      : true
+					} );
 				} );
-			} );
+			}
 		} );
 	}
 
@@ -73,6 +76,7 @@ class Options extends Component {
 	handleSubmit( e ) {
 		// Preventing the default submit action.
 		e.preventDefault();
+		this.setState( { isAPISaving : true } );
 
 
 		const model = new wp.api.models.Settings({
@@ -95,6 +99,7 @@ class Options extends Component {
 				enable_category_and_tag_template : Boolean( response.ed_enable_category_and_tag_template ),
 				turnoff_doc_comment              : Boolean( response.ed_turnoff_doc_comment ),
 				enable_live_search               : Boolean( response.ed_enable_live_search ),
+				isAPISaving                      : false
 			} );
 		});
 	}
@@ -103,6 +108,15 @@ class Options extends Component {
 
 	// Returning the output.
 	render() {
+		if( ! this.state.isAPILoaded ) {
+			return (
+				<Placeholder>
+					<Spinner />
+				</Placeholder>
+			)
+		}
+
+
 		return (
 			<Fragment>
 				<div className="ed-setting-header">
@@ -127,6 +141,7 @@ class Options extends Component {
 								>
 									<input
 										type="text"
+										disabled={ this.state.isAPISaving }
 										id="ed-option-doc_archive-page-title"
 										value={ this.state.archive_page_title }
 										placeholder={ __( 'Title' ) }
