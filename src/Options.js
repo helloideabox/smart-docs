@@ -1,4 +1,3 @@
-import axios from 'axios';
 import './Options.css';
 
 
@@ -98,40 +97,6 @@ class Options extends Component {
 				enable_live_search               : Boolean( response.ed_enable_live_search ),
 			} );
 		});
-
-
-
-
-
-
-
-
-		
-
-
-		// // Appending the value to formdata object for sending to ajax.
-		// var data = new FormData();
-		// data.append('archive_page_title', this.state.archive_page_title );
-		// data.append('enable_single_template', this.state.enable_single_template );
-		// data.append('enable_category_and_tag_template', this.state.enable_category_and_tag_template );
-		// data.append('doc_comments_off', this.state.doc_comments_off );
-
-		// data.append('action', 'ed_load_option_result' );
-		// data.append('nonce',  ed_ajax_option_url.ajax_nonce);
-	
-
-		// // Using axios to send the data.
-		// axios({
-		// 	method : 'post',
-		// 	url    : ed_ajax_option_url.url,
-		// 	data   : data,
-		// })
-		// .then( function (response) {
-		// 	console.log(response);
-		// })
-		// .catch( function (error) {
-		// 	console.log(error);
-		// });
 	}
 
 
