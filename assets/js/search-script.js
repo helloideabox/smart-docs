@@ -6,69 +6,65 @@
  * to wait for sometime after typing and during that time spinner is loaded
  * and then dissapears.
  */
+;(function($) {
+	$( document ).ready( function() {
+		// Init a timeout variable to be used below
+		var timeout = null;
+		var data;
+		var search = $( '#ed-sq' );
+		var lastValue = ''
 
-jQuery( document ).ready( function() {
-	// Init a timeout variable to be used below
-	let timeout = null;
-	var data;
-	var search = jQuery( '#ed-sq' );
-	var lastValue = '';
-
-	jQuery( '#ed-sq' ).on( 'focus keyup', function() {
-		console.log( search.val() );
-		if ( search.val() ){
-			if( lastValue != search.val() ){
+		$( '#ed-sq' ).on( 'focus keyup click', function() {
+			
 			setTimeout( function() {
-				// Clear the timeout if it has already been set.
-				// This will prevent the previous task from executing
-				// if it has been less than <MILLISECONDS>
-				clearTimeout(timeout);
+				if ( search.val() ){
+					if( lastValue != search.val() ){
+						// Clear the timeout if it has already been set.
+						// This will prevent the previous task from executing
+						// if it has been less than <MILLISECONDS>
+						clearTimeout(timeout);
 
-				jQuery( '.ed-spinner' ).css( 'display', 'block' );
+						
 
-				// Send data to server. 
-				data = 'action=ed_load_search_results&query=' + search.val() + '&security=' + ed_ajax_url.ajax_nonce;
+						$( '.ed-spinner' ).css( 'display', 'block' );
 
-				timeout = setTimeout( function(){
-					// Ajax request.
-					jQuery.post( ed_ajax_url.url, data, function( response ) {
-						jQuery( '.ed-spinner' ).css( 'display', 'none' );
-						jQuery( '#jQuery-live-search' ).css( 'display', 'block' );
-						jQuery( '#jQuery-live-search' ).html( response );
-					} );
-				}, 200 );
+						// Send data to server. 
+						data = 'action=ed_load_search_results&query=' + search.val() + '&security=' + ed_ajax_url.ajax_nonce;
 
-				lastValue = search.val();
-			}, 400 );
+						timeout = setTimeout( function(){
+							// Ajax request.
+							$.post( ed_ajax_url.url, data, function( response ) {
+								$( '.ed-spinner' ).css( 'display', 'none' );
+								$( '#ed-live-search' ).css( 'display', 'block' );
+								$( '#ed-live-search' ).html( response );
+							} );
+						}, 300 );
+						lastValue = search.val();
+					}
+				} else {
+					$( '#ed-live-search' ).html('');
+				}
+			}, 100 );
+		} );
+	} );
+
+	/**
+	 * This documeent for creating the container for the search results to render
+	 * in the body and align according to the seach box.
+	 * 
+	 * Also it dissapears the search results when clicked anywhere outside the
+	 * search container.
+	 */
+	$( document ).ready( function() {
+		$( '.ed-search-form' ).append( '<div id="ed-live-search"></div>');
+
+		$( document ).on( 'click', function( e ) {
+			if( e.target.className === 'ed-search-list' || e.target.className === 'ed-search-field' ) {
+				$( '#ed-live-search' ).css( 'display', 'block' );
+			} else {
+				$( '#ed-live-search' ).css( 'display', 'none' );
 			}
-		} else {
-			jQuery( '#jQuery-live-search' ).css( 'display', 'none' );
-		}
+		} );
 	} );
-} );
 
-
-
-/**
- * This documeent for creating the container for the search results to render
- * in the body and align according to the seach box.
- * 
- * Also it dissapears the search results when clicked anywhere outside the
- * search container.
- */
-jQuery( document ).ready( function() {
-	jQuery( '.ed-search-form' ).append( '<div id="jQuery-live-search"></div>');
-	jQuery( '#jQuery-live-search' ).css({
-		'display' : 'none',
-		'width'  : '943px',
-		'position' : 'absolute',
-	});
-
-	jQuery( document ).on( 'click', function( e ) {
-		if( e.target.className === 'ed-search-list' || e.target.className === 'ed-search-field' ) {
-			jQuery( '#jQuery-live-search' ).css( 'display', 'block' );
-		} else {
-			jQuery( '#jQuery-live-search' ).css( 'display', 'none' );
-		}
-	} );
-} );
+})(jQuery);

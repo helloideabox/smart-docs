@@ -2,7 +2,9 @@
 /**
  * Functions related to shortcode for live search
  *
- * @package Documentation/Shortcode
+ * @package EasyDoc/Shortcode
+ * @author IdeaBox
+ * @version 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,7 +32,7 @@ function easy_doc_render_search_box( $atts, $content = null ) {
 	<div class="ed-live-search">
 		<div class="ed-search-form-container">
 			<form role="search" method="post" class="ed-search-form" action="">
-				<input id="ed-sq" type="search" class="ed-search-field" placeholder="<?php echo esc_attr_x( 'Search for answers…', 'placeholder', 'easydoc' ); ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label', 'easydoc' ); ?>" autocomplete="off" autocorrect="off" />
+				<input id="ed-sq" type="search" class="ed-search-field" placeholder="<?php echo esc_attr_x( 'Search for answers…', 'placeholder', 'easydoc' ); ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search', 'label', 'easydoc' ); ?>" autocomplete="off" autocorrect="off" />
 
 				<div class="ed-spinner live-search-loading">
 					<img src="<?php echo esc_url( plugins_url( '../assets/images/ring.gif', __FILE__ ) ); ?>" >
@@ -53,10 +55,10 @@ function ed_load_search_results() {
 		if ( isset( $_POST['query'] ) && ! empty( $_POST['query'] ) ) {
 			$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
 		} else {
-			$query = 'No docs Found';
+			$query = esc_html__( 'No docs found', 'easydoc' );
 		}
 	} else {
-		echo 'Nonce is invalid';
+		esc_attr_e( 'Nonce is invalid', 'easydoc' );
 	}
 
 	// To show which post to show.
@@ -88,7 +90,7 @@ function ed_load_search_results() {
 				<?php
 			endwhile;
 		else :
-			echo 'No Doc was Found';
+			esc_attr_e( 'No Doc was found', 'easydoc' );
 		endif;
 		?>
 

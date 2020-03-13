@@ -1,8 +1,9 @@
 <?php
 /**
- * Register and load the widget
+ * Register and load the widget.
  *
- * @package Documentation/Widgets
+ * @package EasyDoc/Widgets
+ * @author Ideabox
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
