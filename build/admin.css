@@ -1,6 +1,11 @@
 #wpcontent {
   padding-left: 0px; }
 
+.components-placeholder {
+  background: transparent;
+  margin-top: 25vh;
+  margin-bottom: 25vh; }
+
 .ed-setting-header {
   padding: 20px 10px;
   background-color: #ffffff;

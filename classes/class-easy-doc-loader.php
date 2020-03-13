@@ -75,6 +75,7 @@ class  Easy_Doc_Loader {
 	}
 
 
+
 	/**
 	 * Function to enque admin side script(Settings page).
 	 *

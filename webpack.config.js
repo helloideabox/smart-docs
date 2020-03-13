@@ -17,6 +17,7 @@ const config = {
 	},
 
 	module: {
+		// Telling rules for css and js.
 		rules: [
 		  {
 			test: /\.js$/,
