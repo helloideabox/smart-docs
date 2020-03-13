@@ -1,8 +1,8 @@
-article{
+.ed-post-container article{
 	position: relative;
 }
 
-article svg{
+.ed-post-container article svg{
 	display: inline-block !important;
 	position: absolute;
 	bottom: 1px;
