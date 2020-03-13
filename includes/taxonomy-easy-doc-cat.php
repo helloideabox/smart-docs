@@ -21,7 +21,7 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 
 ?>
 
-<div class="wrap ed-taxonomy-container">
+<div class="ed-wrap ed-taxonomy-container">
 	<div class="ed-category-content-area">
 		<div class="ed-category-header">
 			<h1 class="ed-title"><?php single_cat_title(); ?></h1>
