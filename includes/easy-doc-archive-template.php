@@ -22,53 +22,54 @@ if ( have_posts() ) {
 	$terms = get_terms( 'easydoc_category', $args );
 	?>
 
-	<main class="wrap ed-archive-post-container">
-			<?php
-			// For selecting the dynamic title for db.
-			$doc_title = get_option( 'ed_archive_page_title' );
-
-			// Checking for empty doc title.
-			if ( '' !== $doc_title ) {
-				?>
-				<h1 class="ed-archive-post-head"><?php echo esc_attr( $doc_title ); ?></h1>
-
-			<?php } ?>
-	<?php if ( $terms ) : ?>
-	<div class="ed-archive-categories-wrap">
+	<main class="ed-wrap ed-archive-post-container">
 		<?php
-		// Looping through all the terms.
-		foreach ( $terms as $t ) {
-			// Checking if they have parent or not.
-			if ( 0 === $t->parent ) :
-				?>
+		// For selecting the dynamic title for db.
+		$doc_title = get_option( 'ed_archive_page_title' );
 
-			<div class="ed-archive-post">
-				<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="ed-sub-archive-categories-post">
-					<h4 class="ed-archive-cat-title">
-						<?php echo esc_html( $t->name ); ?>
-					</h4>
-					<p class="ed-archive-post-count">
-						<?php
-						// Checking if the Article is greter than 0 or 1.
-						if ( 0 === $t->count ) {
-							echo esc_html( $t->count ) . ' Article';
-						} else {
-							/* translators: %s: search term */
-							$article = sprintf( _n( '%d Article', '%d Articles', $t->count, 'easydoc' ), number_format_i18n( $t->count ) );
-							echo esc_html( $article );
-						}
-						?>
-					</p>
-				</a>
-			</div>
+		// Checking for empty doc title.
+		if ( '' !== $doc_title ) {
+			?>
+			<h1 class="ed-archive-post-head"><?php echo esc_attr( $doc_title ); ?></h1>
 
-				<?php
-			endif;
-		}
-		?>
-	</div>
-	<?php endif ?> 
-	</main>
+		<?php } ?>
+		<?php if ( $terms ) : ?>
+
+		<div class="ed-archive-categories-wrap">
+			<?php
+			// Looping through all the terms.
+			foreach ( $terms as $t ) {
+				// Checking if they have parent or not.
+				if ( 0 === $t->parent ) :
+					?>
+
+				<div class="ed-archive-post">
+					<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="ed-sub-archive-categories-post">
+						<h4 class="ed-archive-cat-title">
+							<?php echo esc_html( $t->name ); ?>
+						</h4>
+						<p class="ed-archive-post-count">
+							<?php
+							// Checking if the Article is greter than 0 or 1.
+							if ( 0 === $t->count ) {
+								echo esc_html( $t->count ) . ' Article';
+							} else {
+								/* translators: %s: search term */
+								$article = sprintf( _n( '%d Article', '%d Articles', $t->count, 'easydoc' ), number_format_i18n( $t->count ) );
+								echo esc_html( $article );
+							}
+							?>
+						</p>
+					</a>
+				</div>
+
+					<?php
+				endif;
+			}
+			?>
+		</div>
+		<?php endif ?> 
+		</main>
 
 	<?php
 } else {

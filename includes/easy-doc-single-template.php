@@ -14,7 +14,7 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 if ( have_posts() ) :
 	?>
 
-<div class="wrap ed-single-post-container">
+<div class="ed-wrap ed-single-post-container">
 	<div class="ed-main-single-post-container">
 		<div class="ed-single-post-sub-container">
 		<?php
