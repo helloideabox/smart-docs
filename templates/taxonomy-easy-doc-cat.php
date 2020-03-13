@@ -3,7 +3,8 @@
  * The template for category docs page
  *
  * @author Ideabox
- * @package Documentation/ArchiveTemplate category
+ * @package EasyDoc/ArchiveTemplate category
+ * @version 1.0.0
  */
 
 get_header();

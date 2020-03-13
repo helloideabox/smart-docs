@@ -1,4 +1,4 @@
-import './Options.css';
+import './Options.scss';
 
 
 /**
@@ -174,7 +174,7 @@ class Options extends Component {
 
 							<PanelRow>
 								<div className="ed-post_types">
-									<label>{ __( 'Search Within Post Types' ) }</label>
+									<label>{ __( 'Search within Post Types' ) }</label>
 									<ul>
 									{
 										Object.keys( ed_vars.post_types ).map( (item) => (

@@ -3,7 +3,8 @@
  * The template for category docs page
  *
  * @author IdeaBox
- * @package Documentation/ArchiveTemplate single post
+ * @package EasyDoc/ArchiveTemplate single post
+ * @version 1.0.0
  */
 
 get_header();
@@ -14,15 +15,11 @@ echo do_shortcode( '[easy_doc_wp_live_search]' );
 if ( have_posts() ) :
 	?>
 
-<div class="ed-wrap ed-single-post-container">
-	<div class="ed-main-single-post-container">
-		<div class="ed-single-post-sub-container">
-		<?php
-		// Start of the looop.
-		while ( have_posts() ) :
-			the_post();
-			?>
+<div class="ed-wrap ed-single-post-wrap">
+	<div class="ed-single-post-container">
+		<?php while ( have_posts() ): the_post(); ?>
 
+		<div class="ed-single-post">		
 			<div class="ed-single-post-header">
 				<h1 class="ed-title"><?php the_title(); ?></h1>
 				<?php
@@ -32,7 +29,7 @@ if ( have_posts() ) :
 				?>
 			</div>
 
-			<div class="ed-post-content">
+			<div class="ed-single-post-content">
 				<?php the_post_thumbnail(); ?>
 				<?php the_content(); ?>
 				<?php
@@ -41,15 +38,15 @@ if ( have_posts() ) :
 				?>
 			</div>
 
-				<?php
-				// If comments are open or we have at least one comment, load up the comment template.
-				$is_comment_template_on = get_option( 'ed_turnoff_doc_comment' );
-				if ( ! ( '1' === $is_comment_template_on ) ) {
-					comments_template();
-				}
-		endwhile;
-		?>
+			<?php
+			// If comments are open or we have at least one comment, load up the comment template.
+			$is_comment_template_on = get_option( 'ed_turnoff_doc_comment' );
+			if ( ! ( '1' === $is_comment_template_on ) ) {
+				comments_template();
+			}
+			?>
 		</div>
+		<?php endwhile; ?>
 	</div>
 
 	<?php

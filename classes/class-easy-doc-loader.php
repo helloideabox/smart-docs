@@ -1,9 +1,9 @@
 <?php
 /**
- * Responsible for setting up constants, classes and includes.
+ * Responsible for setting up constants, classes and templates.
  *
  * @author  IdeaBox
- * @package Documentation/Loader
+ * @package EasyDoc/Loader
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,7 +30,7 @@ class  Easy_Doc_Loader {
 		$this->load_files();
 
 		// For overriding templates.
-		$this->ed_callback_init();
+		$this->callback_init();
 
 		// Action to include script.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -39,7 +39,7 @@ class  Easy_Doc_Loader {
 		add_action( 'init', array( $this, 'register_cpt_doc_type' ) );
 
 		// Filter to rewrite the default archive theme template for particular cpt.
-		add_filter( 'template_include', array( $this, 'easy_doc_archive_template' ) );
+		add_filter( 'template_include', array( $this, 'archive_template' ) );
 
 		// Action to register settings page menu in cpt(easy-doc).
 		add_action( 'admin_menu', array( $this, 'register_options_menu' ) );
@@ -48,20 +48,22 @@ class  Easy_Doc_Loader {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 
 		// Action to register setting for get_option function.
-		add_action( 'init', array( $this, 'register_easy_doc_plugin_settings' ) );
+		add_action( 'init', array( $this, 'register_plugin_settings' ) );
 	}
 
 	/**
 	 * Function to enque scripts.
+	 *
+	 * @return void
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'ed-style', plugins_url( '../assets/css/style.css', __FILE__ ), array(), '1.0.0', false );
+		wp_enqueue_style( 'ed-style', EASY_DOC_URL . 'assets/css/style.css', array(), '1.0.0', false );
 
-		wp_enqueue_script( 'ed-script', plugins_url( '../assets/js/script.js', __FILE__ ), array(), '1.0.0', true );
+		wp_enqueue_script( 'ed-script', EASY_DOC_URL . 'assets/js/script.js', array(), '1.0.0', true );
 
 		// condition to check for live search enabled.
 		if ( get_option( 'ed_enable_live_search' ) ) {
-			wp_enqueue_script( 'ed-searchbox-script', plugins_url( '../assets/js/search-script.js', __FILE__ ), array(), '1.0.0', true );
+			wp_enqueue_script( 'ed-searchbox-script', EASY_DOC_URL . 'assets/js/search-script.js', array(), '1.0.0', true );
 
 			wp_localize_script(
 				'ed-searchbox-script',
@@ -80,6 +82,7 @@ class  Easy_Doc_Loader {
 	 * Function to enque admin side script(Settings page).
 	 *
 	 * @param string $hook To check if the current page is easy doc setting or not.
+	 * @return void
 	 */
 	public function enqueue_admin_script( $hook ) {
 		// To check if the current page is easy doc setting or not.
@@ -87,8 +90,8 @@ class  Easy_Doc_Loader {
 			return;
 		}
 
-		wp_enqueue_script( 'ed-option-react-script', plugins_url( '../build/admin.js', __FILE__ ), array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n' ), '1.0.0', true );
-		wp_enqueue_style( 'ed-option-react-style', plugins_url( '../build/admin.css', __FILE__ ), array( 'wp-components' ), '1.0.0' );
+		wp_enqueue_script( 'ed-option-react-script', EASY_DOC_URL . 'build/admin.js', array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n' ), '1.0.0', true );
+		wp_enqueue_style( 'ed-option-react-style', EASY_DOC_URL . 'build/admin.css', array( 'wp-components' ), '1.0.0' );
 
 		// To get all the registered post types.
 		$post_types = get_post_types(
@@ -120,6 +123,8 @@ class  Easy_Doc_Loader {
 
 	/**
 	 * Function to create custom post type (easy-doc).
+	 *
+	 * @return void
 	 */
 	public function register_cpt_doc_type() {
 
@@ -220,6 +225,8 @@ class  Easy_Doc_Loader {
 
 	/**
 	 * Registers option menu for easy doc(setting).
+	 *
+	 * @return void
 	 */
 	public function register_options_menu() {
 		// Adding sub menu to the cpt.
@@ -236,6 +243,8 @@ class  Easy_Doc_Loader {
 
 	/**
 	 * Includes options page from react.
+	 *
+	 * @return void
 	 */
 	public function render_options_page() {
 		echo '<div id="ed-setting-root"></div>';
@@ -245,8 +254,10 @@ class  Easy_Doc_Loader {
 
 	/**
 	 * For registering settings in rest api(wp.api.model.Settings).
+	 *
+	 * @return void
 	 */
-	public function register_easy_doc_plugin_settings() {
+	public function register_plugin_settings() {
 		register_setting(
 			'easy-doc-settings-group',
 			'ed_archive_page_title',
@@ -320,8 +331,9 @@ class  Easy_Doc_Loader {
 	 * Callback function for overide templates.
 	 *
 	 * @category InitCallBack
+	 * @return void
 	 */
-	public function ed_callback_init() {
+	public function callback_init() {
 
 		$is_single_template_on      = get_option( 'ed_enable_single_template' );
 		$is_cat_and_tag_template_on = get_option( 'ed_enable_category_and_tag_template' );
@@ -329,19 +341,19 @@ class  Easy_Doc_Loader {
 		if ( '1' == $is_single_template_on ) {// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 
 			// Filter to rewrite the default single theme template for particular cpt.
-			add_filter( 'template_include', array( $this, 'easy_doc_single_template' ) );
-			add_filter( 'body_class', array( $this, 'easy_doc_body_single_class' ) );
+			add_filter( 'template_include', array( $this, 'single_template' ) );
+			add_filter( 'body_class', array( $this, 'body_single_class' ) );
 		}
 
 		if ( '1' == $is_cat_and_tag_template_on ) {// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 
 			// Filter to rewrite the default taxonomy(easydoc_category) theme template for particular cpt.
-			add_filter( 'template_include', array( $this, 'easy_doc_category_template' ) );
+			add_filter( 'template_include', array( $this, 'category_template' ) );
 
 			// Filter to rewrite the default taxonomy(easydoc_tag) theme template for particular cpt.
-			add_filter( 'template_include', array( $this, 'easy_doc_tag_template' ) );
-			add_filter( 'body_class', array( $this, 'easy_doc_body_tax_class' ) );
-			add_filter( 'body_class', array( $this, 'easy_doc_body_sidebar_class' ) );
+			add_filter( 'template_include', array( $this, 'tag_template' ) );
+			add_filter( 'body_class', array( $this, 'body_tax_class' ) );
+			add_filter( 'body_class', array( $this, 'body_sidebar_class' ) );
 		}
 
 	}
@@ -353,7 +365,7 @@ class  Easy_Doc_Loader {
 	 * @param    array $classes It will add class to the body doc post.
 	 * @return   $classes
 	 */
-	public function easy_doc_body_single_class( $classes ) {
+	public function body_single_class( $classes ) {
 
 		if ( is_post_type_archive( $this->cpt_name ) || is_singular( $this->cpt_name ) && is_array( $classes ) ) {
 			$cls = array_merge( $classes, array( 'docs-single-template-enabled' ) );
@@ -368,7 +380,7 @@ class  Easy_Doc_Loader {
 	 * @param    array $classes It will add class to the body doc post.
 	 * @return   $classes
 	 */
-	public function easy_doc_body_tax_class( $classes ) {
+	public function body_tax_class( $classes ) {
 
 		if ( is_post_type_archive( $this->cpt_name ) || is_tax( 'easydoc_category' ) || is_tax( 'easydoc_tag' ) && is_array( $classes ) ) {
 			$cls = array_merge( $classes, array( 'docs-tax-templates-enabled' ) );
@@ -383,7 +395,7 @@ class  Easy_Doc_Loader {
 	 * @param    array $classes It will add class to the body doc post.
 	 * @return   $classes
 	 */
-	public function easy_doc_body_sidebar_class( $classes ) {
+	public function body_sidebar_class( $classes ) {
 
 		if ( is_post_type_archive( $this->cpt_name ) || is_tax( 'easydoc_category' ) || is_tax( 'easydoc_tag' ) && is_array( $classes ) ) {
 
@@ -404,16 +416,17 @@ class  Easy_Doc_Loader {
 	 * Function for custom template for custom post type.
 	 *
 	 * @param mixed $template rewriting template archive post.
+	 * @return $template
 	 */
-	public function easy_doc_archive_template( $template ) {
+	public function archive_template( $template ) {
 		if ( is_post_type_archive( $this->cpt_name ) ) {
-			$theme_files     = array( 'easy-doc-archive-template.php', '../includes/easy-doc-archive-template.php' );
+			$theme_files     = array( 'easy-doc-archive-template.php', '../templates/easy-doc-archive-template.php' );
 			$exists_in_theme = locate_template( $theme_files, false );
 
 			if ( '' !== $exists_in_theme ) {
 				return $exists_in_theme;
 			} else {
-				return plugin_dir_path( __FILE__ ) . '../includes/easy-doc-archive-template.php';
+				return EASY_DOC_PATH . 'templates/easy-doc-archive-template.php';
 			}
 		}
 		return $template;
@@ -423,11 +436,12 @@ class  Easy_Doc_Loader {
 	 * Taxonomy Callback Function.
 	 *
 	 * @param array $template Overide taxonomy template.
+	 * @return $template
 	 */
-	public function easy_doc_category_template( $template ) {
+	public function category_template( $template ) {
 		// Checking for particular taxonomy.
 		if ( is_tax( 'easydoc_category' ) ) {
-			return plugin_dir_path( __FILE__ ) . '../includes/taxonomy-easy-doc-cat.php';
+			return EASY_DOC_PATH . 'templates/taxonomy-easy-doc-cat.php';
 		}
 		return $template;
 	}
@@ -436,11 +450,12 @@ class  Easy_Doc_Loader {
 	 * Taxonomy Callback Function.
 	 *
 	 * @param array $template Overide taxonomy template.
+	 * @return $template
 	 */
-	public function easy_doc_tag_template( $template ) {
+	public function tag_template( $template ) {
 		// Checking for particular taxonomy.
 		if ( is_tax( 'easydoc_tag' ) ) {
-			return plugin_dir_path( __FILE__ ) . '../includes/taxonomy-easy-doc-tag.php';
+			return EASY_DOC_PATH . 'templates/taxonomy-easy-doc-tag.php';
 		}
 		return $template;
 	}
@@ -450,27 +465,28 @@ class  Easy_Doc_Loader {
 	 * Single post Callback Function.
 	 *
 	 * @param array $template Overide single template.
+	 * @return $template
 	 */
-	public function easy_doc_single_template( $template ) {
+	public function single_template( $template ) {
 		// Checking if the page is single and post type is of custom cpt(easy-doc).
 		if ( is_singular( $this->cpt_name ) ) {
-			return plugin_dir_path( __FILE__ ) . '../includes/easy-doc-single-template.php';
+			return EASY_DOC_PATH . 'templates/easy-doc-single-template.php';
 		}
 		return $template;
 	}
 
 
 	/**
-	 * Loads classes and includes.
+	 * Loads classes and templates.
 	 *
 	 * @since  1.0
 	 * @return void
 	 */
 	private function load_files() {
 
-		include_once plugin_dir_path( __FILE__ ) . '../includes/easy-doc-shortcode.php';
-		include_once plugin_dir_path( __FILE__ ) . 'class-easy-doc-widget.php';
-		include_once plugin_dir_path( __FILE__ ) . 'class-easy-doc-cat-widget.php';
+		include_once EASY_DOC_PATH . 'templates/easy-doc-shortcode.php';
+		include_once EASY_DOC_PATH . 'classes/class-easy-doc-widget.php';
+		include_once EASY_DOC_PATH . 'classes/class-easy-doc-cat-widget.php';
 	}
 }
 

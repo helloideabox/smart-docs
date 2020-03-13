@@ -2,8 +2,9 @@
 /**
  * The template for archive docs page
  *
- * @author Ideabox
- * @package Documentation/ArchiveTemplate
+ * @author IdeaBox
+ * @package EasyDoc/ArchiveTemplate
+ * @version 1.0.0
  */
 
 get_header();
@@ -73,7 +74,6 @@ if ( have_posts() ) {
 
 	<?php
 } else {
-	// internationalization.
 	esc_html_e( 'Not yet started.', 'easydoc' );
 }
 
