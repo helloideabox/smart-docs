@@ -33,6 +33,15 @@ if ( have_posts() ) :
 				<?php the_post_thumbnail(); ?>
 				<?php the_content(); ?>
 				<?php
+				// If post last updated time is on.
+				$is_last_updated_time_on = get_option( 'ed_show_last_update_time' );
+				if ( '1' === $is_last_updated_time_on ) {
+					?>
+
+					<div class="ed-single-post-last-update-time"><?php esc_attr_e( 'Updated on ' . get_the_date( 'F j, Y' ), 'easydoc' ); ?></div>
+
+				<?php } ?>
+				<?php
 				// To get the related tags of that post.
 				the_terms( get_the_ID(), 'easydoc_tag', '<ul class="easy-doc-tag"><span class="easy-doc-tag-label">Tagged Under: </span><li>', ',</li><li>', '</li></ul>' );
 				?>
