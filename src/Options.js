@@ -98,10 +98,8 @@ class Options extends Component {
 					[state]       : response[option],
 				} );
 				
-				setTimeout( () => {
-					this.addNotification( __( 'Settings Saved' ), 'success' );
-					this.setState( { isAPISaving : false } );
-				}, 800);
+				this.addNotification( __( 'Settings Saved' ), 'success' );
+				this.setState( { isAPISaving : false } );
 			}
 		});
 	}
