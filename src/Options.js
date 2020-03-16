@@ -42,6 +42,7 @@ class Options extends Component {
 			show_last_update_time            : true,
 			isAPILoaded                      : false,
 			isAPISaving                      : false,
+			notification                     : null,
 		};
 
 
@@ -79,7 +80,7 @@ class Options extends Component {
 	changeOptions( option, value, state ) {
 		
 		this.setState( { isAPISaving : true } );
-		this.addNotification( 'updating', __( 'Updating Settings...' ), 'info' );
+		this.addNotification( __( 'Updating Settings...' ), 'info' );
 
 
 		const model = new wp.api.models.Settings({
@@ -88,7 +89,7 @@ class Options extends Component {
 
 
 		model.save().then( ( response, status ) => {
-			store.removeNotification( 'updating' );
+			store.removeNotification( this.state.notification );
 			console.log( response[option] );
 			console.log( status );
 
@@ -96,18 +97,19 @@ class Options extends Component {
 				this.setState( {
 					[state]       : response[option],
 				} );
-			
-				this.addNotification( 'saved', __( 'Settings Saved' ), 'success' );
-				this.setState( { isAPISaving : false } );
+				
+				setTimeout( () => {
+					this.addNotification( __( 'Settings Saved' ), 'success' );
+					this.setState( { isAPISaving : false } );
+				}, 800);
 			}
 		});
 	}
 
 
 	// Handling the notification for state updating.
-	addNotification( id, message, status ) {
-		store.addNotification({
-			id: id,
+	addNotification( message, status ) {
+		const notification = store.addNotification({
 			message: message,
 			slidingEnter: {
 				duration: 0,
@@ -121,7 +123,9 @@ class Options extends Component {
 			  duration: 2000,
 			  showIcon: true,
 			},
-          })
+		})
+		
+		this.setState( { notification } );
 	}
 
 

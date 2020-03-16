@@ -1,5 +1,5 @@
-#wpcontent {
-  padding-left: 0px; }
+.auto-fold #wpcontent {
+  padding-left: 0; }
 
 .components-placeholder {
   background: transparent;
@@ -69,6 +69,18 @@
 .ed-label .components-base-control__field {
   margin-bottom: 10px !important;
   align-items: center; }
+
+.react-notification-root .notification-container-bottom-left {
+  bottom: 30px; }
+
+.react-notification-root .notification-container-mobile-bottom {
+  bottom: 60px; }
+
+.notification-item-root .notification-content {
+  padding: 12px 15px; }
+
+.notification-item-root .notification-close {
+  top: auto; }
 
 .notification-container-bottom-center, .notification-container-bottom-left, .notification-container-bottom-right, .notification-container-center, .notification-container-top-center, .notification-container-top-left, .notification-container-top-right {
   width: 325px;
