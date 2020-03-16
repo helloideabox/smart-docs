@@ -210,10 +210,6 @@
 	width: 100%;
 }
 
-.ed-single-post-content p{
-	margin-bottom: 4rem;
-}
-
 ul.easy-doc-tag{
 	list-style: none;
 	display: block;
@@ -307,7 +303,13 @@ a[aria-current=page]::before{
 #easy_doc_widget-2 li,
 #easy_doc_cat_widget-2 li{
 	font-size: 18px;
-} 
+}
+
+.ed-single-post-last-update-time{
+	text-align: right;
+	font-style: italic;
+	margin-bottom: 10px;
+}
 
 .show{
 	display: none;
