@@ -249,6 +249,7 @@ class  Easy_Doc_Loader {
 			'labels'            => $category_labels,
 			'show_ui'           => true,
 			'show_admin_column' => true,
+			'show_in_rest'      => true,
 		);
 
 		register_taxonomy( 'easydoc_category', $this->cpt_name, $category_args );
@@ -278,6 +279,7 @@ class  Easy_Doc_Loader {
 			'labels'            => $tag_labels,
 			'show_ui'           => true,
 			'show_admin_column' => true,
+			'show_in_rest' => true,
 		);
 
 		register_taxonomy( 'easydoc_tag', $this->cpt_name, $tag_args );
