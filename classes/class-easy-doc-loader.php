@@ -61,22 +61,24 @@ class  Easy_Doc_Loader {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_style( 'ed-style', EASY_DOC_URL . 'assets/css/style.css', array(), '1.0.0', false );
+		global $post_type;
 
-		wp_enqueue_script( 'ed-script', EASY_DOC_URL . 'assets/js/script.js', array(), '1.0.0', true );
+		if ( 'easy-doc' === $post_type ) {
+			wp_enqueue_style( 'ed-style', EASY_DOC_URL . 'assets/css/style.css', array(), '1.0.0', false );
 
-		// condition to check for live search enabled.
-		if ( get_option( 'ed_enable_live_search' ) ) {
-			wp_enqueue_script( 'ed-searchbox-script', EASY_DOC_URL . 'assets/js/search-script.js', array(), '1.0.0', true );
+			// condition to check for live search enabled.
+			if ( get_option( 'ed_enable_live_search' ) ) {
+				wp_enqueue_script( 'ed-searchbox-script', EASY_DOC_URL . 'assets/js/search-script.js', array(), '1.0.0', true );
 
-			wp_localize_script(
-				'ed-searchbox-script',
-				'ed_ajax_url',
-				array(
-					'url'        => admin_url( 'admin-ajax.php' ),
-					'ajax_nonce' => wp_create_nonce( 'docs_search' ),
-				)
-			);
+				wp_localize_script(
+					'ed-searchbox-script',
+					'ed_ajax_url',
+					array(
+						'url'        => admin_url( 'admin-ajax.php' ),
+						'ajax_nonce' => wp_create_nonce( 'docs_search' ),
+					)
+				);
+			}
 		}
 	}
 
@@ -279,7 +281,7 @@ class  Easy_Doc_Loader {
 			'labels'            => $tag_labels,
 			'show_ui'           => true,
 			'show_admin_column' => true,
-			'show_in_rest' => true,
+			'show_in_rest'      => true,
 		);
 
 		register_taxonomy( 'easydoc_tag', $this->cpt_name, $tag_args );
