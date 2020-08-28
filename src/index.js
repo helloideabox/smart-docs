@@ -1,6 +1,13 @@
-import React from 'react';
-import ReactDom from 'react-dom';
 import Options from './Options';
+/**
+ * WordPress dependencies.
+ */
+const {
+	render,
+	Fragment
+} = wp.element;
 
-
-ReactDom.render( <Options />, document.getElementById( 'ed-setting-root' ) );
+render(
+	<Options />,
+	document.getElementById( 'ed-setting-root' )
+);

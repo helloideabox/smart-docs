@@ -175,7 +175,6 @@ class Options extends Component {
 								<Button
 									type = "button"
 									isPrimary
-									isLarge
 									onClick={ () => this.changeOptions( 'ed_archive_page_title', this.state.archive_page_title, 'archive_page_title' ) }
 								>
 									{ __( 'Save Changes' ) }
@@ -211,8 +210,8 @@ class Options extends Component {
 								<label>{ __( 'Search within Post Types' ) }</label>
 								<ul>
 								{
-									Object.keys( ed_vars.post_types ).map( (item) => (
-									<li>
+									Object.keys( ed_vars.post_types ).map( (item, index) => (
+									<li key={ index }>
 										<ToggleControl
 											label={ ed_vars.post_types[ item ] }
 											checked={ this.state.post_types.some( (value) => value === item ) }
