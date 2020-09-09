@@ -1,6 +1,7 @@
 import './Options.scss';
 import ReactNotification, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
+import General from './admin-tabs/General';
 
 
 /**
@@ -16,6 +17,7 @@ const {
 	Spinner,
 	Placeholder,
 	ToggleControl,
+	TabPanel,
 } = wp.components;
 
 const {
@@ -24,8 +26,7 @@ const {
 	Fragment
 } = wp.element;
 
-
-
+const optionsContext = React.createContext();
 
 class Options extends Component {
 	constructor( props ) {
@@ -126,8 +127,6 @@ class Options extends Component {
 		this.setState( { notification } );
 	}
 
-
-
 	// Returning the output.
 	render() {
 		if( ! this.state.isAPILoaded ) {
@@ -140,6 +139,7 @@ class Options extends Component {
 
 
 		return (
+			<optionsContext.Provider value = {this.state.value}>
 			<Fragment>
 				<ReactNotification />
 
@@ -271,8 +271,65 @@ class Options extends Component {
 							</div>
 						</PanelRow>
 					</PanelBody>
+
+					<TabPanel
+					className="my-tab-panel"
+					activeClass="active-tab"
+					tabs={
+						[
+							{
+								name: 'general',
+								title:'General',
+								className: 'tab-general',
+							},
+							{
+								name: 'layout',
+								title: 'Layout',
+								className: 'tab-layout',
+							},
+							{
+								name: 'search',
+								title: 'Search',
+								className: 'tab-search',
+							}
+						]
+					}>
+						{
+							(tab) => {
+								if('general' === tab.name) {
+									return (
+									<Fragment>
+										<General />
+										{/* <PanelRow>
+											<div className="ed-label ed-single-page-template" >
+												<ToggleControl
+													label={ __( "Enable built-in Single page Template", 'easydoc' ) }
+													help={ this.state.enable_single_template ? 'Custom Single page template enabled.' : 'Custom Single page template disabled.' }
+													checked={ this.state.enable_single_template }
+													onChange={ () => this.changeOptions( 'ed_enable_single_template', ! this.state.enable_single_template, 'enable_single_template' ) }
+												/>
+											</div>
+										</PanelRow>
+										<PanelRow>
+											<div className="ed-label ed-live-search-enable" >
+												<ToggleControl
+													label={ __( "Enable Live Search", 'easydoc' ) }
+													help={ this.state.enable_live_search ? 'Live Search is good to go.' : 'No more live search.' }
+													checked={ this.state.enable_live_search }
+													onChange={ () => this.changeOptions( 'ed_enable_live_search', ! this.state.enable_live_search, 'enable_live_search' ) }
+												/>
+											</div>
+										</PanelRow> */}
+									</Fragment>
+
+									);
+								}
+							}
+						}
+					</TabPanel>
 				</div>
 			</Fragment>
+			</optionsContext.Provider>
 		);
 	}
 }

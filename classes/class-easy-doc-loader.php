@@ -154,7 +154,7 @@ class  Easy_Doc_Loader {
 			return;
 		}
 
-		wp_enqueue_script( 'ed-option-react-script', EASY_DOC_URL . 'build/admin.js', array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n' ), '1.0.0', true );
+		wp_enqueue_script( 'ed-option-react-script', EASY_DOC_URL . 'build/admin.js', array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n', 'wp-data', 'wp-core-data' ), '1.0.0', true );
 		wp_enqueue_style( 'ed-option-react-style', EASY_DOC_URL . 'build/admin.css', array( 'wp-components' ), '1.0.0' );
 
 		// To get all the registered post types.
