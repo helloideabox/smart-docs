@@ -2,10 +2,8 @@ import Options from './Options';
 /**
  * WordPress dependencies.
  */
-const {
-	render,
-	Fragment
-} = wp.element;
+
+import {render, Fragment} from '@wordpress/element';
 
 render(
 	<Options />,
