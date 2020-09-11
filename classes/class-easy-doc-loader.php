@@ -154,8 +154,37 @@ class  Easy_Doc_Loader {
 			return;
 		}
 
-		wp_enqueue_script( 'ed-option-react-script', EASY_DOC_URL . 'build/admin.js', array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n', 'wp-data', 'wp-core-data' ), '1.0.0', true );
-		wp_enqueue_style( 'ed-option-react-style', EASY_DOC_URL . 'build/admin.css', array( 'wp-components' ), '1.0.0' );
+		$dir = EASY_DOC_PATH;
+
+		$script_asset_path = "$dir/build/index.asset.php";
+		if ( ! file_exists( $script_asset_path ) ) {
+			throw new Error(
+				'You need to run `npm start` or `npm run build` for the "create-block/docs2" block first.'
+			);
+		}
+
+		$index_js     = 'build/settings/index.js';
+		$script_asset = require( $script_asset_path );
+
+		wp_enqueue_script(
+			'ed-settings',
+			EASY_DOC_URL . $index_js,
+			$script_asset['dependencies'],
+			$script_asset['version'],
+			true
+		);
+
+		$editor_css = 'build/index.css';
+
+		wp_enqueue_style(
+			'ed-settings-style',
+			EASY_DOC_URL . $editor_css,
+			array(),
+			filemtime( EASY_DOC_PATH . $editor_css ),
+		);
+
+		//wp_enqueue_script( 'ed-option-react-script', EASY_DOC_URL . 'build/admin.js', array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n', 'wp-data', 'wp-core-data' ), '1.0.0', true );
+		//wp_enqueue_style( 'ed-option-react-style', EASY_DOC_URL . 'build/admin.css', array( 'wp-components' ), '1.0.0' );
 
 		// To get all the registered post types.
 		$post_types = get_post_types(
@@ -173,7 +202,7 @@ class  Easy_Doc_Loader {
 
 		// Localising the script or creating global variable in script to send the number of post types created through ajax.
 		wp_localize_script(
-			'ed-option-react-script',
+			'ed-settings',
 			'ed_vars',
 			array(
 				'url'        => admin_url( 'admin-ajax.php' ),

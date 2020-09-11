@@ -1,7 +1,6 @@
 import './Options.scss';
 import ReactNotification, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
-import General from './admin-tabs/General';
 
 
 /**
@@ -300,7 +299,6 @@ class Options extends Component {
 								if('general' === tab.name) {
 									return (
 									<Fragment>
-										<General />
 										{/* <PanelRow>
 											<div className="ed-label ed-single-page-template" >
 												<ToggleControl

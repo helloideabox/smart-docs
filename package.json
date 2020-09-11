@@ -7,11 +7,13 @@
   "license": "ISC",
   "main": "build/index.js",
   "scripts": {
-    "build": "wp-scripts build",
+    "build": "npm run build:settings",
+    "build:settings": "wp-scripts build src/settings/index.js --output-path=build/settings/",
     "format:js": "wp-scripts format-js",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
-    "start": "wp-scripts start",
+    "start": "npm run start:settings",
+    "start:settings":"wp-scripts start src/settings/index.js --output-path=build/settings/ ",
     "packages-update": "wp-scripts packages-update"
   },
   "dependencies": {
