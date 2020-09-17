@@ -13,11 +13,12 @@
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
     "start": "npm run start:settings",
-    "start:settings":"wp-scripts start src/settings/index.js --output-path=build/settings/ ",
+    "start:settings": "wp-scripts start src/settings/index.js --output-path=build/settings/ ",
     "packages-update": "wp-scripts packages-update"
   },
   "dependencies": {
-    "react-notifications-component": "^2.4.0"
+    "react-notifications-component": "^2.4.0",
+    "tailwindcss": "^1.8.10"
   },
   "devDependencies": {
     "@wordpress/scripts": "^12.2.0"

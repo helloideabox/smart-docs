@@ -174,13 +174,13 @@ class  Easy_Doc_Loader {
 			true
 		);
 
-		$editor_css = 'build/index.css';
+		$editor_css = 'build/settings/index.css';
 
 		wp_enqueue_style(
 			'ed-settings-style',
 			EASY_DOC_URL . $editor_css,
-			array(),
-			filemtime( EASY_DOC_PATH . $editor_css ),
+			array('wp-components'),
+			//filemtime( EASY_DOC_PATH . $editor_css ),
 		);
 
 		//wp_enqueue_script( 'ed-option-react-script', EASY_DOC_URL . 'build/admin.js', array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n', 'wp-data', 'wp-core-data' ), '1.0.0', true );
@@ -208,6 +208,7 @@ class  Easy_Doc_Loader {
 				'url'        => admin_url( 'admin-ajax.php' ),
 				'ajax_nonce' => wp_create_nonce( 'docs_option' ),
 				'post_types' => $types,
+				'version'	=> '1.0.0',
 			)
 		);
 	}
