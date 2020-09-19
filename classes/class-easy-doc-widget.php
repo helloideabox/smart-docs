@@ -1,4 +1,5 @@
 <?php
+namespace EasyDocs;
 /**
  * Register and load the widget.
  *
@@ -158,4 +159,4 @@ class  Easy_Doc_Widget extends WP_Widget {
 	}
 }
 
-$easydoc_widget = new Easy_Doc_Widget();
+//$easydoc_widget = new Easy_Doc_Widget();

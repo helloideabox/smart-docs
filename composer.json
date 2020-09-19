@@ -25,6 +25,11 @@
 			"phpcbf -p ."
 		]
 	},
+	"autoload": {
+		"psr-4":{
+			"EasyDocs\\":"classes"
+		}
+	},
 	"extra": {
 		"script-description": {
 			"phpcs": "Analyze code against the WordPress coding standards with PHP_CodeSniffer",

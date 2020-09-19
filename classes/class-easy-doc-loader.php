@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Responsible for setting up constants, classes and templates.
  *
@@ -36,7 +37,7 @@ class  Easy_Doc_Loader {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
 		// Action to register custom post type.
-		add_action( 'init', array( $this, 'register_cpt_doc_type' ) );
+		//add_action( 'init', array( $this, 'register_cpt_doc_type' ) );
 
 		// Filter to rewrite the default archive theme template for particular cpt.
 		add_filter( 'template_include', array( $this, 'archive_template' ) );
