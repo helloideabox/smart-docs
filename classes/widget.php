@@ -1,5 +1,4 @@
 <?php
-namespace EasyDocs;
 /**
  * Register and load the widget.
  *

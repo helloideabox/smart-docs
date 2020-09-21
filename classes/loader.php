@@ -65,11 +65,11 @@ class  Easy_Doc_Loader {
 		global $post_type;
 
 		if ( 'easy-doc' === $post_type ) {
-			wp_enqueue_style( 'ed-style', EASY_DOC_URL . 'assets/css/style.css', array(), '1.0.0', false );
+			wp_enqueue_style( 'ed-style', EASY_DOCS_URL . 'assets/css/style.css', array(), '1.0.0', false );
 
 			// condition to check for live search enabled.
 			if ( get_option( 'ed_enable_live_search' ) ) {
-				wp_enqueue_script( 'ed-searchbox-script', EASY_DOC_URL . 'assets/js/search-script.js', array(), '1.0.0', true );
+				wp_enqueue_script( 'ed-searchbox-script', EASY_DOCS_URL . 'assets/js/search-script.js', array(), '1.0.0', true );
 
 				wp_localize_script(
 					'ed-searchbox-script',
@@ -155,7 +155,7 @@ class  Easy_Doc_Loader {
 			return;
 		}
 
-		$dir = EASY_DOC_PATH;
+		$dir = EASY_DOCS_PATH;
 
 		$script_asset_path = "$dir/build/index.asset.php";
 		if ( ! file_exists( $script_asset_path ) ) {
@@ -169,7 +169,7 @@ class  Easy_Doc_Loader {
 
 		wp_enqueue_script(
 			'ed-settings',
-			EASY_DOC_URL . $index_js,
+			EASY_DOCS_URL . $index_js,
 			$script_asset['dependencies'],
 			$script_asset['version'],
 			true
@@ -179,13 +179,13 @@ class  Easy_Doc_Loader {
 
 		wp_enqueue_style(
 			'ed-settings-style',
-			EASY_DOC_URL . $editor_css,
+			EASY_DOCS_URL . $editor_css,
 			array('wp-components'),
-			//filemtime( EASY_DOC_PATH . $editor_css ),
+			//filemtime( EASY_DOCS_PATH . $editor_css ),
 		);
 
-		//wp_enqueue_script( 'ed-option-react-script', EASY_DOC_URL . 'build/admin.js', array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n', 'wp-data', 'wp-core-data' ), '1.0.0', true );
-		//wp_enqueue_style( 'ed-option-react-style', EASY_DOC_URL . 'build/admin.css', array( 'wp-components' ), '1.0.0' );
+		//wp_enqueue_script( 'ed-option-react-script', EASY_DOCS_URL . 'build/admin.js', array( 'wp-api', 'wp-element', 'wp-components', 'wp-i18n', 'wp-data', 'wp-core-data' ), '1.0.0', true );
+		//wp_enqueue_style( 'ed-option-react-style', EASY_DOCS_URL . 'build/admin.css', array( 'wp-components' ), '1.0.0' );
 
 		// To get all the registered post types.
 		$post_types = get_post_types(
@@ -533,7 +533,7 @@ class  Easy_Doc_Loader {
 			if ( '' !== $exists_in_theme ) {
 				return $exists_in_theme;
 			} else {
-				return EASY_DOC_PATH . 'templates/easy-doc-archive-template.php';
+				return EASY_DOCS_PATH . 'templates/easy-doc-archive-template.php';
 			}
 		}
 		return $template;
@@ -548,7 +548,7 @@ class  Easy_Doc_Loader {
 	public function category_template( $template ) {
 		// Checking for particular taxonomy.
 		if ( is_tax( 'easydoc_category' ) ) {
-			return EASY_DOC_PATH . 'templates/taxonomy-easy-doc-cat.php';
+			return EASY_DOCS_PATH . 'templates/taxonomy-easy-doc-cat.php';
 		}
 		return $template;
 	}
@@ -562,7 +562,7 @@ class  Easy_Doc_Loader {
 	public function tag_template( $template ) {
 		// Checking for particular taxonomy.
 		if ( is_tax( 'easydoc_tag' ) ) {
-			return EASY_DOC_PATH . 'templates/taxonomy-easy-doc-tag.php';
+			return EASY_DOCS_PATH . 'templates/taxonomy-easy-doc-tag.php';
 		}
 		return $template;
 	}
@@ -577,7 +577,7 @@ class  Easy_Doc_Loader {
 	public function single_template( $template ) {
 		// Checking if the page is single and post type is of custom cpt(easy-doc).
 		if ( is_singular( $this->cpt_name ) ) {
-			return EASY_DOC_PATH . 'templates/easy-doc-single-template.php';
+			return EASY_DOCS_PATH . 'templates/easy-doc-single-template.php';
 		}
 		return $template;
 	}
@@ -591,9 +591,9 @@ class  Easy_Doc_Loader {
 	 */
 	private function load_files() {
 
-		include_once EASY_DOC_PATH . 'templates/easy-doc-shortcode.php';
-		include_once EASY_DOC_PATH . 'classes/class-easy-doc-widget.php';
-		include_once EASY_DOC_PATH . 'classes/class-easy-doc-cat-widget.php';
+		include_once EASY_DOCS_PATH . 'templates/easy-doc-shortcode.php';
+		include_once EASY_DOCS_PATH . 'classes/class-easy-doc-widget.php';
+		include_once EASY_DOCS_PATH . 'classes/class-easy-doc-cat-widget.php';
 	}
 }
 

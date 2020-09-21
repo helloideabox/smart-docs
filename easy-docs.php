@@ -6,12 +6,10 @@
  * Author URI: https://ideabox.io
  * Version: 1.0.0
  * Description: Simple Documentation plugin for WordPress.
- * Text Domain: easydoc
+ * Text Domain: easy-docs
  *
  * @package EasyDocs
  */
-
-use EasyDocs\Classes\Test;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,10 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'EASY_DOCS_VERSION', '1.0.0' );
 
-define( 'EP_FILE', __FILE__ );
-
-define( 'EASY_DOC_PATH', plugin_dir_path( __FILE__ ) );
-define( 'EASY_DOC_URL', plugin_dir_url( __FILE__ ) );
+define( 'EASY_DOC_FILE', __FILE__ );
+define( 'EASY_DOCS_PATH', plugin_dir_path( __FILE__ ) );
+define( 'EASY_DOCS_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Check for the Compatibility.
@@ -38,13 +35,13 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	 * Autoloading classes using Composer's Autoloader
 	 */
 
-	if ( EASY_DOC_PATH . '/vendor/autoloader.php' ) {
-		EASY_DOC_PATH . '/vendor/autoloader.php';
+	if ( EASY_DOCS_PATH . '/vendor/autoload.php' ) {
+		require_once EASY_DOCS_PATH . '/vendor/autoload.php';
 	}
 
-	//require EASY_DOC_PATH . '/includes/plugin.php';
+	require EASY_DOCS_PATH . '/includes/plugin.php';
 
-	$test = new EasyDocs\Test();
+	//require_once EASY_DOCS_PATH . '/classes/class-easy-doc-loader.php';
 }
 
 /**
@@ -62,7 +59,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 function notice_php_version() {
 
 	/* translators: %s: PHP version */
-	$message      = sprintf( esc_html__( 'EasyDocs requires PHP version %s+, plugin is currently NOT RUNNING.', 'easydoc' ), '5.6' );
+	$message      = sprintf( esc_html__( 'EasyDocs requires PHP version %s+, plugin is currently NOT RUNNING.', 'easy-docs' ), '5.6' );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );
 
@@ -79,7 +76,7 @@ function notice_php_version() {
  */
 function notice_wp_version() {
 	/* translators: %s: WordPress version */
-	$message      = sprintf( esc_html__( 'EasyDocs requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'easydoc' ), '5.0' );
+	$message      = sprintf( esc_html__( 'EasyDocs requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'easy-docs' ), '5.0' );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace EasyDocs;
+
 /**
  * Responsible for creating Custom Post Type
  *
@@ -7,7 +9,7 @@
  * @package EasyDoc
  */
 
-class Easy_Doc_CPT {
+class Cpt {
 
 	/**
 	 * Custom post type variable for registering taxonomy.

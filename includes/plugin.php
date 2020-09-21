@@ -1,6 +1,8 @@
 <?php
 
-use EasyDocs\Easy_Doc_CPT;
+namespace EasyDocs;
+
+use EasyDocs\Cpt;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -70,7 +72,9 @@ class Plugin {
 	 */
 	private function __construct() {
 
-		register_activation_hook( EP_FILE, array( __CLASS__, 'plugin_activation' ) );
+		$this->register_autoloader();
+		
+		register_activation_hook( EASY_DOC_FILE, array( __CLASS__, 'plugin_activation' ) );
 
 		add_action( 'init', array( $this, 'init' ), 0 );
 	}
@@ -98,7 +102,22 @@ class Plugin {
 	 * @access private
 	 */
 	private function init_components() {
-		$cpt = new Easy_Doc_CPT();
+		new Cpt;
+	}
+
+	/**
+	 * Register autoloader.
+	 *
+	 * Elementor autoloader loads all the classes needed to run the plugin.
+	 *
+	 * @since 1.6.0
+	 * @access private
+	 */
+	private function register_autoloader() {
+		echo "Loading Autoloader";
+		require EASY_DOCS_PATH . '/includes/autoloader.php';
+
+		Autoloader::run();
 	}
 
 	/**
@@ -134,7 +153,6 @@ class Plugin {
 	}
 
 }
-
 
 Plugin::instance();
 
