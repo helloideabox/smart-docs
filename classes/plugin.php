@@ -2,8 +2,6 @@
 
 namespace EasyDocs;
 
-use EasyDocs\Cpt\Actors;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -103,7 +101,7 @@ class Plugin {
 	 */
 	private function init_components() {
 
-		Actors::init();
+		Cpt\Actors::init();
 	}
 
 	/**

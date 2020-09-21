@@ -29,7 +29,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	add_action( 'admin_notices', 'notice_php_version' );
 } elseif ( ! version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
 	add_action( 'admin_notices', 'notice_wp_version' );
-} else {
+} else {;
 
 	require EASY_DOCS_PATH . '/classes/plugin.php';
 

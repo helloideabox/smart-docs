@@ -55,7 +55,7 @@ class Autoloader {
 		self::$classes_map = [
 			//'Api' => 'includes/api.php',
 			'Cpt' => 'classes/cpt.php',
-			'Actors' => 'classes/cpt-actors.php',
+			'Actors' => 'classes/cpt/actors.php',
 		];
 	}
 
@@ -84,7 +84,9 @@ class Autoloader {
 				)
 			);
 
-			$filename = PPE_API_PATH . $filename . '.php';
+			$filename = EASY_DOCS_PATH . $filename . '.php';
+
+			echo $filename;
 		}
 
 		if ( is_readable( $filename ) ) {
@@ -115,10 +117,10 @@ class Autoloader {
 
 		$final_class_name = __NAMESPACE__ . '\\' . $relative_class_name;
 		
-		echo $final_class_name;
+		//echo $relative_class_name;
 
 		if ( ! class_exists( $final_class_name ) ) {
-			self::load_class( $relative_class_name );
+			self::load_class( $relative_class_name );	
 		}
 	}
 }
