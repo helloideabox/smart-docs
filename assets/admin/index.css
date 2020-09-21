@@ -192,8 +192,7 @@ select { /* 1 */
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
-button,
-[type="button"] {
+button {
   -webkit-appearance: button;
 }
 
@@ -201,8 +200,7 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner {
+button::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -211,8 +209,7 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 
-button:-moz-focusring,
-[type="button"]:-moz-focusring {
+button:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -270,18 +267,9 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 
-[type="search"] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
-}
-
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
 
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
@@ -321,10 +309,6 @@ template {
 /**
  * Add the correct display in IE 10.
  */
-
-[hidden] {
-  display: none;
-}
 
 /**
  * Manually forked from SUIT CSS Base: https://github.com/suitcss/base
@@ -604,10 +588,6 @@ video {
   display: grid;
 }
 
-.hidden {
-  display: none;
-}
-
 .justify-items-center {
   justify-items: center;
 }
@@ -683,10 +663,6 @@ video {
   --text-opacity: 1;
   color: #a0aec0;
   color: rgba(160, 174, 192, var(--text-opacity));
-}
-
-.visible {
-  visibility: visible;
 }
 
 .grid-cols-3 {
