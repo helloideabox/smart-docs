@@ -18,7 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Main plugin class responsible for initiazling EasyDocs Plugin. The class
  * registers all the components required to run the plugin.
- *
+ * 
+ * @package EasyDocs
  * @since 1.0.0
  */
 

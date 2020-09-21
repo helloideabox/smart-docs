@@ -2,7 +2,25 @@
 
 namespace EasyDocs;
 
+/**
+ * Templates.
+ *
+ * Core class used to override default templates when required.
+ * 
+ * @package EasyDocs
+ * @since 1.0.0
+ */
+
 class Templates {
+
+	/**
+	 * Class constructor.
+	 * 
+	 * Responsible for loading all the required methods and action in the class
+	 * when it is instantiated.
+	 * 
+	 * @since 1.0.0
+	 */
 
 	public function __construct() {
 
@@ -15,7 +33,7 @@ class Templates {
 	}
 
 	/**
-	 * Callback function for overide templates.
+	 * Callback function for overiding templates.
 	 *
 	 * @category InitCallBack
 	 * @return void
@@ -28,7 +46,10 @@ class Templates {
 		if ( '1' == $is_single_template_on ) {// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 
 			// Filter to rewrite the default single theme template for particular cpt.
+
+			/** This filter is documented in wp-includes/template-loader.php */
 			add_filter( 'template_include', array( $this, 'single_template' ) );
+
 			add_filter( 'body_class', array( $this, 'body_single_class' ) );
 		}
 

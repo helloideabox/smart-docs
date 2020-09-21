@@ -2,6 +2,16 @@
 
 namespace EasyDocs;
 
+/**
+ * Search Class.
+ *
+ * Search class is responsible for handling the search of the documents and
+ * other post types when selected in settings and return a feature rich results.
+ * 
+ * @package EasyDocs
+ * @since 1.0.0
+ */
+
 class Search {
 
 	public function __construct() {
