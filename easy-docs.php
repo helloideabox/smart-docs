@@ -31,15 +31,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	add_action( 'admin_notices', 'notice_wp_version' );
 } else {
 
-	/**
-	 * Autoloading classes using Composer's Autoloader
-	 */
-
-	if ( EASY_DOCS_PATH . '/vendor/autoload.php' ) {
-		require_once EASY_DOCS_PATH . '/vendor/autoload.php';
-	}
-
-	require EASY_DOCS_PATH . '/includes/plugin.php';
+	require EASY_DOCS_PATH . '/classes/plugin.php';
 
 	//require_once EASY_DOCS_PATH . '/classes/class-easy-doc-loader.php';
 }

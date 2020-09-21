@@ -55,7 +55,7 @@ class Autoloader {
 		self::$classes_map = [
 			//'Api' => 'includes/api.php',
 			'Cpt' => 'classes/cpt.php',
-			//'Utils' => 'includes/utils.php',
+			'Actors' => 'classes/cpt-actors.php',
 		];
 	}
 
@@ -111,7 +111,11 @@ class Autoloader {
 		$namespace = str_replace( '\\', '\\\\', __NAMESPACE__ );
 		$relative_class_name = preg_replace( '/^' . $namespace . '\\\/', '', $class );
 
+		//echo $relative_class_name;
+
 		$final_class_name = __NAMESPACE__ . '\\' . $relative_class_name;
+		
+		echo $final_class_name;
 
 		if ( ! class_exists( $final_class_name ) ) {
 			self::load_class( $relative_class_name );

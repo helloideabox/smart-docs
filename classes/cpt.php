@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyDocs;
+namespace EasyDocs\Cpt;
 
 /**
  * Responsible for creating Custom Post Type

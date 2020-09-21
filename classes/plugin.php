@@ -2,7 +2,7 @@
 
 namespace EasyDocs;
 
-use EasyDocs\Cpt;
+use EasyDocs\Cpt\Actors;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -102,7 +102,8 @@ class Plugin {
 	 * @access private
 	 */
 	private function init_components() {
-		new Cpt;
+
+		Actors::init();
 	}
 
 	/**
@@ -114,8 +115,8 @@ class Plugin {
 	 * @access private
 	 */
 	private function register_autoloader() {
-		echo "Loading Autoloader";
-		require EASY_DOCS_PATH . '/includes/autoloader.php';
+		//echo "Loading Autoloader";
+		require EASY_DOCS_PATH . '/classes/autoloader.php';
 
 		Autoloader::run();
 	}
