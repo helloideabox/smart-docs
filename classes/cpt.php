@@ -1,12 +1,12 @@
 <?php
 
-namespace EasyDocs\Cpt;
+namespace EasyDocs;
 
 /**
  * Responsible for creating Custom Post Type
  *
  * @author IdeaBox
- * @package EasyDoc
+ * @package EasyDocs
  */
 
 class Cpt {

@@ -1,4 +1,6 @@
 <?php
+namespace EasyDocs;
+
 /**
  * Register and load the widget.
  *
@@ -13,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Creating widget for recent post.
  */
-class  Easy_Doc_Widget extends WP_Widget {
+class Widget extends \WP_Widget {
 
 	/**
 	 * Constructor calling the docs widgets
@@ -143,7 +145,7 @@ class  Easy_Doc_Widget extends WP_Widget {
 	 */
 	public function easy_doc_widgets_area() {
 		// Register Widget with the same ID as parent construct ID given to widget.
-		register_widget( 'easy_doc_widget' );
+		register_widget( 'EasyDocs\Widget' );
 
 		$sidebar_args = array(
 			'name'          => __( 'Easy Doc Sidebar', 'easydoc' ),
@@ -157,5 +159,3 @@ class  Easy_Doc_Widget extends WP_Widget {
 		register_sidebar( $sidebar_args );
 	}
 }
-
-//$easydoc_widget = new Easy_Doc_Widget();

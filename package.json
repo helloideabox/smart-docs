@@ -8,12 +8,12 @@
   "main": "build/index.js",
   "scripts": {
     "build": "npm run build:settings",
-    "build:settings": "wp-scripts build src/settings/index.js --output-path=build/settings/",
+    "build:settings": "wp-scripts build src/settings/index.js --output-path=assets/admin/",
     "format:js": "wp-scripts format-js",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
     "start": "npm run start:settings",
-    "start:settings": "wp-scripts start src/settings/index.js --output-path=build/settings/ ",
+    "start:settings": "wp-scripts start src/settings/index.js --output-path=assets/admin/ ",
     "packages-update": "wp-scripts packages-update"
   },
   "dependencies": {

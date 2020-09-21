@@ -1,4 +1,6 @@
 <?php
+namespace EasyDocs;
+
 /**
  * Register and load the widget.
  *
@@ -15,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Creating the widget for categories.
  */
-class Easy_Doc_Cat_Widget extends WP_Widget {
+class Cat_Widget extends \WP_Widget {
 
 	/**
 	 * Constructor calling the doc widget.
@@ -178,8 +180,6 @@ class Easy_Doc_Cat_Widget extends WP_Widget {
 	 * Registering the custom Widget(easy_doc_cat_widget).
 	 */
 	public function easy_doc_widgets_area() {
-		register_widget( 'easy_doc_cat_widget' );
+		register_widget( 'EasyDocs\Cat_Widget' );
 	}
 }
-
-$easydoc_cat_widget = new Easy_Doc_Cat_Widget();

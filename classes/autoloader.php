@@ -37,7 +37,7 @@ class Autoloader {
 	 * @static
 	 */
 	public static function run() {
-		spl_autoload_register( [ __CLASS__, 'autoload' ] );
+		spl_autoload_register( array( __CLASS__, 'autoload' ) );
 	}
 
 	public static function get_classes_map() {
@@ -50,13 +50,15 @@ class Autoloader {
 
 	private static function init_classes_map() {
 
-		//echo "Building ClassMap";
-
-		self::$classes_map = [
-			//'Api' => 'includes/api.php',
-			'Cpt' => 'classes/cpt.php',
-			'Actors' => 'classes/cpt/actors.php',
-		];
+		self::$classes_map = array(
+			'Autoloader' => 'classes/autoloader.php',
+			'Admin'      => 'classes/admin-settings.php',
+			'Cat_Widget' => 'classes/category-widget.php',
+			'Cpt'        => 'classes/cpt.php',
+			'Search'     => 'classes/search.php',
+			'Templates'  => 'classes/templates.php',
+			'Widget'     => 'classes/widget.php',
+		);
 	}
 
 	/**
@@ -78,15 +80,13 @@ class Autoloader {
 		} else {
 			$filename = strtolower(
 				preg_replace(
-					[ '/([a-z])([A-Z])/', '/_/', '/\\\/' ],
-					[ '$1-$2', '-', DIRECTORY_SEPARATOR ],
+					array( '/([a-z])([A-Z])/', '/_/', '/\\\/' ),
+					array( '$1-$2', '-', DIRECTORY_SEPARATOR ),
 					$relative_class_name
 				)
 			);
 
 			$filename = EASY_DOCS_PATH . $filename . '.php';
-
-			echo $filename;
 		}
 
 		if ( is_readable( $filename ) ) {
@@ -110,17 +110,13 @@ class Autoloader {
 			return;
 		}
 
-		$namespace = str_replace( '\\', '\\\\', __NAMESPACE__ );
+		$namespace           = str_replace( '\\', '\\\\', __NAMESPACE__ );
 		$relative_class_name = preg_replace( '/^' . $namespace . '\\\/', '', $class );
 
-		//echo $relative_class_name;
-
 		$final_class_name = __NAMESPACE__ . '\\' . $relative_class_name;
-		
-		//echo $relative_class_name;
 
 		if ( ! class_exists( $final_class_name ) ) {
-			self::load_class( $relative_class_name );	
+			self::load_class( $relative_class_name );
 		}
 	}
 }

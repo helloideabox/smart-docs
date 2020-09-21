@@ -4,6 +4,9 @@
 # Composer
 /vendor/
 
+#phpDocumentor
+/doc/
+
 # Editors
 composer.lock
 package-lock.json
@@ -35,3 +38,6 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+#mac
+.DS_Store
