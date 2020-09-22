@@ -1,4 +1,13 @@
 <?php
+/**
+ * Plugin loader class
+ * 
+ * Loads the plugin and all the required classes and functions when the
+ * plugin is activate.
+ * 
+ * @since 1.0.0
+ * @package EasyDocs
+ */
 
 namespace EasyDocs;
 
@@ -151,7 +160,7 @@ class Plugin {
 	 */
 	public function __clone() {
 		 // Cloning instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'easydoc' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'easy-docs' ), '1.0.0' );
 	}
 
 	/**
@@ -164,7 +173,7 @@ class Plugin {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'easydoc' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'easy-docs' ), '1.0.0' );
 	}
 
 	/**
