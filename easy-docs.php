@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Easy Docs
+ * Plugin Name: EasyDocs
  * Plugin URI: https://ideabox.io/
  * Author: IdeaBox
  * Author URI: https://ideabox.io
@@ -32,8 +32,6 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 } else {;
 
 	require EASY_DOCS_PATH . '/classes/plugin.php';
-
-	//require_once EASY_DOCS_PATH . '/classes/class-easy-doc-loader.php';
 }
 
 /**
