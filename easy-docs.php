@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'EASY_DOCS_VERSION', '1.0.0' );
 
-define( 'EASY_DOC_FILE', __FILE__ );
+define( 'EASY_DOCS_FILE', __FILE__ );
 define( 'EASY_DOCS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EASY_DOCS_URL', plugin_dir_url( __FILE__ ) );
 
@@ -26,11 +26,32 @@ define( 'EASY_DOCS_URL', plugin_dir_url( __FILE__ ) );
  */
 
 if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
-	add_action( 'admin_notices', 'notice_php_version' );
-} elseif ( ! version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
-	add_action( 'admin_notices', 'notice_wp_version' );
-} else {;
 
+	/**
+	 * Display admin notice for PHP version less than 5.6.
+	 *
+	 * @since 1.0.0
+	 */
+
+	add_action( 'admin_notices', 'notice_php_version' );
+
+} elseif ( ! version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
+
+	/**
+	 * Display admin notice for WordPress version less than 5.0
+	 *
+	 * @since 1.0.0
+	 */
+
+	add_action( 'admin_notices', 'notice_wp_version' );
+
+} else {
+
+	/**
+	 * Load the plugin.php file to run the plugin.
+	 *
+	 * @since 1.0.0
+	 */
 	require EASY_DOCS_PATH . '/classes/plugin.php';
 }
 
