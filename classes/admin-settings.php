@@ -1,4 +1,12 @@
 <?php
+/**
+ * Plugin Settings Manager
+ * 
+ * Responsible for registering plugin settings, rendering admin menu, etc.
+ * 
+ * @since 1.0.0
+ * @package EasyDocs
+ */
 
 namespace EasyDocs;
 
@@ -24,8 +32,8 @@ class Admin {
 		// Adding sub menu to the cpt.
 		add_submenu_page(
 			'edit.php?post_type=easy-doc', // Parent slug.
-			__( 'Settings', 'easydoc' ), // Page title.
-			__( 'Settings', 'easydoc' ), // Menu title.
+			__( 'Settings', 'easy-docs' ), // Page title.
+			__( 'Settings', 'easy-docs' ), // Menu title.
 			'manage_options', // Capability.
 			'easy_doc_settings', // Menu slug.
 			array( $this, 'render_options_page' ) // Callback function.

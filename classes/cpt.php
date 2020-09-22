@@ -1,11 +1,12 @@
 <?php
-
 namespace EasyDocs;
 
 /**
- * Responsible for creating Custom Post Type
+ * Cpt Manager Class.
+ * 
+ * Responsible for creating Custom Post Type.
  *
- * @author IdeaBox
+ * @since 1.0.0
  * @package EasyDocs
  */
 
@@ -27,22 +28,22 @@ class Cpt {
 
 		// Registering Custom post type(easy doc).
 		$labels = array(
-			'name'               => _x( 'Easy Docs', 'Post type general name', 'easydoc' ),
-			'singular_name'      => _x( 'Easy Doc', 'Post type singular name', 'easydoc' ),
-			'menu_name'          => _x( 'Easy Docs', 'Admin Menu text', 'easydoc' ),
-			'name_admin_bar'     => _x( 'Doc', 'Admin Menu Toolbar text', 'easydoc' ),
-			'add_new'            => __( 'Add New', 'easydoc' ),
-			'add_new_item'       => __( 'Add New Doc', 'easydoc' ),
-			'new_item'           => __( 'Add New Doc', 'easydoc' ),
-			'view_item'          => __( 'View Doc', 'easydoc' ),
-			'edit_item'          => __( 'Edit Doc', 'easydoc' ),
-			'all_items'          => __( 'All Docs', 'easydoc' ),
-			'search_items'       => __( 'Search Docs', 'easydoc' ),
-			'parent_item_colon'  => __( 'Parent Docs', 'easydoc' ),
-			'not_found'          => __( 'No Docs found.', 'easydoc' ),
-			'not_found_in_trash' => __( 'No Docs found in Trash.', 'easydoc' ),
-			'item_published'     => __( 'New Doc Published.', 'easydoc' ),
-			'item_updated'       => __( 'Doc post updated.', 'easydoc' ),
+			'name'               => _x( 'Easy Docs', 'Post type general name', 'easy-docs' ),
+			'singular_name'      => _x( 'Easy Doc', 'Post type singular name', 'easy-docs' ),
+			'menu_name'          => _x( 'Easy Docs', 'Admin Menu text', 'easy-docs' ),
+			'name_admin_bar'     => _x( 'Doc', 'Admin Menu Toolbar text', 'easy-docs' ),
+			'add_new'            => __( 'Add New', 'easy-docs' ),
+			'add_new_item'       => __( 'Add New Doc', 'easy-docs' ),
+			'new_item'           => __( 'Add New Doc', 'easy-docs' ),
+			'view_item'          => __( 'View Doc', 'easy-docs' ),
+			'edit_item'          => __( 'Edit Doc', 'easy-docs' ),
+			'all_items'          => __( 'All Docs', 'easy-docs' ),
+			'search_items'       => __( 'Search Docs', 'easy-docs' ),
+			'parent_item_colon'  => __( 'Parent Docs', 'easy-docs' ),
+			'not_found'          => __( 'No Docs found.', 'easy-docs' ),
+			'not_found_in_trash' => __( 'No Docs found in Trash.', 'easy-docs' ),
+			'item_published'     => __( 'New Doc Published.', 'easy-docs' ),
+			'item_updated'       => __( 'Doc post updated.', 'easy-docs' ),
 		);
 
 		$args = array(
@@ -65,17 +66,17 @@ class Cpt {
 
 		// Resgistering Custom categories taxonomy.
 		$category_labels = array(
-			'name'              => esc_html__( 'Docs Categories', 'easydoc' ),
-			'singular_name'     => esc_html__( 'Doc Category', 'easydoc' ),
-			'all_items'         => esc_html__( 'Docs Categories', 'easydoc' ),
-			'parent_item'       => esc_html__( 'Parent category', 'easydoc' ),
-			'parent_item_colon' => esc_html__( 'Parent category', 'easydoc' ),
-			'edit_item'         => esc_html__( 'Edit Category', 'easydoc' ),
-			'update_item'       => esc_html__( 'Update Category', 'easydoc' ),
-			'add_new_item'      => esc_html__( 'Add New Docs Category', 'easydoc' ),
-			'new_item_name'     => esc_html__( 'New Docs Name', 'easydoc' ),
-			'menu_name'         => esc_html__( 'Categories', 'easydoc' ),
-			'search_items'      => esc_html__( 'Search Categories', 'easydoc' ),
+			'name'              => esc_html__( 'Docs Categories', 'easy-docs' ),
+			'singular_name'     => esc_html__( 'Doc Category', 'easy-docs' ),
+			'all_items'         => esc_html__( 'Docs Categories', 'easy-docs' ),
+			'parent_item'       => esc_html__( 'Parent category', 'easy-docs' ),
+			'parent_item_colon' => esc_html__( 'Parent category', 'easy-docs' ),
+			'edit_item'         => esc_html__( 'Edit Category', 'easy-docs' ),
+			'update_item'       => esc_html__( 'Update Category', 'easy-docs' ),
+			'add_new_item'      => esc_html__( 'Add New Docs Category', 'easy-docs' ),
+			'new_item_name'     => esc_html__( 'New Docs Name', 'easy-docs' ),
+			'menu_name'         => esc_html__( 'Categories', 'easy-docs' ),
+			'search_items'      => esc_html__( 'Search Categories', 'easy-docs' ),
 		);
 
 		$category_args = array(
@@ -91,20 +92,20 @@ class Cpt {
 
 		// Resgistering Custom tag taxonomy.
 		$tag_labels = array(
-			'name'                       => __( 'Docs tags', 'easydoc' ),
-			'singular_name'              => __( 'Doc Tag', 'easydoc' ),
-			'menu_name'                  => _x( 'Tags', 'Admin menu name', 'easydoc' ),
-			'search_items'               => __( 'Search tags', 'easydoc' ),
-			'all_items'                  => __( 'All tags', 'easydoc' ),
-			'edit_item'                  => __( 'Edit tag', 'easydoc' ),
-			'update_item'                => __( 'Update tag', 'easydoc' ),
-			'add_new_item'               => __( 'Add new tag', 'easydoc' ),
-			'new_item_name'              => __( 'New tag name', 'easydoc' ),
-			'popular_items'              => __( 'Popular tags', 'easydoc' ),
-			'separate_items_with_commas' => __( 'Separate tags with commas', 'easydoc' ),
-			'add_or_remove_items'        => __( 'Add or remove tags', 'easydoc' ),
-			'choose_from_most_used'      => __( 'Choose from the most used tags', 'easydoc' ),
-			'not_found'                  => __( 'No tags found', 'easydoc' ),
+			'name'                       => __( 'Docs tags', 'easy-docs' ),
+			'singular_name'              => __( 'Doc Tag', 'easy-docs' ),
+			'menu_name'                  => _x( 'Tags', 'Admin menu name', 'easy-docs' ),
+			'search_items'               => __( 'Search tags', 'easy-docs' ),
+			'all_items'                  => __( 'All tags', 'easy-docs' ),
+			'edit_item'                  => __( 'Edit tag', 'easy-docs' ),
+			'update_item'                => __( 'Update tag', 'easy-docs' ),
+			'add_new_item'               => __( 'Add new tag', 'easy-docs' ),
+			'new_item_name'              => __( 'New tag name', 'easy-docs' ),
+			'popular_items'              => __( 'Popular tags', 'easy-docs' ),
+			'separate_items_with_commas' => __( 'Separate tags with commas', 'easy-docs' ),
+			'add_or_remove_items'        => __( 'Add or remove tags', 'easy-docs' ),
+			'choose_from_most_used'      => __( 'Choose from the most used tags', 'easy-docs' ),
+			'not_found'                  => __( 'No tags found', 'easy-docs' ),
 		);
 
 		$tag_args = array(

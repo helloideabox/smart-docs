@@ -1,4 +1,13 @@
 <?php
+/**
+ * Widget Manager
+ * 
+ * Responsible for loading and running Category Widget.
+ * 
+ * @since 1.0.0
+ * @package EasyDocs
+ */
+
 namespace EasyDocs;
 
 /**
@@ -28,7 +37,7 @@ class Cat_Widget extends \WP_Widget {
 
 		// Widget args.
 		$widget_args = array(
-			'description' => __( 'Widget for List of Categories', 'easydoc' ),
+			'description' => __( 'Widget for List of Categories', 'easy-docs' ),
 		);
 
 		// Calling the parent constructor(WP_Widget).
@@ -80,7 +89,7 @@ class Cat_Widget extends \WP_Widget {
 			$dropdown_id = 'easydoc_category';
 
 			// Adding some category args for wp_dropdown_categories.
-			$cat_args['show_option_none'] = __( 'Select Category', 'easydoc' ); // If none of the options are selected then defaults to select category.
+			$cat_args['show_option_none'] = __( 'Select Category', 'easy-docs' ); // If none of the options are selected then defaults to select category.
 			$cat_args['id']               = $dropdown_id; // Gives id attribute to the select html tag.
 			$cat_args['value_field']      = 'slug'; // Gives value attribute name of the category slug.
 
@@ -136,22 +145,22 @@ class Cat_Widget extends \WP_Widget {
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); // Get field id helps in generating the unque id of the field with required string(title). ?>">
-				<?php esc_attr_e( 'Title:', 'easydoc' ); ?>
+				<?php esc_attr_e( 'Title:', 'easy-docs' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>" type="text">
 		</p>
 
 		<p>
 			<input class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'dropdown' ) ); ?>" type="checkbox" <?php checked( $dropdown ); ?>>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>"><?php esc_attr_e( 'Display as dropdown', 'easydoc' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>"><?php esc_attr_e( 'Display as dropdown', 'easy-docs' ); ?></label>
 			<br>
 
 			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" <?php checked( $count ); ?>>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php esc_attr_e( 'Show post count', 'easydoc' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php esc_attr_e( 'Show post count', 'easy-docs' ); ?></label>
 			<br>
 
 			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'hierarchical' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>" <?php checked( $hierarchical ); ?>>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>"><?php esc_attr_e( 'Show hierarchy', 'easydoc' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>"><?php esc_attr_e( 'Show hierarchy', 'easy-docs' ); ?></label>
 		</p>
 
 		<?php

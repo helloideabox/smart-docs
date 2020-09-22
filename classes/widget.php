@@ -25,14 +25,14 @@ class Widget extends \WP_Widget {
 		add_action( 'widgets_init', array( $this, 'easy_doc_widgets_area' ) );
 
 		$widget_ops = array(
-			'description' => __( 'Widget for recent Docs', 'easydoc' ),
+			'description' => __( 'Widget for recent Docs', 'easy-docs' ),
 		);
 
 		parent::__construct(
 			// Base ID of the widget.
 			'easy_doc_widget',
 			// Widget name will appear in UI.
-			__( 'Easy Doc Widget', 'easydoc' ),
+			__( 'Easy Doc Widget', 'easy-docs' ),
 			// Passing widget options array.
 			$widget_ops
 		);
@@ -103,7 +103,7 @@ class Widget extends \WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = __( 'Recent Docs', 'easydoc' );
+			$title = __( 'Recent Docs', 'easy-docs' );
 		}
 
 		// Widget admin form.
@@ -111,7 +111,7 @@ class Widget extends \WP_Widget {
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-				<?php esc_attr_e( 'Title:', 'easydoc' ); ?>
+				<?php esc_attr_e( 'Title:', 'easy-docs' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"  value="<?php echo esc_attr( $title ); ?>" type="text">
 		</p>
@@ -148,9 +148,9 @@ class Widget extends \WP_Widget {
 		register_widget( 'EasyDocs\Widget' );
 
 		$sidebar_args = array(
-			'name'          => __( 'Easy Doc Sidebar', 'easydoc' ),
+			'name'          => __( 'Easy Doc Sidebar', 'easy-docs' ),
 			'id'            => 'easy-doc-sidebar-1',
-			'description'   => __( 'Widgets in this area will be shown on all docs single posts and category.', 'easydoc' ),
+			'description'   => __( 'Widgets in this area will be shown on all docs single posts and category.', 'easy-docs' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="docs-widget-title">',

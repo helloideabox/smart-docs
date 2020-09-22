@@ -1,4 +1,12 @@
 <?php
+/**
+ * Autoloader.
+ * 
+ * Handles the autoloading of classes as per PSR-4 Standard.
+ * 
+ * @since 1.0.0
+ * @package EasyDocs
+ */
 namespace EasyDocs;
 
 if ( ! defined( 'ABSPATH' ) ) {

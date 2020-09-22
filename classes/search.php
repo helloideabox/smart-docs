@@ -30,10 +30,10 @@ class Search {
 			if ( isset( $_POST['query'] ) && ! empty( $_POST['query'] ) ) {
 				$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
 			} else {
-				$query = esc_html__( 'No docs found', 'easydoc' );
+				$query = esc_html__( 'No docs found', 'easy-docs' );
 			}
 		} else {
-			esc_attr_e( 'Nonce is invalid', 'easydoc' );
+			esc_attr_e( 'Nonce is invalid', 'easy-docs' );
 		}
 
 		// To show which post to show.
@@ -65,7 +65,7 @@ class Search {
 					<?php
 				endwhile;
 			else :
-				esc_attr_e( 'No Doc was found', 'easydoc' );
+				esc_attr_e( 'No Doc was found', 'easy-docs' );
 			endif;
 			?>
 
