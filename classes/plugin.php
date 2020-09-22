@@ -178,7 +178,7 @@ class Plugin {
 	private function __construct() {
 		$this->register_autoloader();
 
-		register_activation_hook( EASY_DOC_FILE, array( __CLASS__, 'plugin_activation' ) );
+		register_activation_hook( EASY_DOCS_FILE, array( __CLASS__, 'plugin_activation' ) );
 
 		add_action( 'init', array( $this, 'init' ), 0 );
 	}
