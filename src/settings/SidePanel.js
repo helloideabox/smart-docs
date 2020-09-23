@@ -18,7 +18,7 @@ export default function SidePanel() {
 				go to our Github Page and post issue/suggestion.
 			</CardBody>
 			<CardFooter>
-				<ExternalLink href="https://github.com/helloideabox/easy-docs/issues">
+				<ExternalLink href="https://github.com/helloideabox/smart-docs/issues">
 					Raise a Ticket
 				</ExternalLink>
 			</CardFooter>

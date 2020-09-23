@@ -6,29 +6,29 @@
  * plugin is activate.
  * 
  * @since 1.0.0
- * @package EasyDocs
+ * @package SmartDocs
  */
 
-namespace EasyDocs;
+namespace SmartDocs;
 
-use EasyDocs\Cpt;
-use EasyDocs\Admin;
-use EasyDocs\Widget;
-use EasyDocs\Cat_Widget;
-use EasyDocs\Templates;
-use EasyDocs\Search;
+use SmartDocs\Cpt;
+use SmartDocs\Admin;
+use SmartDocs\Widget;
+use SmartDocs\Cat_Widget;
+use SmartDocs\Templates;
+use SmartDocs\Search;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * EasyDocs Plugin.
+ * SmartDocs Plugin.
  *
- * Main plugin class responsible for initiazling EasyDocs Plugin. The class
+ * Main plugin class responsible for initiazling SmartDocs Plugin. The class
  * registers all the components required to run the plugin.
  * 
- * @package EasyDocs
+ * @package SmartDocs
  * @since 1.0.0
  */
 
@@ -160,7 +160,7 @@ class Plugin {
 	 */
 	public function __clone() {
 		 // Cloning instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'easy-docs' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'smart-docs' ), '1.0.0' );
 	}
 
 	/**
@@ -173,13 +173,13 @@ class Plugin {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden.
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'easy-docs' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'smart-docs' ), '1.0.0' );
 	}
 
 	/**
 	 * Plugin constructor.
 	 *
-	 * Initializing wp-easy-portfolio plugin.
+	 * Initializing smart-docst plugin.
 	 *
 	 * @since 1.0.0
 	 * @access private
@@ -187,7 +187,7 @@ class Plugin {
 	private function __construct() {
 		$this->register_autoloader();
 
-		register_activation_hook( EASY_DOCS_FILE, array( __CLASS__, 'plugin_activation' ) );
+		register_activation_hook( SMART_DOCS_FILE, array( $this, 'plugin_activation' ) );
 
 		add_action( 'init', array( $this, 'init' ), 0 );
 	}
@@ -195,7 +195,7 @@ class Plugin {
 	/**
 	 * Init.
 	 *
-	 * Initialize WP Easy Portfolio Plugin.
+	 * Initialize SmartDocsPlugin.
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -207,7 +207,7 @@ class Plugin {
 	/**
 	 * Init components.
 	 *
-	 * Initialize WP Easy Portfolio components. Register actions, run setting manager,
+	 * Initialize SmartDocscomponents. Register actions, run setting manager,
 	 * initialize all the components that run plugin, and if in admin page
 	 * initialize admin components.
 	 *
@@ -230,21 +230,21 @@ class Plugin {
 
 		// load shortcode
 
-		include_once EASY_DOCS_PATH . 'templates/easy-doc-shortcode.php';
+		include_once SMART_DOCS_PATH . 'templates/smart-docs-shortcode.php';
 
 	}
 
 	/**
 	 * Register autoloader.
 	 *
-	 * Elementor autoloader loads all the classes needed to run the plugin.
+	 * SmartDocs autoloader loads all the classes needed to run the plugin.
 	 *
 	 * @since 1.6.0
 	 * @access private
 	 */
 	private function register_autoloader() {
 		// echo "Loading Autoloader";
-		require EASY_DOCS_PATH . '/classes/autoloader.php';
+		require SMART_DOCS_PATH . '/classes/autoloader.php';
 
 		Autoloader::run();
 	}
@@ -252,7 +252,7 @@ class Plugin {
 	/**
 	 * Plugin Activation.
 	 *
-	 * WP Easy Portfolio on plugin activation.
+	 * SmartDocson plugin activation.
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -288,16 +288,16 @@ class Plugin {
 	public function enqueue_scripts() {
 		global $post_type;
 
-		if ( 'easy-doc' === $post_type ) {
-			wp_enqueue_style( 'ed-style', EASY_DOCS_URL . 'assets/css/style.css', array(), '1.0.0', false );
+		if ( 'smart-doc' === $post_type ) {
+			wp_enqueue_style( 'sd-style', SMART_DOCS_URL . 'assets/css/style.css', array(), '1.0.0', false );
 
 			// condition to check for live search enabled.
-			if ( get_option( 'ed_enable_live_search' ) ) {
-				wp_enqueue_script( 'ed-searchbox-script', EASY_DOCS_URL . 'assets/js/search-script.js', array(), '1.0.0', true );
+			if ( get_option( 'sd_enable_live_search' ) ) {
+				wp_enqueue_script( 'sd-searchbox-script', SMART_DOCS_URL . 'assets/js/search-script.js', array(), '1.0.0', true );
 
 				wp_localize_script(
-					'ed-searchbox-script',
-					'ed_ajax_url',
+					'sd-searchbox-script',
+					'sd_ajax_url',
 					array(
 						'url'        => admin_url( 'admin-ajax.php' ),
 						'ajax_nonce' => wp_create_nonce( 'docs_search' ),

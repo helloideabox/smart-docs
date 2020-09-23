@@ -1,19 +1,19 @@
 <?php
 
-namespace EasyDocs;
+namespace SmartDocs;
 
 /**
  * Templates.
  *
  * Core class used to override default templates when required.
  * 
- * @package EasyDocs
+ * @package SmartDocs
  * @since 1.0.0
  */
 
 class Templates {
 
-	public $cpt_name = 'easy-doc';
+	public $cpt_name = 'smart-doc';
 
 	/**
 	 * Class constructor.
@@ -42,8 +42,8 @@ class Templates {
 	 */
 	public function callback_init() {
 
-		$is_single_template_on      = get_option( 'ed_enable_single_template' );
-		$is_cat_and_tag_template_on = get_option( 'ed_enable_category_and_tag_template' );
+		$is_single_template_on      = get_option( 'sd_enable_single_template' );
+		$is_cat_and_tag_template_on = get_option( 'sd_enable_category_and_tag_template' );
 
 		if ( '1' == $is_single_template_on ) {// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 
@@ -57,10 +57,10 @@ class Templates {
 
 		if ( '1' == $is_cat_and_tag_template_on ) {// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 
-			// Filter to rewrite the default taxonomy(easydoc_category) theme template for particular cpt.
+			// Filter to rewrite the default taxonomy(smartdocs_category) theme template for particular cpt.
 			add_filter( 'template_include', array( $this, 'category_template' ) );
 
-			// Filter to rewrite the default taxonomy(easydoc_tag) theme template for particular cpt.
+			// Filter to rewrite the default taxonomy(smartdocs_tag) theme template for particular cpt.
 			add_filter( 'template_include', array( $this, 'tag_template' ) );
 			add_filter( 'body_class', array( $this, 'body_tax_class' ) );
 			add_filter( 'body_class', array( $this, 'body_sidebar_class' ) );
@@ -91,7 +91,7 @@ class Templates {
 	 */
 	public function body_tax_class( $classes ) {
 
-		if ( is_post_type_archive( $this->cpt_name ) || is_tax( 'easydoc_category' ) || is_tax( 'easydoc_tag' ) && is_array( $classes ) ) {
+		if ( is_post_type_archive( $this->cpt_name ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) && is_array( $classes ) ) {
 			$cls = array_merge( $classes, array( 'docs-tax-templates-enabled' ) );
 			return $cls;
 		}
@@ -106,11 +106,11 @@ class Templates {
 	 */
 	public function body_sidebar_class( $classes ) {
 
-		if ( is_post_type_archive( $this->cpt_name ) || is_tax( 'easydoc_category' ) || is_tax( 'easydoc_tag' ) && is_array( $classes ) ) {
+		if ( is_post_type_archive( $this->cpt_name ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) && is_array( $classes ) ) {
 
-			if ( is_active_sidebar( 'easy-doc-sidebar-1' ) ) {
+			if ( is_active_sidebar( 'smart-docs-sidebar-1' ) ) {
 				// Add clss to body.
-				$cls = array_merge( $classes, array( 'easy-doc-sidebar-1' ) );
+				$cls = array_merge( $classes, array( 'smart-docs-sidebar-1' ) );
 				return $cls;
 			}
 		}
@@ -125,13 +125,13 @@ class Templates {
 	 */
 	public function archive_template( $template ) {
 		if ( is_post_type_archive( $this->cpt_name ) ) {
-			$theme_files     = array( 'easy-doc-archive-template.php', '../templates/easy-doc-archive-template.php' );
+			$theme_files     = array( 'smart-docs-archive-template.php', '../templates/smart-docs-archive-template.php' );
 			$exists_in_theme = locate_template( $theme_files, false );
 
 			if ( '' !== $exists_in_theme ) {
 				return $exists_in_theme;
 			} else {
-				return EASY_DOCS_PATH . 'templates/easy-doc-archive-template.php';
+				return SMART_DOCS_PATH . 'templates/smart-docs-archive-template.php';
 			}
 		}
 		return $template;
@@ -145,8 +145,8 @@ class Templates {
 	 */
 	public function category_template( $template ) {
 		// Checking for particular taxonomy.
-		if ( is_tax( 'easydoc_category' ) ) {
-			return EASY_DOCS_PATH . 'templates/taxonomy-easy-doc-cat.php';
+		if ( is_tax( 'smartdocs_category' ) ) {
+			return SMART_DOCS_PATH . 'templates/taxonomy-smart-docs-cat.php';
 		}
 		return $template;
 	}
@@ -159,8 +159,8 @@ class Templates {
 	 */
 	public function tag_template( $template ) {
 		// Checking for particular taxonomy.
-		if ( is_tax( 'easydoc_tag' ) ) {
-			return EASY_DOCS_PATH . 'templates/taxonomy-easy-doc-tag.php';
+		if ( is_tax( 'smartdocs_tag' ) ) {
+			return SMART_DOCS_PATH . 'templates/taxonomy-smart-docs-tag.php';
 		}
 		return $template;
 	}
@@ -173,9 +173,9 @@ class Templates {
 	 * @return $template
 	 */
 	public function single_template( $template ) {
-		// Checking if the page is single and post type is of custom cpt(easy-doc).
+		// Checking if the page is single and post type is of custom cpt(smart-doc).
 		if ( is_singular( $this->cpt_name ) ) {
-			return EASY_DOCS_PATH . 'templates/easy-doc-single-template.php';
+			return SMART_DOCS_PATH . 'templates/smart-docs-single-template.php';
 		}
 		return $template;
 	}

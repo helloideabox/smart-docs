@@ -5,9 +5,9 @@
  * Handles the autoloading of classes as per PSR-4 Standard.
  * 
  * @since 1.0.0
- * @package EasyDocs
+ * @package SmartDocs
  */
-namespace EasyDocs;
+namespace SmartDocs;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -84,7 +84,7 @@ class Autoloader {
 		$classes_map = self::get_classes_map();
 
 		if ( isset( $classes_map[ $relative_class_name ] ) ) {
-			$filename = EASY_DOCS_PATH . '/' . $classes_map[ $relative_class_name ];
+			$filename = SMART_DOCS_PATH . '/' . $classes_map[ $relative_class_name ];
 		} else {
 			$filename = strtolower(
 				preg_replace(
@@ -94,7 +94,7 @@ class Autoloader {
 				)
 			);
 
-			$filename = EASY_DOCS_PATH . $filename . '.php';
+			$filename = SMART_DOCS_PATH . $filename . '.php';
 		}
 
 		if ( is_readable( $filename ) ) {

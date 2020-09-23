@@ -7,7 +7,7 @@ export default function General() {
 	const [title, setTitle] = useEntityProp(
 		"root",
 		"site",
-		"ed_archive_page_title"
+		"sd_archive_page_title"
 	);
 
 	return (
@@ -19,7 +19,7 @@ export default function General() {
 				className="mb-3"
 			>
 				<TextControl
-					id="ibx_ed_option-doc_homepage_title"
+					id="ibx_sd_option-doc_homepage_title"
 					className="mt-3 block mb-3"
 					value={title}
 					placeholder={__("Documentation")}
@@ -51,7 +51,7 @@ export default function General() {
 			</BaseControl>
 			<Button
                                
-                                onClick= { () => wp.data.dispatch( 'core' ).saveSite( { 'ed_archive_page_title' : title })}
+                                onClick= { () => wp.data.dispatch( 'core' ).saveSite( { 'sd_archive_page_title' : title })}
 
                                >Save Changes</Button>
 		</Fragment>

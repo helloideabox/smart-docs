@@ -8,7 +8,7 @@ export default function Layout() {
 
 	return (
 		<TabPanel
-			className="ed-layout-settings-tabs flex"
+			className="sd-layout-settings-tabs flex"
 			activeClass="is-active"
 			orientation="vertical"
 			tabs={[

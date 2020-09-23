@@ -4,16 +4,16 @@
 
 @import "tailwindcss/utilities";
 
-.ed-settings-tabs .tab-active {
+.sd-settings-tabs .tab-active {
     /*border-bottom: 4px solid #007cba;*/
     font-weight: 600;
 }
 
-.ed-settings-tabs > .components-tab-panel__tabs {
+.sd-settings-tabs > .components-tab-panel__tabs {
     @apply mb-4;
 }
 
-.ed-settings-tabs > .components-tab-panel__tab-content {
+.sd-settings-tabs > .components-tab-panel__tab-content {
     @apply shadow;
     @apply bg-white;
     @apply p-4 pt-8 pb-8;
@@ -60,12 +60,12 @@
 
 /* Layout Tab */
 
-.ed-layout-settings-tabs .components-tab-panel__tabs {
+.sd-layout-settings-tabs .components-tab-panel__tabs {
     @apply flex;
     @apply flex-col;
 }
 
-.ed-layout-settings-tabs .components-tab-panel__tab-content {
+.sd-layout-settings-tabs .components-tab-panel__tab-content {
     @apply w-full;
     @apply p-3;
 }

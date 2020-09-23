@@ -18,5 +18,5 @@ render(
 			<SidePanel />
 		</div>
 	</Fragment>,
-	document.getElementById("ed-setting-root")
+	document.getElementById("sd-setting-root")
 );

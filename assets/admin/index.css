@@ -712,15 +712,15 @@ video {
   }
 }
 
-.ed-settings-tabs .tab-active{
+.sd-settings-tabs .tab-active{
   font-weight:600
 }
 
-.ed-settings-tabs>.components-tab-panel__tabs{
+.sd-settings-tabs>.components-tab-panel__tabs{
   margin-bottom: 1rem
 }
 
-.ed-settings-tabs>.components-tab-panel__tab-content{
+.sd-settings-tabs>.components-tab-panel__tab-content{
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --bg-opacity: 1;
   background-color: #fff;
@@ -748,12 +748,12 @@ video {
   padding-left:0
 }
 
-.ed-layout-settings-tabs .components-tab-panel__tabs{
+.sd-layout-settings-tabs .components-tab-panel__tabs{
   display: flex;
   flex-direction: column
 }
 
-.ed-layout-settings-tabs .components-tab-panel__tab-content{
+.sd-layout-settings-tabs .components-tab-panel__tab-content{
   width: 100%;
   padding: 0.75rem
 }

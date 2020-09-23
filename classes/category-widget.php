@@ -5,15 +5,15 @@
  * Responsible for loading and running Category Widget.
  * 
  * @since 1.0.0
- * @package EasyDocs
+ * @package SmartDocs
  */
 
-namespace EasyDocs;
+namespace SmartDocs;
 
 /**
  * Register and load the widget.
  *
- * @package EasyDoc/Widgets
+ * @package SmartDocs/Widgets
  * @author IdeaBox
  */
 
@@ -33,19 +33,19 @@ class Cat_Widget extends \WP_Widget {
 	 */
 	public function __construct() {
 
-		add_action( 'widgets_init', array( $this, 'easy_doc_widgets_area' ) );
+		add_action( 'widgets_init', array( $this, 'smart_doc_widgets_area' ) );
 
 		// Widget args.
 		$widget_args = array(
-			'description' => __( 'Widget for List of Categories', 'easy-docs' ),
+			'description' => __( 'Widget for List of Categories', 'smart-docs' ),
 		);
 
 		// Calling the parent constructor(WP_Widget).
 		parent::__construct(
 			// Setting the ID.
-			'easy_doc_cat_widget',
+			'smart_doc_cat_widget',
 			// Widget name appear in UI.
-			'Easy Doc Category Widget',
+			'Smart Doc Category Widget',
 			// Arguments passing.
 			$widget_args
 		);
@@ -78,7 +78,7 @@ class Cat_Widget extends \WP_Widget {
 			'orderby'      => 'name',
 			'show_count'   => $count,
 			'hierarchical' => $hierarchical,
-			'taxonomy'     => 'easydoc_category',
+			'taxonomy'     => 'smartdocs_category',
 			'title_li'     => '',
 			'hide_empty'   => 0,
 			'pad_counts'   => 0,
@@ -86,10 +86,10 @@ class Cat_Widget extends \WP_Widget {
 
 		if ( $dropdown ) {
 			// Dropdown category id.
-			$dropdown_id = 'easydoc_category';
+			$dropdown_id = 'smartdocs_category';
 
 			// Adding some category args for wp_dropdown_categories.
-			$cat_args['show_option_none'] = __( 'Select Category', 'easy-docs' ); // If none of the options are selected then defaults to select category.
+			$cat_args['show_option_none'] = __( 'Select Category', 'smart-docs' ); // If none of the options are selected then defaults to select category.
 			$cat_args['id']               = $dropdown_id; // Gives id attribute to the select html tag.
 			$cat_args['value_field']      = 'slug'; // Gives value attribute name of the category slug.
 
@@ -110,7 +110,7 @@ class Cat_Widget extends \WP_Widget {
 			<script type="text/javascript">
 				var dropdown = document.getElementById( "<?php echo esc_js( $dropdown_id ); ?>" );
 				dropdown.addEventListener( 'change', function(){
-					location.href = "<?php echo esc_html( home_url() ); ?>/easydoc_category/" + dropdown.value;
+					location.href = "<?php echo esc_html( home_url() ); ?>/smartdocs_category/" + dropdown.value;
 				} )
 			</script>
 
@@ -145,22 +145,22 @@ class Cat_Widget extends \WP_Widget {
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); // Get field id helps in generating the unque id of the field with required string(title). ?>">
-				<?php esc_attr_e( 'Title:', 'easy-docs' ); ?>
+				<?php esc_attr_e( 'Title:', 'smart-docs' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>" type="text">
 		</p>
 
 		<p>
 			<input class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'dropdown' ) ); ?>" type="checkbox" <?php checked( $dropdown ); ?>>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>"><?php esc_attr_e( 'Display as dropdown', 'easy-docs' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>"><?php esc_attr_e( 'Display as dropdown', 'smart-docs' ); ?></label>
 			<br>
 
 			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" <?php checked( $count ); ?>>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php esc_attr_e( 'Show post count', 'easy-docs' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php esc_attr_e( 'Show post count', 'smart-docs' ); ?></label>
 			<br>
 
 			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'hierarchical' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>" <?php checked( $hierarchical ); ?>>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>"><?php esc_attr_e( 'Show hierarchy', 'easy-docs' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>"><?php esc_attr_e( 'Show hierarchy', 'smart-docs' ); ?></label>
 		</p>
 
 		<?php
@@ -186,9 +186,9 @@ class Cat_Widget extends \WP_Widget {
 	}
 
 	/**
-	 * Registering the custom Widget(easy_doc_cat_widget).
+	 * Registering the custom Widget(smart_doc_cat_widget).
 	 */
-	public function easy_doc_widgets_area() {
-		register_widget( 'EasyDocs\Cat_Widget' );
+	public function smart_doc_widgets_area() {
+		register_widget( 'SmartDocs\Cat_Widget' );
 	}
 }

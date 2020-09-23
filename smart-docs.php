@@ -1,25 +1,25 @@
 <?php
 /**
- * Plugin Name: EasyDocs
+ * Plugin Name: SmartDocs
  * Plugin URI: https://ideabox.io/
  * Author: IdeaBox
  * Author URI: https://ideabox.io
  * Version: 1.0.0
  * Description: Simple Documentation plugin for WordPress.
- * Text Domain: easy-docs
+ * Text Domain: smart-docs
  *
- * @package EasyDocs
+ * @package SmartDocs
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'EASY_DOCS_VERSION', '1.0.0' );
+define( 'SMART_DOCS_VERSION', '1.0.0' );
 
-define( 'EASY_DOCS_FILE', __FILE__ );
-define( 'EASY_DOCS_PATH', plugin_dir_path( __FILE__ ) );
-define( 'EASY_DOCS_URL', plugin_dir_url( __FILE__ ) );
+define( 'SMART_DOCS_FILE', __FILE__ );
+define( 'SMART_DOCS_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SMART_DOCS_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Check for the Compatibility.
@@ -52,7 +52,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	 *
 	 * @since 1.0.0
 	 */
-	require EASY_DOCS_PATH . '/classes/plugin.php';
+	require SMART_DOCS_PATH . '/classes/plugin.php';
 }
 
 /**
@@ -70,7 +70,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 function notice_php_version() {
 
 	/* translators: %s: PHP version */
-	$message      = sprintf( esc_html__( 'EasyDocs requires PHP version %s+, plugin is currently NOT RUNNING.', 'easy-docs' ), '5.6' );
+	$message      = sprintf( esc_html__( 'SmartDocs requires PHP version %s+, plugin is currently NOT RUNNING.', 'smart-docs' ), '5.6' );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );
 
@@ -87,7 +87,7 @@ function notice_php_version() {
  */
 function notice_wp_version() {
 	/* translators: %s: WordPress version */
-	$message      = sprintf( esc_html__( 'EasyDocs requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'easy-docs' ), '5.0' );
+	$message      = sprintf( esc_html__( 'SmartDocs requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING.', 'smart-docs' ), '5.0' );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );
 }

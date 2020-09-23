@@ -1,10 +1,10 @@
 <?php
-namespace EasyDocs;
+namespace SmartDocs;
 
 /**
  * Register and load the widget.
  *
- * @package EasyDoc/Widgets
+ * @package SmartDocs/Widgets
  * @author Ideabox
  */
 
@@ -22,17 +22,17 @@ class Widget extends \WP_Widget {
 	 */
 	public function __construct() {
 
-		add_action( 'widgets_init', array( $this, 'easy_doc_widgets_area' ) );
+		add_action( 'widgets_init', array( $this, 'smart_doc_widgets_area' ) );
 
 		$widget_ops = array(
-			'description' => __( 'Widget for recent Docs', 'easy-docs' ),
+			'description' => __( 'Widget for recent Docs', 'smart-docs' ),
 		);
 
 		parent::__construct(
 			// Base ID of the widget.
-			'easy_doc_widget',
+			'smart_doc_widget',
 			// Widget name will appear in UI.
-			__( 'Easy Doc Widget', 'easy-docs' ),
+			__( 'Smart Docs Widget', 'smart-docs' ),
 			// Passing widget options array.
 			$widget_ops
 		);
@@ -64,7 +64,7 @@ class Widget extends \WP_Widget {
 			<?php
 				// Passing the arguments for getting recent post.
 				$recent_posts_args = array(
-					'post_type'   => 'easy-doc',
+					'post_type'   => 'smart-doc',
 					'post_status' => 'publish',
 					'numberposts' => 5,
 				);
@@ -103,7 +103,7 @@ class Widget extends \WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = __( 'Recent Docs', 'easy-docs' );
+			$title = __( 'Recent Docs', 'smart-docs' );
 		}
 
 		// Widget admin form.
@@ -111,7 +111,7 @@ class Widget extends \WP_Widget {
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-				<?php esc_attr_e( 'Title:', 'easy-docs' ); ?>
+				<?php esc_attr_e( 'Title:', 'smart-docs' ); ?>
 			</label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"  value="<?php echo esc_attr( $title ); ?>" type="text">
 		</p>
@@ -141,16 +141,16 @@ class Widget extends \WP_Widget {
 
 
 	/**
-	 * Function to create custom widget (easy-doc-widget) and register sidebar.
+	 * Function to create custom widget (smart-docs-widget) and register sidebar.
 	 */
-	public function easy_doc_widgets_area() {
+	public function smart_doc_widgets_area() {
 		// Register Widget with the same ID as parent construct ID given to widget.
-		register_widget( 'EasyDocs\Widget' );
+		register_widget( 'SmartDocs\Widget' );
 
 		$sidebar_args = array(
-			'name'          => __( 'Easy Doc Sidebar', 'easy-docs' ),
-			'id'            => 'easy-doc-sidebar-1',
-			'description'   => __( 'Widgets in this area will be shown on all docs single posts and category.', 'easy-docs' ),
+			'name'          => __( 'Smart Docs Sidebar', 'smart-docs' ),
+			'id'            => 'smart-docs-sidebar-1',
+			'description'   => __( 'Widgets in this area will be shown on all docs single posts and category.', 'smart-docs' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h2 class="docs-widget-title">',
