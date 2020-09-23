@@ -13,6 +13,8 @@ namespace EasyDocs;
 
 class Templates {
 
+	public $cpt_name = 'easy-doc';
+
 	/**
 	 * Class constructor.
 	 * 
