@@ -3,7 +3,6 @@ import Header from "./Header";
 import Tabs from "./Tabs";
 import SidePanel from "./SidePanel";
 import { Fragment, useEffect } from "@wordpress/element";
-import { Spinner } from "@wordpress/components";
 
 const loader = document.querySelector(".loader");
 // if you want to show the loader when React loads data again
