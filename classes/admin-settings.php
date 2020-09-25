@@ -48,6 +48,21 @@ class Admin {
 	 */
 	public function render_options_page() {
 		echo '<div id="sd-setting-root"></div>';
+		echo '<div class="loader">
+				<div class="sd-settings-pre-loader">
+					<div class="sd-loader-header container mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
+						<div class="header-loader"></div>
+					</div>
+					<div class="sd-loader-body grid grid-cols-3 w-full">
+						<div class="sd-loader-panel m-5 col-span-2">
+							<div class="panel-loader"></div>
+						</div>
+						<div class="sd-loader-side-panel m-5 col-span-1">
+							<div class="side-panel-loader"></div>
+						</div>
+					</div>
+				</div>
+			</div>';
 	}
 
 	/**
@@ -56,6 +71,10 @@ class Admin {
 	 * @return void
 	 */
 	public function register_plugin_settings() {
+
+		/**
+		 * Register settings for documentation archive/home page title
+		 */
 		register_setting(
 			'smart-docs-settings-group',
 			'sd_archive_page_title',
@@ -63,6 +82,51 @@ class Admin {
 				'type'         => 'string',
 				'show_in_rest' => true,
 				'default'      => 'Docs',
+			)
+		);
+
+		/**
+		 * Register setting for documentation root slug.
+		 * 
+		 * When set the documentation archive page will be accessible at
+		 * https://example.com/smart-docs/
+		 */
+
+		register_setting(
+			'smart-docs-settings-group',
+			'sd_archive_page_slug',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => 'smart-docs',
+			)
+		);
+
+		/**
+		 * Register documentation category slug
+		 */
+
+		register_setting(
+			'smart-docs-settings-group',
+			'sd_category_slug',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => 'smartdocs_category',
+			)
+		);
+
+		/**
+		 * Register documentation tag slug
+		 */
+
+		register_setting(
+			'smart-docs-settings-group',
+			'sd_tag_slug',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => 'smartdocs_tag',
 			)
 		);
 

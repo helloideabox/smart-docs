@@ -712,6 +712,76 @@ video {
   }
 }
 
+.loader--hide{
+  opacity:0
+}
+
+@keyframes loading{
+  0%{
+    opacity:0.4
+  }
+
+  50%{
+    opacity:1
+  }
+
+  100%{
+    opacity:0.4
+  }
+}
+
+.header-loader{
+  position:relative;
+  background-size:100%;
+  animation:loading 2s infinite;
+  background-repeat:repeat-y;
+  background-image:linear-gradient(#ddd 3rem, transparent 0),linear-gradient(#ddd 3rem, transparent 0);
+  height:1rem;
+  width:100%
+}
+
+.panel-loader{
+  position:relative;
+  top:50px;
+  background-position:5.25rem 2.25rem, 5.25rem 4.25rem, 5.25rem 6.25rem, 5.25rem 8.25rem, 5.25rem 10.25rem;
+  background-size:40% 100%, 0 100%, 70% 100%, 80% 100%, 30% 100%;
+  animation:loading 2s infinite;
+  background-repeat:repeat-y;
+  background-image:linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0);
+  height:34rem;
+  box-shadow:0 0 2px rgba(0,0,0,0.18),0 1px 3px rgba(0,0,0,0.12);
+  background-color:#fff
+}
+
+.panel-loader::before{
+  content:"";
+  display:block;
+  position:relative;
+  width:220%;
+  height:2rem;
+  left:0;
+  top:-3rem;
+  background-position:0.25rem -1.75rem;
+  background-size:40% 100%;
+  animation:loading 2s infinite;
+  background-repeat:repeat-y;
+  background-image:linear-gradient(#ddd 2rem, transparent 0)
+}
+
+.side-panel-loader{
+  position:relative;
+  background-position:2.25rem 2.25rem, 2.25rem 4.25rem, 2.25rem 6.25rem, 2.25rem 8.25rem, 2.25rem 10.25rem;
+  background-size:50% 100%, 0 100%, 70% 100%, 80% 100%, 30% 100%;
+  animation:loading 2s infinite;
+  background-repeat:repeat-y;
+  background-image:linear-gradient(#ddd 2em, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0);
+  height:16rem;
+  box-shadow:0 0 2px rgba(0,0,0,0.18),0 1px 3px rgba(0,0,0,0.12);
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity))
+}
+
 .sd-settings-tabs .tab-active{
   font-weight:600
 }

@@ -4,33 +4,35 @@
 
 @import "tailwindcss/utilities";
 
+@import "./loader.scss";
+
 .sd-settings-tabs .tab-active {
-    /*border-bottom: 4px solid #007cba;*/
-    font-weight: 600;
+	/*border-bottom: 4px solid #007cba;*/
+	font-weight: 600;
 }
 
 .sd-settings-tabs > .components-tab-panel__tabs {
-    @apply mb-4;
+	@apply mb-4;
 }
 
 .sd-settings-tabs > .components-tab-panel__tab-content {
-    @apply shadow;
-    @apply bg-white;
-    @apply p-4 pt-8 pb-8;
+	@apply shadow;
+	@apply bg-white;
+	@apply p-4 pt-8 pb-8;
 }
 
 /* BaseControl Label Fields */
 
 .components-base-control__label {
-    @apply text-lg;
-    @apply mb-2;
-    @apply font-bold;
+	@apply text-lg;
+	@apply mb-2;
+	@apply font-bold;
 }
 
 .components-base-control__help {
-    @apply text-xs;
-    @apply text-gray-500;
-    @apply mt-1;
+	@apply text-xs;
+	@apply text-gray-500;
+	@apply mt-1;
 }
 
 /* TextControl Input */
@@ -55,17 +57,17 @@
 
 /* Override Default Content Padding */
 #wpcontent {
-    padding-left: 0;
+	padding-left: 0;
 }
 
 /* Layout Tab */
 
 .sd-layout-settings-tabs .components-tab-panel__tabs {
-    @apply flex;
-    @apply flex-col;
+	@apply flex;
+	@apply flex-col;
 }
 
 .sd-layout-settings-tabs .components-tab-panel__tab-content {
-    @apply w-full;
-    @apply p-3;
+	@apply w-full;
+	@apply p-3;
 }
