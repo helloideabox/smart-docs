@@ -1,9 +1,19 @@
-import { TextControl, BaseControl, Button } from "@wordpress/components";
+import {
+	TextControl,
+	BaseControl,
+	Button,
+	Spinner,
+	Snackbar,
+} from "@wordpress/components";
 import { Fragment, useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { useEntityProp } from "@wordpress/core-data";
 
+import { useDispatch, useSelect } from "@wordpress/data";
+
 export default function General() {
+	const { createSuccessNotice, createErrorNotice } = useDispatch("core/notices");
+
 	/**
 	 * [Getter, Setter] for SmartDocs Archive Page Title
 	 *
@@ -14,34 +24,16 @@ export default function General() {
 		"site",
 		"sd_archive_page_title"
 	);
-
-	/**
-	 * [Getter, Setter] for SmartDocs Archive Page Slug
-	 *
-	 * @since 1.0.0
-	 */
 	const [titleSlug, setTitleSlug] = useEntityProp(
 		"root",
 		"site",
 		"sd_archive_page_slug"
 	);
-
-	/**
-	 * [Getter, Setter] for SmartDocs Category Slug
-	 *
-	 * @since 1.0.0
-	 */
 	const [categorySlug, setCategorySlug] = useEntityProp(
 		"root",
 		"site",
 		"sd_category_slug"
 	);
-
-	/**
-	 * [Getter, Setter] for SmartDocs Tag Slug
-	 *
-	 * @since 1.0.0
-	 */
 	const [tagSlug, setTagSlug] = useEntityProp("root", "site", "sd_tag_slug");
 
 	/**
@@ -50,7 +42,36 @@ export default function General() {
 	 * @since 1.0.0
 	 */
 
-	const [pending, setPending] = useState(false);
+	const [saving, setSaving] = useState(false);
+
+	function handleSaveSettings() {
+		setSaving(true);
+
+		const status = wp.data
+			.dispatch("core")
+			.saveSite({
+				sd_archive_page_title: title,
+				sd_archive_page_slug: titleSlug,
+				sd_category_slug: categorySlug,
+				sd_tag_slug: tagSlug,
+			})
+			.then(function () {
+				createSuccessNotice("Settings Saved!", {
+					type: "snackbar",
+				});
+			})
+			.catch(function (e) {
+				createErrorNotice(
+					"There was some error saving settings! \nCheck console for more information on error.",
+					{
+						type: "snackbar",
+					}
+				);
+				console.log(e);
+			});
+
+		setSaving(false);
+	}
 
 	return (
 		<Fragment>
@@ -109,24 +130,9 @@ export default function General() {
 					onChange={setTagSlug}
 				/>
 			</BaseControl>
-				<Button
-					isPrimary="true"
-					isBusy={ pending }
-					onClick={(props) => {
-						setPending(true);
-						const { isResolving } = wp.data.select( 'core/data' );
-						console.log(isResolving);
-						wp.data.dispatch("core").saveSite({
-							sd_archive_page_title: title,
-							sd_archive_page_slug: titleSlug,
-							sd_category_slug: categorySlug,
-							sd_tag_slug: tagSlug,
-						});
-						setPending(false);
-					}}
-				>
-					Save Changes
-				</Button>
+			<Button isPrimary="true" isBusy={saving} onClick={handleSaveSettings}>
+				Save Changes
+			</Button>
 		</Fragment>
 	);
 }

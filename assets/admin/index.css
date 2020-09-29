@@ -192,7 +192,8 @@ select { /* 1 */
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
-button {
+button,
+[type="button"] {
   -webkit-appearance: button;
 }
 
@@ -200,7 +201,8 @@ button {
  * Remove the inner border and padding in Firefox.
  */
 
-button::-moz-focus-inner {
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -209,7 +211,8 @@ button::-moz-focus-inner {
  * Restore the focus styles unset by the previous rule.
  */
 
-button:-moz-focusring {
+button:-moz-focusring,
+[type="button"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -267,9 +270,18 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
 
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
@@ -780,6 +792,47 @@ video {
   --bg-opacity: 1;
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity))
+}
+
+.components-editor-notices__dismissible{
+  position:sticky;
+  top:0;
+  right:0;
+  color:#1a1a1a
+}
+
+.components-editor-notices__pinned{
+  position:relative;
+  left:0;
+  top:0;
+  right:0;
+  color:#1a1a1a
+}
+
+.components-editor-notices__dismissible .components-notice,.components-editor-notices__pinned .components-notice{
+  box-sizing:border-box;
+  margin:0;
+  border-bottom:1px solid rgba(0,0,0,0.2);
+  padding:0 12px;
+  min-height:60px
+}
+
+.components-editor-notices__dismissible .components-notice .components-notice__dismiss,.components-editor-notices__pinned .components-notice .components-notice__dismiss{
+  margin-top:12px
+}
+
+.components-editor-notices__snackbar{
+  width:100%;
+  position:fixed;
+  bottom:10px;
+  right:10px
+}
+
+@media (min-width: 782px){
+  .components-editor-notices__snackbar{
+    width:fit-content;
+    width:-moz-fit-content
+  }
 }
 
 .sd-settings-tabs .tab-active{
