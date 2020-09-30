@@ -5,6 +5,7 @@ import SidePanel from "./SidePanel";
 import { Fragment, useEffect } from "@wordpress/element";
 import SettingNotices from "./notices/notices";
 
+
 const loader = document.querySelector(".loader");
 // if you want to show the loader when React loads data again
 const showLoader = () => loader.classList.remove("loader--hide");
@@ -17,7 +18,7 @@ const App = ({ hideLoader }) => {
 	return (
 		<Fragment>
 			<Header />
-			<div className="grid grid-cols-3 container mx-auto">
+			<div className="grid grid-cols-3 grid-rows-2 container mx-auto">
 				<Tabs />
 				<SidePanel />
 			</div>
@@ -37,4 +38,4 @@ setTimeout(() => {
 		<App hideLoader={hideLoader} showLoader={showLoader} />,
 		document.getElementById("sd-setting-root")
 	);
-}, 0);
+}, 100000);

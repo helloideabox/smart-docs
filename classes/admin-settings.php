@@ -13,7 +13,6 @@ namespace SmartDocs;
 
 class Admin {
 
-
 	public function __construct() {
 		 // Action to register setting for get_option function.
 		add_action( 'init', array( $this, 'register_plugin_settings' ) );
@@ -50,21 +49,21 @@ class Admin {
 	 */
 	public function render_options_page() {
 		 echo '<div id="sd-setting-root"></div>';
-		echo '<div class="loader">
-				<div class="sd-settings-pre-loader">
-					<div class="sd-loader-header container mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
-						<div class="header-loader"></div>
-					</div>
-					<div class="sd-loader-body grid grid-cols-3 w-full">
-						<div class="sd-loader-panel m-5 col-span-2">
-							<div class="panel-loader"></div>
+			echo '<div class="loader">
+					<div class="sd-settings-pre-loader container">
+						<div class="sd-loader-header container mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
+							<div class="header-loader"></div>
 						</div>
-						<div class="sd-loader-side-panel m-5 col-span-1">
-							<div class="side-panel-loader"></div>
+						<div class="sd-loader-body grid grid-cols-3 w-full">
+							<div class="sd-loader-panel m-5 col-span-2">
+								<div class="panel-loader"></div>
+							</div>
+							<div class="sd-loader-side-panel m-5 col-span-1">
+								<div class="side-panel-loader"></div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>';
+				</div>';
 	}
 
 	/**
@@ -197,12 +196,15 @@ class Admin {
 			)
 		);
 		$this->register_doc_homepage_settings();
+
+		$this->register_single_page_layout_settings();
+
+		$this->register_archive_page_layout_settings();
 	}
 
+	/**
+	 * Documentation Home Page Settings.*/
 	protected function register_doc_homepage_settings() {
-		/**
-		  * Documentation Home Page Settings.
-		  */
 
 		register_setting(
 			'smart-docs-settings-group',
@@ -250,8 +252,7 @@ class Admin {
 
 	/**
 	 * Documentation Home Page List Layout Settings.
-	 */
-
+	 * */
 	protected function register_doc_homepage_list_layout_settings() {
 		register_setting(
 			'smart-docs-settings-group',
@@ -275,9 +276,7 @@ class Admin {
 	}
 
 	/**
-	 * Documentation Home Page Grid Layout Settings.
-	 */
-
+	 * Documentation Home Page Grid Layout Settings.*/
 	protected function register_doc_homepage_grid_layout_settings() {
 		register_setting(
 			'smart-docs-settings-group',
@@ -299,6 +298,127 @@ class Admin {
 			)
 		);
 	}
+
+	/**
+	 * Single Page Layout Settings.*/
+	protected function register_single_page_layout_settings() {
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_single_page_sidebar',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_single_page_permalink',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_single_page_sidebar',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_single_page_breadcrumbs',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_single_page_comments',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_single_social_share_options',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_single_ratings',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+	}
+
+	/**
+	 * Archive Page Layout Settings.*/
+	protected function register_archive_page_layout_settings() {
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_archive_sidebar',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_archive_layout',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => 'list',
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_archive_search',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_archive_suggested',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+	}
+
 
 	/**
 	 * Function to enque admin side script(Settings page).

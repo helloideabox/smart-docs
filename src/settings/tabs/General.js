@@ -8,11 +8,12 @@ import {
 import { Fragment, useState } from "@wordpress/element";
 import { useEntityProp } from "@wordpress/core-data";
 import { __ } from "@wordpress/i18n";
-
 import { useDispatch } from "@wordpress/data";
 
 export default function General() {
-	const { createSuccessNotice, createErrorNotice } = useDispatch("core/notices");
+	const { createSuccessNotice, createErrorNotice } = useDispatch(
+		"core/notices"
+	);
 
 	/**
 	 * [Getter, Setter] for SmartDocs Settings
@@ -130,7 +131,12 @@ export default function General() {
 					onChange={setTagSlug}
 				/>
 			</BaseControl>
-			<Button isPrimary="true" isBusy={saving} onClick={handleSaveSettings}>
+			<Button
+				className="mt-3 mb-3"
+				isPrimary="true"
+				isBusy={saving}
+				onClick={handleSaveSettings}
+			>
 				Save Changes
 			</Button>
 		</Fragment>

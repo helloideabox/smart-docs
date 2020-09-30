@@ -39,15 +39,17 @@ export default function GridLayoutSettings() {
 
 	return (
 		<Fragment>
-			<hr className="my-5"/>
-			<h3 className="my-3 font-semibold">Column Layout Settings</h3>
-			<NumberControl
-				className="my-3"
-				isShiftStepEnabled={true}
-				onChange={setGridColumns}
-				shiftStep={1}
-				value={gridColumns}
-			/>
+			<hr className="my-5" />
+			<h3 className="my-3 font-semibold">Grid Layout Settings</h3>
+			<BaseControl label="Grid Columns" className="inline-number-control">
+				<NumberControl
+					className="my-3 w-16 ml-4"
+					isShiftStepEnabled={true}
+					onChange={setGridColumns}
+					shiftStep={1}
+					value={gridColumns}
+				/>
+			</BaseControl>
 			<ToggleControl
 				className="my-3"
 				label="Show or Hide Doc Category Icon"

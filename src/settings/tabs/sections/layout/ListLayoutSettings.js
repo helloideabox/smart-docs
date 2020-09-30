@@ -39,15 +39,17 @@ export default function ListLayoutSettings() {
 
 	return (
 		<Fragment>
-			<hr className="my-5"/>
+			<hr className="my-5" />
 			<h3 className="my-3 font-semibold">List Layout Settings</h3>
-			<NumberControl
-				className="my-3"
-				isShiftStepEnabled={true}
-				onChange={setListColumns}
-				shiftStep={1}
-				value={listColumns}
-			/>
+			<BaseControl label="List Columns" className="inline-number-control">
+				<NumberControl
+					className="my-3 w-16 ml-4"
+					isShiftStepEnabled={true}
+					onChange={setListColumns}
+					shiftStep={1}
+					value={listColumns}
+				/>
+			</BaseControl>
 			<ToggleControl
 				className="my-3"
 				label="Show or Hide Doc Category Icon"

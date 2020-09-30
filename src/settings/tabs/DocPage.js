@@ -107,9 +107,9 @@ export default function DocPage() {
 
 	/**
 	 * Save settings.
-	 * 
+	 *
 	 * Save settings to the WordPress Database.
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 
@@ -125,7 +125,6 @@ export default function DocPage() {
 			ibx_sd_doc_page_list_layout_columns: listColumns,
 			ibx_sd_doc_page_grid_layout_icon: gridShowIcon,
 			ibx_sd_doc_page_grid_layout_columns: gridColumns,
-
 		};
 
 		const status = wp.data
@@ -154,7 +153,7 @@ export default function DocPage() {
 			<BaseControl label="Documentation Page Layout">
 				<RadioGroup
 					id="sd_option-doc-homepage-layout"
-					className="m-5"
+					className="ml-5"
 					label="Documentation Page Layout"
 					checked={layout}
 					onChange={setLayout}
@@ -180,7 +179,12 @@ export default function DocPage() {
 			/>
 			<div>{"list" === layout ? <ListLayoutSettings /> : null}</div>
 			<div>{"grid" === layout ? <GridLayoutSettings /> : null}</div>
-			<Button isPrimary="true" isBusy={saving} onClick={handleSaveSettings}>
+			<Button
+				className="mt-3 mb-3"
+				isPrimary="true"
+				isBusy={saving}
+				onClick={handleSaveSettings}
+			>
 				Save Changes
 			</Button>
 		</Fragment>
