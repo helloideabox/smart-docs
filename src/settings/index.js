@@ -17,7 +17,7 @@ const App = ({ hideLoader }) => {
 	return (
 		<Fragment>
 			<Header />
-			<div className="grid grid-cols-3">
+			<div className="grid grid-cols-3 container mx-auto">
 				<Tabs />
 				<SidePanel />
 			</div>

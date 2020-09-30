@@ -16,7 +16,7 @@ export default function Tabs() {
 	const tabClasses = "py-3 px-4 text-base duration-200";
 	return (
 		<TabPanel
-			className="sd-settings-tabs m-5 col-span-2"
+			className="sd-settings-tabs m-5 col-span-2 bg-white"
 			activeClass="is-active"
 			onSelect={onSelect}
 			tabs={[

@@ -1,9 +1,10 @@
 <?php
+
 /**
  * Plugin Settings Manager
- * 
+ *
  * Responsible for registering plugin settings, rendering admin menu, etc.
- * 
+ *
  * @since 1.0.0
  * @package SmartDocs
  */
@@ -12,8 +13,9 @@ namespace SmartDocs;
 
 class Admin {
 
+
 	public function __construct() {
-		// Action to register setting for get_option function.
+		 // Action to register setting for get_option function.
 		add_action( 'init', array( $this, 'register_plugin_settings' ) );
 
 		// Action to register settings page menu in cpt(smart-doc).
@@ -47,7 +49,7 @@ class Admin {
 	 * @return void
 	 */
 	public function render_options_page() {
-		echo '<div id="sd-setting-root"></div>';
+		 echo '<div id="sd-setting-root"></div>';
 		echo '<div class="loader">
 				<div class="sd-settings-pre-loader">
 					<div class="sd-loader-header container mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
@@ -71,7 +73,6 @@ class Admin {
 	 * @return void
 	 */
 	public function register_plugin_settings() {
-
 		/**
 		 * Register settings for documentation archive/home page title
 		 */
@@ -87,7 +88,7 @@ class Admin {
 
 		/**
 		 * Register setting for documentation root slug.
-		 * 
+		 *
 		 * When set the documentation archive page will be accessible at
 		 * https://example.com/smart-docs/
 		 */
@@ -195,6 +196,108 @@ class Admin {
 				'default'      => true,
 			)
 		);
+		$this->register_doc_homepage_settings();
+	}
+
+	protected function register_doc_homepage_settings() {
+		/**
+		  * Documentation Home Page Settings.
+		  */
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_doc_page_layout',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => 'list',
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_doc_page_count',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_doc_page_authors',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_doc_page_search',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		$this->register_doc_homepage_list_layout_settings();
+		$this->register_doc_homepage_grid_layout_settings();
+	}
+
+	/**
+	 * Documentation Home Page List Layout Settings.
+	 */
+
+	protected function register_doc_homepage_list_layout_settings() {
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_doc_page_list_layout_columns',
+			array(
+				'type'         => 'number',
+				'show_in_rest' => true,
+				'default'      => '1',
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_doc_page_list_layout_icon',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+	}
+
+	/**
+	 * Documentation Home Page Grid Layout Settings.
+	 */
+
+	protected function register_doc_homepage_grid_layout_settings() {
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_doc_page_grid_layout_columns',
+			array(
+				'type'         => 'number',
+				'show_in_rest' => true,
+				'default'      => '1',
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_doc_page_grid_layout_icon',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
 	}
 
 	/**
@@ -203,7 +306,7 @@ class Admin {
 	 * @param string $hook To check if the current page is SmartDocs setting or not.
 	 * @return void
 	 */
-	public function enqueue_admin_script( $hook ) {	
+	public function enqueue_admin_script( $hook ) {
 		// To check if the current page is SmartDocs setting or not.
 		if ( 'smart-doc_page_smart_doc_settings' !== $hook ) {
 			return;
@@ -219,7 +322,7 @@ class Admin {
 		}
 
 		$index_js     = 'assets/admin/index.js';
-		$script_asset = require( $script_asset_path );
+		$script_asset = require $script_asset_path;
 
 		wp_enqueue_script(
 			'sd-settings',
@@ -234,9 +337,8 @@ class Admin {
 		wp_enqueue_style(
 			'sd-settings-style',
 			SMART_DOCS_URL . $editor_css,
-			array('wp-components'),
+			array( 'wp-components' ),
 		);
-			
 
 		// To get all the registered post types.
 		$post_types = get_post_types(
@@ -260,9 +362,8 @@ class Admin {
 				'url'        => admin_url( 'admin-ajax.php' ),
 				'ajax_nonce' => wp_create_nonce( 'docs_option' ),
 				'post_types' => $types,
-				'version'	=> '1.0.0',
+				'version'    => '1.0.0',
 			)
 		);
 	}
-
 }

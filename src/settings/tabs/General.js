@@ -6,16 +6,16 @@ import {
 	Snackbar,
 } from "@wordpress/components";
 import { Fragment, useState } from "@wordpress/element";
-import { __ } from "@wordpress/i18n";
 import { useEntityProp } from "@wordpress/core-data";
+import { __ } from "@wordpress/i18n";
 
-import { useDispatch, useSelect } from "@wordpress/data";
+import { useDispatch } from "@wordpress/data";
 
 export default function General() {
 	const { createSuccessNotice, createErrorNotice } = useDispatch("core/notices");
 
 	/**
-	 * [Getter, Setter] for SmartDocs Archive Page Title
+	 * [Getter, Setter] for SmartDocs Settings
 	 *
 	 * @since 1.0.0
 	 */
