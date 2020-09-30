@@ -629,8 +629,8 @@ video {
   font-weight: 700 !important;
 }
 
-.h-auto {
-  height: auto !important;
+.h-fit-content {
+  height: fit-content !important;
 }
 
 .text-sm {
@@ -668,8 +668,12 @@ video {
   margin-right: auto !important;
 }
 
-.mt-3 {
-  margin-top: 0.75rem !important;
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem !important;
 }
 
 .mb-3 {
@@ -682,6 +686,10 @@ video {
 
 .ml-5 {
   margin-left: 1.25rem !important;
+}
+
+.mt-6 {
+  margin-top: 1.5rem !important;
 }
 
 .mb-8 {
@@ -702,20 +710,20 @@ video {
   padding-right: 1rem !important;
 }
 
+.pb-3 {
+  padding-bottom: 0.75rem !important;
+}
+
+.pt-4 {
+  padding-top: 1rem !important;
+}
+
+.pb-4 {
+  padding-bottom: 1rem !important;
+}
+
 .pl-5 {
   padding-left: 1.25rem !important;
-}
-
-.pb-6 {
-  padding-bottom: 1.5rem !important;
-}
-
-.pt-8 {
-  padding-top: 2rem !important;
-}
-
-.pb-8 {
-  padding-bottom: 2rem !important;
 }
 
 .shadow {
@@ -827,9 +835,7 @@ video {
   animation:loading 2s infinite;
   background-repeat:repeat-y;
   background-image:linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0),linear-gradient(#ddd 1rem, transparent 0);
-  height:34rem;
-  box-shadow:0 0 2px rgba(0,0,0,0.18),0 1px 3px rgba(0,0,0,0.12);
-  background-color:#fff
+  height:34rem
 }
 
 .panel-loader::before{
@@ -916,9 +922,6 @@ video {
 }
 
 .sd-settings-tabs>.components-tab-panel__tabs{
-  padding-left: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 0.75rem;
   border-bottom:1px solid #e2e4e7
 }
 
@@ -928,8 +931,8 @@ video {
 
 .components-base-control__label{
   font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600
+  font-weight: 600;
+  margin-bottom:0 !important
 }
 
 .components-base-control__help{
@@ -937,7 +940,7 @@ video {
   --text-opacity: 1;
   color: #a0aec0;
   color: rgba(160, 174, 192, var(--text-opacity));
-  margin-top: 0.25rem
+  margin-top:0.25rem !important
 }
 
 .inline-number-control .components-base-control__field{

@@ -28,9 +28,6 @@
 	height: fit-content;
 }
 .sd-settings-tabs > .components-tab-panel__tabs {
-	@apply pl-4;
-	@apply pt-4;
-	@apply pb-3;
 	border-bottom: 1px solid rgb(226, 228, 231);
 }
 
@@ -43,14 +40,14 @@
 
 .components-base-control__label {
 	@apply text-sm;
-	@apply mb-2;
 	@apply font-semibold;
+	margin-bottom: 0 !important;
 }
 
 .components-base-control__help {
 	@apply text-xs;
 	@apply text-gray-500;
-	@apply mt-1;
+	margin-top: 0.25rem !important;
 }
 
 .inline-number-control .components-base-control__field {

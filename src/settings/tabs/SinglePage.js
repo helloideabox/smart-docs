@@ -111,7 +111,7 @@ export default function DocPage() {
 				onChange={setShowRatings}
 			/>
 			<Button
-				className="mt-3 mb-3"
+				className="mt-6 mb-3"
 				isPrimary="true"
 				isBusy={saving}
 				onClick={handleSaveSettings}

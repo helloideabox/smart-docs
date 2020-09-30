@@ -84,7 +84,7 @@ export default function General() {
 			>
 				<TextControl
 					id="sd_option-doc_homepage_title"
-					className="mt-3 block mb-3"
+					className="mt-2 block mb-2"
 					value={title}
 					placeholder={__("Documentation")}
 					onChange={setTitle}
@@ -98,7 +98,7 @@ export default function General() {
 			>
 				<TextControl
 					id="sd_option-doc_homepage_slug"
-					className="mt-3 block mb-3"
+					className="mt-2 block mb-2"
 					value={titleSlug}
 					placeholder={__("Add documentation archive/home page slug")}
 					onChange={setTitleSlug}
@@ -112,7 +112,7 @@ export default function General() {
 			>
 				<TextControl
 					id="sd_option-doc_category_slug"
-					className="mt-3 block mb-3"
+					className="mt-2 block mb-2"
 					value={categorySlug}
 					placeholder={__("Add custom category slug")}
 					onChange={setCategorySlug}
@@ -125,14 +125,14 @@ export default function General() {
 			>
 				<TextControl
 					id="sd_option-doc_tag_slug"
-					className="mt-3 block mb-3"
+					className="mt-2 block mb-2"
 					value={tagSlug}
 					placeholder={__("Add custom tag slug")}
 					onChange={setTagSlug}
 				/>
 			</BaseControl>
 			<Button
-				className="mt-3 mb-3"
+				className="mt-6 mb-3"
 				isPrimary="true"
 				isBusy={saving}
 				onClick={handleSaveSettings}

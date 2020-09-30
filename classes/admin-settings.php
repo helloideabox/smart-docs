@@ -50,12 +50,12 @@ class Admin {
 	public function render_options_page() {
 		 echo '<div id="sd-setting-root"></div>';
 			echo '<div class="loader">
-					<div class="sd-settings-pre-loader container">
-						<div class="sd-loader-header container mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
+					<div class="sd-settings-pre-loader">
+						<div class="sd-loader-header mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
 							<div class="header-loader"></div>
 						</div>
-						<div class="sd-loader-body grid grid-cols-3 w-full">
-							<div class="sd-loader-panel m-5 col-span-2">
+						<div class="sd-loader-body container mx-auto grid grid-cols-3 grid-rows-2 w-full">
+							<div class="sd-loader-panel m-5 col-span-2 row-span-2 p-5 bg-white">
 								<div class="panel-loader"></div>
 							</div>
 							<div class="sd-loader-side-panel m-5 col-span-1">

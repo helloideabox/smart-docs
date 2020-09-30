@@ -38,4 +38,4 @@ setTimeout(() => {
 		<App hideLoader={hideLoader} showLoader={showLoader} />,
 		document.getElementById("sd-setting-root")
 	);
-}, 100000);
+}, 0);

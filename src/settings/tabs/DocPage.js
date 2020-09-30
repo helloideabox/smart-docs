@@ -180,7 +180,7 @@ export default function DocPage() {
 			<div>{"list" === layout ? <ListLayoutSettings /> : null}</div>
 			<div>{"grid" === layout ? <GridLayoutSettings /> : null}</div>
 			<Button
-				className="mt-3 mb-3"
+				className="mt-6 mb-3"
 				isPrimary="true"
 				isBusy={saving}
 				onClick={handleSaveSettings}
