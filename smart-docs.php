@@ -1,7 +1,4 @@
 <?php
-
-namespace SmartDocs;
-
 /**
  * Plugin Name: SmartDocs
  * Plugin URI: https://ideabox.io/
@@ -13,6 +10,8 @@ namespace SmartDocs;
  *
  * @package SmartDocs
  */
+
+namespace SmartDocs;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
