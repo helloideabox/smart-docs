@@ -36,8 +36,6 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	 * @since 1.0.0
 	 */
 
-	echo __NAMESPACE__;
-
 	add_action( 'admin_notices', __NAMESPACE__ . '\\notice_php_version' );
 
 } elseif ( ! version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
