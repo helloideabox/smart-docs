@@ -18,7 +18,6 @@
 
 .sd-settings-tabs .components-tab-panel__tabs-item {
 	@apply font-normal;
-
 }
 
 .sd-settings-tabs {
@@ -85,4 +84,10 @@
 .sd-layout-settings-tabs .components-tab-panel__tab-content {
 	@apply w-full;
 	@apply p-5;
+}
+
+/* Input Control Search */
+
+.components-select-control__input {
+	height: 16rem !important;
 }

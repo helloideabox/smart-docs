@@ -5,7 +5,6 @@ import SidePanel from "./SidePanel";
 import { Fragment, useEffect } from "@wordpress/element";
 import SettingNotices from "./notices/notices";
 
-
 const loader = document.querySelector(".loader");
 // if you want to show the loader when React loads data again
 const showLoader = () => loader.classList.remove("loader--hide");

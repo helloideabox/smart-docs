@@ -200,6 +200,8 @@ class Admin {
 		$this->register_single_page_layout_settings();
 
 		$this->register_archive_page_layout_settings();
+
+		$this->register_search_page_layout_settings();
 	}
 
 	/**
@@ -419,6 +421,28 @@ class Admin {
 		);
 	}
 
+	/**
+	 * Search Tab Layout Settings.*/
+	protected function register_search_page_layout_settings() {
+
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_search_post_types',
+			array(
+				'type'         => 'array',
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'  => 'array',
+						'items' => array(
+							'type' => 'string',
+						),
+					),
+				),
+				'default'      => array( 'smart-doc' ),
+			)
+		);
+	}
+
 
 	/**
 	 * Function to enque admin side script(Settings page).
@@ -460,10 +484,13 @@ class Admin {
 			array( 'wp-components' ),
 		);
 
+		$exclude_post_types = array( 'attachment', 'elementor_library' );
+
 		// To get all the registered post types.
 		$post_types = get_post_types(
 			array(
-				'public' => true,
+				'public'             => true,
+				'publicly_queryable' => true,
 			),
 			'objects'
 		);
@@ -471,6 +498,11 @@ class Admin {
 		$types = array();
 
 		foreach ( $post_types as $type ) {
+
+			if ( true === in_array( $type->name, $exclude_post_types ) ) {
+				continue;
+			}
+
 			$types[ $type->name ] = $type->labels->name;
 		}
 

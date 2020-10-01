@@ -1,4 +1,7 @@
 <?php
+
+namespace SmartDocs;
+
 /**
  * Plugin Name: SmartDocs
  * Plugin URI: https://ideabox.io/
@@ -33,7 +36,9 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	 * @since 1.0.0
 	 */
 
-	add_action( 'admin_notices', 'notice_php_version' );
+	echo __NAMESPACE__;
+
+	add_action( 'admin_notices', __NAMESPACE__ . '\\notice_php_version' );
 
 } elseif ( ! version_compare( get_bloginfo( 'version' ), '5.0', '>=' ) ) {
 
@@ -43,7 +48,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 	 * @since 1.0.0
 	 */
 
-	add_action( 'admin_notices', 'notice_wp_version' );
+	add_action( 'admin_notices', __NAMESPACE__ . '\\notice_wp_version' );
 
 } else {
 
