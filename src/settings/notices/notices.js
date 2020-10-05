@@ -8,6 +8,7 @@ import { filter } from 'lodash';
  */
 import { NoticeList, SnackbarList } from '@wordpress/components';
 import { useSelect, useDispatch } from '@wordpress/data';
+import '@wordpress/notices';
 
 export default function SettingsNotices() {
 	const { removeNotice } = useDispatch( 'core/notices' );
