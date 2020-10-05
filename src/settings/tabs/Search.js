@@ -1,13 +1,5 @@
 import { Fragment, useState } from "@wordpress/element";
-import {
-	BaseControl,
-	__experimentalRadio as Radio,
-	__experimentalRadioGroup as RadioGroup,
-	ToggleControl,
-	SelectControl,
-	Button,
-	CheckboxControl,
-} from "@wordpress/components";
+import { BaseControl, Button, CheckboxControl, ToggleControl } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { useEntityProp } from "@wordpress/core-data";
 import { useDispatch } from "@wordpress/data";
@@ -63,10 +55,6 @@ export default function Search() {
 
 	// 1. Array to store checkbox data-value
 
-	const checkedTypes = postTypes;
-
-	console.log(postTypes)
-
 	const types = [];
 
 	Object.keys(sd_vars.post_types).map((item) => {
@@ -75,21 +63,6 @@ export default function Search() {
 			label: item,
 		});
 	});
-
-	// 2. Function to check array and set isChecked on callaback
-
-	function getChecked(type) {
-		if (checkedTypes.indexOf(type)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	//3. fill checkedTypes array
-
-
-	//4. handle save settings
 
 	return (
 		<Fragment>
@@ -106,9 +79,32 @@ export default function Search() {
 				help="Select post types to search in."
 				className="mb-3"
 			>
-				{types.map((item) => (
-					<CheckboxControl label={item.label} data-value={item.value} />
-				))}
+				<ul>
+					{Object.keys(sd_vars.post_types).map((item, index) => (
+						<li key={index}>
+							<ToggleControl
+								label={sd_vars.post_types[item]}
+								checked={postTypes.some((value) => value === item)}
+								onChange={(isChecked) => {
+									console.log(isChecked);
+									if (isChecked) {
+										console.log('isChecked');
+										postTypes.push(item);
+										console.log(postTypes);
+									} else {
+										console.log(item);
+										console.log(postTypes);
+										let itemIndex = postTypes.indexOf(item);
+										postTypes.splice(itemIndex, 1);
+										console.log(postTypes);
+									}
+
+									setPostTypes(postTypes);
+								}}
+							/>
+						</li>
+					))}
+				</ul>
 			</BaseControl>
 			<Button
 				className="mt-6 mb-3"
