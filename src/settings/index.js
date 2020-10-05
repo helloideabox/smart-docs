@@ -4,6 +4,7 @@ import Tabs from "./Tabs";
 import SidePanel from "./SidePanel";
 import { Fragment, useEffect } from "@wordpress/element";
 import SettingNotices from "./notices/notices";
+import { RichText } from "@wordpress/editor";
 
 const loader = document.querySelector(".loader");
 // if you want to show the loader when React loads data again
