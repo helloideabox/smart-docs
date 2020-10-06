@@ -1,5 +1,10 @@
 import { Fragment, useState } from "@wordpress/element";
-import { BaseControl, Button, CheckboxControl, ToggleControl } from "@wordpress/components";
+import {
+	BaseControl,
+	Button,
+	CheckboxControl,
+	ToggleControl,
+} from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 import { useEntityProp } from "@wordpress/core-data";
 import { useDispatch } from "@wordpress/data";
@@ -49,30 +54,16 @@ export default function Search() {
 		setSaving(false);
 	}
 
-	/**
-	 * State object for post types.
-	 */
+	// 1. Array to store previously selected post types
 
-	// 1. Array to store checkbox data-value
+	const [types, setTypes] = useState(postTypes);
+	//let types = postTypes;
 
-	const types = [];
+	console.log(types);
 
-	Object.keys(sd_vars.post_types).map((item) => {
-		types.push({
-			value: item,
-			label: item,
-		});
-	});
-
+	// Function to get values from toggle
 	return (
 		<Fragment>
-			{/* <SelectControl
-				multiple
-				label={__("Select Post Types:")}
-				value={postTypes} // e.g: value = [ 'a', 'c' ]
-				onChange={setPostTypes}
-				options={types}
-			/> */}
 			<BaseControl
 				id="textarea-1"
 				label="Select Post Types"
@@ -82,24 +73,31 @@ export default function Search() {
 				<ul>
 					{Object.keys(sd_vars.post_types).map((item, index) => (
 						<li key={index}>
-							<ToggleControl
+							<CheckboxControl
 								label={sd_vars.post_types[item]}
-								checked={postTypes.some((value) => value === item)}
+								checked={types.some((value) => value === item)}
 								onChange={(isChecked) => {
-									console.log(isChecked);
 									if (isChecked) {
-										console.log('isChecked');
-										postTypes.push(item);
-										console.log(postTypes);
+										//console.log(isChecked);
+										//console.log(types);
+										//types.push(item);
+										setTypes([...types, item]);
+										//console.log(types);
 									} else {
-										console.log(item);
-										console.log(postTypes);
-										let itemIndex = postTypes.indexOf(item);
-										postTypes.splice(itemIndex, 1);
+										//console.log("Unchecked" + isChecked);
+										//console.log(types);
+										let itemIndex = types.indexOf(item);
+										types.splice(itemIndex, 1);
+										setTypes([...types, types]);
+										console.log("Types:");
+										console.log(types);
+
+										console.log("Post Types:");
 										console.log(postTypes);
 									}
-
-									setPostTypes(postTypes);
+									//console.log(types);
+									//console.log(postTypes);
+									setPostTypes(types);
 								}}
 							/>
 						</li>

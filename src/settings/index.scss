@@ -45,7 +45,6 @@
 
 .components-base-control__help {
 	@apply text-xs;
-	@apply text-gray-500;
 	margin-top: 0.25rem !important;
 }
 
@@ -68,6 +67,7 @@
 .sd-layout-settings-tabs .components-tab-panel__tabs {
 	@apply flex-col;
 	background-color: #f5f5f5;
+	width: 150px;
 }
 
 .sd-layout-settings-tabs .components-tab-panel__tabs-item.is-active {

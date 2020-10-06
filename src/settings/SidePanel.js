@@ -18,7 +18,7 @@ export default function SidePanel() {
 				go to our Github Page and post issue/suggestion.
 			</CardBody>
 			<CardFooter className="smart-docs-card-footer pt-4 pb-4">
-				<ExternalLink className="w-full inline-flex font-medium text-base" href="https://github.com/helloideabox/smart-docs/issues">
+				<ExternalLink className="w-full inline-flex font-medium text-sm" href="https://github.com/helloideabox/smart-docs/issues">
 					Raise a Ticket
 				</ExternalLink>
 			</CardFooter>

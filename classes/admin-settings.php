@@ -22,6 +22,9 @@ class Admin {
 
 		// Action to include script for admin options page.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
+
+		// Remove all Admin Notices
+		remove_all_actions( 'admin_notices' );
 	}
 
 	/**
