@@ -28,7 +28,20 @@ export default function Search() {
 
 	const [saving, setSaving] = useState(false);
 
+	// 1. Array to store previously selected post types
+
+	const [types, setTypes] = useState(postTypes);
+
+	/**
+	 * Update postTypes array when value of types is changes
+	 */
+	
+	if(types !== postTypes) {
+		setPostTypes(types);
+	}
+
 	function handleSaveSettings() {
+
 		setSaving(true);
 
 		const status = wp.data
@@ -54,13 +67,6 @@ export default function Search() {
 		setSaving(false);
 	}
 
-	// 1. Array to store previously selected post types
-
-	const [types, setTypes] = useState(postTypes);
-	//let types = postTypes;
-
-	console.log(types);
-
 	// Function to get values from toggle
 	return (
 		<Fragment>
@@ -71,37 +77,24 @@ export default function Search() {
 				className="mb-3"
 			>
 				<ul>
-					{Object.keys(sd_vars.post_types).map((item, index) => (
-						<li key={index}>
-							<CheckboxControl
-								label={sd_vars.post_types[item]}
-								checked={types.some((value) => value === item)}
-								onChange={(isChecked) => {
-									if (isChecked) {
-										//console.log(isChecked);
-										//console.log(types);
-										//types.push(item);
-										setTypes([...types, item]);
-										//console.log(types);
-									} else {
-										//console.log("Unchecked" + isChecked);
-										//console.log(types);
-										let itemIndex = types.indexOf(item);
-										types.splice(itemIndex, 1);
-										setTypes([...types, types]);
-										console.log("Types:");
-										console.log(types);
-
-										console.log("Post Types:");
-										console.log(postTypes);
-									}
-									//console.log(types);
-									//console.log(postTypes);
-									setPostTypes(types);
-								}}
-							/>
-						</li>
-					))}
+					{
+						Object.keys(sd_vars.post_types).map((item, index) => (
+							<li key={index}>
+								<CheckboxControl
+									label={sd_vars.post_types[item]}
+									checked={types.some((value) => value === item)}
+									onChange={(isChecked) => {
+										if (isChecked) {
+											setTypes(types => [...types, item]);
+										} else {
+											let u = [];
+											u = types.filter(type => type !== item);
+											setTypes(u);
+										}
+									}}
+								/>
+							</li>
+						))}
 				</ul>
 			</BaseControl>
 			<Button
