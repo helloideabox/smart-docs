@@ -1,23 +1,13 @@
 import { useDispatch } from "@wordpress/data";
-
-/**
- * Button Saving state
- *
- * @since 1.0.0
- */
-
-const [saving, setSaving] = useState(false);
+import { useState } from "@wordpress/element";
 
 export default function SaveSettings(settings) {
 
-    
 	const { createSuccessNotice, createErrorNotice } = useDispatch(
 		"core/notices"
 	);
 
-	setSaving(true);
-
-	const status = wp.data
+	wp.data
 		.dispatch("core")
 		.saveSite(settings)
 		.then(function () {
@@ -34,6 +24,4 @@ export default function SaveSettings(settings) {
 			);
 			console.log(e);
 		});
-
-	setSaving(false);
 }

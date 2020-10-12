@@ -8,6 +8,7 @@ import {
 import { __ } from "@wordpress/i18n";
 import { useEntityProp } from "@wordpress/core-data";
 import { useDispatch } from "@wordpress/data";
+import SaveSettings from "../utils/save";
 
 export default function Search() {
 	const { createSuccessNotice, createErrorNotice } = useDispatch(
@@ -35,16 +36,18 @@ export default function Search() {
 	/**
 	 * Update postTypes array when value of types is changes
 	 */
-	
-	if(types !== postTypes) {
+
+	if (types !== postTypes) {
 		setPostTypes(types);
 	}
 
+	const settings = {
+		ibx_sd_search_post_types: postTypes,
+	};
+
 	function handleSaveSettings() {
-
 		setSaving(true);
-
-		const status = wp.data
+		wp.data
 			.dispatch("core")
 			.saveSite({
 				ibx_sd_search_post_types: postTypes,
@@ -65,7 +68,7 @@ export default function Search() {
 			});
 
 		setSaving(false);
-	}
+	};
 
 	// Function to get values from toggle
 	return (
@@ -77,24 +80,23 @@ export default function Search() {
 				className="mb-3"
 			>
 				<ul>
-					{
-						Object.keys(sd_vars.post_types).map((item, index) => (
-							<li key={index}>
-								<CheckboxControl
-									label={sd_vars.post_types[item]}
-									checked={types.some((value) => value === item)}
-									onChange={(isChecked) => {
-										if (isChecked) {
-											setTypes(types => [...types, item]);
-										} else {
-											let u = [];
-											u = types.filter(type => type !== item);
-											setTypes(u);
-										}
-									}}
-								/>
-							</li>
-						))}
+					{Object.keys(sd_vars.post_types).map((item, index) => (
+						<li key={index}>
+							<CheckboxControl
+								label={sd_vars.post_types[item]}
+								checked={types.some((value) => value === item)}
+								onChange={(isChecked) => {
+									if (isChecked) {
+										setTypes((types) => [...types, item]);
+									} else {
+										let u = [];
+										u = types.filter((type) => type !== item);
+										setTypes(u);
+									}
+								}}
+							/>
+						</li>
+					))}
 				</ul>
 			</BaseControl>
 			<Button
