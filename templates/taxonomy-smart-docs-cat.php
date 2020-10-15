@@ -13,8 +13,6 @@ get_header();
 // Gettings category details.
 $cat_details = get_queried_object();
 
-var_dump( $cat_details );
-
 get_script_depends( 'sd-searchbox-script', 'search-script', array( 'jquery' ) );
 wp_localize_script(
 	'sd-searchbox-script',
