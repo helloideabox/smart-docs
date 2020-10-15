@@ -20,6 +20,9 @@ class Admin {
 		// Action to register settings page menu in cpt(smart-doc).
 		add_action( 'admin_menu', array( $this, 'register_options_menu' ) );
 
+		// Add admin bar menu
+		add_action( 'admin_bar_menu', array( $this, 'admin_bar_menu' ), 50 );
+
 		// Action to include script for admin options page.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 
@@ -33,6 +36,7 @@ class Admin {
 	 * @return void
 	 */
 	public function register_options_menu() {
+
 		// Adding sub menu to the cpt.
 		add_submenu_page(
 			'edit.php?post_type=smart-doc', // Parent slug.
@@ -520,5 +524,41 @@ class Admin {
 				'version'    => '1.0.0',
 			)
 		);
+	}
+
+	public function admin_bar_menu( $admin_bar ) {
+
+		/**
+		 * Return if user is not an Admin or  Admin Bar is not visible.
+		 */
+
+		if ( ! is_admin() || ! is_admin_bar_showing() ) {
+			return;
+		}
+
+		/**
+		 * Return if user is not a member of the site and is not a Super Admin.
+		 */
+		if ( ! is_user_member_of_blog() && ! is_super_admin() ) {
+			return;
+		}
+
+		$docs_slug = get_option( 'sd_archive_page_slug' );
+
+		if ( empty( $docs_slug ) ) {
+			$docs_slug = 'smart-docs';
+		}
+
+		$docs_home_url = home_url( $docs_slug );
+
+		$admin_bar->add_node(
+			array(
+				'parent' => 'site-name',
+				'id'     => 'view-smartdocs',
+				'title'  => __( 'Visit Documentation (SmartDocs)', 'smart-docs' ),
+				'href'   => $docs_home_url,
+			)
+		);
+
 	}
 }
