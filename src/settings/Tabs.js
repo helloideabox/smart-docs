@@ -1,11 +1,13 @@
-import { Fragment } from "@wordpress/element";
 import { TabPanel } from "@wordpress/components";
+
 import General from "./tabs/General";
 import Layout from "./tabs/Layout";
 import Search from "./tabs/Search";
 
 export default function Tabs() {
+
 	const tabClasses = "sd-setting-primary-tab px-4 text-sm";
+	
 	return (
 		<TabPanel
 			className="sd-settings-tabs m-5 col-span-2 row-span-2 bg-white"
