@@ -2,8 +2,6 @@ import {
 	TextControl,
 	BaseControl,
 	Button,
-	Spinner,
-	Snackbar,
 } from "@wordpress/components";
 import { Fragment, useState } from "@wordpress/element";
 import { useEntityProp } from "@wordpress/core-data";
@@ -46,6 +44,7 @@ export default function General() {
 	const [saving, setSaving] = useState(false);
 
 	function handleSaveSettings() {
+		
 		setSaving(true);
 
 		const status = wp.data
