@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin loader class
- * 
+ *
  * Loads the plugin and all the required classes and functions when the
  * plugin is activate.
- * 
+ *
  * @since 1.0.0
  * @package SmartDocs
  */
@@ -27,11 +27,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Main plugin class responsible for initiazling SmartDocs Plugin. The class
  * registers all the components required to run the plugin.
- * 
+ *
  * @package SmartDocs
  * @since 1.0.0
  */
-
 class Plugin {
 
 
@@ -159,7 +158,7 @@ class Plugin {
 	 * @since 1.0.0
 	 */
 	public function __clone() {
-		 // Cloning instances of the class is forbidden.
+		// Cloning instances of the class is forbidden.
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'Something went wrong.', 'smart-docs' ), '1.0.0' );
 	}
 
@@ -224,13 +223,16 @@ class Plugin {
 		// Action to include script.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
-		// load widgets
+		// Load widgets.
 		$this->doc_widget     = new Widget();
 		$this->doc_cat_widget = new Cat_Widget();
 
-		// load shortcode
+		// Load shortcode.
 
 		include_once SMART_DOCS_PATH . 'templates/smart-docs-shortcode.php';
+
+		// Load Utilities.
+		include_once SMART_DOCS_PATH . '/includes/utils.php';
 
 	}
 
@@ -243,7 +245,6 @@ class Plugin {
 	 * @access private
 	 */
 	private function register_autoloader() {
-		// echo "Loading Autoloader";
 		require SMART_DOCS_PATH . '/classes/autoloader.php';
 
 		Autoloader::run();
