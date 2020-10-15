@@ -22,19 +22,19 @@ export default function General() {
 	const [title, setTitle] = useEntityProp(
 		"root",
 		"site",
-		"sd_archive_page_title"
+		"ibx_sd_archive_page_title"
 	);
 	const [titleSlug, setTitleSlug] = useEntityProp(
 		"root",
 		"site",
-		"sd_archive_page_slug"
+		"ibx_sd_archive_page_slug"
 	);
 	const [categorySlug, setCategorySlug] = useEntityProp(
 		"root",
 		"site",
-		"sd_category_slug"
+		"ibx_sd_category_slug"
 	);
-	const [tagSlug, setTagSlug] = useEntityProp("root", "site", "sd_tag_slug");
+	const [tagSlug, setTagSlug] = useEntityProp("root", "site", "ibx_sd_tag_slug");
 	const [singleTemplate, setSingleTemplate] = useEntityProp(
 		"root",
 		"site",
@@ -60,10 +60,10 @@ export default function General() {
 		const status = wp.data
 			.dispatch("core")
 			.saveSite({
-				sd_archive_page_title: title,
-				sd_archive_page_slug: titleSlug,
-				sd_category_slug: categorySlug,
-				sd_tag_slug: tagSlug,
+				ibx_sd_archive_page_title: title,
+				ibx_sd_archive_page_slug: titleSlug,
+				ibx_sd_category_slug: categorySlug,
+				ibx_sd_tag_slug: tagSlug,
 				ibx_sd_enable_single_template: singleTemplate,
 				ibx_sd_enable_category_and_tag_template: archiveTax,
 			})

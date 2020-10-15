@@ -94,7 +94,7 @@ class Admin {
 		 */
 		register_setting(
 			'smart-docs-settings-group',
-			'sd_archive_page_title',
+			'ibx_sd_archive_page_title',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
@@ -111,7 +111,7 @@ class Admin {
 
 		register_setting(
 			'smart-docs-settings-group',
-			'sd_archive_page_slug',
+			'ibx_sd_archive_page_slug',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
@@ -125,7 +125,7 @@ class Admin {
 
 		register_setting(
 			'smart-docs-settings-group',
-			'sd_category_slug',
+			'ibx_sd_category_slug',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
@@ -139,7 +139,7 @@ class Admin {
 
 		register_setting(
 			'smart-docs-settings-group',
-			'sd_tag_slug',
+			'ibx_sd_tag_slug',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
@@ -525,7 +525,7 @@ class Admin {
 			return;
 		}
 
-		$docs_slug = get_option( 'sd_archive_page_slug' );
+		$docs_slug = get_option( 'ibx_sd_archive_page_slug' );
 
 		if ( empty( $docs_slug ) ) {
 			$docs_slug = 'smart-docs';

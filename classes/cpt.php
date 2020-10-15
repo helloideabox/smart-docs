@@ -64,7 +64,7 @@ class Cpt {
 			'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'revisions', 'custom-fields' ),
 		);
 
-		$post_slug = get_option( 'sd_archive_page_slug' );
+		$post_slug = get_option( 'ibx_sd_archive_page_slug' );
 
 		if ( empty( $post_slug ) ) {
 			$post_slug = 'smart-docs';
@@ -99,7 +99,7 @@ class Cpt {
 			'show_in_rest'      => true,
 		);
 
-		$category_slug = get_option( 'sd_category_slug' );
+		$category_slug = get_option( 'ibx_sd_category_slug' );
 
 		if ( empty( $category_slug ) ) {
 			$category_slug = 'smartdocs_category';
@@ -137,7 +137,7 @@ class Cpt {
 			'show_in_rest'      => true,
 		);
 
-		$tag_slug = get_option( 'sd_tag_slug' );
+		$tag_slug = get_option( 'ibx_sd_tag_slug' );
 
 		if ( empty( $tag_slug ) ) {
 			$tag_slug = 'smartdocs_tag';

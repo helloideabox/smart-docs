@@ -26,7 +26,7 @@ if ( have_posts() ) {
 	<main class="sd-wrap sd-archive-post-container">
 		<?php
 		// For selecting the dynamic title for db.
-		$doc_title = get_option( 'sd_archive_page_title' );
+		$doc_title = get_option( 'ibx_sd_archive_page_title' );
 
 		// Checking for empty doc title.
 		if ( '' !== $doc_title ) {
