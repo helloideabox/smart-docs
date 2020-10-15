@@ -1,7 +1,15 @@
+/*CSS*/
 import "./index.scss";
+
+/*Custom Components*/
+
 import Header from "./Header";
 import Tabs from "./Tabs";
 import SidePanel from "./SidePanel";
+
+/**
+ * WordPress Dependencies
+ */
 import { Fragment, useEffect } from "@wordpress/element";
 import SettingNotices from "./notices/notices";
 
@@ -12,6 +20,7 @@ const showLoader = () => loader.classList.remove("loader--hide");
 const hideLoader = () => loader.classList.add("loader--hide");
 
 const App = ({ hideLoader }) => {
+
 	useEffect(hideLoader, []);
 
 	return (
