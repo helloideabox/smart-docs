@@ -11,7 +11,7 @@ get_header();
 
 
 // Gettings category details.
-$cat_details = get_querisd_object();
+$cat_details = get_queried_object();
 
 $current_category_name = $cat_details->name;
 $current_category_id   = $cat_details->term_id;
