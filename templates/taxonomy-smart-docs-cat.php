@@ -13,6 +13,19 @@ get_header();
 // Gettings category details.
 $cat_details = get_queried_object();
 
+var_dump( $cat_details );
+
+get_script_depends( 'sd-searchbox-script', 'search-script', array( 'jquery' ) );
+wp_localize_script(
+	'sd-searchbox-script',
+	'sd_ajax_url',
+	array(
+		'url'        => admin_url( 'admin-ajax.php' ),
+		'ajax_nonce' => wp_create_nonce( 'docs_search' ),
+	)
+);
+get_style_depends( 'sd-style', 'style' );
+
 $current_category_name = $cat_details->name;
 $current_category_id   = $cat_details->term_id;
 $current_category_type = $cat_details->taxonomy;
