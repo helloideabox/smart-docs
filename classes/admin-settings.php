@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Settings Manager
  *
@@ -11,27 +10,37 @@
 
 namespace SmartDocs;
 
+/**
+ * Admin Class.
+ *
+ * @since 1.0.0
+ */
 class Admin {
 
+	/**
+	 * Construction fuction for class Admin
+	 *
+	 * @since 1.0.0
+	 */
 	public function __construct() {
-		 // Action to register setting for get_option function.
+		// Action to register setting for get_option function.
 		add_action( 'init', array( $this, 'register_plugin_settings' ) );
 
 		// Action to register settings page menu in cpt(smart-doc).
 		add_action( 'admin_menu', array( $this, 'register_options_menu' ) );
 
-		// Add admin bar menu
+		// Add admin bar menu.
 		add_action( 'admin_bar_menu', array( $this, 'admin_bar_menu' ), 50 );
 
 		// Action to include script for admin options page.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_script' ) );
 
-		// Remove all Admin Notices
+		// Remove all Admin Notices.
 		remove_all_actions( 'admin_notices' );
 	}
 
 	/**
-	 * Registers option menu for SmartDocs Settings
+	 * Registers option menu for SmartDocs Settings.
 	 *
 	 * @return void
 	 */
@@ -55,22 +64,23 @@ class Admin {
 	 * @return void
 	 */
 	public function render_options_page() {
-		 echo '<div id="sd-setting-root"></div>';
+		echo '<div id="sd-setting-root"></div>';
 			echo '<div class="loader">
-					<div class="sd-settings-pre-loader">
-						<div class="sd-loader-header mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
-							<div class="header-loader"></div>
-						</div>
-						<div class="sd-loader-body container mx-auto grid grid-cols-3 grid-rows-2 w-full">
-							<div class="sd-loader-panel m-5 col-span-2 row-span-2 p-5 bg-white">
-								<div class="panel-loader"></div>
-							</div>
-							<div class="sd-loader-side-panel m-5 col-span-1">
-								<div class="side-panel-loader"></div>
-							</div>
-						</div>
+			<div class="sd-settings-pre-loader">
+				<div class="sd-loader-header mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
+					<div class="header-loader"></div>
+				</div>
+				<div class="sd-loader-body container mx-auto grid grid-cols-3 grid-rows-2 w-full">
+					<div class="sd-loader-panel m-5 col-span-2 row-span-2 p-5 bg-white">
+						<div class="panel-loader"></div>
 					</div>
-				</div>';
+					<div class="sd-loader-side-panel m-5 col-span-1">
+						<div class="side-panel-loader"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		';
 	}
 
 	/**
@@ -110,7 +120,7 @@ class Admin {
 		);
 
 		/**
-		 * Register documentation category slug
+		 * Register documentation category slug.
 		 */
 
 		register_setting(
@@ -455,6 +465,7 @@ class Admin {
 	 * Function to enque admin side script(Settings page).
 	 *
 	 * @param string $hook To check if the current page is SmartDocs setting or not.
+	 * @throws Error Warn user regarding a process that is mandatory.
 	 * @return void
 	 */
 	public function enqueue_admin_script( $hook ) {
@@ -489,6 +500,7 @@ class Admin {
 			'sd-settings-style',
 			SMART_DOCS_URL . $editor_css,
 			array( 'wp-components' ),
+			filemtime( "$dir/$editor_css" )
 		);
 
 		$exclude_post_types = array( 'attachment', 'elementor_library' );
@@ -506,7 +518,7 @@ class Admin {
 
 		foreach ( $post_types as $type ) {
 
-			if ( true === in_array( $type->name, $exclude_post_types ) ) {
+			if ( true === in_array( $type->name, $exclude_post_types, true ) ) {
 				continue;
 			}
 
@@ -526,6 +538,13 @@ class Admin {
 		);
 	}
 
+	/**
+	 * Add Visit Documentation to Admin Bar Menu.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Object $admin_bar Global variable.
+	 */
 	public function admin_bar_menu( $admin_bar ) {
 
 		/**
