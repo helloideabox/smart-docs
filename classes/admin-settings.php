@@ -92,7 +92,7 @@ class Admin {
 		 * Register setting for documentation root slug.
 		 *
 		 * When set the documentation archive page will be accessible at
-		 * https://example.com/smart-docs/
+		 * https://example.com/smart-docs/.
 		 */
 
 		register_setting(
