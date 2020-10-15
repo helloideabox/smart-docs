@@ -1,4 +1,10 @@
 <?php
+/**
+ * Templates class to manage overriding of default theme templates.
+ *
+ * @since 1.0.0
+ * @package SmartDocs
+ */
 
 namespace SmartDocs;
 
@@ -6,24 +12,28 @@ namespace SmartDocs;
  * Templates.
  *
  * Core class used to override default templates when required.
- * 
+ *
  * @package SmartDocs
  * @since 1.0.0
  */
-
 class Templates {
 
+	/**
+	 * Default CPT Name
+	 *
+	 * @since 1.0.0
+	 * @var string $cpt_name
+	 */
 	public $cpt_name = 'smart-doc';
 
 	/**
 	 * Class constructor.
-	 * 
+	 *
 	 * Responsible for loading all the required methods and action in the class
 	 * when it is instantiated.
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
-
 	public function __construct() {
 
 		// For overriding templates.
