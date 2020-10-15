@@ -1,5 +1,4 @@
 import {
-	TabPanel,
 	Card,
 	CardBody,
 	CardHeader,
