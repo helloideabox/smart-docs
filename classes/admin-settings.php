@@ -149,22 +149,6 @@ class Admin {
 
 		register_setting(
 			'smart-docs-settings-group',
-			'sd_post_type_selected',
-			array(
-				'show_in_rest' => array(
-					'schema' => array(
-						'type'  => 'array',
-						'items' => array(
-							'type' => 'string',
-						),
-					),
-				),
-				'default'      => array( 'smart-doc' ),
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
 			'sd_enable_single_template',
 			array(
 				'type'         => 'boolean',
