@@ -134,7 +134,7 @@ class Admin {
 		);
 
 		/**
-		 * Register documentation tag slug
+		 * Register documentation tag slug.
 		 */
 
 		register_setting(
@@ -147,9 +147,13 @@ class Admin {
 			)
 		);
 
+		/**
+		 * Enable custom template for single doc page.
+		 */
+
 		register_setting(
 			'smart-docs-settings-group',
-			'sd_enable_single_template',
+			'ibx_sd_enable_single_template',
 			array(
 				'type'         => 'boolean',
 				'show_in_rest' => true,
@@ -157,9 +161,13 @@ class Admin {
 			)
 		);
 
+		/**
+		 * Enable custom template for categories and tags archive page.
+		 */
+
 		register_setting(
 			'smart-docs-settings-group',
-			'sd_enable_category_and_tag_template',
+			'ibx_sd_enable_category_and_tag_template',
 			array(
 				'type'         => 'boolean',
 				'show_in_rest' => true,
@@ -167,35 +175,6 @@ class Admin {
 			)
 		);
 
-		register_setting(
-			'smart-docs-settings-group',
-			'sd_turnoff_doc_comment',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => false,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'sd_enable_live_search',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'sd_show_last_update_time',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
 		$this->register_doc_homepage_settings();
 
 		$this->register_single_page_layout_settings();

@@ -1,7 +1,8 @@
 import {
-	TextControl,
 	BaseControl,
 	Button,
+	TextControl,
+	ToggleControl,
 } from "@wordpress/components";
 import { Fragment, useState } from "@wordpress/element";
 import { useEntityProp } from "@wordpress/core-data";
@@ -34,6 +35,16 @@ export default function General() {
 		"sd_category_slug"
 	);
 	const [tagSlug, setTagSlug] = useEntityProp("root", "site", "sd_tag_slug");
+	const [singleTemplate, setSingleTemplate] = useEntityProp(
+		"root",
+		"site",
+		"ibx_sd_enable_single_template"
+	);
+	const [archiveTax, setArchiveTax] = useEntityProp(
+		"root",
+		"site",
+		"ibx_sd_enable_category_and_tag_template"
+	);
 
 	/**
 	 * Button Saving state
@@ -44,7 +55,6 @@ export default function General() {
 	const [saving, setSaving] = useState(false);
 
 	function handleSaveSettings() {
-		
 		setSaving(true);
 
 		const status = wp.data
@@ -54,6 +64,8 @@ export default function General() {
 				sd_archive_page_slug: titleSlug,
 				sd_category_slug: categorySlug,
 				sd_tag_slug: tagSlug,
+				ibx_sd_enable_single_template: singleTemplate,
+				ibx_sd_enable_category_and_tag_template: archiveTax,
 			})
 			.then(function () {
 				createSuccessNotice("Settings Saved!", {
@@ -128,6 +140,24 @@ export default function General() {
 					value={tagSlug}
 					placeholder={__("Add custom tag slug")}
 					onChange={setTagSlug}
+				/>
+			</BaseControl>
+			<BaseControl
+				className=" mt-3 mb-3"
+				id="smartdocs-custom-templates"
+				label={__("Custom Templates")}
+			>
+				<ToggleControl
+					className="mt-2 mb-2"
+					label={__("Enable Custom Single Doc Template")}
+					checked={singleTemplate}
+					onChange={setSingleTemplate}
+				/>
+				<ToggleControl
+					className="mt-2 mb-2"
+					label={__("Enable Custom Template for Tag and Category Archives")}
+					checked={archiveTax}
+					onChange={setArchiveTax}
 				/>
 			</BaseControl>
 			<Button

@@ -52,8 +52,8 @@ class Templates {
 	 */
 	public function callback_init() {
 
-		$is_single_template_on      = get_option( 'sd_enable_single_template' );
-		$is_cat_and_tag_template_on = get_option( 'sd_enable_category_and_tag_template' );
+		$is_single_template_on      = get_option( 'ibx_sd_enable_single_template' );
+		$is_cat_and_tag_template_on = get_option( 'ibx_sd_enable_category_and_tag_template' );
 
 		if ( '1' == $is_single_template_on ) {// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 
