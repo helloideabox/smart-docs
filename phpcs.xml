@@ -36,4 +36,10 @@
 	<rule ref="WordPress">
 		
 	</rule>
+
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+		<exclude-pattern>classes/</exclude-pattern>
+		<exclude-pattern>templates/</exclude-pattern>
+	</rule>
+
 </ruleset>
