@@ -227,12 +227,12 @@ class Plugin {
 		$this->doc_widget     = new Widget();
 		$this->doc_cat_widget = new Cat_Widget();
 
+		// Load Utilities.
+		include_once SMART_DOCS_PATH . '/includes/utils.php';
+
 		// Load shortcode.
 
 		include_once SMART_DOCS_PATH . 'templates/smart-docs-shortcode.php';
-
-		// Load Utilities.
-		include_once SMART_DOCS_PATH . '/includes/utils.php';
 
 	}
 

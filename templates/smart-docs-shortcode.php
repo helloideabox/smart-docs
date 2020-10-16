@@ -14,6 +14,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 // To render the search box of WordPress.
 add_shortcode( 'smart_doc_wp_live_search', 'smart_doc_render_search_box' );
 
+
+/**
+ * Load required script dependents.
+ */
+
+get_script_depends( 'sd-searchbox-script', 'search-script', array( 'jquery' ) );
+wp_localize_script(
+	'sd-searchbox-script',
+	'sd_ajax_url',
+	array(
+		'url'        => admin_url( 'admin-ajax.php' ),
+		'ajax_nonce' => wp_create_nonce( 'docs_search' ),
+	)
+);
+get_style_depends( 'sd-style', 'style' );
+
 /**
  * For rendering the search box.
  *
