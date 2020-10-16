@@ -67,7 +67,7 @@ echo do_shortcode( '[smart_doc_wp_live_search]' );
 									echo esc_html( $t->count ) . ' Article';
 								} else {
 									/* translators: %s: search term */
-									$article = sprintf( _n( '%d Article', '%d Articles', $t->count, 'smart-docs' ), number_format_i18n( $t->count ) );
+									$article = sprintf( _n( '%d Article', '%d Articles', wp_get_postcount( $t->term_id, $t->taxonomy ), 'smart-docs' ), number_format_i18n( wp_get_postcount( $t->term_id, $t->taxonomy ) ) );
 									echo esc_html( $article );
 								}
 								?>
