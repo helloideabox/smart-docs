@@ -288,24 +288,7 @@ class Plugin {
 	 */
 	public function enqueue_scripts() {
 		global $post_type;
-
-		if ( 'smart-doc' === $post_type ) {
-			wp_enqueue_style( 'sd-style', SMART_DOCS_URL . 'assets/css/style.css', array(), '1.0.0', false );
-
-			// condition to check for live search enabled.
-			if ( get_option( 'sd_enable_live_search' ) ) {
-				wp_enqueue_script( 'sd-searchbox-script', SMART_DOCS_URL . 'assets/js/search-script.js', array(), '1.0.0', true );
-
-				wp_localize_script(
-					'sd-searchbox-script',
-					'sd_ajax_url',
-					array(
-						'url'        => admin_url( 'admin-ajax.php' ),
-						'ajax_nonce' => wp_create_nonce( 'docs_search' ),
-					)
-				);
-			}
-		}
+		
 	}
 }
 
