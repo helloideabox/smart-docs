@@ -288,7 +288,6 @@ class Plugin {
 	 */
 	public function enqueue_scripts() {
 		global $post_type;
-		
 	}
 }
 
