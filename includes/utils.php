@@ -39,5 +39,31 @@ function get_style_depends( $style_name, $file_name, $style_dependencies = array
 		'1.0.0',
 		false
 	);
+}
 
+/**
+ * Get Post Count of a Category.
+ *
+ * Includes Post Count of category children as well.
+ *
+ * @since 1.0.0
+ *
+ * @param integer $id Category ID.
+ * @param string  $taxonomy_type Taxonomy Type of the Category.
+ */
+function wp_get_postcount( $id, $taxonomy_type ) {
+
+	$cat      = get_term( $id, $taxonomy_type );
+	$count    = (int) $cat->count;
+	$taxonomy = $taxonomy_type;
+
+	$args      = array(
+		'child_of' => $id,
+	);
+	$tax_terms = get_terms( $taxonomy, $args );
+
+	foreach ( $tax_terms as $tax_term ) {
+		$count += $tax_term->count;
+	}
+	return $count;
 }
