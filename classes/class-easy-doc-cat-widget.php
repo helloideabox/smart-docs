@@ -124,12 +124,12 @@ class Easy_Doc_Cat_Widget extends WP_Widget {
 		if ( isset( $instance['title'] ) ) {
 			$title = $instance['title'];
 		} else {
-			$title = 'Categories';
+			$title = __( 'Categories', 'easydoc' );
 		}
 
-		$dropdown     = (bool) $instance['dropdown'];
-		$count        = (bool) $instance['count'];
-		$hierarchical = (bool) $instance['hierarchical'];
+		$dropdown     = ! empty( $instance['dropdown'] ) ? (bool) $instance['dropdown'] : '';
+		$count        = ! empty( $instance['count'] ) ? (bool) $instance['count'] : '';
+		$hierarchical = ! empty( $instance['hierarchical'] ) ? (bool) $instance['hierarchical'] : '';
 		?>
 
 		<p>

@@ -70,18 +70,24 @@ class  Easy_Doc_Widget extends WP_Widget {
 				// Getting the recent post.
 				$recent_posts = wp_get_recent_posts( $recent_posts_args );
 
-				foreach ( $recent_posts as $recent_post ) {
+				if ( ! empty( $recent_posts ) ) {
+					foreach ( $recent_posts as $recent_post ) {
+						?>
+
+						<li>
+							<a href="<?php echo esc_url( the_permalink() ); ?>">
+								<?php echo esc_html( $recent_post['post_title'] ); ?>
+							</a>
+						</li>
+
+						<?php
+					}
+				} else {
 					?>
-
-					<li>
-						<a href="<?php echo esc_url( the_permalink() ); ?>">
-							<?php echo esc_html( $recent_post['post_title'] ); ?>
-						</a>
-					</li>
-
+					<p><?php esc_html_e( 'No recent docs found!', 'easydoc' ); ?></p>
 					<?php
 				}
-				?>
+			?>
 		</ul>
 
 		<?php
