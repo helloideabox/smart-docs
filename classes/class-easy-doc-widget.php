@@ -84,7 +84,7 @@ class  Easy_Doc_Widget extends WP_Widget {
 					}
 				} else {
 					?>
-					<p><?php esc_html_e( 'No recent docs found!', 'easydoc' ); ?></p>
+					<li><?php esc_html_e( 'No recent docs found!', 'easydoc' ); ?></li>
 					<?php
 				}
 			?>
