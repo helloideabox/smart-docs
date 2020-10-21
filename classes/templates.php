@@ -74,6 +74,9 @@ class Templates {
 			add_filter( 'template_include', array( $this, 'tag_template' ) );
 			add_filter( 'body_class', array( $this, 'body_tax_class' ) );
 			add_filter( 'body_class', array( $this, 'body_sidebar_class' ) );
+
+			//add_action( 'init', array( $this, 'rewrite_rules' ) );
+
 		}
 
 	}
@@ -188,5 +191,27 @@ class Templates {
 			return SMART_DOCS_PATH . 'templates/smart-docs-single-template.php';
 		}
 		return $template;
+	}
+
+	function rewrite_rules() {
+
+		// Get details about the post_type
+
+		$args = array(
+			'post_type'      => 'smart-doc',
+			'posts_per_page' => -1,
+		);
+
+		$posts = get_posts( $args );
+
+		foreach ( $posts as $post ) {
+			$cat       = get_the_terms( $post, 'smartdocs_category' );
+			$cat_slug  = $cat[0]->slug;
+			$post_slug = $post->post_name;
+			add_rewrite_rule( '^' . $cat_slug . '/' . $post_slug . '?/', 'index.php/property/' . $cat_slug . '/' . $post_slug . '/', 'top' );
+		}
+
+		add_rewrite_rule( '^smartdocs-category\/([a-z]+)\/?', 'index.php?page_id=$matches[1]', 'top' );
+
 	}
 }

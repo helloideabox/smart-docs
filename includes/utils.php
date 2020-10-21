@@ -67,3 +67,11 @@ function wp_get_postcount( $id, $taxonomy_type ) {
 	}
 	return $count;
 }
+
+/**
+ * Get Settings.
+ *
+ * Fetch requested settings or return their default values if not found.
+ *
+ * @param string $setting_key Unique key of the setting.
+ */

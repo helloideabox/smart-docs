@@ -1,9 +1,9 @@
 <?php
 /**
  * Autoloader.
- * 
+ *
  * Handles the autoloading of classes as per PSR-4 Standard.
- * 
+ *
  * @since 1.0.0
  * @package SmartDocs
  */
@@ -66,6 +66,7 @@ class Autoloader {
 			'Search'     => 'classes/search.php',
 			'Templates'  => 'classes/templates.php',
 			'Widget'     => 'classes/widget.php',
+			'Permalinks' => 'classes/permalinks.php',
 		);
 	}
 

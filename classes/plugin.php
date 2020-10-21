@@ -17,6 +17,7 @@ use SmartDocs\Widget;
 use SmartDocs\Cat_Widget;
 use SmartDocs\Templates;
 use SmartDocs\Search;
+use SmartDocs\Permalinks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -147,6 +148,20 @@ class Plugin {
 	public $search = null;
 
 	/**
+	 * Instance.
+	 *
+	 * Holds the Permalinks Class instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @static
+	 *
+	 * @var permalinks
+	 */
+
+	public $permalinks = null;
+
+	/**
 	 * Clone.
 	 *
 	 * Disable class cloning and throw an error on object clone.
@@ -189,6 +204,8 @@ class Plugin {
 		register_activation_hook( SMART_DOCS_FILE, array( $this, 'plugin_activation' ) );
 
 		add_action( 'init', array( $this, 'init' ), 0 );
+
+		add_action( 'admin_init', array( $this, 'admin_init' ), 0 );
 	}
 
 	/**
@@ -201,6 +218,18 @@ class Plugin {
 	 */
 	public function init() {
 		$this->init_components();
+	}
+
+	/**
+	 * Admin Init.
+	 *
+	 * Initialize SmartDocsPlugin Admin Components.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function admin_init() {
+		$this->permalinks = new Permalinks();
 	}
 
 	/**
