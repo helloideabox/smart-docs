@@ -11,10 +11,10 @@
 		// Init a timeout variable to be used below
 		var timeout = null;
 		var data;
-		var search = $( '#ed-sq' );
+		var search = $( '#sd-sq' );
 		var lastValue = ''
 
-		$( '#ed-sq' ).on( 'focus keyup click', function() {
+		$( '#sd-sq' ).on( 'focus keyup click', function() {
 			
 			setTimeout( function() {
 				if ( search.val() ){
@@ -26,23 +26,23 @@
 
 						
 
-						$( '.ed-spinner' ).css( 'display', 'block' );
+						$( '.sd-spinner' ).css( 'display', 'block' );
 
 						// Send data to server. 
-						data = 'action=ed_load_search_results&query=' + search.val() + '&security=' + ed_ajax_url.ajax_nonce;
+						data = 'action=sd_load_search_results&query=' + search.val() + '&security=' + sd_ajax_url.ajax_nonce;
 
 						timeout = setTimeout( function(){
 							// Ajax request.
-							$.post( ed_ajax_url.url, data, function( response ) {
-								$( '.ed-spinner' ).css( 'display', 'none' );
-								$( '#ed-live-search' ).css( 'display', 'block' );
-								$( '#ed-live-search' ).html( response );
+							$.post( sd_ajax_url.url, data, function( response ) {
+								$( '.sd-spinner' ).css( 'display', 'none' );
+								$( '#sd-live-search' ).css( 'display', 'block' );
+								$( '#sd-live-search' ).html( response );
 							} );
 						}, 300 );
 						lastValue = search.val();
 					}
 				} else {
-					$( '#ed-live-search' ).html('');
+					$( '#sd-live-search' ).html('');
 				}
 			}, 100 );
 		} );
@@ -56,13 +56,13 @@
 	 * search container.
 	 */
 	$( document ).ready( function() {
-		$( '.ed-search-form' ).append( '<div id="ed-live-search"></div>');
+		$( '.sd-search-form' ).append( '<div id="sd-live-search"></div>');
 
 		$( document ).on( 'click', function( e ) {
-			if( e.target.className === 'ed-search-list' || e.target.className === 'ed-search-field' ) {
-				$( '#ed-live-search' ).css( 'display', 'block' );
+			if( e.target.className === 'sd-search-list' || e.target.className === 'sd-search-field' ) {
+				$( '#sd-live-search' ).css( 'display', 'block' );
 			} else {
-				$( '#ed-live-search' ).css( 'display', 'none' );
+				$( '#sd-live-search' ).css( 'display', 'none' );
 			}
 		} );
 	} );
