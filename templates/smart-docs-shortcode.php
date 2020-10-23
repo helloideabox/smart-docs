@@ -15,20 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_shortcode( 'smart_doc_wp_live_search', 'smart_doc_render_search_box' );
 
 
-/**
- * Load required script dependents.
- */
-
-get_script_depends( 'sd-searchbox-script', 'search-script', array( 'jquery' ) );
-wp_localize_script(
-	'sd-searchbox-script',
-	'sd_ajax_url',
-	array(
-		'url'        => admin_url( 'admin-ajax.php' ),
-		'ajax_nonce' => wp_create_nonce( 'docs_search' ),
-	)
-);
-get_style_depends( 'sd-style', 'style' );
 
 /**
  * For rendering the search box.
@@ -38,6 +24,20 @@ get_style_depends( 'sd-style', 'style' );
  */
 function smart_doc_render_search_box( $atts, $content = null ) {
 	ob_start();
+	/**
+	 * Load required script dependents.
+	 */
+
+	get_script_depends( 'sd-searchbox-script', 'search-script', array( 'jquery' ) );
+	wp_localize_script(
+		'sd-searchbox-script',
+		'sd_ajax_url',
+		array(
+			'url'        => admin_url( 'admin-ajax.php' ),
+			'ajax_nonce' => wp_create_nonce( 'docs_search' ),
+		)
+	);
+	get_style_depends( 'sd-style', 'style' );
 	?>
 	<div class="sd-live-search">
 		<div class="sd-search-form-container">
