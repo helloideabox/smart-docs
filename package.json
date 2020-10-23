@@ -1,0 +1,37 @@
+{
+  "name": "smart-docs",
+  "version": "1.0.0",
+  "description": "SmartDocs is a simple to use documentation plugin for WordPress that makes it very easy to setup fast and efficient documentation on your websites.",
+  "keywords": [],
+  "author": "IdeaBox Creations",
+  "license": "GPL-2.0-only",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "npm run build:settings && npm run build:block",
+    "build:settings": "wp-scripts build src/settings/index.js --output-path=assets/admin/",
+    "build:block": "wp-scripts build src/block/index.js --output-path=assets/block/",
+    "format:js": "wp-scripts format-js",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "start": "npm run start:settings && npm run start:block",
+    "start:settings": "wp-scripts start src/settings/index.js --output-path=assets/admin/ ",
+    "start:block": "wp-scripts start src/block/index.js --output-path=assets/block/",
+    "packages-update": "wp-scripts packages-update"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1",
+    "react-notifications-component": "^2.4.0",
+    "tailwindcss": "^1.9.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^12.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helloideabox/smart-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/helloideabox/smart-docs/issues"
+  },
+  "homepage": "https://github.com/helloideabox/smart-docs#readme"
+}
