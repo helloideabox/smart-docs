@@ -68,7 +68,6 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
  *
  * @return void
  */
-
 function notice_php_version() {
 
 	/* translators: %s: PHP version */
