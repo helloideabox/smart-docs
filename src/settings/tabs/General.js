@@ -3,10 +3,11 @@ import {
 	Button,
 	TextControl,
 	ToggleControl,
+	SelectControl,
 } from "@wordpress/components";
 import { Fragment, useState } from "@wordpress/element";
 import { useEntityProp } from "@wordpress/core-data";
-import { __ } from "@wordpress/i18n";
+import { __, sprintf } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
 
 export default function General() {
@@ -34,7 +35,11 @@ export default function General() {
 		"site",
 		"ibx_sd_category_slug"
 	);
-	const [tagSlug, setTagSlug] = useEntityProp("root", "site", "ibx_sd_tag_slug");
+	const [tagSlug, setTagSlug] = useEntityProp(
+		"root",
+		"site",
+		"ibx_sd_tag_slug"
+	);
 	const [singleTemplate, setSingleTemplate] = useEntityProp(
 		"root",
 		"site",
@@ -45,6 +50,37 @@ export default function General() {
 		"site",
 		"ibx_sd_enable_category_and_tag_template"
 	);
+	const [customDocPage, setCustomDocPage] = useEntityProp(
+		"root",
+		"site",
+		"smartdocs_custom_doc_page"
+	);
+
+	const [enableCustomDocPage, setEnableCustomDocPage] = useEntityProp(
+		"root",
+		"site",
+		"smartdocs_custom_doc_page_enable"
+	);
+
+	const [pageList, setPageList] = useState([
+		{ label: "Select docs page from the list", value: null },
+	]);
+
+	const postList = [{ label: "Select docs page from the list", value: null }];
+
+	/**Fetch all the pages */
+	wp.apiFetch({
+		path: "/wp/v2/pages",
+	})
+		.then((pages) => {
+			jQuery.each(pages, function (key, val) {
+				postList.push({ label: val.title.rendered, value: val.id });
+			});
+			setPageList(postList);
+		})
+		.catch((e) => {
+			console.log(e);
+		});
 
 	/**
 	 * Button Saving state
@@ -66,6 +102,8 @@ export default function General() {
 				ibx_sd_tag_slug: tagSlug,
 				ibx_sd_enable_single_template: singleTemplate,
 				ibx_sd_enable_category_and_tag_template: archiveTax,
+				smartdocs_custom_doc_page_enable: enableCustomDocPage,
+				smartdocs_custom_doc_page: customDocPage,
 			})
 			.then(function () {
 				createSuccessNotice("Settings Saved!", {
@@ -87,6 +125,27 @@ export default function General() {
 
 	return (
 		<Fragment>
+			<ToggleControl
+				className="mt-2 mb-2"
+				label={__("Enable Built In Doc Page")}
+				help={__(
+					"Note: if you disable built-in documentation page, you can use shortcode or page builder widgets to design your documentation page."
+				)}
+				checked={enableCustomDocPage}
+				onChange={setEnableCustomDocPage}
+			/>
+			<>
+				{!enableCustomDocPage ? (
+					<SelectControl
+						label={__("Select Custom Doc Page")}
+						labelPosition="top"
+						id="smartdocs-option_select-custom-doc-page"
+						options={pageList}
+						value={customDocPage}
+						onChange={setCustomDocPage}
+					/>
+				) : null}
+			</>
 			<BaseControl
 				id="textarea-1"
 				label="Documentation Page Title"

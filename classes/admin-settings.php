@@ -89,6 +89,32 @@ class Admin {
 	 * @return void
 	 */
 	public function register_plugin_settings() {
+
+		/**
+		 * Register settings for documentation archive/home page title
+		 */
+		register_setting(
+			'smart-docs-settings-group',
+			'smartdocs_custom_doc_page_enable',
+			array(
+				'type'         => 'boolean',
+				'show_in_rest' => true,
+				'default'      => true,
+			)
+		);
+
+		/**
+		 * Register settings for documentation archive/home page title
+		 */
+		register_setting(
+			'smart-docs-settings-group',
+			'smartdocs_custom_doc_page',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+			)
+		);
+
 		/**
 		 * Register settings for documentation archive/home page title
 		 */
