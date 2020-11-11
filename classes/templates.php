@@ -65,7 +65,7 @@ class Templates {
 			add_filter( 'body_class', array( $this, 'body_single_class' ) );
 		}
 
-		if ( '1' == $is_cat_and_tag_template_on ) {// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
+		if ( '1' == $is_cat_and_tag_template_on ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 
 			// Filter to rewrite the default taxonomy(smartdocs_category) theme template for particular cpt.
 			add_filter( 'template_include', array( $this, 'category_template' ) );
@@ -75,7 +75,7 @@ class Templates {
 			add_filter( 'body_class', array( $this, 'body_tax_class' ) );
 			add_filter( 'body_class', array( $this, 'body_sidebar_class' ) );
 
-			//add_action( 'init', array( $this, 'rewrite_rules' ) );
+			// add_action( 'init', array( $this, 'rewrite_rules' ) );.
 
 		}
 
@@ -193,9 +193,14 @@ class Templates {
 		return $template;
 	}
 
-	function rewrite_rules() {
+	/**
+	 * Rewrite slug
+	 *
+	 * @return void
+	 */
+	public function rewrite_rules() {
 
-		// Get details about the post_type
+		// Get details about the post_type.
 
 		$args = array(
 			'post_type'      => 'smart-doc',

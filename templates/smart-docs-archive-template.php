@@ -7,39 +7,65 @@
  * @version 1.0.0
  */
 
+defined( 'ABSPATH' ) || exit;
+
 get_header();
 
+/**
+ * Hook: smartdocs_before_main_content.
+ *
+ * @hooked smartdocs_output_content_wrapper - 10
+ */
+do_action( 'smartdocs_before_main_content' );
 
-// display live search box.
-echo do_shortcode( '[smart_doc_wp_live_search]' );
+?>
+
+<header class="smartdocs-archive-header">
+	<div class="smartdocs-inner">
+		<?php if ( apply_filters( 'smartdocs_show_archive_title', true ) ) : ?>
+			<h1 class=""><?php echo esc_html( smartdocs_archive_title() ); ?></h1>
+		<?php endif; ?>
+
+		<?php
+		/**
+		 * Hook: smartdocs_archive_description.
+		 *
+		 * @hooked smartdocs_archive_description - 10
+		 */
+		do_action( 'smartdocs_archive_description' );
+		?>
+
+		<?php
+		/**
+		 * Hook: smartdocs_archive_before_header_end.
+		 *
+		 * @hooked smartdocs_search_form - 10
+		 */
+		do_action( 'smartdocs_archive_before_header_end' );
+		?>
+	</div>
+</header>
+
+<?php
 
 
 // Post condition and loop for displaying post.
 if ( have_posts() ) {
 	$args = array(
-		'hide_empty' => false,
+		'hide_empty' => apply_filters( 'smartdocs_archive_hide_empty_categories', false ),
 	);
 
 	$terms = get_terms( 'smartdocs_category', $args );
 	?>
 
-	<main class="sd-wrap sd-archive-post-container">
-		<?php
-		// For selecting the dynamic title for db.
-		$doc_title = get_option( 'ibx_sd_archive_page_title' );
-
-		// Checking for empty doc title.
-		if ( '' !== $doc_title ) {
-			?>
-			<h1 class="sd-archive-post-head"><?php echo esc_attr( $doc_title ); ?></h1>
-
-		<?php } ?>
 		<?php if ( $terms ) : ?>
 
 		<div class="sd-archive-categories-wrap">
+			<div class="smartdocs-inner">
+				<div class="smartdocs-archive-categories">
 			<?php
 			// Looping through all the terms.
-			foreach ( $terms as $t ) {
+			foreach ( $terms as $t ) :
 				// Checking if they have parent or not.
 				if ( 0 === $t->parent ) :
 					?>
@@ -66,15 +92,23 @@ if ( have_posts() ) {
 
 					<?php
 				endif;
-			}
+			endforeach;
 			?>
+				</div>
+			</div>
 		</div>
 		<?php endif ?> 
-		</main>
 
 	<?php
 } else {
-	esc_html_e( 'Not yet started.', 'smart-docs' );
+	esc_html_e( 'Not yet started. Add some categories to see them on the SmartDocs Archive Page. ', 'smart-docs' );
 }
+
+/**
+ * Hook - smartdocs_after_main_content.
+ *
+ * @hooked smartdocs_output_content_wrapper_end - 10
+ */
+do_action( 'smartdocs_after_main_content' );
 
 get_footer();
