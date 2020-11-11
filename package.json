@@ -7,15 +7,21 @@
   "license": "GPL-2.0-only",
   "main": "build/index.js",
   "scripts": {
-    "build": "npm run build:settings && npm run build:block",
+    "build": "npm run build:settings && npm run build:block && npm run build:customizer",
     "build:settings": "wp-scripts build src/settings/index.js --output-path=assets/admin/",
     "build:block": "wp-scripts build src/block/index.js --output-path=assets/block/",
+    "build:customizer": "npm run build:customizer-controls && npm run build:customizer-preview",
+    "build:customizer-controls": "wp-scripts build src/customizer/controls/index.js --output-path=assets/customizer/controls/",
+    "build:customizer-preview": "wp-scripts build src/customizer/preview/index.js --output-path=assets/customizer/preview/",
     "format:js": "wp-scripts format-js",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
-    "start": "npm run start:settings && npm run start:block",
+    "start": "npm run start:settings && npm run start:block && npm run start:customizer",
     "start:settings": "wp-scripts start src/settings/index.js --output-path=assets/admin/ ",
     "start:block": "wp-scripts start src/block/index.js --output-path=assets/block/",
+    "start:customizer": "npm run start:customizer-controls && npm run start:customizer-preview",
+    "start:customizer-controls": "wp-scripts start src/customizer/controls/index.js --output-path=assets/customizer/controls/",
+    "start:customizer-preview": "wp-scripts start src/customizer/preview/index.js --output-path=assets/customizer/preview/",
     "packages-update": "wp-scripts packages-update"
   },
   "dependencies": {
