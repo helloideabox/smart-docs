@@ -162,6 +162,20 @@ class Plugin {
 	public $permalinks = null;
 
 	/**
+	 * Instance.
+	 *
+	 * Holds the Customizer Class instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @static
+	 *
+	 * @var customizer
+	 */
+
+	public $customizer = null;
+
+	/**
 	 * Clone.
 	 *
 	 * Disable class cloning and throw an error on object clone.
@@ -206,6 +220,8 @@ class Plugin {
 		add_action( 'init', array( $this, 'init' ), 0 );
 
 		add_action( 'admin_init', array( $this, 'admin_init' ), 0 );
+
+		add_action( 'wp_head', array( $this, 'render_frontend_styles' ) );
 	}
 
 	/**
@@ -244,10 +260,11 @@ class Plugin {
 	 */
 	private function init_components() {
 
-		$this->cpt       = new Cpt();
-		$this->admin     = new Admin();
-		$this->templates = new Templates();
-		$this->search    = new Search();
+		$this->cpt        = new Cpt();
+		$this->admin      = new Admin();
+		$this->templates  = new Templates();
+		$this->search     = new Search();
+		$this->customizer = new Customizer();
 
 		// Action to include script.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -257,11 +274,16 @@ class Plugin {
 		$this->doc_cat_widget = new Cat_Widget();
 
 		// Load Utilities.
-		include_once SMART_DOCS_PATH . '/includes/utils.php';
+		include_once SMART_DOCS_PATH . 'includes/utils.php';
+
+		// Load template functions.
+		if ( ! is_admin() ) {
+			include_once SMART_DOCS_PATH . 'includes/template-functions.php';
+			include_once SMART_DOCS_PATH . 'includes/template-hooks.php';
+		}
 
 		// Load shortcode.
-
-		include_once SMART_DOCS_PATH . 'templates/smart-docs-shortcode.php';
+		include_once SMART_DOCS_PATH . 'includes/shortcode.php';
 
 	}
 
@@ -317,6 +339,42 @@ class Plugin {
 	 */
 	public function enqueue_scripts() {
 		global $post_type;
+	}
+
+	/**
+	 * Render Frontend Styles
+	 *
+	 * @return void
+	 */
+	public function render_frontend_styles() {
+		$archive_title_color                = get_theme_mod( 'smartdocs_archive_title_color' );
+		$archive_item_list_title_color      = get_theme_mod( 'smartdocs_archive_list_item_title_color' );
+		$archive_item_list_post_count_color = get_theme_mod( 'smartdocs_archive_list_item_post_count_color' );
+		$archive_list_item_bg_color         = get_theme_mod( 'smartdocs_archive_list_item_bg_color' );
+		?>
+		<style type="text/css">
+			.sd-archive-post-head {
+				<?php if ( ! empty( $archive_title_color ) ) { ?>
+					color: <?php echo $archive_title_color; ?>;
+				<?php } ?>
+			}
+			.sd-archive-cat-title {
+				<?php if ( ! empty( $archive_item_list_title_color ) ) { ?>
+					color: <?php echo $archive_item_list_title_color; ?>;
+				<?php } ?>
+			}
+			.sd-archive-post-count {
+				<?php if ( ! empty( $archive_item_list_post_count_color ) ) { ?>
+					color: <?php echo $archive_item_list_post_count_color; ?>;
+				<?php } ?>
+			}
+			a.sd-sub-archive-categories-post {
+				<?php if ( ! empty( $archive_list_item_bg_color ) ) { ?>
+					background-color: <?php echo $archive_list_item_bg_color; ?>;
+				<?php } ?>
+			}
+		</style>
+		<?php
 	}
 }
 
