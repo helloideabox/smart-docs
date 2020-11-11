@@ -7,7 +7,7 @@ use SmartDocs\Styler_Customizer_Control;
 		$wp_customize->add_section(
 			'smartdocs_homepage_settings',
 			array(
-				'title'    => __( 'Homepage', 'smart-docs' ),
+				'title'    => __( 'Docs Archive', 'smart-docs' ),
 				'priority' => 90,
 			)
 		);
