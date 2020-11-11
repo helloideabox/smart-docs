@@ -355,22 +355,22 @@ class Plugin {
 		<style type="text/css">
 			.sd-archive-post-head {
 				<?php if ( ! empty( $archive_title_color ) ) { ?>
-					color: <?php echo $archive_title_color; ?>;
+					color: <?php echo esc_attr( $archive_title_color ); ?>;
 				<?php } ?>
 			}
 			.sd-archive-cat-title {
 				<?php if ( ! empty( $archive_item_list_title_color ) ) { ?>
-					color: <?php echo $archive_item_list_title_color; ?>;
+					color: <?php echo esc_attr( $archive_item_list_title_color ); ?>;
 				<?php } ?>
 			}
 			.sd-archive-post-count {
 				<?php if ( ! empty( $archive_item_list_post_count_color ) ) { ?>
-					color: <?php echo $archive_item_list_post_count_color; ?>;
+					color: <?php echo esc_attr( $archive_item_list_post_count_color ); ?>;
 				<?php } ?>
 			}
 			a.sd-sub-archive-categories-post {
 				<?php if ( ! empty( $archive_list_item_bg_color ) ) { ?>
-					background-color: <?php echo $archive_list_item_bg_color; ?>;
+					background-color: <?php echo esc_attr( $archive_list_item_bg_color ); ?>;
 				<?php } ?>
 			}
 		</style>
