@@ -34,6 +34,30 @@ use SmartDocs\Styler_Customizer_Control;
 		);
 
 		$wp_customize->add_setting(
+			'smartdocs_archive_hero_section_bg',
+			array(
+				'default'    => 'color',
+				'type'       => 'option',
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			'smartdocs_archive_hero_section_bg_control',
+			array(
+				'label'       => __( 'Background Type', 'smart-docs' ),
+				'description' => __( 'Select background type.', 'smart-docs' ),
+				'section'     => 'smartdocs_homepage_settings',
+				'settings'    => 'smartdocs_archive_hero_section_bg',
+				'type'        => 'select',
+				'choices'     => array(
+					'color' => __( 'Color', 'smart-docs' ),
+					'image' => __( 'Image', 'smart-docs' ),
+				),
+			)
+		);
+
+		$wp_customize->add_setting(
 			'smartdocs_archive_title_color',
 			array(
 				'default'    => '',
@@ -59,6 +83,27 @@ use SmartDocs\Styler_Customizer_Control;
 		);
 
 		$wp_customize->add_setting(
+			'smartdocs_archive_title_bg_image',
+			array(
+				'default'    => '',
+				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				'smartdocs_archive_title_bg_image_control',
+				array(
+					'label'    => __( 'Background Image', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_title_bg_image',
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
 			'smartdocs_archive_cat_list_section',
 			array(
 				'default'    => __( 'Grid Items', 'smart-docs' ),
@@ -76,6 +121,50 @@ use SmartDocs\Styler_Customizer_Control;
 					'settings' => 'smartdocs_archive_cat_list_section',
 					'type'     => 'styler-section',
 				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_list_layout_section',
+			array(
+				'default'    => '',
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_list_layout_section_control',
+				array(
+					'label'    => __( 'Layout', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_list_layout_section',
+					'type'     => 'styler-sub-section',
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_layout_setting',
+			array(
+				'default'    => 'list',
+				'type'       => 'option',
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			'smartdocs_archive_layout_setting_control',
+			array(
+				'description' => __( 'Select layout type.', 'smart-docs' ),
+				'section'     => 'smartdocs_homepage_settings',
+				'settings'    => 'smartdocs_archive_layout_setting',
+				'type'        => 'select',
+				'choices'     => array(
+					'list' => __( 'List', 'smart-docs' ),
+					'grid' => __( 'Grid', 'smart-docs' ),
+				),
 			)
 		);
 
@@ -380,6 +469,192 @@ use SmartDocs\Styler_Customizer_Control;
 					'type'     => 'styler-color',
 					'choices'  => array(
 						'alpha' => true,
+					),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_grid_settings_divider',
+			array(
+				'default'    => '',
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_grid_settings_divider_control',
+				array(
+					'label'    => __( 'Background Color', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_grid_settings_divider',
+					'type'     => 'styler-line',
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_item_spacing',
+			array(
+				'default'    => 14,
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_item_spacing_control',
+				array(
+					'label'    => __( 'Spacing (Desktop)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_item_spacing',
+					'type'     => 'styler-slider',
+					'classes'  => array( 'desktop' ),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_item_spacing_tablet',
+			array(
+				'default'    => 14,
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_item_spacing_control_tablet',
+				array(
+					'label'    => __( 'Spacing (Tablet)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_item_spacing_tablet',
+					'type'     => 'styler-slider',
+					'classes'  => array( 'tablet' ),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_item_spacing_mobile',
+			array(
+				'default'    => 14,
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_item_spacing_mobile_control',
+				array(
+					'label'    => __( 'Spacing (Mobile)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_item_spacing_mobile',
+					'type'     => 'styler-slider',
+					'classes'  => array( 'mobile' ),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_item_padding',
+			array(
+				'default'    => array(
+					'top'    => 14,
+					'bottom' => 15,
+					'left'   => 13,
+					'right'  => 33,
+				),
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_item_padding_control',
+				array(
+					'label'    => __( 'Padding (Desktop)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_item_padding',
+					'type'     => 'styler-dimension',
+					'classes'  => array( 'desktop' ),
+					'choices'  => array(
+						'top'    => __( 'Top', 'smart-docs' ),
+						'right'  => __( 'Right', 'smart-docs' ),
+						'bottom' => __( 'Bottom', 'smart-docs' ),
+						'left'   => __( 'Left', 'smart-docs' ),
+					),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_item_padding_tablet',
+			array(
+				'default'    => array(
+					'top'    => 14,
+					'bottom' => 15,
+					'left'   => 13,
+					'right'  => 33,
+				),
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_item_padding_tablet_control',
+				array(
+					'label'    => __( 'Padding (Tablet)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_item_padding_tablet',
+					'type'     => 'styler-dimension',
+					'classes'  => array( 'tablet' ),
+					'choices'  => array(
+						'top'    => __( 'Top', 'smart-docs' ),
+						'right'  => __( 'Right', 'smart-docs' ),
+						'bottom' => __( 'Bottom', 'smart-docs' ),
+						'left'   => __( 'Left', 'smart-docs' ),
+					),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_item_padding_mobile',
+			array(
+				'default'    => array(
+					'top'    => 14,
+					'bottom' => 15,
+					'left'   => 13,
+					'right'  => 33,
+				),
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_item_padding_mobile_control',
+				array(
+					'label'    => __( 'Padding (Mobile)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_item_padding_mobile',
+					'type'     => 'styler-dimension',
+					'classes'  => array( 'mobile' ),
+					'choices'  => array(
+						'top'    => __( 'Top', 'smart-docs' ),
+						'right'  => __( 'Right', 'smart-docs' ),
+						'bottom' => __( 'Bottom', 'smart-docs' ),
+						'left'   => __( 'Left', 'smart-docs' ),
 					),
 				)
 			)

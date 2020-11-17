@@ -122,6 +122,10 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 				case 'styler-section':
 					$this->render_section();
 					break;
+
+				case 'styler-sub-section':
+					$this->render_sub_section();
+					break;
 			}
 		}
 
@@ -183,7 +187,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			echo '<input class="styler-range-input" type="range" min="' . $this->choices['min'] . '" max="' . $this->choices['max'] . '" step="' . $this->choices['step'] . '" value="' . $this->value() . '"';
 			echo 'data-original="' . $this->settings['default']->default . '">';
 			echo '<div class="styler-range-value">';
-			echo '<input type="number" id="styler-range-value-input" value="' . $this->value() . '"';
+			echo '<input type="number" class="styler-range-value-input" value="' . $this->value() . '"';
 			$this->link();
 			echo '>';
 			echo '</div>';
@@ -296,6 +300,19 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		protected function render_section() {
 			?>
 			<div class="styler-section-title"><?php $this->render_content_title(); ?></div>
+			<?php
+		}
+
+		/**
+		 * Renders the sub-section control.
+		 *
+		 * @since 1.0.0
+		 * @access protected
+		 * @return void
+		 */
+		protected function render_sub_section() {
+			?>
+			<div class="styler-sub-section-title"><?php $this->render_content_title(); ?></div>
 			<?php
 		}
 

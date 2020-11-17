@@ -365,7 +365,7 @@
 				var $slider = $(this).closest("label").find(".styler-range-input"),
 					$text_input = $(this)
 						.closest("label")
-						.find("#styler-range-value-input"),
+						.find(".styler-range-value-input"),
 					value = $text_input.val(),
 					default_value = $slider.data("original");
 
@@ -383,7 +383,7 @@
 				var $slider = $(this),
 					$text_input = $(this)
 						.closest("label")
-						.find("#styler-range-value-input");
+						.find(".styler-range-value-input");
 				(value = $slider.val()), (min = $slider.attr("min"));
 
 				$slider.on("input", function () {
@@ -424,7 +424,7 @@
 								.find(".styler-range-input-" + $mode),
 							$text_input = $(this)
 								.closest("label")
-								.find("#styler-range-value-input-" + $mode),
+								.find(".styler-range-value-input-" + $mode),
 							value = $text_input.val(),
 							default_value = $slider.data("original");
 
@@ -445,11 +445,10 @@
 					_this = this;
 
 					$mode.forEach(function ($mode) {
-
 						var $slider = $(_this),
 							$text_input = $(_this)
 								.closest("label")
-								.find("#styler-range-value-input" + $mode);
+								.find(".styler-range-value-input" + $mode);
 						(value = $slider.val()), (min = $slider.attr("min"));
 
 						$slider.on("input", function () {

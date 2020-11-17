@@ -304,11 +304,12 @@ class Customizer {
 		}
 
 		$index_js     = 'assets/customizer/controls/index.js';
+		$index_js_src = 'src/customizer/controls/index.js';
 		$script_asset = require $script_asset_path;
 
 		wp_enqueue_script(
 			'sd-customizer-controls',
-			SMART_DOCS_URL . $index_js,
+			SMART_DOCS_URL . $index_js_src,
 			array_push( $script_asset['dependencies'], 'customize-controls' ),
 			$script_asset['version'],
 			true
