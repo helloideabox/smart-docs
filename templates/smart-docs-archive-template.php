@@ -23,7 +23,7 @@ do_action( 'smartdocs_before_main_content' );
 <header class="smartdocs-archive-header">
 	<div class="smartdocs-inner">
 		<?php if ( apply_filters( 'smartdocs_show_archive_title', true ) ) : ?>
-			<h1 class=""><?php echo esc_html( smartdocs_archive_title() ); ?></h1>
+			<h1 class="smartdocs-docs-archive-title"><?php echo esc_html( smartdocs_archive_title() ); ?></h1>
 		<?php endif; ?>
 
 		<?php
