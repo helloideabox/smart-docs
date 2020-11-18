@@ -269,10 +269,11 @@ class Customizer {
 
 		$index_js     = 'assets/customizer/preview/index.js';
 		$script_asset = require $script_asset_path;
+		$index_js_src = 'src/customizer/preview/index.js';
 
 		wp_enqueue_script(
 			'sd-customizer-preview',
-			SMART_DOCS_URL . $index_js,
+			SMART_DOCS_URL . $index_js_src,
 			array_push( $script_asset['dependencies'], 'customize-preview' ),
 			$script_asset['version'],
 			true

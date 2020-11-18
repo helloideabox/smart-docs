@@ -11,6 +11,8 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
+get_style_depends( 'smartdocs-archive', 'archive' );
+
 /**
  * Hook: smartdocs_before_main_content.
  *
@@ -55,13 +57,24 @@ if ( have_posts() ) {
 		'hide_empty' => apply_filters( 'smartdocs_archive_hide_empty_categories', false ),
 	);
 
+	/**
+	 * Set layout mode
+	 */
+	$layout = get_theme_mod( 'smartdocs_archive_layout_setting' );
+
+	if ( empty( $layout ) ) {
+		$layout = 'list';
+	}
+
+	$layoutFunction = 'smartdocs_categories_' . $layout . '_layout';
+
 	$terms = get_terms( 'smartdocs_category', $args );
 	?>
 
 		<?php if ( $terms ) : ?>
 
 		<div class="sd-archive-categories-wrap">
-			<div class="smartdocs-inner">
+			<div class="smartdocs-inner smartdocs-cat-<?php echo esc_html( $layout ); ?>-layout">
 				<div class="smartdocs-archive-categories">
 			<?php
 			// Looping through all the terms.
@@ -69,26 +82,7 @@ if ( have_posts() ) {
 				// Checking if they have parent or not.
 				if ( 0 === $t->parent ) :
 					?>
-
-				<div class="sd-archive-post">
-					<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="sd-sub-archive-categories-post">
-						<h4 class="sd-archive-cat-title">
-							<?php echo esc_html( $t->name ); ?>
-						</h4>
-						<p class="sd-archive-post-count">
-							<?php
-							// Checking if the Article is greter than 0 or 1.
-							if ( 0 === $t->count ) {
-								echo esc_html( $t->count ) . ' Article';
-							} else {
-								/* translators: %s: search term */
-								$article = sprintf( _n( '%d Article', '%d Articles', wp_get_postcount( $t->term_id, $t->taxonomy ), 'smart-docs' ), number_format_i18n( wp_get_postcount( $t->term_id, $t->taxonomy ) ) );
-								echo esc_html( $article );
-							}
-							?>
-						</p>
-					</a>
-				</div>
+						<?php $layoutFunction( $t ); ?>
 
 					<?php
 				endif;

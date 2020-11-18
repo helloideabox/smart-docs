@@ -384,14 +384,14 @@
 					$text_input = $(this)
 						.closest("label")
 						.find(".styler-range-value-input");
+
 				(value = $slider.val()), (min = $slider.attr("min"));
 
 				$slider.on("input", function () {
 					value = $slider.val();
-					console.log(value);
 					$text_input.val(value);
 				});
-
+				
 				$text_input.on("keyup change", function () {
 					$slider.val($text_input.val());
 					$slider.change();

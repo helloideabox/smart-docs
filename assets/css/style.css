@@ -52,8 +52,6 @@
 
 .smartdocs-archive-categories {
 	margin-top: 30px;
-	display: flex;
-	flex-wrap: wrap;
 }
 
 .sd-sub-archive-categories-post {
@@ -67,6 +65,28 @@
 	text-align: center;
 	text-decoration: none;
 	border-radius: 5px;
+}
+
+.smartdocs-category.layout-list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.smartdocs-category.layout-list .category-title {
+    margin-right: 2em;
+    width: 75%;
+    border: 1px solid red;
+}
+
+.smartdocs-category.layout-list .category-count {
+    width: 25%;
+    border: 1px solid blue;
+    padding: 20px;
+    align-items: center !important;
+    justify-content:center !important;
+    align-content: center !important;
+    text-align: center;
 }
 
 .sd-sub-archive-categories-post:hover {

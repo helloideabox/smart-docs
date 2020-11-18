@@ -2,7 +2,7 @@
 
 use SmartDocs\Styler_Customizer_Control;
 
-		// Docs page Settings
+		// Docs page Settings.
 
 		$wp_customize->add_section(
 			'smartdocs_homepage_settings',
@@ -34,26 +34,70 @@ use SmartDocs\Styler_Customizer_Control;
 		);
 
 		$wp_customize->add_setting(
-			'smartdocs_archive_hero_section_bg',
+			'smartdocs_archive_hero_bg_type',
 			array(
 				'default'    => 'color',
-				'type'       => 'option',
 				'capability' => 'edit_theme_options',
 			)
 		);
 
 		$wp_customize->add_control(
-			'smartdocs_archive_hero_section_bg_control',
+			'smartdocs_archive_hero_bg_type_control',
 			array(
 				'label'       => __( 'Background Type', 'smart-docs' ),
 				'description' => __( 'Select background type.', 'smart-docs' ),
 				'section'     => 'smartdocs_homepage_settings',
-				'settings'    => 'smartdocs_archive_hero_section_bg',
+				'settings'    => 'smartdocs_archive_hero_bg_type',
 				'type'        => 'select',
 				'choices'     => array(
 					'color' => __( 'Color', 'smart-docs' ),
 					'image' => __( 'Image', 'smart-docs' ),
 				),
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_hero_background_color',
+			array(
+				'default'    => '#c0c0c0',
+				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_hero_background_color_control',
+				array(
+					'label'    => __( 'Background Color', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_hero_background_color',
+					'type'     => 'styler-color',
+					'choices'  => array(
+						'alpha' => true,
+					),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_hero_bg_image',
+			array(
+				'default'    => '',
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Image_Control(
+				$wp_customize,
+				'smartdocs_archive_hero_bg_image_control',
+				array(
+					'label'    => __( 'Background Image', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_hero_bg_image',
+				)
 			)
 		);
 
@@ -78,27 +122,6 @@ use SmartDocs\Styler_Customizer_Control;
 					'choices'  => array(
 						'alpha' => true,
 					),
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'smartdocs_archive_title_bg_image',
-			array(
-				'default'    => '',
-				'capability' => 'edit_theme_options',
-				'transport'  => 'postMessage',
-			)
-		);
-
-		$wp_customize->add_control(
-			new WP_Customize_Image_Control(
-				$wp_customize,
-				'smartdocs_archive_title_bg_image_control',
-				array(
-					'label'    => __( 'Background Image', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
-					'settings' => 'smartdocs_archive_title_bg_image',
 				)
 			)
 		);
@@ -149,7 +172,6 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_archive_layout_setting',
 			array(
 				'default'    => 'list',
-				'type'       => 'option',
 				'capability' => 'edit_theme_options',
 			)
 		);
@@ -167,6 +189,102 @@ use SmartDocs\Styler_Customizer_Control;
 				),
 			)
 		);
+
+		/**
+		 * Grid Settings
+		 */
+		$wp_customize->add_setting(
+			'smartdocs_archive_columns',
+			array(
+				'default'    => 3,
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_columns_control',
+				array(
+					'label'    => __( 'Grid Columns (Desktop)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_columns',
+					'type'     => 'styler-slider',
+					'classes'  => array( 'desktop', 'layout-grid' ),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_columns_tablet',
+			array(
+				'default'    => 2,
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_columns_tablet_control',
+				array(
+					'label'    => __( 'Grid Columns (Tablet)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_columns_tablet',
+					'type'     => 'styler-slider',
+					'classes'  => array( 'tablet', 'layout-grid' ),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_columns_mobile',
+			array(
+				'default'    => 1,
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_columns_control_mobile',
+				array(
+					'label'    => __( 'Grid Columns (Mobile)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_columns_mobile',
+					'type'     => 'styler-slider',
+					'classes'  => array( 'mobile', 'layout-grid' ),
+				)
+			)
+		);
+
+		$wp_customize->add_setting(
+			'smartdocs_archive_columns_gap',
+			array(
+				'default'    => 20,
+				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage',
+			)
+		);
+
+		$wp_customize->add_control(
+			new Styler_Customizer_Control(
+				$wp_customize,
+				'smartdocs_archive_columns_gap_control',
+				array(
+					'label'    => __( 'Gap (px)', 'smart-docs' ),
+					'section'  => 'smartdocs_homepage_settings',
+					'settings' => 'smartdocs_archive_columns_gap',
+					'type'     => 'styler-slider',
+					'classes'  => array( 'layout-grid' ),
+				)
+			)
+		);
+
+		/**
+		 * Grid Settings End
+		 */
 
 		$wp_customize->add_setting(
 			'smartdocs_archive_list_item_title_wrapper',

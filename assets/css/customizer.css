@@ -234,3 +234,15 @@
 .customize-control.smart-docs.mobile {
 	display: none;
 }
+
+/* Utility Classes */
+
+/* Dividers for controls */
+
+.sd-divider-top {
+	border-top: 1px solid #c0c0c0;
+}
+
+..sd-divider-bottom {
+	border-bottom: 1px solid #c0c0c0;
+}

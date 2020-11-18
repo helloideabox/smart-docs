@@ -185,45 +185,41 @@ function setPreview(setting) {
 		 * Hero Section Background Control Controller
 		 */
 		_initBackgroundControl: function () {
-			var val = api.settings.settings.smartdocs_archive_hero_section_bg.value;
+			var val = api.settings.settings.smartdocs_archive_hero_bg_type.value;
 
 			if ("color" === val) {
-				$("#customize-control-smartdocs_archive_title_color_control").css(
-					"display",
-					"list-item"
-				);
-				$("#customize-control-smartdocs_archive_title_bg_image_control").css(
+				$(
+					"#customize-control-smartdocs_archive_hero_background_color_control"
+				).css("display", "list-item");
+				$("#customize-control-smartdocs_archive_hero_bg_image_control").css(
 					"display",
 					"none"
 				);
 			} else if ("image" === val) {
-				$("#customize-control-smartdocs_archive_title_color_control").css(
-					"display",
-					"none"
-				);
-				$("#customize-control-smartdocs_archive_title_bg_image_control").css(
+				$(
+					"#customize-control-smartdocs_archive_hero_background_color_control"
+				).css("display", "none");
+				$("#customize-control-smartdocs_archive_hero_bg_image_control").css(
 					"display",
 					"list-item"
 				);
 			}
 
-			api("smartdocs_archive_hero_section_bg", function (value) {
+			api("smartdocs_archive_hero_bg_type", function (value) {
 				value.bind(function (newValue) {
 					if ("color" === newValue) {
-						$("#customize-control-smartdocs_archive_title_color_control").css(
-							"display",
-							"list-item"
-						);
 						$(
-							"#customize-control-smartdocs_archive_title_bg_image_control"
+							"#customize-control-smartdocs_archive_hero_background_color_control"
+						).css("display", "list-item");
+						$(
+							"#customize-control-smartdocs_archive_hero_bg_image_control"
 						).css("display", "none");
 					} else if ("image" === newValue) {
-						$("#customize-control-smartdocs_archive_title_color_control").css(
-							"display",
-							"none"
-						);
 						$(
-							"#customize-control-smartdocs_archive_title_bg_image_control"
+							"#customize-control-smartdocs_archive_hero_background_color_control"
+						).css("display", "none");
+						$(
+							"#customize-control-smartdocs_archive_hero_bg_image_control"
 						).css("display", "list-item");
 					}
 				});
