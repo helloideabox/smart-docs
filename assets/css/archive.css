@@ -1,0 +1,57 @@
+/** Grid Layout **/
+
+.smartdocs-archive-layout-grid {
+	margin-right: 15%;
+    margin-left: 15%;
+}
+
+.smartdocs-archive-layout-grid .smartdocs-category a {
+	border: 1px solid #e1e1e1;
+	border-radius: 3px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	min-height: 250px;
+	text-decoration: none;
+	transition: border 0.2s linear;
+}
+
+.smartdocs-archive-layout-grid .smartdocs-category a:hover {
+	border-color: #c0c0c0;
+}
+
+.smartdocs-archive-layout-grid .smartdocs-category .smartdocs-cat-title-description-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 3em;
+}
+
+.smartdocs-cat-title-description-wrapper .smartdocs-category-title {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.smartdocs-cat-title-description-wrapper .smartdocs-category-description {
+	color: #c0c0c0;
+}
+
+.smartdocs-archive-layout-grid .smartdocs-posts-info {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	border-top: 1px solid #e1e1e1;
+	padding: 25px 40px;
+	margin-top: auto;
+}
+
+.smartdocs-posts-info .smartdocs-category-posts-count {
+	font-weight: bold;
+	color: #2d2d2d;
+}
+
+.smartdocs-posts-info .smartdocs-category-view-all {
+	font-weight: bold;
+	color: #2d2d2d;
+}
