@@ -88,7 +88,7 @@ function smartdocs_render_categories( $args ) {
 		return '';
 	}
 
-	$columns = explode( ',', $args['columns'] );
+	$columns    = explode( ',', $args['columns'] );
 	$columns_lg = trim( $columns[0] );
 	$columns_lg = empty( absint( $columns_lg ) ) ? '3' : $columns_lg; // In case user entered string instead of number.
 	$columns_md = isset( $columns[1] ) && ! empty( trim( $columns[1] ) ) ? trim( $columns[1] ) : $columns_lg;
@@ -107,10 +107,18 @@ function smartdocs_render_categories( $args ) {
 			<div class="smartdocs-category">
 				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
 					<div class="smartdocs-cat-title-description-wrapper">
+							<?php
+								$smartdocs_category_image = get_category_thumbnail_image_url( $term->term_id );
+
+							if ( is_array( $smartdocs_category_image ) && ! empty( $smartdocs_category_image ) ) :
+								?>
+								<img src="<?php echo $smartdocs_category_image[0]; ?>" alt="<?php echo $term->name; ?>" width="100px">
+
+							<?php endif; ?>
 						<<?php echo esc_html( $args['title_tag'] ); ?> class="smartdocs-category-title"><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
-						<?php if( ! empty( $term->description)) : ?>
+						<?php if ( ! empty( $term->description ) ) : ?>
 							<span class="smartdocs-category-description">
-								<?php echo esc_html($term->description) ?>
+								<?php echo esc_html( $term->description ); ?>
 							</span>
 						<?php endif; ?>
 					</div>
@@ -119,7 +127,7 @@ function smartdocs_render_categories( $args ) {
 							<span class="smartdocs-posts-count"><?php echo esc_html( $term->count ); ?></span>
 							<span class="smartdocs-posts-count-text"><?php echo esc_html( _n( 'Article', 'Articles', $term->count, 'smart-docs' ) ); ?></span>
 						</div>
-						<div class="smartdocs-category-view-all"><?php echo __( 'View All', 'smart-docs') ?></div>
+						<div class="smartdocs-category-view-all"><?php echo __( 'View All', 'smart-docs' ); ?></div>
 					</div>
 				</a>
 			</div>

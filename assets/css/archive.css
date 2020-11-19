@@ -2,7 +2,7 @@
 
 .smartdocs-archive-layout-grid {
 	margin-right: 15%;
-    margin-left: 15%;
+	margin-left: 15%;
 }
 
 .smartdocs-archive-layout-grid .smartdocs-category a {
@@ -21,7 +21,9 @@
 	border-color: #c0c0c0;
 }
 
-.smartdocs-archive-layout-grid .smartdocs-category .smartdocs-cat-title-description-wrapper {
+.smartdocs-archive-layout-grid
+	.smartdocs-category
+	.smartdocs-cat-title-description-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -35,6 +37,7 @@
 
 .smartdocs-cat-title-description-wrapper .smartdocs-category-description {
 	color: #c0c0c0;
+	text-align: center;
 }
 
 .smartdocs-archive-layout-grid .smartdocs-posts-info {
