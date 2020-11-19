@@ -389,7 +389,7 @@
 
 				$slider.on("input", function () {
 					value = $slider.val();
-					$text_input.val(value);
+					$text_input.val(value).trigger('change');
 				});
 				
 				$text_input.on("keyup change", function () {
