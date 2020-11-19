@@ -8,7 +8,7 @@ export default function Layout() {
 
 	return (
 		<TabPanel
-			className="sd-layout-settings-tabs flex"
+			className="smartdocs-layout-settings-tabs flex"
 			activeClass="is-active"
 			orientation="vertical"
 			tabs={[

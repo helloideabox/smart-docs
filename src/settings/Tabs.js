@@ -6,11 +6,11 @@ import Search from "./tabs/Search";
 
 export default function Tabs() {
 
-	const tabClasses = "sd-setting-primary-tab px-4 text-sm";
+	const tabClasses = "smartdocs-setting-primary-tab px-4 text-sm";
 	
 	return (
 		<TabPanel
-			className="sd-settings-tabs m-5 col-span-2 row-span-2 bg-white"
+			className="smartdocs-settings-tabs m-5 col-span-2 row-span-2 bg-white"
 			activeClass="is-active"
 			tabs={[
 				{

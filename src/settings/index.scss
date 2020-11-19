@@ -12,21 +12,21 @@
 
 /* Main Tabs */
 
-.sd-settings-tabs .components-tab-panel__tabs-item.is-active {
+.smartdocs-settings-tabs .components-tab-panel__tabs-item.is-active {
 	@apply font-bold;
 }
 
-.sd-settings-tabs .components-tab-panel__tabs-item {
+.smartdocs-settings-tabs .components-tab-panel__tabs-item {
 	@apply font-normal;
 }
 
-.sd-settings-tabs {
+.smartdocs-settings-tabs {
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
 		rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
 
 	height: fit-content;
 }
-.sd-settings-tabs > .components-tab-panel__tabs {
+.smartdocs-settings-tabs > .components-tab-panel__tabs {
 	border-bottom: 1px solid rgb(226, 228, 231);
 }
 
@@ -64,25 +64,25 @@
 
 /* Layout Tab */
 
-.sd-layout-settings-tabs .components-tab-panel__tabs {
+.smartdocs-layout-settings-tabs .components-tab-panel__tabs {
 	@apply flex-col;
 	background-color: #f5f5f5;
 	width: 150px;
 }
 
-.sd-layout-settings-tabs .components-tab-panel__tabs-item.is-active {
+.smartdocs-layout-settings-tabs .components-tab-panel__tabs-item.is-active {
 	box-shadow: none !important;
 	background-color: #fff;
 	border-left: 5px solid var(--wp-admin-theme-color);
 	color: var(--wp-admin-theme-color);
 }
 
-.sd-layout-settings-tabs .components-tab-panel__tabs button {
+.smartdocs-layout-settings-tabs .components-tab-panel__tabs button {
 	@apply text-center;
 	@apply whitespace-no-wrap;
 }
 
-.sd-layout-settings-tabs .components-tab-panel__tab-content {
+.smartdocs-layout-settings-tabs .components-tab-panel__tab-content {
 	@apply w-full;
 	@apply p-5;
 }

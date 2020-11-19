@@ -44,6 +44,6 @@ import { render } from "@wordpress/element";
 setTimeout(() => {
 	render(
 		<App hideLoader={hideLoader} showLoader={showLoader} />,
-		document.getElementById("sd-setting-root")
+		document.getElementById("smartdocs-setting-root")
 	);
 }, 0);
