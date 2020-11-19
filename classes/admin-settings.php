@@ -64,17 +64,17 @@ class Admin {
 	 * @return void
 	 */
 	public function render_options_page() {
-		echo '<div id="sd-setting-root"></div>';
+		echo '<div id="smartdocs-setting-root"></div>';
 			echo '<div class="loader">
-			<div class="sd-settings-pre-loader">
-				<div class="sd-loader-header mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
+			<div class="smartdocs-settings-pre-loader">
+				<div class="smartdocs-loader-header mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
 					<div class="header-loader"></div>
 				</div>
-				<div class="sd-loader-body container mx-auto grid grid-cols-3 grid-rows-2 w-full">
-					<div class="sd-loader-panel m-5 col-span-2 row-span-2 p-5 bg-white">
+				<div class="smartdocs-loader-body container mx-auto grid grid-cols-3 grid-rows-2 w-full">
+					<div class="smartdocs-loader-panel m-5 col-span-2 row-span-2 p-5 bg-white">
 						<div class="panel-loader"></div>
 					</div>
-					<div class="sd-loader-side-panel m-5 col-span-1">
+					<div class="smartdocs-loader-side-panel m-5 col-span-1">
 						<div class="side-panel-loader"></div>
 					</div>
 				</div>
@@ -476,7 +476,7 @@ class Admin {
 		$script_asset = require $script_asset_path;
 
 		wp_enqueue_script(
-			'sd-settings',
+			'smartdocs-settings',
 			SMART_DOCS_URL . $index_js,
 			$script_asset['dependencies'],
 			$script_asset['version'],
@@ -486,7 +486,7 @@ class Admin {
 		$editor_css = 'assets/admin/index.css';
 
 		wp_enqueue_style(
-			'sd-settings-style',
+			'smartdocs-settings-style',
 			SMART_DOCS_URL . $editor_css,
 			array( 'wp-components' ),
 			filemtime( "$dir/$editor_css" )
@@ -516,7 +516,7 @@ class Admin {
 
 		// Localising the script or creating global variable in script to send the number of post types created through ajax.
 		wp_localize_script(
-			'sd-settings',
+			'smartdocs-settings',
 			'sd_vars',
 			array(
 				'url'        => admin_url( 'admin-ajax.php' ),
