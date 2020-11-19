@@ -15,13 +15,13 @@ echo do_shortcode( '[smart_doc_wp_live_search]' );
 if ( have_posts() ) :
 	?>
 
-<div class="sd-wrap sd-single-post-wrap">
-	<div class="sd-single-post-container">
+<div class="smartdocs-wrap smartdocs-single-post-wrap">
+	<div class="smartdocs-single-post-container">
 		<?php while ( have_posts() ): the_post(); ?>
 
-		<div class="sd-single-post">		
-			<div class="sd-single-post-header">
-				<h1 class="sd-title"><?php the_title(); ?></h1>
+		<div class="smartdocs-single-post">		
+			<div class="smartdocs-single-post-header">
+				<h1 class="smartdocs-title"><?php the_title(); ?></h1>
 				<?php
 				if ( function_exists( 'yoast_breadcrumb' ) ) {
 					yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' );
@@ -29,7 +29,7 @@ if ( have_posts() ) :
 				?>
 			</div>
 
-			<div class="sd-single-post-content">
+			<div class="smartdocs-single-post-content">
 				<?php the_post_thumbnail(); ?>
 				<?php the_content(); ?>
 				<?php
@@ -38,7 +38,7 @@ if ( have_posts() ) :
 				if ( '1' === $is_last_updatsd_time_on ) {
 					?>
 
-					<div class="sd-single-post-last-update-time"><?php esc_attr_e( 'Updated on ' . get_the_date( 'F j, Y' ), 'smart-docs' ); ?></div>
+					<div class="smartdocs-single-post-last-update-time"><?php esc_attr_e( 'Updated on ' . get_the_date( 'F j, Y' ), 'smart-docs' ); ?></div>
 
 				<?php } ?>
 				<?php
@@ -63,8 +63,8 @@ if ( have_posts() ) :
 	if ( is_active_sidebar( 'smart-docs-sidebar-1' ) ) {
 		?>
 
-	<div class="sd-custom-widget-area">
-		<div class="sd-sidebar-main-content-area">
+	<div class="smartdocs-custom-widget-area">
+		<div class="smartdocs-sidebar-main-content-area">
 			<?php dynamic_sidebar( 'smart-docs-sidebar-1' ); ?>
 		</div>
 	</div>

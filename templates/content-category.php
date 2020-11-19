@@ -1,9 +1,9 @@
-<div class="sd-archive-post">
-	<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="sd-sub-archive-categories-post">
-		<h4 class="sd-archive-cat-title">
+<div class="smartdocs-archive-post">
+	<a href="<?php echo esc_html( get_term_link( $t ) ); ?>" class="smartdocs-sub-archive-categories-post">
+		<h4 class="smartdocs-archive-cat-title">
 			<?php echo esc_html( $t->name ); ?>
 		</h4>
-		<p class="sd-archive-post-count">
+		<p class="smartdocs-archive-post-count">
 			<?php
 			// Checking if the Article is greter than 0 or 1.
 			if ( 0 === $t->count ) {
