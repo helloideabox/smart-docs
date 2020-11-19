@@ -11,10 +11,10 @@
 		// Init a timeout variable to be used below
 		var timeout = null;
 		var data;
-		var search = $( '#sd-sq' );
+		var search = $( '#smartdocs-sq' );
 		var lastValue = ''
 
-		$( '#sd-sq' ).on( 'focus keyup click', function() {
+		$( '#smartdocs-sq' ).on( 'focus keyup click', function() {
 			
 			setTimeout( function() {
 				if ( search.val() ){
@@ -26,7 +26,7 @@
 
 						
 
-						$( '.sd-spinner' ).css( 'display', 'block' );
+						$( '.smartdocs-spinner' ).css( 'display', 'block' );
 
 						// Send data to server. 
 						data = 'action=sd_load_search_results&query=' + search.val() + '&security=' + sd_ajax_url.ajax_nonce;
@@ -34,15 +34,15 @@
 						timeout = setTimeout( function(){
 							// Ajax request.
 							$.post( sd_ajax_url.url, data, function( response ) {
-								$( '.sd-spinner' ).css( 'display', 'none' );
-								$( '#sd-live-search' ).css( 'display', 'block' );
-								$( '#sd-live-search' ).html( response );
+								$( '.smartdocs-spinner' ).css( 'display', 'none' );
+								$( '#smartdocs-live-search' ).css( 'display', 'block' );
+								$( '#smartdocs-live-search' ).html( response );
 							} );
 						}, 300 );
 						lastValue = search.val();
 					}
 				} else {
-					$( '#sd-live-search' ).html('');
+					$( '#smartdocs-live-search' ).html('');
 				}
 			}, 100 );
 		} );
@@ -56,13 +56,13 @@
 	 * search container.
 	 */
 	$( document ).ready( function() {
-		$( '.sd-search-form' ).append( '<div id="sd-live-search"></div>');
+		$( '.smartdocs-search-form' ).append( '<div id="smartdocs-live-search"></div>');
 
 		$( document ).on( 'click', function( e ) {
-			if( e.target.className === 'sd-search-list' || e.target.className === 'sd-search-field' ) {
-				$( '#sd-live-search' ).css( 'display', 'block' );
+			if( e.target.className === 'smartdocs-search-list' || e.target.className === 'smartdocs-search-field' ) {
+				$( '#smartdocs-live-search' ).css( 'display', 'block' );
 			} else {
-				$( '#sd-live-search' ).css( 'display', 'none' );
+				$( '#smartdocs-live-search' ).css( 'display', 'none' );
 			}
 		} );
 	} );
