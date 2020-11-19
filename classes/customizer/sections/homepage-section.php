@@ -420,7 +420,7 @@ use SmartDocs\Styler_Customizer_Control;
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_post_count_divider',
 					'type'     => 'styler-line',
-					'classes'  => array( 'smart-docs', 'sd-section-divider' ),
+					'classes'  => array( 'smart-docs', 'smartdocs-section-divider' ),
 				)
 			)
 		);
@@ -562,7 +562,7 @@ use SmartDocs\Styler_Customizer_Control;
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_bg_settings_divider',
 					'type'     => 'styler-line',
-					'classes'  => array( 'smart-docs', 'sd-section-divider' ),
+					'classes'  => array( 'smart-docs', 'smartdocs-section-divider' ),
 				)
 			)
 		);

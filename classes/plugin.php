@@ -393,17 +393,17 @@ class Plugin {
 					padding-top: 25px;
 					padding-bottom: 25px;
 			}
-			.sd-archive-cat-title {
+			.smartdocs-archive-cat-title {
 				<?php if ( ! empty( $archive_item_list_title_color ) ) { ?>
 					color: <?php echo esc_attr( $archive_item_list_title_color ); ?>;
 				<?php } ?>
 			}
-			.sd-archive-post-count {
+			.smartdocs-archive-post-count {
 				<?php if ( ! empty( $archive_item_list_post_count_color ) ) { ?>
 					color: <?php echo esc_attr( $archive_item_list_post_count_color ); ?>;
 				<?php } ?>
 			}
-			a.sd-sub-archive-categories-post {
+			a.smartdocs-sub-archive-categories-post {
 				<?php if ( ! empty( $archive_list_item_bg_color ) ) { ?>
 					background-color: <?php echo esc_attr( $archive_list_item_bg_color ); ?>;
 				<?php } ?>
@@ -412,7 +412,7 @@ class Plugin {
 			/**
 			 * Grid Styles
 			 */
-			.sd-archive-categories-wrap .smartdocs-cat-grid-layout .smartdocs-archive-categories {
+			.smartdocs-wrap .smartdocs-archive-layout-grid {
 				display: grid;
 				grid-template-columns: repeat(<?php echo empty( $grid_columns ) ? 3 : $grid_columns; ?>, 1fr);
 				gap: <?php echo empty( $grid_gap ) ? '20px' : ($grid_gap . 'px') ?>;
@@ -425,8 +425,8 @@ class Plugin {
 				display: none;
 			}
 			.smartdocs-search-input {
-				border: 1px solid #c0c0c0 !important;
-					height: 3em !important;
+				border: 1px solid #c0c0c0 ;
+					height: 3em;
 			}
 			.smartdocs-search {
 				border: 1px solid blue;

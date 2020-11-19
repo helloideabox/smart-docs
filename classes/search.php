@@ -52,14 +52,14 @@ class Search {
 		ob_start();
 		?>
 
-		<ul class="sd-search-result">
+		<ul class="smartdocs-search-result">
 
 			<?php
 			if ( $search_results->have_posts() ) :
 				while ( $search_results->have_posts() ) :
 					$search_results->the_post();
 					?>
-					<li class="sd-search-list">
+					<li class="smartdocs-search-list">
 						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 					</li>
 					<?php

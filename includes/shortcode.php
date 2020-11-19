@@ -28,16 +28,16 @@ function smartdocs_render_search_box( $atts, $content = null ) {
 	 * Load required script dependents.
 	 */
 
-	get_script_depends( 'sd-searchbox-script', 'search-script', array( 'jquery' ) );
+	get_script_depends( 'smartdocs-searchbox-script', 'search-script', array( 'jquery' ) );
 	wp_localize_script(
-		'sd-searchbox-script',
+		'smartdocs-searchbox-script',
 		'sd_ajax_url',
 		array(
 			'url'        => admin_url( 'admin-ajax.php' ),
 			'ajax_nonce' => wp_create_nonce( 'docs_search' ),
 		)
 	);
-	get_style_depends( 'sd-style', 'style' );
+	get_style_depends( 'smartdocs-style', 'style' );
 	?>
 	<div class="smartdocs-search">
 		<div class="smartdocs-search-inner">
@@ -66,6 +66,7 @@ add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
  * @return html
  */
 function smartdocs_render_categories( $args ) {
+
 	$args = shortcode_atts(
 		array(
 			'show_count' => true,
@@ -93,16 +94,32 @@ function smartdocs_render_categories( $args ) {
 	$columns_md = isset( $columns[1] ) && ! empty( trim( $columns[1] ) ) ? trim( $columns[1] ) : $columns_lg;
 	$columns_sm = isset( $columns[2] ) && ! empty( trim( $columns[2] ) ) ? trim( $columns[2] ) : $columns_md;
 
+	/**
+	 * Get settings
+	 */
+
+	$layout = get_theme_mod( 'smartdocs_archive_layout_setting', 'list' );
+
 	ob_start();
 	?>
-	<div class="smartdocs-categories col-lg-<?php echo $columns_lg; ?> col-md-<?php echo $columns_md; ?> col-sm-<?php echo $columns_sm; ?>">
+	<div class="smartdocs-categories smartdocs-archive-layout-<?php echo $layout; ?>">
 		<?php foreach ( $terms as $term ) : ?>
 			<div class="smartdocs-category">
 				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
-					<<?php echo esc_html( $args['title_tag'] ); ?>><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
+					<div class="smartdocs-cat-title-description-wrapper">
+						<<?php echo esc_html( $args['title_tag'] ); ?> class="smartdocs-category-title"><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
+						<?php if( ! empty( $term->description)) : ?>
+							<span class="smartdocs-category-description">
+								<?php echo esc_html($term->description) ?>
+							</span>
+						<?php endif; ?>
+					</div>
 					<div class="smartdocs-posts-info">
-						<span class="smartdocs-posts-count"><?php echo esc_html( $term->count ); ?></span>
-						<span class="smartdocs-posts-count-text"><?php echo esc_html( _n( 'Article', 'Articles', $term->count, 'smart-docs' ) ); ?></span>
+						<div class="smartdocs-category-posts-count">
+							<span class="smartdocs-posts-count"><?php echo esc_html( $term->count ); ?></span>
+							<span class="smartdocs-posts-count-text"><?php echo esc_html( _n( 'Article', 'Articles', $term->count, 'smart-docs' ) ); ?></span>
+						</div>
+						<div class="smartdocs-category-view-all"><?php echo __( 'View All', 'smart-docs') ?></div>
 					</div>
 				</a>
 			</div>

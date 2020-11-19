@@ -272,7 +272,7 @@ class Customizer {
 		$index_js_src = 'src/customizer/preview/index.js';
 
 		wp_enqueue_script(
-			'sd-customizer-preview',
+			'smartdocs-customizer-preview',
 			SMART_DOCS_URL . $index_js_src,
 			array_push( $script_asset['dependencies'], 'customize-preview' ),
 			$script_asset['version'],
@@ -285,7 +285,7 @@ class Customizer {
 		$editor_css = 'assets/customizer/index.css';
 
 		wp_enqueue_style(
-		'sd-settings-style',
+		'smartdocs-settings-style',
 		SMART_DOCS_URL . $editor_css,
 		array( 'wp-components' ),
 		filemtime( "$dir/$editor_css" )
@@ -309,7 +309,7 @@ class Customizer {
 		$script_asset = require $script_asset_path;
 
 		wp_enqueue_script(
-			'sd-customizer-controls',
+			'smartdocs-customizer-controls',
 			SMART_DOCS_URL . $index_js_src,
 			array_push( $script_asset['dependencies'], 'customize-controls' ),
 			$script_asset['version'],
