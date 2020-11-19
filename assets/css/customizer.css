@@ -239,10 +239,10 @@
 
 /* Dividers for controls */
 
-.sd-divider-top {
+.smartdocs-divider-top {
 	border-top: 1px solid #c0c0c0;
 }
 
-..sd-divider-bottom {
+..smartdocs-divider-bottom {
 	border-bottom: 1px solid #c0c0c0;
 }
