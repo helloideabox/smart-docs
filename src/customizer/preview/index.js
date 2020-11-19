@@ -21,7 +21,7 @@
 	wp.customize("smartdocs_archive_list_item_title_color", function (value) {
 		value.bind(function (new_value) {
 			console.log(new_value);
-			$(".sd-archive-cat-title").css("color", new_value);
+			$(".smartdocs-archive-cat-title").css("color", new_value);
 		});
 	});
 
@@ -29,13 +29,13 @@
 		value
 	) {
 		value.bind(function (new_value) {
-			$(".sd-archive-post-count").css("color", new_value);
+			$(".smartdocs-archive-post-count").css("color", new_value);
 		});
 	});
 
 	wp.customize("smartdocs_archive_list_item_bg_color", function (value) {
 		value.bind(function (new_value) {
-			$(".sd-sub-archive-categories-post").css("background", new_value);
+			$(".smartdocs-sub-archive-categories-post").css("background", new_value);
 		});
 	});
 
