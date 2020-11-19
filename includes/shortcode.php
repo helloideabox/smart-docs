@@ -106,7 +106,7 @@ function smartdocs_render_categories( $args ) {
 		<?php foreach ( $terms as $term ) : ?>
 			<div class="smartdocs-category">
 				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
-					<div class="smartdocs-cat-title-description-wrapper">
+					<div class="smartdocs-category-info-wrapper">
 							<?php
 								$smartdocs_category_image = get_category_thumbnail_image_url( $term->term_id );
 
@@ -115,12 +115,14 @@ function smartdocs_render_categories( $args ) {
 								<img src="<?php echo $smartdocs_category_image[0]; ?>" alt="<?php echo $term->name; ?>" width="100px">
 
 							<?php endif; ?>
-						<<?php echo esc_html( $args['title_tag'] ); ?> class="smartdocs-category-title"><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
-						<?php if ( ! empty( $term->description ) ) : ?>
-							<span class="smartdocs-category-description">
-								<?php echo esc_html( $term->description ); ?>
-							</span>
-						<?php endif; ?>
+							<div class="smartdocs-category-title-description-wrapper">
+								<<?php echo esc_html( $args['title_tag'] ); ?> class="smartdocs-category-title"><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
+								<?php if ( ! empty( $term->description ) ) : ?>
+									<span class="smartdocs-category-description">
+										<?php echo esc_html( $term->description ); ?>
+									</span>
+								<?php endif; ?>
+							</div>
 					</div>
 					<div class="smartdocs-posts-info">
 						<div class="smartdocs-category-posts-count">
