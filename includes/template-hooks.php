@@ -17,3 +17,5 @@ add_action( 'smartdocs_before_main_content', 'smartdocs_output_content_wrapper',
 add_action( 'smartdocs_after_main_content', 'smartdocs_output_content_wrapper_end', 10 );
 
 add_filter( 'the_content', 'smartdocs_output_page_wrap' );
+
+add_action( 'smartdocs_archive_content', 'smartdocs_archive_content', 10);
