@@ -64,14 +64,14 @@ function smartdocs_archive_content() {
 }
 
 function get_category_thumbnail_image_url( $term_id ) {
-	
+
 	$smartdocs_category_thumb_id     = get_term_meta( $term_id, 'thumbnail_id', true );
 	$smartdocs_taxonomy_thumbnail_id = get_term_meta( $term_id, 'taxonomy_thumbnail_id', true );
 
 	if ( empty( $smartdocs_category_thumb_id ) ) {
 		$smartdocs_category_thumb_id = $smartdocs_taxonomy_thumbnail_id;
 	}
-	
+
 	$smartdocs_category_image = wp_get_attachment_image_src( $smartdocs_category_thumb_id, $settings['cat_thumbnails_size'] );
 
 	return $smartdocs_category_image;

@@ -81,6 +81,7 @@ function setPreview(setting) {
 		init: function () {
 			console.log("Class Initialized");
 			SmartCustomizer._toggleResponsiveControls();
+			SmartCustomizer._initLayoutControlToggles();
 			SmartCustomizer._initResponsiveToggle();
 			SmartCustomizer._initPreview();
 			SmartCustomizer._initBackgroundControl();
@@ -211,20 +212,55 @@ function setPreview(setting) {
 						$(
 							"#customize-control-smartdocs_archive_hero_background_color_control"
 						).css("display", "list-item");
-						$(
-							"#customize-control-smartdocs_archive_hero_bg_image_control"
-						).css("display", "none");
+						$("#customize-control-smartdocs_archive_hero_bg_image_control").css(
+							"display",
+							"none"
+						);
 					} else if ("image" === newValue) {
 						$(
 							"#customize-control-smartdocs_archive_hero_background_color_control"
 						).css("display", "none");
-						$(
-							"#customize-control-smartdocs_archive_hero_bg_image_control"
-						).css("display", "list-item");
+						$("#customize-control-smartdocs_archive_hero_bg_image_control").css(
+							"display",
+							"list-item"
+						);
+					}
+				});
+			});
+		},
+
+		_initLayoutControlToggles: function () {
+			var val = api.settings.settings.smartdocs_archive_layout_setting.value;
+
+			if ("list" === val) {
+				$("#customize-control-smartdocs_archive_columns_control").css(
+					"display",
+					"none"
+				);
+			} else if ("grid" === val) {
+				$("#customize-control-smartdocs_archive_columns_control").css(
+					"display",
+					"list-item"
+				);
+			}
+
+			api("smartdocs_archive_layout_setting", function (value) {
+				value.bind(function (newValue) {
+					if ("list" === newValue) {
+						$("#customize-control-smartdocs_archive_columns_control").css(
+							"display",
+							"none"
+						);
+					} else if ("grid" === newValue) {
+						$("#customize-control-smartdocs_archive_columns_control").css(
+							"display",
+							"list-item"
+						);
 					}
 				});
 			});
 		},
 	};
+	/**Initiate JS */
 	api.bind("ready", SmartCustomizer.init);
 })(jQuery);

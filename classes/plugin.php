@@ -220,8 +220,6 @@ class Plugin {
 		add_action( 'init', array( $this, 'init' ), 0 );
 
 		add_action( 'admin_init', array( $this, 'admin_init' ), 0 );
-
-		add_action( 'wp_head', array( $this, 'render_frontend_styles' ) );
 	}
 
 	/**
@@ -245,7 +243,7 @@ class Plugin {
 	 * @access public
 	 */
 	public function admin_init() {
-		$this->permalinks = new Permalinks();
+		//$this->permalinks = new Permalinks();
 	}
 
 	/**
@@ -339,102 +337,6 @@ class Plugin {
 	 */
 	public function enqueue_scripts() {
 		global $post_type;
-	}
-
-	/**
-	 * Render Frontend Styles
-	 *
-	 * @return void
-	 */
-	public function render_frontend_styles() {
-		$archive_title_color                = get_theme_mod( 'smartdocs_archive_title_color' );
-		$archive_item_list_title_color      = get_theme_mod( 'smartdocs_archive_list_item_title_color' );
-		$archive_item_list_post_count_color = get_theme_mod( 'smartdocs_archive_list_item_post_count_color' );
-		$archive_list_item_bg_color         = get_theme_mod( 'smartdocs_archive_list_item_bg_color' );
-
-		/**
-		 * Header Styles.
-		 */
-		$background_type  = get_theme_mod( 'smartdocs_archive_hero_bg_type' );
-		$background_color = get_theme_mod( 'smartdocs_archive_hero_background_color' );
-		$background_image = get_theme_mod( 'smartdocs_archive_hero_bg_image' );
-
-		/**
-		 * Grid Layout
-		 */
-		$grid_columns        = get_theme_mod( 'smartdocs_archive_columns' );
-		$grid_columns_tablet = get_theme_mod( 'smartdocs_archive_columns_tablet' );
-		$grid_columns_mobile = get_theme_mod( 'smartdocs_archive_columns_mobile' );
-
-		$grid_gap = get_theme_mod( 'smartdocs_archive_columns_gap' );
-		?>
-		<style type="text/css">
-			/**
-			 * Header style.
-			 */
-			header .smartdocs-inner {
-				<?php if ( 'color' === $background_type ) : ?>
-					background-color: <?php echo esc_attr( $background_color ); ?>;
-				<?php elseif ( 'image' === $background_type ) : ?>
-					background-image: url('<?php echo esc_html( $background_image ); ?>');
-					background-repeat: no-repeat;
-					background-size: cover;
-					background-position: center;
-				<?php endif; ?>
-					padding: 20px;
-			}
-			.smartdocs-docs-archive-title {
-				<?php if ( ! empty( $archive_title_color ) ) { ?>
-					color: <?php echo esc_attr( $archive_title_color ); ?>;
-				<?php } ?>
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					padding-top: 25px;
-					padding-bottom: 25px;
-			}
-			.smartdocs-archive-cat-title {
-				<?php if ( ! empty( $archive_item_list_title_color ) ) { ?>
-					color: <?php echo esc_attr( $archive_item_list_title_color ); ?>;
-				<?php } ?>
-			}
-			.smartdocs-archive-post-count {
-				<?php if ( ! empty( $archive_item_list_post_count_color ) ) { ?>
-					color: <?php echo esc_attr( $archive_item_list_post_count_color ); ?>;
-				<?php } ?>
-			}
-			a.smartdocs-sub-archive-categories-post {
-				<?php if ( ! empty( $archive_list_item_bg_color ) ) { ?>
-					background-color: <?php echo esc_attr( $archive_list_item_bg_color ); ?>;
-				<?php } ?>
-			}
-
-			/**
-			 * Grid Styles
-			 */
-			.smartdocs-wrap .smartdocs-archive-layout-grid {
-				display: grid;
-				grid-template-columns: repeat(<?php echo empty( $grid_columns ) ? 3 : $grid_columns; ?>, 1fr);
-				gap: <?php echo empty( $grid_gap ) ? '20px' : ($grid_gap . 'px') ?>;
-			}
-
-			/**
-			 * Search styles
-			 */
-			.smartdocs-spinner {
-				display: none;
-			}
-			.smartdocs-search-input {
-				border: 1px solid #c0c0c0 ;
-					height: 3em;
-			}
-			.smartdocs-search {
-				border: 1px solid blue;
-				margin-top: 50px;
-				margin-bottom: 50px;
-			}
-		</style>
-		<?php
 	}
 }
 

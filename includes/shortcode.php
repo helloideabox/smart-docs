@@ -67,6 +67,10 @@ add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
  */
 function smartdocs_render_categories( $args ) {
 
+	if ( is_post_type_archive( 'smart-doc' ) ) {
+		include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
+	}
+
 	$args = shortcode_atts(
 		array(
 			'show_count' => true,
@@ -102,7 +106,7 @@ function smartdocs_render_categories( $args ) {
 
 	ob_start();
 	?>
-	<div class="smartdocs-categories smartdocs-archive-layout-<?php echo $layout; ?>">
+	<div class="smartdocs-categories smartdocs-categories-list smartdocs-archive-layout-<?php echo $layout; ?>">
 		<?php foreach ( $terms as $term ) : ?>
 			<div class="smartdocs-category">
 				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
@@ -129,7 +133,7 @@ function smartdocs_render_categories( $args ) {
 							<span class="smartdocs-posts-count"><?php echo esc_html( $term->count ); ?></span>
 							<span class="smartdocs-posts-count-text"><?php echo esc_html( _n( 'Article', 'Articles', $term->count, 'smart-docs' ) ); ?></span>
 						</div>
-						<div class="smartdocs-category-view-all"><?php echo __( 'View All', 'smart-docs' ); ?></div>
+						<span class="smartdocs-category-view-all"><?php echo __( 'View All', 'smart-docs' ); ?></span>
 					</div>
 				</a>
 			</div>

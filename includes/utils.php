@@ -75,3 +75,16 @@ function wp_get_postcount( $id, $taxonomy_type ) {
  *
  * @param string $setting_key Unique key of the setting.
  */
+
+ function console( $output ) { 
+	 
+	if (is_array($output))
+	$output = implode(',', $output);
+
+	 ?>
+	<script>
+		(function(){
+			console.log('<?php print_r( $output )?>');
+		})()
+	</script>
+<?php }

@@ -3,6 +3,12 @@
 .smartdocs-archive-layout-grid {
 	margin-right: 15%;
 	margin-left: 15%;
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+
+.smartdocs-archive-layout-grid .smartdocs-category {
+	min-width: 1px;
 }
 
 .smartdocs-archive-layout-grid .smartdocs-category a {
@@ -29,7 +35,6 @@
 	align-items: center;
 	justify-content: center;
 	flex-grow: 1;
-	padding: 3em;
 	width: 100%;
 }
 

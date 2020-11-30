@@ -53,6 +53,8 @@ class Customizer {
 
 		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_preview_script' ) );
 
+		add_action( 'customize_controls_print_styles', 'sync_customizer_breakpoints' );
+
 	}
 
 	public function add_sections( $wp_customize ) {
@@ -71,6 +73,7 @@ class Customizer {
 		require SMART_DOCS_PATH . '\classes\customizer\sections\homepage-section.php';
 		require SMART_DOCS_PATH . '\classes\customizer\sections\search-section.php';
 		require SMART_DOCS_PATH . '\classes\customizer\sections\single-doc-section.php';
+		require SMART_DOCS_PATH . '\classes\customizer\sections\breakpoints.php';
 	}
 
 	/**
@@ -432,7 +435,7 @@ class Customizer {
 	 *
 	 * @return string
 	 */
-	public static function hex2rgba( $hex, $opacity = 1 ) {
+	public function hex2rgba( $hex, $opacity = 1 ) {
 		$hex = str_replace( '#', '', $hex );
 
 		if ( strlen( $hex ) == 3 ) {
@@ -448,5 +451,19 @@ class Customizer {
 		$rgba = array( $r, $g, $b, $opacity );
 
 		return 'rgba(' . implode( ',', $rgba ) . ')';
+	}
+
+	function sync_customizer_breakpoints() {
+		?>
+		<style>
+			.preview-tablet .wp-full-overlay-main {
+				width: 1024px;
+			}
+	
+			.preview-mobile .wp-full-overlay-main {
+				width: 720px;
+			}
+		</style>
+		<?php
 	}
 }
