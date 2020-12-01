@@ -1,5 +1,4 @@
 (function ($) {
-
 	/**
 	 * Hero Section
 	 */
@@ -59,23 +58,30 @@
 	 */
 	wp.customize("smartdocs_archive_columns", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-archive-layout-grid").css("grid-template-columns", "repeat( " + new_value + ", 1fr)");
+			$(".smartdocs-archive-layout-grid").css(
+				"grid-template-columns",
+				"repeat( " + new_value + ", 1fr)"
+			);
 		});
 	});
 
 	wp.customize("smartdocs_archive_columns_tablet", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-archive-layout-grid").css("grid-template-columns", "repeat( " + new_value + ", 1fr)");
+			$(".smartdocs-archive-layout-grid").css(
+				"grid-template-columns",
+				"repeat( " + new_value + ", 1fr)"
+			);
 		});
 	});
 
 	wp.customize("smartdocs_archive_columns_mobile", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-archive-layout-grid").css("grid-template-columns", "repeat( " + new_value + ", 1fr)");
+			$(".smartdocs-archive-layout-grid").css(
+				"grid-template-columns",
+				"repeat( " + new_value + ", 1fr)"
+			);
 		});
 	});
-
-
 
 	/**
 	 * Columns Control - End
