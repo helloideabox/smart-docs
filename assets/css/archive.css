@@ -5,6 +5,7 @@
 	margin-left: 15%;
 	margin-top: 3em;
 	margin-bottom: 3em;
+	display: grid;
 }
 
 .smartdocs-archive-layout-grid .smartdocs-category {

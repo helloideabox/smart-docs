@@ -207,7 +207,7 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_columns_control',
 				array(
-					'label'    => __( 'Grid Columns (Desktop)', 'smart-docs' ),
+					'label'    => __( 'Grid Columns', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_columns',
 					'type'     => 'styler-slider',
@@ -235,7 +235,7 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_columns_tablet_control',
 				array(
-					'label'    => __( 'Grid Columns (Tablet)', 'smart-docs' ),
+					'label'    => __( 'Grid Columns', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_columns_tablet',
 					'type'     => 'styler-slider',
@@ -263,7 +263,7 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_columns_control_mobile',
 				array(
-					'label'    => __( 'Grid Columns (Mobile)', 'smart-docs' ),
+					'label'    => __( 'Grid Columns', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_columns_mobile',
 					'type'     => 'styler-slider',
@@ -323,11 +323,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_item_padding_control',
 				array(
-					'label'    => __( 'Padding (Desktop)', 'smart-docs' ),
+					'label'    => __( 'Padding', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_item_padding',
 					'type'     => 'styler-dimension',
-					'classes'  => array( 'desktop' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'desktop' ),
 					'choices'  => array(
 						'top'    => __( 'Top', 'smart-docs' ),
 						'right'  => __( 'Right', 'smart-docs' ),
@@ -356,11 +356,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_item_padding_tablet_control',
 				array(
-					'label'    => __( 'Padding (Tablet)', 'smart-docs' ),
+					'label'    => __( 'Padding', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_item_padding_tablet',
 					'type'     => 'styler-dimension',
-					'classes'  => array( 'tablet' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'tablet' ),
 					'choices'  => array(
 						'top'    => __( 'Top', 'smart-docs' ),
 						'right'  => __( 'Right', 'smart-docs' ),
@@ -389,11 +389,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_item_padding_mobile_control',
 				array(
-					'label'    => __( 'Padding (Mobile)', 'smart-docs' ),
+					'label'    => __( 'Padding', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_item_padding_mobile',
 					'type'     => 'styler-dimension',
-					'classes'  => array( 'mobile' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'mobile' ),
 					'choices'  => array(
 						'top'    => __( 'Top', 'smart-docs' ),
 						'right'  => __( 'Right', 'smart-docs' ),
@@ -449,11 +449,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_title_font_size_control',
 				array(
-					'label'    => __( 'Category Title Font Size (Desktop)', 'smart-docs' ),
+					'label'    => __( 'Category Title Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_title_font_size',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'desktop' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'desktop' ),
 				)
 			)
 		);
@@ -472,11 +472,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_title_font_size_control_tablet',
 				array(
-					'label'    => __( 'Category Title Font Size (Tablet)', 'smart-docs' ),
+					'label'    => __( 'Category Title Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_title_font_size_tablet',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'tablet' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'tablet' ),
 				)
 			)
 		);
@@ -495,11 +495,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_title_font_size_control_mobile',
 				array(
-					'label'    => __( 'Category Title Font Size (Mobile)', 'smart-docs' ),
+					'label'    => __( 'Category Title Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_title_font_size_mobile',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'mobile' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'mobile' ),
 				)
 			)
 		);
@@ -568,11 +568,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_description_font_size_control',
 				array(
-					'label'    => __( 'Category Description Font Size (Desktop)', 'smart-docs' ),
+					'label'    => __( 'Category Description Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_description_font_size',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'desktop' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'desktop' ),
 				)
 			)
 		);
@@ -591,11 +591,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_description_font_size_control_tablet',
 				array(
-					'label'    => __( 'Category Description Font Size (Tablet)', 'smart-docs' ),
+					'label'    => __( 'Category Description Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_description_font_size_tablet',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'tablet' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'tablet' ),
 				)
 			)
 		);
@@ -614,11 +614,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_description_font_size_control_mobile',
 				array(
-					'label'    => __( 'Category Description Font Size (Mobile)', 'smart-docs' ),
+					'label'    => __( 'Category Description Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_description_font_size_mobile',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'mobile' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'mobile' ),
 				)
 			)
 		);
@@ -683,11 +683,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_post_info_font_size_control',
 				array(
-					'label'    => __( 'Category Info Font Size (Desktop)', 'smart-docs' ),
+					'label'    => __( 'Category Info Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_post_info_font_size',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'desktop' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'desktop' ),
 				)
 			)
 		);
@@ -706,11 +706,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_post_info_font_size_control_tablet',
 				array(
-					'label'    => __( 'Category Info Font Size (Tablet)', 'smart-docs' ),
+					'label'    => __( 'Category Info Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_post_info_font_size_tablet',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'tablet' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'tablet' ),
 				)
 			)
 		);
@@ -729,11 +729,11 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_list_item_post_info_font_size_control_mobile',
 				array(
-					'label'    => __( 'Category Info Font Size (Mobile)', 'smart-docs' ),
+					'label'    => __( 'Category Info Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_list_item_post_info_font_size_mobile',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'mobile' ),
+					'classes'  => array( 'smartdocs-responsive-customize-control', 'mobile' ),
 				)
 			)
 		);
