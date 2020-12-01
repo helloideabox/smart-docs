@@ -235,6 +235,20 @@
 	display: none;
 }
 
+/* Responsive toggle icons */
+i.smartdocs-responsive-control-toggle {
+	color: #656a6f;
+	cursor: pointer;
+	display: inline-block;
+	font: normal 18px/30px dashicons;
+	height: auto;
+	line-height: 18px !important;
+	padding: 0 5px;
+	text-align: left;
+	vertical-align: middle;
+	width: 20px;
+}
+
 /* Utility Classes */
 
 /* Dividers for controls */

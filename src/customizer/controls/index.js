@@ -118,6 +118,23 @@ function setPreview(setting) {
 		_initResponsiveToggle: function () {
 			var devices = $(".devices");
 
+			/**
+			 * Init Toggle Switch for each responsive control
+			 */
+
+			$(".smartdocs-responsive-control-toggle").on("click", function () {
+				var devices = $(".devices"),
+					button = devices.find(".preview-desktop");
+
+				if ($(this).hasClass("dashicons-desktop")) {
+					button = devices.find(".preview-tablet");
+				} else if ($(this).hasClass("dashicons-tablet")) {
+					button = devices.find(".preview-mobile");
+				}
+
+				button.trigger("click");
+			});
+
 			devices.find(".preview-desktop").on("click", function () {
 				SmartCustomizer._toggleResponsiveControls();
 			});

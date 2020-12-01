@@ -211,7 +211,7 @@ use SmartDocs\Styler_Customizer_Control;
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_columns',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'desktop', 'layout-grid' ),
+					'classes'  => array( 'desktop', 'layout-grid', 'smartdocs-responsive-customize-control', 'desktop' ),
 					'choices'  => array(
 						'min'  => 1,
 						'max'  => 5,
@@ -239,7 +239,7 @@ use SmartDocs\Styler_Customizer_Control;
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_columns_tablet',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'tablet', 'layout-grid' ),
+					'classes'  => array( 'tablet', 'layout-grid', 'smartdocs-responsive-customize-control', 'tablet' ),
 					'choices'  => array(
 						'min'  => 1,
 						'max'  => 5,
@@ -267,7 +267,7 @@ use SmartDocs\Styler_Customizer_Control;
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_columns_mobile',
 					'type'     => 'styler-slider',
-					'classes'  => array( 'mobile', 'layout-grid' ),
+					'classes'  => array( 'mobile', 'layout-grid', 'smartdocs-responsive-customize-control', 'mobile' ),
 					'choices'  => array(
 						'min'  => 1,
 						'max'  => 5,
