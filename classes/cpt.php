@@ -23,8 +23,6 @@ class Cpt {
 		// Action to register custom post type.
 		add_action( 'init', array( $this, 'register_cpt_doc_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_thumbnail_hooks' ) );
-
-		add_action( 'admin_init', array( $this, 'taxonomy_thumbnail_hooks' ) );
 		add_action( 'admin_print_scripts', array( $this, 'taxonomy_admin_scripts' ) );
 	}
 
