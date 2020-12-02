@@ -76,3 +76,36 @@ function get_category_thumbnail_image_url( $term_id ) {
 
 	return $smartdocs_category_image;
 }
+
+function smartdocs_get_sidebar() {
+
+	if ( is_active_sidebar( 'smart-docs-sidebar-1' ) ) :
+		?>
+
+		<div class="smartdocs-custom-widget-area">
+			<div class="smartdocs-sidebar-main-content-area">
+				<?php dynamic_sidebar( 'smart-docs-sidebar-1' ); ?>
+			</div>
+		</div>
+
+	<?php endif; ?>
+	<?php
+}
+
+function smartdocs_single_doc_last_updated_on() {
+	?>
+
+	<div class="smartdocs-single-doc-last-update-time"><?php esc_attr_e( 'Updated on ' . get_the_date( 'F j, Y' ), 'smart-docs' ); ?></div>
+
+	<?php
+}
+
+function smartdocs_single_doc_terms() {
+	// To get the related tags of that post.
+	the_terms( get_the_ID(), 'smartdocs_tag', '<ul class="smart-docs-tag"><span class="smart-docs-tag-label">Tagged Under: </span><li>', ',</li><li>', '</li></ul>' );
+
+}
+
+function smartdocs_single_doc_comments() {
+	comments_template();
+}
