@@ -22,9 +22,9 @@ class Templates {
 	 * Default CPT Name
 	 *
 	 * @since 1.0.0
-	 * @var string $cpt_name
+	 * @var string $post_type
 	 */
-	public $cpt_name = 'smart-doc';
+	public $post_type = 'smart-doc';
 
 	/**
 	 * Class constructor.
@@ -89,7 +89,7 @@ class Templates {
 	 */
 	public function body_single_class( $classes ) {
 
-		if ( is_post_type_archive( $this->cpt_name ) || is_singular( $this->cpt_name ) && is_array( $classes ) ) {
+		if ( is_post_type_archive( $this->post_type ) || is_singular( $this->post_type ) && is_array( $classes ) ) {
 			$cls = array_merge( $classes, array( 'docs-single-template-enabled' ) );
 			return $cls;
 		}
@@ -104,7 +104,7 @@ class Templates {
 	 */
 	public function body_tax_class( $classes ) {
 
-		if ( is_post_type_archive( $this->cpt_name ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) && is_array( $classes ) ) {
+		if ( is_post_type_archive( $this->post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) && is_array( $classes ) ) {
 			$cls = array_merge( $classes, array( 'docs-tax-templates-enabled' ) );
 			return $cls;
 		}
@@ -119,7 +119,7 @@ class Templates {
 	 */
 	public function body_sidebar_class( $classes ) {
 
-		if ( is_post_type_archive( $this->cpt_name ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) && is_array( $classes ) ) {
+		if ( is_post_type_archive( $this->post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) && is_array( $classes ) ) {
 
 			if ( is_active_sidebar( 'smart-docs-sidebar-1' ) ) {
 				// Add clss to body.
@@ -137,7 +137,7 @@ class Templates {
 	 * @return $template
 	 */
 	public function archive_template( $template ) {
-		if ( is_post_type_archive( $this->cpt_name ) ) {
+		if ( is_post_type_archive( $this->post_type ) ) {
 			$theme_files     = array( 'smart-docs-archive-template.php', '../templates/smart-docs-archive-template.php' );
 			$exists_in_theme = locate_template( $theme_files, false );
 
@@ -187,7 +187,7 @@ class Templates {
 	 */
 	public function single_template( $template ) {
 		// Checking if the page is single and post type is of custom cpt(smart-doc).
-		if ( is_singular( $this->cpt_name ) ) {
+		if ( is_singular( $this->post_type ) ) {
 			return SMART_DOCS_PATH . 'templates/smart-docs-single-template.php';
 		}
 		return $template;

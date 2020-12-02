@@ -17,7 +17,7 @@ class Cpt {
 
 	 * @var post_type
 	 */
-	public $cpt_name = 'smart-doc';
+	public $post_type = 'smart-doc';
 
 	public function __construct() {
 		// Action to register custom post type.
@@ -76,7 +76,7 @@ class Cpt {
 
 		$args['rewrite'] = apply_filters( 'smartdocs_cpt_rewrite_slug', array( 'slug' => $post_slug ) );
 
-		register_post_type( $this->cpt_name, $args );
+		register_post_type( $this->post_type, $args );
 
 		// Resgistering Custom Category's taxonomy.
 
@@ -111,7 +111,7 @@ class Cpt {
 
 		$category_args['rewrite'] = apply_filters( 'smartdocs_category_rewrite_slug', array( 'slug' => $category_slug ) );
 
-		register_taxonomy( 'smartdocs_category', $this->cpt_name, $category_args );
+		register_taxonomy( 'smartdocs_category', $this->post_type, $category_args );
 
 		// Resgistering Custom tag taxonomy.
 		$tag_labels = array(
@@ -149,7 +149,7 @@ class Cpt {
 
 		$tag_args['rewrite'] = apply_filters( 'smartdocs_tag_rewrite_slug', array( 'slug' => $tag_slug ) );
 
-		register_taxonomy( 'smartdocs_tag', $this->cpt_name, $tag_args );
+		register_taxonomy( 'smartdocs_tag', $this->post_type, $tag_args );
 
 		flush_rewrite_rules();
 	}
