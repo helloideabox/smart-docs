@@ -1,0 +1,11 @@
+main.smartdocs-wrap {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.smartdocs-wrap .smartdocs-single-doc-wrap {
+	display: grid;
+	grid-template-columns: 75% 25%;
+	gap: 20px;
+}
