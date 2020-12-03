@@ -65,7 +65,7 @@ add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
  * @param [array] $args Array of shortcode arguments.
  * @return html
  */
-function smartdocs_render_categories( $args ) {
+function smartdocs_render_categories( $args = array() ) {
 
 	if ( is_post_type_archive( 'smart-doc' ) ) {
 		include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
@@ -112,7 +112,7 @@ function smartdocs_render_categories( $args ) {
 				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
 					<div class="smartdocs-category-info-wrapper">
 							<?php
-								$smartdocs_category_image = get_category_thumbnail_image_url( $term->term_id );
+								$smartdocs_category_image = smartdocs_get_category_thumbnail_url( $term->term_id );
 
 							if ( is_array( $smartdocs_category_image ) && ! empty( $smartdocs_category_image ) ) :
 								?>
