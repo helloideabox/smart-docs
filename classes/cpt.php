@@ -24,17 +24,26 @@ class Cpt {
 		add_action( 'init', array( $this, 'register_cpt_doc_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_thumbnail_hooks' ) );
 		add_action( 'admin_print_scripts', array( $this, 'taxonomy_admin_scripts' ) );
+
+		add_filter( 'rewrite_rules_array', array( $this, 'fix_rewrite_rules' ) );
+		add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 2 );
 	}
 
-	public static function get_post_type() {
-		return $this->post_type;
+	public function get_cpt_rewrite_slug() {
+		$rewrite_slug = get_option( 'ibx_sd_archive_page_slug' );
+
+		if ( empty( $rewrite_slug ) ) {
+			$rewrite_slug = $this->post_type;
+		}
+
+		return $rewrite_slug;
 	}
 
 	public function register_cpt_doc_type() {
 
-		// Post Type Name
+		$rewrite_slug = $this->get_cpt_rewrite_slug();
 
-		// Registering Custom post type(SmartDocs).
+		// Registering post type.
 		$labels = array(
 			'name'               => _x( 'Smart Docs', 'Post type general name', 'smart-docs' ),
 			'singular_name'      => _x( 'Smart Doc', 'Post type singular name', 'smart-docs' ),
@@ -64,26 +73,26 @@ class Cpt {
 			'capability_type'     => 'post',
 			'hierarchical'        => false,
 			'exclude_from_search' => false,
-			'has_archive'         => true,
+			'has_archive'         => $rewrite_slug,
 			'menu_position'       => null,
 			'show_in_rest'        => true, // For accessing the cpt in wp rest api.
 			'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'revisions', 'custom-fields' ),
 		);
 
-		$post_slug = get_option( 'ibx_sd_archive_page_slug' );
-
-		if ( empty( $post_slug ) ) {
-			$post_slug = 'smart-docs';
-		}
-
-		$args['rewrite'] = apply_filters( 'smartdocs_cpt_rewrite_slug', array( 'slug' => $post_slug ) );
+		$args['rewrite'] = apply_filters(
+			'smartdocs_cpt_rewrite_slug',
+			array(
+				'slug' => $rewrite_slug . '/%smartdocs_category%',
+				'with_front' => false,
+				'feeds' => true,
+			)
+		);
 
 		register_post_type( $this->post_type, $args );
 
 		remove_post_type_support( $this->post_type, 'comments' );
 
-		// Resgistering Custom Category's taxonomy.
-
+		// Resgistering taxonomy.
 		$category_labels = array(
 			'name'              => esc_html__( 'Docs Categories', 'smart-docs' ),
 			'singular_name'     => esc_html__( 'Doc Category', 'smart-docs' ),
@@ -113,11 +122,18 @@ class Cpt {
 			$category_slug = 'smartdocs_category';
 		}
 
-		$category_args['rewrite'] = apply_filters( 'smartdocs_category_rewrite_slug', array( 'slug' => $category_slug ) );
+		$category_args['rewrite'] = apply_filters(
+			'smartdocs_category_rewrite_slug',
+			array(
+				'slug' => $category_slug,
+				'with_front' => false,
+				'hierarchical' => true,
+			)
+		);
 
 		register_taxonomy( 'smartdocs_category', $this->post_type, $category_args );
 
-		// Resgistering Custom tag taxonomy.
+		// Resgistering tags taxonomy.
 		$tag_labels = array(
 			'name'                       => __( 'Docs tags', 'smart-docs' ),
 			'singular_name'              => __( 'Doc Tag', 'smart-docs' ),
@@ -151,11 +167,82 @@ class Cpt {
 			$tag_slug = 'smartdocs_tag';
 		}
 
-		$tag_args['rewrite'] = apply_filters( 'smartdocs_tag_rewrite_slug', array( 'slug' => $tag_slug ) );
+		$tag_args['rewrite'] = apply_filters(
+			'smartdocs_tag_rewrite_slug',
+			array(
+				'slug' => $tag_slug,
+				'with_front' => false,
+			)
+		);
 
 		register_taxonomy( 'smartdocs_tag', $this->post_type, $tag_args );
 
 		flush_rewrite_rules();
+	}
+
+	public function fix_rewrite_rules( $rules ) {
+		global $wp_rewrite;
+
+		$rewrite_slug = $this->get_cpt_rewrite_slug();
+
+		$slug = '/' . $rewrite_slug . '/%smartdocs_category%';
+
+		// Fix the rewrite rules when the smart-docs permalink have %smartdocs_category% flag.
+		if ( preg_match( '`/(.+)(/%smartdocs_category%)`', $slug, $matches ) ) {
+			foreach ( $rules as $rule => $rewrite ) {
+				if ( preg_match( '`^' . preg_quote( $matches[1], '`' ) . '/\(`', $rule ) && preg_match( '/^(index\.php\?smartdocs_category)(?!(.*smart-docs))/', $rewrite ) ) {
+					unset( $rules[ $rule ] );
+				}
+			}
+		}
+
+		return $rules;
+	}
+
+	public function filter_post_type_link( $permalink, $post ) {
+		// Abort if post is not a smart-doc.
+		if ( $this->post_type !== $post->post_type ) {
+			return $permalink;
+		}
+
+		// Abort early if the placeholder rewrite tag isn't in the generated URL.
+		if ( false === strpos( $permalink, '%' ) ) {
+			return $permalink;
+		}
+
+		// Get the custom taxonomy terms in use by this post.
+		$terms = get_the_terms( $post->ID, 'smartdocs_category' );
+
+		if ( ! empty( $terms ) ) {
+			$terms           = wp_list_sort(
+				$terms,
+				array(
+					'parent'  => 'DESC',
+					'term_id' => 'ASC',
+				)
+			);
+			$category_object = $terms[0];
+			$category_slug   = $category_object->slug;
+	
+			if ( $category_object->parent ) {
+				$ancestors = get_ancestors( $category_object->term_id, 'smartdocs_category' );
+				foreach ( $ancestors as $ancestor ) {
+					$ancestor_object = get_term( $ancestor, 'smartdocs_category' );
+					if ( apply_filters( 'smartdocs_post_type_link_parent_category_only', false ) ) {
+						$category_slug = $ancestor_object->slug;
+					} else {
+						$category_slug = $ancestor_object->slug . '/' . $category_slug;
+					}
+				}
+			}
+		} else {
+			// If no terms are assigned to this post, use a string instead (can't leave the placeholder there).
+			$category_slug = _x( 'uncategorized', 'slug', 'smart-docs' );
+		}
+
+		$permalink = str_replace( '%smartdocs_category%', $category_slug, $permalink );
+
+		return $permalink;
 	}
 
 	public function taxonomy_admin_scripts() {
