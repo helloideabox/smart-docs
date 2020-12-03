@@ -48,7 +48,7 @@ class Admin {
 
 		// Adding sub menu to the cpt.
 		add_submenu_page(
-			'edit.php?post_type=smart-doc', // Parent slug.
+			'edit.php?post_type=smart-docs', // Parent slug.
 			__( 'Settings', 'smart-docs' ), // Page title.
 			__( 'Settings', 'smart-docs' ), // Menu title.
 			'manage_options', // Capability.
@@ -459,7 +459,7 @@ class Admin {
 	 */
 	public function enqueue_admin_script( $hook ) {
 		// To check if the current page is SmartDocs setting or not.
-		if ( 'smart-doc_page_smart_doc_settings' !== $hook ) {
+		if ( 'smart-docs_page_smart_doc_settings' !== $hook ) {
 			return;
 		}
 
