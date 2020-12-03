@@ -133,7 +133,9 @@ function smartdocs_render_categories( $args = array() ) {
 							<span class="smartdocs-posts-count"><?php echo esc_html( $term->count ); ?></span>
 							<span class="smartdocs-posts-count-text"><?php echo esc_html( _n( 'Article', 'Articles', $term->count, 'smart-docs' ) ); ?></span>
 						</div>
-						<span class="smartdocs-category-view-all"><?php echo __( 'View All', 'smart-docs' ); ?></span>
+						<div class="smartdocs-category-view-all">
+							<span><?php echo __( 'View All', 'smart-docs' ); ?></span>
+						</div>
 					</div>
 				</a>
 			</div>

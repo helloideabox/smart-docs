@@ -175,8 +175,7 @@ function render_frontend_styles() {
 				 border-top-color: <?php echo empty( $cat_info_divider_color ) ? esc_html( $cat_info_bg_color ) : esc_html( $cat_info_divider_color ); ?>;
 			 }
 
-			div.smartdocs-categories-list .smartdocs-posts-info span.smartdocs-category-view-all {
-
+			div.smartdocs-categories-list .smartdocs-posts-info .smartdocs-category-view-all {
 				color: <?php echo esc_html( $cat_info_text_color ); ?>;
 			}
 
