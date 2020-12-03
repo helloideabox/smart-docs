@@ -191,4 +191,8 @@ class Cat_Widget extends \WP_Widget {
 	public function smart_doc_widgets_area() {
 		register_widget( 'SmartDocs\Cat_Widget' );
 	}
+
+	public function enqueue_styles() {
+		get_style_depends('category-widget-css', 'category-widget');
+	}
 }

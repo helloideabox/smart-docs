@@ -24,7 +24,7 @@ class Templates {
 	 * @since 1.0.0
 	 * @var string $post_type
 	 */
-	public $post_type = 'smart-doc';
+	public $post_type = 'smart-docs';
 
 	/**
 	 * Class constructor.

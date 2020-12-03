@@ -1,5 +1,4 @@
 main.smartdocs-wrap {
-    width: 80%;
     margin-right: auto;
     margin-left: auto;
 }
@@ -8,4 +7,37 @@ main.smartdocs-wrap {
 	display: grid;
 	grid-template-columns: 75% 25%;
 	gap: 20px;
+}
+
+header.smartdocs-single-doc-search-hero {
+    padding-top: 125px;
+    padding-bottom: 125px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #262626;
+}
+
+header.smartdocs-single-doc-header {
+    margin-bottom: 5%;
+}
+
+.smartdocs-single-doc-last-update-time {
+    color:  #c1c1c1;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.smartdocs-single-doc-featured-image {
+    margin: 5%;
+}
+
+.smartdocs-single-doc-featured-image img {
+    width: 100%;
+    object-fit: contain;
+    height: 400px;
+}
+
+.smardocs-single-doc-content-wrap {
+    background: #fff;
+    padding: 5%;
 }

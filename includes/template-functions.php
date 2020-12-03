@@ -38,13 +38,13 @@ function smartdocs_search_form() {
 
 function smartdocs_output_content_wrapper() {
 	?>
-	<main class="smartdocs-wrap">
+	<div class="smartdocs-content">
 	<?php
 }
 
 function smartdocs_output_content_wrapper_end() {
 	?>
-	</main>
+	</div>
 	<?php
 }
 
@@ -82,8 +82,8 @@ function smartdocs_get_sidebar() {
 	if ( is_active_sidebar( 'smart-docs-sidebar-1' ) ) :
 		?>
 
-		<div class="smartdocs-custom-widget-area">
-			<div class="smartdocs-sidebar-main-content-area">
+		<div class="smartdocs-sidebar" itemscope="itemscope" itemtype="https://schema.org/WPSideBar">
+			<div class="smartdocs-sidebar-widgets">
 				<?php dynamic_sidebar( 'smart-docs-sidebar-1' ); ?>
 			</div>
 		</div>
@@ -108,4 +108,30 @@ function smartdocs_single_doc_terms() {
 
 function smartdocs_single_doc_comments() {
 	comments_template();
+}
+
+function smartdocs_single_doc_hero_content() {
+	?>
+		<div class="smartdocs-hero">
+			<?php do_action( 'smartdocs_single_doc_hero_content' ); ?>
+		</div>
+	<?php
+}
+
+function smartdocs_single_doc_header() {
+	?>
+	<header class="smartdocs-entry-header">
+		<?php do_action(  'smartdocs_before_single_doc_title' ); ?>
+		<h1 class="smartdocs-entry-title"><?php the_title(); ?></h1>
+		<?php do_action( 'smartdocs_after_single_doc_title' ); ?>
+	</header>
+	<?php
+}
+
+function smartdocs_single_doc_content() {
+	?>
+	<div class="smartdocs-entry-content">
+		<?php the_content(); ?>
+	</div>
+	<?php
 }

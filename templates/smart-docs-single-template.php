@@ -13,19 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header();
 
-get_style_depends( 'smartdocs-single-doc', 'single-doc' );
+do_action( 'smartdocs_before_single' );
+?>
 
+<div class="smartdocs-single">
+<?php
 /**
  * Hook: smartdocs_before_main_content_single_post
  *
  * @hooked smartdocs_output_content_wrapper - 10
  */
-do_action( 'smartdocs_before_main_content_single_doc' );
+do_action( 'smartdocs_before_main_content' );
 
 if ( have_posts() ) :
 	?>
-
-<div class="smartdocs-single-doc-wrap">
 	
 	<?php while ( have_posts() ) : ?>
 
@@ -34,19 +35,6 @@ if ( have_posts() ) :
 		<?php require_once SMART_DOCS_PATH . '\templates\content-single-doc.php'; ?>
 
 	<?php endwhile; // End of the loop ?>
-
-	<?php 
-
-	/**
-	 * Hook: smartdocs_sidebar
-	 * 
-	 * @hooked smartdocs_get_sidebar - 10
-	 */
-	do_action( 'smartdocs_sidebar' );
-
-	?>
-
-</div> <!-- End of smartdocs-single-doc-wrap -->
 
 	<?php
 endif;
@@ -59,8 +47,19 @@ endif;
  *
  * @hooked smartdocs_output_content_wrapper_end - 10
  */
-do_action( 'smartdocs_after_main_content_single_doc' );
+do_action( 'smartdocs_after_main_content' );
+
+
+/**
+ * Hook: smartdocs_sidebar
+ * 
+ * @hooked smartdocs_get_sidebar - 10
+ */
+do_action( 'smartdocs_sidebar' );
+?>
+</div>
+<?php
+
+do_action( 'smartdocs_after_single' );
 
 get_footer();
-
-?>

@@ -17,13 +17,17 @@ class Cpt {
 
 	 * @var post_type
 	 */
-	public $post_type = 'smart-doc';
+	public $post_type = 'smart-docs';
 
 	public function __construct() {
 		// Action to register custom post type.
 		add_action( 'init', array( $this, 'register_cpt_doc_type' ) );
 		add_action( 'init', array( $this, 'taxonomy_thumbnail_hooks' ) );
 		add_action( 'admin_print_scripts', array( $this, 'taxonomy_admin_scripts' ) );
+	}
+
+	public static function get_post_type() {
+		return $this->post_type;
 	}
 
 	public function register_cpt_doc_type() {
@@ -75,6 +79,8 @@ class Cpt {
 		$args['rewrite'] = apply_filters( 'smartdocs_cpt_rewrite_slug', array( 'slug' => $post_slug ) );
 
 		register_post_type( $this->post_type, $args );
+
+		remove_post_type_support( $this->post_type, 'comments' );
 
 		// Resgistering Custom Category's taxonomy.
 

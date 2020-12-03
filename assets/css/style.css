@@ -170,20 +170,24 @@
 	margin-bottom: 15px;
 }
 
-.smartdocs-entry-title {
+/* .smartdocs-entry-title {
 	display: inline-block;
 	font-size: 1em;
 	font-weight: 400;
 	margin: 0;
 	padding: 0 0 0 35px;
-}
+} */
 
-.smartdocs-entry-title > a {
+/* .smartdocs-entry-title > a {
 	color: #3a3a3a;
+} */
+
+
+.single-smart-doc #content {
+	display: block;
 }
 
 .smartdocs-custom-widget-area {
-	width: 30%;
 	border-left: 1px solid #e6e6e6;
 	margin: 0;
 	padding: 45px 0 40px 30px;
