@@ -88,3 +88,59 @@ function wp_get_postcount( $id, $taxonomy_type ) {
 		})()
 	</script>
 <?php }
+
+
+
+function smartdocs_get_template_part( $slug, $name = '' ) {
+	$template = false;
+
+	if ( ! empty( $name ) ) {
+		$template = locate_template(
+			array(
+				"{$slug}-{$name}.php",
+				"templates/{$slug}-{$name}.php"
+			)
+		);
+
+		if ( ! $template ) {
+			$fallback = SMART_DOCS_PATH . "templates/{$slug}-{$name}.php";
+			$template = file_exists( $fallback ) ? $fallback : '';
+		}
+	}
+
+	if ( empty( $template ) ) {
+		$template = locate_template( array(
+			"{$slug}.php",
+			"templates/{$slug}.php"
+		) );
+
+		if ( ! $template ) {
+			$fallback = SMART_DOCS_PATH . "templates/{$slug}.php";
+			$template = file_exists( $fallback ) ? $fallback : '';
+		}
+	}
+
+	if ( $template ) {
+		load_template( $template, false );
+	}
+}
+
+function smartdocs_get_template( $template_name, $args = array() ) {
+	$template = locate_template(
+		array(
+			"{$template_name}.php",
+			"templates/{$template_name}.php"
+		)
+	);
+
+	if ( empty( $template ) ) {
+		$fallback = SMART_DOCS_PATH . "templates/{$template_name}.php";
+		$template = file_exists( $fallback ) ? $fallback : '';
+	}
+
+	if ( ! empty( $template ) ) {
+		extract( $args ); // @codingStandardsIgnoreLine
+
+		include $template;
+	}
+}

@@ -131,7 +131,7 @@ class Plugin {
 	 * @var templates
 	 */
 
-	public $templates = null;
+	public $template = null;
 
 	/**
 	 * Instance.
@@ -260,7 +260,7 @@ class Plugin {
 
 		$this->cpt        = new Cpt();
 		$this->admin      = new Admin();
-		$this->templates  = new Templates();
+		$this->template   = new Template();
 		$this->search     = new Search();
 		$this->customizer = new Customizer();
 
@@ -335,8 +335,14 @@ class Plugin {
 	 *
 	 * @return void
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts( $hook ) {
 		global $post_type;
+		
+		if ( $post_type && $post_type === $this->cpt->post_type ) {
+			if ( is_post_type_archive( $post_type ) || is_singular( $post_type ) ) {
+				wp_enqueue_style( 'smartdocs-frontend' , SMART_DOCS_URL . 'assets/css/frontend.css', array(), SMART_DOCS_VERSION );
+			}
+		}
 	}
 }
 

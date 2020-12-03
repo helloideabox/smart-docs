@@ -64,7 +64,7 @@ class Autoloader {
 			'Cat_Widget'                => 'classes/category-widget.php',
 			'Cpt'                       => 'classes/cpt.php',
 			'Search'                    => 'classes/search.php',
-			'Templates'                 => 'classes/templates.php',
+			'Template'                 => 'classes/template.php',
 			'Widget'                    => 'classes/widget.php',
 			'Permalinks'                => 'classes/permalinks.php',
 			'Customizer'                => 'classes/customizer/customizer.php',
