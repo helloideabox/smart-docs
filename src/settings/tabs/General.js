@@ -25,7 +25,7 @@ export default function General() {
 		"site",
 		"ibx_sd_archive_page_title"
 	);
-	const [titleSlug, setTitleSlug] = useEntityProp(
+	const [archiveSlug, setArchiveSlug] = useEntityProp(
 		"root",
 		"site",
 		"ibx_sd_archive_page_slug"
@@ -97,7 +97,7 @@ export default function General() {
 			.dispatch("core")
 			.saveSite({
 				ibx_sd_archive_page_title: title,
-				ibx_sd_archive_page_slug: titleSlug,
+				ibx_sd_archive_page_slug: archiveSlug,
 				ibx_sd_category_slug: categorySlug,
 				ibx_sd_tag_slug: tagSlug,
 				ibx_sd_enable_single_template: singleTemplate,
@@ -135,7 +135,7 @@ export default function General() {
 				onChange={setEnableCustomDocPage}
 			/>
 			<>
-				{!enableCustomDocPage ? (
+				{ ! enableCustomDocPage && (
 					<SelectControl
 						label={__("Select Custom Doc Page")}
 						labelPosition="top"
@@ -144,10 +144,9 @@ export default function General() {
 						value={customDocPage}
 						onChange={setCustomDocPage}
 					/>
-				) : null}
+				) }
 			</>
 			<BaseControl
-				id="textarea-1"
 				label="Documentation Page Title"
 				help="Edit to change the default title for the documentation page."
 				className="mb-3"
@@ -161,7 +160,6 @@ export default function General() {
 				/>
 			</BaseControl>
 			<BaseControl
-				id="textarea-2"
 				label="Documentation Archive Slug"
 				help="Edit to change the default slug for the documentation page."
 				className="mb-3"
@@ -169,13 +167,12 @@ export default function General() {
 				<TextControl
 					id="sd_option-doc_homepage_slug"
 					className="mt-2 block mb-2"
-					value={titleSlug}
+					value={archiveSlug}
 					placeholder={__("Add documentation archive/home page slug")}
-					onChange={setTitleSlug}
+					onChange={setArchiveSlug}
 				/>
 			</BaseControl>
 			<BaseControl
-				id="textarea-3"
 				label="Documentation Category Slug"
 				help="Edit to change the default slug for the documentation category."
 				className="mb-3"
@@ -189,7 +186,6 @@ export default function General() {
 				/>
 			</BaseControl>
 			<BaseControl
-				id="textarea-3"
 				label="Documentation Tag Slug"
 				help="Edit to change the default slug for the documentation tag."
 			>
@@ -202,7 +198,7 @@ export default function General() {
 				/>
 			</BaseControl>
 			<BaseControl
-				className=" mt-3 mb-3"
+				className="mt-3 mb-3"
 				id="smartdocs-custom-templates"
 				label={__("Custom Templates")}
 			>

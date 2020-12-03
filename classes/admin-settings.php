@@ -112,6 +112,7 @@ class Admin {
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
+				'default'		=> ''
 			)
 		);
 
@@ -444,7 +445,7 @@ class Admin {
 						),
 					),
 				),
-				'default'      => array( 'smart-doc' ),
+				'default'      => array( 'smart-docs' ),
 			)
 		);
 	}
