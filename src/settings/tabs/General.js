@@ -127,9 +127,9 @@ export default function General() {
 		<Fragment>
 			<ToggleControl
 				className="mt-2 mb-2"
-				label={__("Enable Built In Doc Page")}
+				label={__("Use built-in Doc archive")}
 				help={__(
-					"Note: if you disable built-in documentation page, you can use shortcode or page builder widgets to design your documentation page."
+					"Note: if you disable built-in documentation archive, you can use shortcode or page builder widgets to design your documentation page."
 				)}
 				checked={enableCustomDocPage}
 				onChange={setEnableCustomDocPage}
@@ -204,13 +204,13 @@ export default function General() {
 			>
 				<ToggleControl
 					className="mt-2 mb-2"
-					label={__("Enable Custom Single Doc Template")}
+					label={__("Use built-in template for Docs single page")}
 					checked={singleTemplate}
 					onChange={setSingleTemplate}
 				/>
 				<ToggleControl
 					className="mt-2 mb-2"
-					label={__("Enable Custom Template for Tag and Category Archives")}
+					label={__("Use built-in template for Docs archive page")}
 					checked={archiveTax}
 					onChange={setArchiveTax}
 				/>
