@@ -36,14 +36,16 @@ function smartdocs_search_form() {
 	echo do_shortcode( '[smartdocs_search]' );
 }
 
-function smartdocs_output_content_wrapper() {
+function smartdocs_output_content_wrapper_start() {
 	?>
 	<div class="smartdocs-content">
+		<div class="smartdocs-inner">
 	<?php
 }
 
 function smartdocs_output_content_wrapper_end() {
 	?>
+		</div>
 	</div>
 	<?php
 }

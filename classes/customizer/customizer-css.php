@@ -7,7 +7,7 @@
 function render_frontend_styles() {
 
 	$breakpoint_medium = get_option( 'smartdocs_breakpoint_medium', 1024 );
-	$breakpoint_small  = get_option( 'smartdocs_breakpoint_medium', 768 );
+	$breakpoint_small  = get_option( 'smartdocs_breakpoint_small', 768 );
 
 	$archive_title_color                = get_theme_mod( 'smartdocs_archive_title_color' );
 	$archive_item_list_title_color      = get_theme_mod( 'smartdocs_archive_list_item_title_color' );
@@ -268,4 +268,4 @@ function render_frontend_styles() {
 		<?php
 }
 
-add_action( 'wp_footer', 'render_frontend_styles', 20 );
+add_action( 'wp_head', 'render_frontend_styles', 20 );
