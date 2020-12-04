@@ -7,7 +7,7 @@
  */
 
 /**
- * Function: smartdocs_archive_title.
+ * Function: smartdocs_hero_title.
  *
  * Output title for the archive page.
  *
@@ -15,7 +15,7 @@
  *
  * @since 1.0.0
  */
-function smartdocs_archive_title() {
+function smartdocs_hero_title() {
 	$title = get_option( 'ibx_sd_archive_page_title' );
 	if ( empty( $title ) ) {
 		$title = __( 'Documentation', 'smart-docs' );

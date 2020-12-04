@@ -17,7 +17,6 @@ use SmartDocs\Widget;
 use SmartDocs\Cat_Widget;
 use SmartDocs\Templates;
 use SmartDocs\Search;
-use SmartDocs\Permalinks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -150,20 +149,6 @@ class Plugin {
 	/**
 	 * Instance.
 	 *
-	 * Holds the Permalinks Class instance.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 * @static
-	 *
-	 * @var permalinks
-	 */
-
-	public $permalinks = null;
-
-	/**
-	 * Instance.
-	 *
 	 * Holds the Customizer Class instance.
 	 *
 	 * @since 1.0.0
@@ -243,7 +228,6 @@ class Plugin {
 	 * @access public
 	 */
 	public function admin_init() {
-		//$this->permalinks = new Permalinks();
 	}
 
 	/**

@@ -109,7 +109,7 @@ function render_frontend_styles() {
 				<?php endif; ?>
 					padding: 20px;
 			}
-			.smartdocs-docs-archive-title {
+			.smartdocs-hero-title {
 			<?php if ( ! empty( $archive_title_color ) ) { ?>
 					color: <?php echo esc_attr( $archive_title_color ); ?>;
 				<?php } ?>

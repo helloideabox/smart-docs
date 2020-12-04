@@ -66,7 +66,6 @@ class Autoloader {
 			'Search'                    => 'classes/search.php',
 			'Template'                 => 'classes/template.php',
 			'Widget'                    => 'classes/widget.php',
-			'Permalinks'                => 'classes/permalinks.php',
 			'Customizer'                => 'classes/customizer/customizer.php',
 			'Styler_Customizer_Control' => 'classes/customizer/custom-controls.php',
 		);

@@ -69,11 +69,11 @@ class Customizer {
 			)
 		);
 
-		require SMART_DOCS_PATH . '\classes\customizer\sections\test-section.php';
-		require SMART_DOCS_PATH . '\classes\customizer\sections\homepage-section.php';
-		require SMART_DOCS_PATH . '\classes\customizer\sections\search-section.php';
-		require SMART_DOCS_PATH . '\classes\customizer\sections\single-doc-section.php';
-		require SMART_DOCS_PATH . '\classes\customizer\sections\breakpoints.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/test-section.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/homepage-section.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/search-section.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/single-doc-section.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/breakpoints.php';
 	}
 
 	/**
@@ -182,7 +182,7 @@ class Customizer {
 					'right'  => 50,
 				),
 				'capability' => 'edit_theme_options',
-			),
+			)
 		);
 
 		$wp_customize->add_control(
@@ -209,7 +209,7 @@ class Customizer {
 			array(
 				'default'    => '#ffffff',
 				'capability' => 'edit_theme_options',
-			),
+			)
 		);
 
 		$wp_customize->add_control(
@@ -222,7 +222,7 @@ class Customizer {
 					'settings' => 'color_control',
 					'type'     => 'styler-color',
 					'choices'  => array( 'alpha' => true ),
-				),
+				)
 			)
 		);
 
@@ -231,7 +231,7 @@ class Customizer {
 			array(
 				'default'    => 'Section Control',
 				'capability' => 'edit_theme_options',
-			),
+			)
 		);
 
 		$wp_customize->add_control(
@@ -243,7 +243,7 @@ class Customizer {
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'section_control',
 					'type'     => 'styler-section',
-				),
+				)
 			)
 		);
 
