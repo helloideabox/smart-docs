@@ -61,11 +61,12 @@ class Autoloader {
 		self::$classes_map = array(
 			'Autoloader'                => 'classes/autoloader.php',
 			'Admin'                     => 'classes/admin-settings.php',
-			'Cat_Widget'                => 'classes/category-widget.php',
 			'Cpt'                       => 'classes/cpt.php',
 			'Search'                    => 'classes/search.php',
 			'Template'                 => 'classes/template.php',
-			'Widget'                    => 'classes/widget.php',
+			'Widget'      				=> 'classes/widget.php',
+			'Widgets\Category_Widget'      => 'classes/widgets/category.php',
+			'Widgets\Recent_Docs_Widget'   => 'classes/widgets/recent-docs.php',
 			'Customizer'                => 'classes/customizer/customizer.php',
 			'Styler_Customizer_Control' => 'classes/customizer/custom-controls.php',
 		);

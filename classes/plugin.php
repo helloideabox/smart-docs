@@ -14,7 +14,6 @@ namespace SmartDocs;
 use SmartDocs\Cpt;
 use SmartDocs\Admin;
 use SmartDocs\Widget;
-use SmartDocs\Cat_Widget;
 use SmartDocs\Templates;
 use SmartDocs\Search;
 
@@ -89,34 +88,6 @@ class Plugin {
 	 */
 
 	public $shortcode = null;
-
-	/**
-	 * Instance.
-	 *
-	 * Holds the Doc Widget class instance.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 * @static
-	 *
-	 * @var doc_widget
-	 */
-
-	public $doc_widget = null;
-
-	/**
-	 * Instance.
-	 *
-	 * Holds the Doc Cat Widget class instance.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 * @static
-	 *
-	 * @var doc_cat_widget
-	 */
-
-	public $doc_cat_widget = null;
 
 	/**
 	 * Instance.
@@ -247,13 +218,10 @@ class Plugin {
 		$this->template   = new Template();
 		$this->search     = new Search();
 		$this->customizer = new Customizer();
+		$this->widget 	  = new Widget();
 
 		// Action to include script.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
-		// Load widgets.
-		$this->doc_widget     = new Widget();
-		$this->doc_cat_widget = new Cat_Widget();
 
 		// Load Utilities.
 		include_once SMART_DOCS_PATH . 'includes/utils.php';

@@ -144,3 +144,66 @@ function smartdocs_get_template( $template_name, $args = array() ) {
 		include $template;
 	}
 }
+
+function smartdocs_list_categories( $args, $count ) {
+	global $post;
+
+	$current_terms = $post ? wp_get_post_terms( $post->ID, 'smartdocs_category', array( 'fields' => 'slugs' ) ) : array();
+	$args['parent'] = 0;
+	$parent_cats = get_categories( $args );
+	?>
+	<ul>
+	<?php
+	if ( ! empty( $parent_cats ) ) {
+		foreach ( $parent_cats as $parent_cat ) {
+			$child_cat_args = $args;
+			$child_cat_args['parent'] = $parent_cat->term_id;
+			$child_cats = get_categories( $child_cat_args );
+			?>
+			<li class="cat-item cat-item-<?php echo $parent_cat->term_id; ?><?php echo in_array( $parent_cat->slug, $current_terms ) ? ' active' : ''; ?>">
+				<a href="<?php echo get_term_link( $parent_cat->term_id ); ?>">
+					<span class="cat-label"><?php echo $parent_cat->name; ?></span>
+					<?php if ( $count ) { ?>
+					<span class="cat-count"><?php echo $parent_cat->count; ?></span>
+					<?php } ?>
+				</a>
+				<?php if ( ! empty( $child_cats ) ) { ?>
+					<ul class="children">
+						<?php foreach ( $child_cats as $child_cat ) {
+							$grandchild_cat_args = $child_cat_args;
+							$grandchild_cat_args['parent'] = $child_cat->term_id;
+							$grandchild_cats = get_categories( $grandchild_cat_args );
+							?>
+							<li class="cat-item cat-item-<?php echo $child_cat->term_id; ?><?php echo in_array( $child_cat->slug, $current_terms ) ? ' active' : ''; ?>">
+								<a href="<?php echo get_term_link( $child_cat->term_id ); ?>">
+									<span class="cat-label"><?php echo $child_cat->name; ?></span>
+									<?php if ( $count ) { ?>
+									<span class="cat-count"><?php echo $child_cat->count; ?></span>
+									<?php } ?>
+								</a>
+								<?php if ( ! empty( $grandchild_cats ) ) { ?>
+									<ul class="children">
+										<?php foreach ( $grandchild_cats as $grandchild_cat ) { ?>
+										<li class="cat-item cat-item-<?php echo $grandchild_cat->term_id; ?><?php echo in_array( $grandchild_cat->slug, $current_terms ) ? ' active' : ''; ?>">
+											<a href="<?php echo get_term_link( $grandchild_cat->term_id ); ?>">
+												<span class="cat-label"><?php echo $grandchild_cat->name; ?></span>
+												<?php if ( $count ) { ?>
+												<span class="cat-count"><?php echo $grandchild_cat->count; ?></span>
+												<?php } ?>
+											</a>
+										</li>
+										<?php } ?>
+									</ul>
+								<?php } ?>
+							</li>
+						<?php } ?>
+					</ul>
+				<?php } ?>
+			</li>
+			<?php
+		}
+	}
+	?>
+	</ul>
+	<?php
+}

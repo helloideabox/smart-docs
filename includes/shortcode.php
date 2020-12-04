@@ -37,7 +37,7 @@ function smartdocs_render_search_box( $atts, $content = null ) {
 			'ajax_nonce' => wp_create_nonce( 'docs_search' ),
 		)
 	);
-	get_style_depends( 'smartdocs-style', 'style' );
+	//get_style_depends( 'smartdocs-style', 'style' );
 	?>
 	<div class="smartdocs-search">
 		<div class="smartdocs-search-inner">

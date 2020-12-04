@@ -8,7 +8,9 @@
  * @package SmartDocs
  */
 
-namespace SmartDocs;
+namespace SmartDocs\Widgets;
+
+use SmartDocs\Plugin;
 
 /**
  * Register and load the widget.
@@ -21,51 +23,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
-
 /**
  * Creating the widget for categories.
  */
-class Cat_Widget extends \WP_Widget {
+class Category_Widget extends \WP_Widget {
 
-	/**
-	 * Constructor calling the doc widget.
-	 */
 	public function __construct() {
-
-		add_action( 'widgets_init', array( $this, 'smart_doc_widgets_area' ) );
-
-		// Widget args.
-		$widget_args = array(
-			'description' => __( 'Widget for List of Categories', 'smart-docs' ),
-		);
-
-		// Calling the parent constructor(WP_Widget).
 		parent::__construct(
-			// Setting the ID.
-			'smart_doc_cat_widget',
-			// Widget name appear in UI.
-			'Smart Doc Category Widget',
-			// Arguments passing.
-			$widget_args
+			'smartdocs-categories-widget',
+			esc_html__( 'Smart Docs Categories', 'smart-docs' ),
+			array(
+				'description' => __( 'Widget to display list of docs categories.', 'smart-docs' ),
+			)
 		);
 	}
 
-
-
 	/**
-	 * Overriidung widget function of the parent.
+	 * Overriding widget method of the parent.
 	 *
 	 * @param array $args      Getting before and after of the widget.
 	 * @param array $instance  Getting title and other attributes of instance param.
 	 */
 	public function widget( $args, $instance ) {
-
 		// Title of the recent doc widget.
-		$title        = esc_html( $instance['title'] );
-		$dropdown     = ! empty( $instance['dropdown'] ) ? '1' : '0';
-		$count        = ! empty( $instance['count'] ) ? '1' : '0';
-		$hierarchical = ! empty( $instance['hierarchical'] ) ? '1' : '0';
+		$title        	= esc_html( $instance['title'] );
+		$dropdown     	= ! empty( $instance['dropdown'] ) ? true : false;
+		$count        	= ! empty( $instance['count'] ) ? true : false;
+		$empty 		 	= ! empty( $instance['empty'] ) ? false : true;
+		$hierarchical 	= ! empty( $instance['hierarchical'] ) ? true : false;
 
 		echo $args['before_widget'];
 
@@ -80,7 +65,7 @@ class Cat_Widget extends \WP_Widget {
 			'hierarchical' => $hierarchical,
 			'taxonomy'     => 'smartdocs_category',
 			'title_li'     => '',
-			'hide_empty'   => 0,
+			'hide_empty'   => $empty,
 			'pad_counts'   => 0,
 		);
 
@@ -89,39 +74,37 @@ class Cat_Widget extends \WP_Widget {
 			$dropdown_id = 'smartdocs_category';
 
 			// Adding some category args for wp_dropdown_categories.
-			$cat_args['show_option_none'] = __( 'Select Category', 'smart-docs' ); // If none of the options are selected then defaults to select category.
+			$cat_args['show_option_none'] = __( 'Select Category', 'smart-docs' );
 			$cat_args['id']               = $dropdown_id; // Gives id attribute to the select html tag.
+			$cat_args['class']            = 'smartdocs-category-select'; // Gives id attribute to the select html tag.
 			$cat_args['value_field']      = 'slug'; // Gives value attribute name of the category slug.
 
-			/**
-			 * Filters the arguments for the Categories widget drop-down.
-			*
-			* @since 2.8.0
-			* @since 4.9.0 Added the `$instance` parameter.
-			*
-			* @see wp_dropdown_categories()
-			*
-			* @param array $cat_args An array of Categories widget drop-down arguments.
-			* @param array $instance Array of settings for the current widget.
-			*/
 			wp_dropdown_categories( $cat_args );
+
+			$rewrite_slug = Plugin::instance()->cpt->get_category_rewrite_slug();
 			?>
-			<?php // Script to add event listener for the select option. ?>
+
 			<script type="text/javascript">
 				var dropdown = document.getElementById( "<?php echo esc_js( $dropdown_id ); ?>" );
-				dropdown.addEventListener( 'change', function(){
-					location.href = "<?php echo esc_html( home_url() ); ?>/smartdocs_category/" + dropdown.value;
-				} )
+				dropdown.addEventListener( 'change', function() {
+					location.href = "<?php echo esc_html( home_url() ); ?>/<?php echo $rewrite_slug; ?>/" + dropdown.value;
+				} );
 			</script>
 
-		<?php } else { ?>
+		<?php
+		} else {
+			$cat_args['depth'] = 2;
 
-		<ul>
-			<?php wp_list_categories( $cat_args ); // Returns categories list in html form according to the argument passed. ?>
-		</ul>
+			smartdocs_list_categories( $cat_args, $count );
+			?>
+
+			<!--<ul>-->
+				<?php //wp_list_categories( $cat_args ); // Returns categories list in html form according to the argument passed. ?>
+			<!--</ul>-->
 
 			<?php
 		}
+
 		echo $args['after_widget'];
 	}
 
@@ -132,14 +115,20 @@ class Cat_Widget extends \WP_Widget {
 	 * @param array $instance Getting title and other attributes of instance param.
 	 */
 	public function form( $instance ) {
-		if ( isset( $instance['title'] ) ) {
-			$title = $instance['title'];
-		} else {
-			$title = 'Categories';
-		}
+		$default = array(
+			'title'		=> esc_html__( 'Categories', 'smart-docs' ),
+			'dropdown' 	=> '0',
+			'count' 	=> '1',
+			'empty' 	=> '0',
+			'hierarchical' => '1'
+		);
 
+		$instance = array_merge( $default, $instance );
+
+		$title 			= $instance['title'];
 		$dropdown     = (bool) $instance['dropdown'];
 		$count        = (bool) $instance['count'];
+		$empty        = (bool) $instance['empty'];
 		$hierarchical = (bool) $instance['hierarchical'];
 		?>
 
@@ -147,19 +136,23 @@ class Cat_Widget extends \WP_Widget {
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); // Get field id helps in generating the unque id of the field with required string(title). ?>">
 				<?php esc_attr_e( 'Title:', 'smart-docs' ); ?>
 			</label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>" type="text">
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>" type="text" />
 		</p>
 
 		<p>
-			<input class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'dropdown' ) ); ?>" type="checkbox" <?php checked( $dropdown ); ?>>
+			<input class="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'dropdown' ) ); ?>" type="checkbox" <?php checked( $dropdown ); ?> />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'dropdown' ) ); ?>"><?php esc_attr_e( 'Display as dropdown', 'smart-docs' ); ?></label>
 			<br>
 
-			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" <?php checked( $count ); ?>>
+			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" <?php checked( $count ); ?> />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php esc_attr_e( 'Show post count', 'smart-docs' ); ?></label>
 			<br>
 
-			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'hierarchical' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>" <?php checked( $hierarchical ); ?>>
+			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'empty' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'empty' ) ); ?>" <?php checked( $empty ); ?> />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'empty' ) ); ?>"><?php esc_attr_e( 'Show empty categories', 'smart-docs' ); ?></label>
+			<br>
+
+			<input class="checkbox" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'hierarchical' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>" <?php checked( $hierarchical ); ?> />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'hierarchical' ) ); ?>"><?php esc_attr_e( 'Show hierarchy', 'smart-docs' ); ?></label>
 		</p>
 
@@ -181,18 +174,9 @@ class Cat_Widget extends \WP_Widget {
 		$instance['title']        = sanitize_text_field( $new_instance['title'] );
 		$instance['dropdown']     = ! empty( $new_instance['dropdown'] ) ? '1' : '0';
 		$instance['count']        = ! empty( $new_instance['count'] ) ? '1' : '0';
+		$instance['empty']        = ! empty( $new_instance['empty'] ) ? '1' : '0';
 		$instance['hierarchical'] = ! empty( $new_instance['hierarchical'] ) ? '1' : '0';
+
 		return $instance;
-	}
-
-	/**
-	 * Registering the custom Widget(smart_doc_cat_widget).
-	 */
-	public function smart_doc_widgets_area() {
-		register_widget( 'SmartDocs\Cat_Widget' );
-	}
-
-	public function enqueue_styles() {
-		get_style_depends('category-widget-css', 'category-widget');
 	}
 }

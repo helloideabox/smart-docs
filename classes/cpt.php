@@ -29,16 +29,6 @@ class Cpt {
 		add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 2 );
 	}
 
-	public function get_cpt_rewrite_slug() {
-		$rewrite_slug = get_option( 'ibx_sd_archive_page_slug' );
-
-		if ( empty( $rewrite_slug ) ) {
-			$rewrite_slug = $this->post_type;
-		}
-
-		return $rewrite_slug;
-	}
-
 	public function register_cpt_doc_type() {
 
 		$rewrite_slug = $this->get_cpt_rewrite_slug();
@@ -243,6 +233,36 @@ class Cpt {
 		$permalink = str_replace( '%smartdocs_category%', $category_slug, $permalink );
 
 		return $permalink;
+	}
+
+	public function get_cpt_rewrite_slug() {
+		$rewrite_slug = get_option( 'ibx_sd_archive_page_slug' );
+
+		if ( empty( $rewrite_slug ) ) {
+			$rewrite_slug = $this->post_type;
+		}
+
+		return $rewrite_slug;
+	}
+
+	public function get_category_rewrite_slug() {
+		$rewrite_slug = get_option( 'ibx_sd_category_slug' );
+
+		if ( empty( $rewrite_slug ) ) {
+			$rewrite_slug = 'smartdocs_category';
+		}
+
+		return $rewrite_slug;
+	}
+
+	public function get_tag_rewrite_slug() {
+		$rewrite_slug = get_option( 'ibx_sd_tag_slug' );
+
+		if ( empty( $rewrite_slug ) ) {
+			$rewrite_slug = 'smartdocs_tag';
+		}
+
+		return $rewrite_slug;
 	}
 
 	public function taxonomy_admin_scripts() {
