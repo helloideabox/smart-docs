@@ -30,6 +30,8 @@ class Template {
 
 	public $override_tax_archive = false;
 
+	protected $has_docs_template = false;
+
 	/**
 	 * Class constructor.
 	 *
@@ -54,6 +56,8 @@ class Template {
 
 		// Filter to rewrite the default archive theme template for particular cpt.
 		add_filter( 'template_include', array( $this, 'template_loader' ) );
+
+		add_filter( 'body_class', array( $this, 'body_class' ) );
 	}
 
 	public function template_loader( $template ) {
@@ -73,6 +77,8 @@ class Template {
 		}
 
 		if ( ! empty( $template_file ) ) {
+			$this->has_docs_template = true;
+
 			$exists_in_theme = locate_template(
 				array(
 					$template_file,
@@ -93,5 +99,13 @@ class Template {
 
 	public function get_template_path( $filename = '' ) {
 		return SMART_DOCS_PATH . 'templates/' . $filename;
+	}
+
+	public function body_class( $classes ) {
+		if ( $this->has_docs_template ) {
+			$classes[] = 'smartdocs-template';
+		}
+
+		return $classes;
 	}
 }
