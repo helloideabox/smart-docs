@@ -4,7 +4,7 @@
 	 */
 	wp.customize("smartdocs_hero_background_color", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-inner").css("background-color", new_value);
+			$(".smartdocs-header .smartdocs-inner").css("background-color", new_value);
 		});
 	});
 

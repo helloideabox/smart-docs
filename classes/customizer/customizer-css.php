@@ -18,7 +18,7 @@ function render_frontend_styles() {
 	 * Header Styles.
 	 */
 	$background_type  = get_theme_mod( 'smartdocs_archive_hero_bg_type' );
-	$background_color = get_theme_mod( 'smartdocs_hero_background_color' );
+	$background_color = get_theme_mod( 'smartdocs_hero_background_color', "#cecece" );
 	$background_image = get_theme_mod( 'smartdocs_hero_bg_image' );
 
 	/**
@@ -98,7 +98,7 @@ function render_frontend_styles() {
 			/**
 			 * Header style.
 			 */
-			header .smartdocs-inner {
+			.smartdocs-header .smartdocs-inner {
 			<?php if ( 'color' === $background_type ) : ?>
 					background-color: <?php echo esc_attr( $background_color ); ?>;
 				<?php elseif ( 'image' === $background_type ) : ?>
@@ -268,4 +268,4 @@ function render_frontend_styles() {
 		<?php
 }
 
-add_action( 'wp_head', 'render_frontend_styles', 20 );
+render_frontend_styles();
