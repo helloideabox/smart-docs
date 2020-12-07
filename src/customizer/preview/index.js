@@ -2,14 +2,14 @@
 	/**
 	 * Hero Section
 	 */
-	wp.customize("smartdocs_archive_hero_background_color", function (value) {
+	wp.customize("smartdocs_hero_background_color", function (value) {
 		value.bind(function (new_value) {
 			$(".smartdocs-inner").css("background-color", new_value);
 		});
 	});
 
 	/* Archive Title Color */
-	wp.customize("smartdocs_archive_title_color", function (value) {
+	wp.customize("smartdocs_hero_title_color", function (value) {
 		value.bind(function (new_value) {
 			$(".smartdocs-hero-title").css("color", new_value);
 		});

@@ -22,6 +22,7 @@ function setPreview(setting) {
 	var slug = null;
 
 	var sectionURLs = {
+		smartdocs_hero_section: "smart-docs",
 		smartdocs_homepage_settings: "smart-docs",
 		smartdocs_test_settings: "smart-docs",
 		smartdocs_search_settings: "smart-docs",
@@ -153,6 +154,7 @@ function setPreview(setting) {
 			var slug = null;
 
 			var sectionURLs = {
+				smartdocs_hero_section: "smart-docs",
 				smartdocs_homepage_settings: "smart-docs",
 				smartdocs_test_settings: "smart-docs",
 				smartdocs_search_settings: "smart-docs",
@@ -197,6 +199,7 @@ function setPreview(setting) {
 			SmartCustomizer._setPreview("smartdocs_test_settings");
 			SmartCustomizer._setPreview("smartdocs_search_settings");
 			SmartCustomizer._setPreview("smartdocs_single_doc_settings");
+			SmartCustomizer._setPreview("smartdocs_hero_section");
 		},
 
 		/**
@@ -207,17 +210,17 @@ function setPreview(setting) {
 
 			if ("color" === val) {
 				$(
-					"#customize-control-smartdocs_archive_hero_background_color_control"
+					"#customize-control-smartdocs_hero_background_color_control"
 				).css("display", "list-item");
-				$("#customize-control-smartdocs_archive_hero_bg_image_control").css(
+				$("#customize-control-smartdocs_hero_bg_image_control").css(
 					"display",
 					"none"
 				);
 			} else if ("image" === val) {
 				$(
-					"#customize-control-smartdocs_archive_hero_background_color_control"
+					"#customize-control-smartdocs_hero_background_color_control"
 				).css("display", "none");
-				$("#customize-control-smartdocs_archive_hero_bg_image_control").css(
+				$("#customize-control-smartdocs_hero_bg_image_control").css(
 					"display",
 					"list-item"
 				);
@@ -227,17 +230,17 @@ function setPreview(setting) {
 				value.bind(function (newValue) {
 					if ("color" === newValue) {
 						$(
-							"#customize-control-smartdocs_archive_hero_background_color_control"
+							"#customize-control-smartdocs_hero_background_color_control"
 						).css("display", "list-item");
-						$("#customize-control-smartdocs_archive_hero_bg_image_control").css(
+						$("#customize-control-smartdocs_hero_bg_image_control").css(
 							"display",
 							"none"
 						);
 					} else if ("image" === newValue) {
 						$(
-							"#customize-control-smartdocs_archive_hero_background_color_control"
+							"#customize-control-smartdocs_hero_background_color_control"
 						).css("display", "none");
-						$("#customize-control-smartdocs_archive_hero_bg_image_control").css(
+						$("#customize-control-smartdocs_hero_bg_image_control").css(
 							"display",
 							"list-item"
 						);
