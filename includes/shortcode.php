@@ -67,10 +67,6 @@ add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
  */
 function smartdocs_render_categories( $args = array() ) {
 
-	if ( is_post_type_archive( 'smart-doc' ) ) {
-		include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
-	}
-
 	$args = shortcode_atts(
 		array(
 			'show_count' => true,
