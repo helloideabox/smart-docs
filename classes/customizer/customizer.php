@@ -70,6 +70,7 @@ class Customizer {
 		);
 
 		require SMART_DOCS_PATH . 'classes/customizer/sections/test-section.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/hero-section.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/homepage-section.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/search-section.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/single-doc-section.php';
