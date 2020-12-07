@@ -13,6 +13,11 @@ SmartDocs is a simple to use documentation plugin for WordPress that makes it ve
 
 **Note:** If you want to use the plugin directly then simply download the zip package from the repo and install it via *wp-admin* > *plugins* > *Add New*.
 
+# Running wp-env environment
+
+1. Run ```npm -g i @wordpress/env``` from the terminal to install the WordPress/Env development package.
+2. Run ```wp-env start``` command from the plugin's folder to start WordPress docker container.
+
 # License Info
 
 SmartDocs is available under the GPL v2.0 license. You are free to modify it and use it as per your requirements with proper attribution to the original author of the plugin.
