@@ -27,6 +27,7 @@ class Cpt {
 
 		add_filter( 'rewrite_rules_array', array( $this, 'fix_rewrite_rules' ) );
 		add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 2 );
+		add_action( 'wp_head', array( $this, 'render_frontend_styles' ), 20 );
 	}
 
 	public function register_cpt_doc_type() {
@@ -72,9 +73,9 @@ class Cpt {
 		$args['rewrite'] = apply_filters(
 			'smartdocs_cpt_rewrite_slug',
 			array(
-				'slug' => $rewrite_slug . '/%smartdocs_category%',
+				'slug'       => $rewrite_slug . '/%smartdocs_category%',
 				'with_front' => false,
-				'feeds' => true,
+				'feeds'      => true,
 			)
 		);
 
@@ -115,8 +116,8 @@ class Cpt {
 		$category_args['rewrite'] = apply_filters(
 			'smartdocs_category_rewrite_slug',
 			array(
-				'slug' => $category_slug,
-				'with_front' => false,
+				'slug'         => $category_slug,
+				'with_front'   => false,
 				'hierarchical' => true,
 			)
 		);
@@ -160,7 +161,7 @@ class Cpt {
 		$tag_args['rewrite'] = apply_filters(
 			'smartdocs_tag_rewrite_slug',
 			array(
-				'slug' => $tag_slug,
+				'slug'       => $tag_slug,
 				'with_front' => false,
 			)
 		);
@@ -213,7 +214,7 @@ class Cpt {
 			);
 			$category_object = $terms[0];
 			$category_slug   = $category_object->slug;
-	
+
 			if ( $category_object->parent ) {
 				$ancestors = get_ancestors( $category_object->term_id, 'smartdocs_category' );
 				foreach ( $ancestors as $ancestor ) {
@@ -449,5 +450,11 @@ class Cpt {
 			<span class="description"><?php printf( esc_html__( 'Add an image from media library to this %1$s.', 'powerpack' ), esc_html( $name ) ); ?></span>
 		</div>
 		<?php
+	}
+
+	public function render_frontend_styles() {
+		if ( is_post_type_archive( 'smart-docs' ) ) {
+			include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
+		}
 	}
 }
