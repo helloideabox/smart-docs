@@ -1,0 +1,10 @@
+{
+	"plugins": [".", "../fakerpress", "../betterdocs"],
+	"themes": ["../hello-elementor", "../bb-theme", "../blocksy"],
+	"port": 8888,
+	"env": {
+        "tests": {
+            "port": 8889
+        }
+    }
+}
