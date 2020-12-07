@@ -9,7 +9,7 @@ function render_frontend_styles() {
 	$breakpoint_medium = get_option( 'smartdocs_breakpoint_medium', 1024 );
 	$breakpoint_small  = get_option( 'smartdocs_breakpoint_small', 768 );
 
-	$archive_title_color                = get_theme_mod( 'smartdocs_archive_title_color' );
+	$archive_title_color                = get_theme_mod( 'smartdocs_hero_title_color' );
 	$archive_item_list_title_color      = get_theme_mod( 'smartdocs_archive_list_item_title_color' );
 	$archive_item_list_post_count_color = get_theme_mod( 'smartdocs_archive_list_item_post_count_color' );
 	$archive_list_item_bg_color         = get_theme_mod( 'smartdocs_archive_list_item_bg_color' );
@@ -18,8 +18,8 @@ function render_frontend_styles() {
 	 * Header Styles.
 	 */
 	$background_type  = get_theme_mod( 'smartdocs_archive_hero_bg_type' );
-	$background_color = get_theme_mod( 'smartdocs_archive_hero_background_color' );
-	$background_image = get_theme_mod( 'smartdocs_archive_hero_bg_image' );
+	$background_color = get_theme_mod( 'smartdocs_hero_background_color' );
+	$background_image = get_theme_mod( 'smartdocs_hero_bg_image' );
 
 	/**
 	 * Grid Layout
