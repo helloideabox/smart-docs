@@ -31,7 +31,7 @@ class Category_Widget extends \WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'smartdocs-categories-widget',
-			esc_html__( 'Smart Docs Categories', 'smart-docs' ),
+			esc_html__( 'Categories - SmartDocs', 'smart-docs' ),
 			array(
 				'description' => __( 'Widget to display list of docs categories.', 'smart-docs' ),
 			)
@@ -94,9 +94,12 @@ class Category_Widget extends \WP_Widget {
 		<?php
 		} else {
 			$cat_args['depth'] = 2;
-
+			?>
+			<ul>
+			<?php
 			smartdocs_list_categories( $cat_args, $count );
 			?>
+			</ul>
 
 			<!--<ul>-->
 				<?php //wp_list_categories( $cat_args ); // Returns categories list in html form according to the argument passed. ?>

@@ -44,7 +44,7 @@ function smartdocs_render_search_box( $atts, $content = null ) {
 			<form role="search" method="post" class="smartdocs-search-form" action="">
 				<input id="smartdocs-search-input" type="search" class="smartdocs-search-input" placeholder="<?php echo esc_attr_x( 'Search for answers…', 'placeholder', 'smart-docs' ); ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search', 'label', 'smart-docs' ); ?>" autocomplete="off" autocorrect="off" />
 
-				<div class="smartdocs-spinner live-search-loading">
+				<div class="smartdocs-spinner live-search-loading" style="display:none">
 					<img src="<?php echo esc_url( plugins_url( '../assets/images/ring.gif', __FILE__ ) ); ?>" >
 				</div>
 			</form>
@@ -67,7 +67,7 @@ add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
  */
 function smartdocs_render_categories( $args = array() ) {
 
-	if ( is_post_type_archive( 'smart-doc' ) ) {
+	if ( is_post_type_archive( 'smart-docs' ) ) {
 		include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
 	}
 
@@ -76,6 +76,7 @@ function smartdocs_render_categories( $args = array() ) {
 			'show_count' => true,
 			'columns'    => '3,2,1',
 			'hide_empty' => false,
+			'children'	 => false,
 			'layout'     => 'grid',
 			'title_tag'  => 'h4',
 		),
@@ -86,9 +87,25 @@ function smartdocs_render_categories( $args = array() ) {
 		'hide_empty' => apply_filters( 'smartdocs_hide_empty_categories', $args['hide_empty'] ),
 	);
 
-	$terms = get_terms( 'smartdocs_category', $terms_args );
+	if ( ! $args['children'] ) {
+		$terms_args['parent'] = 0;
+	}
 
-	if ( is_wp_error( $terms ) || empty( $terms ) ) {
+	$terms_args = apply_filters( 'smartdocs_categories_query_args', $terms_args );
+
+	if ( is_tax( 'smartdocs_category' ) ) {
+		// Query only child terms if we are on taxonomy archive.
+		$term_children = get_term_children( get_queried_object()->term_id , 'smartdocs_category' );
+		if ( is_array( $term_children ) && ! empty( $term_children ) ) {
+			foreach ( $term_children as $term_child ) {
+				$terms[] = get_term( $term_child );
+			}
+		}
+	} else {
+		$terms = get_terms( 'smartdocs_category', $terms_args );
+	}
+
+	if ( ! isset( $terms ) || is_wp_error( $terms ) || empty( $terms ) ) {
 		return '';
 	}
 
@@ -106,11 +123,11 @@ function smartdocs_render_categories( $args = array() ) {
 
 	ob_start();
 	?>
-	<div class="smartdocs-categories smartdocs-categories-list smartdocs-archive-layout-<?php echo $layout; ?>">
+	<div class="smartdocs-categories">
 		<?php foreach ( $terms as $term ) : ?>
 			<div class="smartdocs-category">
 				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
-					<div class="smartdocs-category-info-wrapper">
+					<div class="smartdocs-category-info">
 							<?php
 								$smartdocs_category_image = smartdocs_get_category_thumbnail_url( $term->term_id );
 
@@ -119,7 +136,7 @@ function smartdocs_render_categories( $args = array() ) {
 								<img src="<?php echo $smartdocs_category_image[0]; ?>" alt="<?php echo $term->name; ?>" width="100px">
 
 							<?php endif; ?>
-							<div class="smartdocs-category-title-description-wrapper">
+							<div class="smartdocs-category-text">
 								<<?php echo esc_html( $args['title_tag'] ); ?> class="smartdocs-category-title"><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
 								<?php if ( ! empty( $term->description ) ) : ?>
 									<span class="smartdocs-category-description">
@@ -142,5 +159,5 @@ function smartdocs_render_categories( $args = array() ) {
 		<?php endforeach; ?>
 	</div>
 	<?php
-	return ob_get_clean();
+	echo ob_get_clean();
 }

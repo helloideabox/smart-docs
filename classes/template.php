@@ -70,10 +70,10 @@ class Template {
 			$template_file = 'archive-smart-docs.php';
 		}
 		if ( is_tax( 'smartdocs_category' ) && $this->override_tax_archive ) {
-			$template_file = 'taxonomy-smartdocs_category.php';
+			$template_file = 'taxonomy-smartdocs-category.php';
 		}
 		if ( is_tax( 'smartdocs_tag' ) && $this->override_tax_archive ) {
-			$template_file = 'taxonomy-smartdocs_tag.php';
+			$template_file = 'taxonomy-smartdocs-tag.php';
 		}
 
 		if ( ! empty( $template_file ) ) {

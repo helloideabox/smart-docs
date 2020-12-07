@@ -21,18 +21,12 @@ class Recent_Docs_Widget extends \WP_Widget {
 	 * Constructor calling the docs widgets
 	 */
 	public function __construct() {
-
-		$widget_ops = array(
-			'description' => __( 'Widget for recent Docs', 'smart-docs' ),
-		);
-
 		parent::__construct(
-			// Base ID of the widget.
-			'smart_doc_widget',
-			// Widget name will appear in UI.
-			__( 'Smart Docs Widget', 'smart-docs' ),
-			// Passing widget options array.
-			$widget_ops
+			'smartdocs-recent-docs-widget',
+			esc_html__( 'Recent Docs - SmartDocs', 'smart-docs' ),
+			array(
+				'description' => __( 'Widget to display list recently published docs.', 'smart-docs' ),
+			)
 		);
 	}
 
@@ -98,11 +92,14 @@ class Recent_Docs_Widget extends \WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		if ( isset( $instance['title'] ) ) {
-			$title = $instance['title'];
-		} else {
-			$title = __( 'Recent Docs', 'smart-docs' );
-		}
+		$default = array(
+			'title'		=> esc_html__( 'Recent Docs', 'smart-docs' ),
+			'numberposts' 	=> '5',
+		);
+
+		$instance = array_merge( $default, $instance );
+
+		$title = $instance['title'];
 
 		// Widget admin form.
 		?>
@@ -116,8 +113,6 @@ class Recent_Docs_Widget extends \WP_Widget {
 
 		<?php
 	}
-
-
 
 	/**
 	 * Updating widget replacing old instances with new.
