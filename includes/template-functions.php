@@ -94,7 +94,8 @@ function smartdocs_get_sidebar() {
 			</div>
 		</div>
 
-	<?php endif;
+		<?php
+	endif;
 
 }
 
@@ -131,7 +132,7 @@ function smartdocs_output_single_doc_wrapper_end() {
 function smartdocs_single_doc_header() {
 	?>
 	<header class="entry-header smartdocs-entry-header">
-		<?php do_action(  'smartdocs_before_single_doc_title' ); ?>
+		<?php do_action( 'smartdocs_before_single_doc_title' ); ?>
 		<h1 class="smartdocs-entry-title"><?php the_title(); ?></h1>
 		<?php do_action( 'smartdocs_after_single_doc_title' ); ?>
 	</header>
