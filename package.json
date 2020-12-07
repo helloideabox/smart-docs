@@ -16,7 +16,7 @@
     "format:js": "wp-scripts format-js",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
-    "start": "npm run start:settings && npm run start:block && npm run start:customizer",
+    "start": "npm run start:settings && npm run start:block && npm run start:customizer-controls && npm run start:customizer-preview",
     "start:settings": "wp-scripts start src/settings/index.js --output-path=assets/admin/ ",
     "start:block": "wp-scripts start src/block/index.js --output-path=assets/block/",
     "start:customizer": "npm run start:customizer-controls && npm run start:customizer-preview",
