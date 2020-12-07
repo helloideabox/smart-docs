@@ -8,7 +8,7 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_search_settings',
 			array(
 				'title'    => __( 'Search Bar', 'smart-docs' ),
-				'priority' => 91,
+				'priority' => 4,
 			)
 		);
 

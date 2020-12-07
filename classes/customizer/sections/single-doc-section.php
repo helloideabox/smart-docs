@@ -7,7 +7,7 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_single_doc_settings',
 			array(
 				'title'    => __( 'Single Doc', 'smart-docs' ),
-				'priority' => 92,
+				'priority' => 3,
 			)
 		);
 

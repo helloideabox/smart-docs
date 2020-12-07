@@ -8,7 +8,7 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_homepage_settings',
 			array(
 				'title'    => __( 'Docs Archive', 'smart-docs' ),
-				'priority' => 90,
+				'priority' => 2,
 			)
 		);
 

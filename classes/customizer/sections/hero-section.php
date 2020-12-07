@@ -8,7 +8,7 @@ use SmartDocs\Styler_Customizer_Control;
 		'smartdocs_hero_section',
 		array(
 			'title'    => __( 'Hero Section', 'smart-docs' ),
-			'priority' => 89,
+			'priority' => 1,
 		)
 	);
 

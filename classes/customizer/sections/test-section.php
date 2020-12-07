@@ -33,7 +33,7 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_test_settings',
 			array(
 				'title'    => __( 'Test Section', 'smart-docs' ),
-				'priority' => 100,
+				'priority' => 5,
 			)
 		);
 

@@ -6,7 +6,7 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_breakpoints_section',
 			array(
 				'title'    => __( 'Breakpoints (in px)', 'smart-docs' ),
-				'priority' => 110,
+				'priority' => 6,
 			)
 		);
 
