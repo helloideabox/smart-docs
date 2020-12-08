@@ -54,19 +54,25 @@ function smartdocs_output_header() {
 	smartdocs_get_template_part( 'content', 'docs-header' );
 }
 
-function smartdocs_output_page_wrap( $content ) {
-	global $post;
-	if ( 318 == $post->ID ) {
-		return '<div class="smartdocs">' . $content . '</div>';
-	}
+// function smartdocs_output_page_wrap( $content ) {
+// 	global $post;
+// 	if ( 318 == $post->ID ) {
+// 		return '<div class="smartdocs">' . $content . '</div>';
+// 	}
 
-	return $content;
-}
+// 	return $content;
+// }
 
 function smartdocs_archive_content() {
-	// TODO: Provide arguments from customizer
-	$args = array();
-	echo smartdocs_render_categories( $args );
+	if ( ! is_tax( 'smartdocs_category' ) || apply_filters( 'smartdocs_tax_render_categories', false ) ) {
+		// TODO: Provide arguments from customizer
+		$args = array();
+		smartdocs_render_categories( $args );
+	}
+
+	if ( is_tax( 'smartdocs_category' ) ) {
+		smartdocs_categorized_articles();
+	}
 }
 
 function smartdocs_get_category_thumbnail_url( $term_id ) {
@@ -85,12 +91,12 @@ function smartdocs_get_category_thumbnail_url( $term_id ) {
 
 function smartdocs_get_sidebar() {
 
-	if ( is_active_sidebar( 'smart-docs-sidebar-1' ) ) :
+	if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) :
 		?>
 
 		<div class="widget-area sidebar smartdocs-sidebar" itemscope="itemscope" itemtype="https://schema.org/WPSideBar">
 			<div class="sidebar-main content-area">
-				<?php dynamic_sidebar( 'smart-docs-sidebar-1' ); ?>
+				<?php dynamic_sidebar( 'smart-docs-sidebar' ); ?>
 			</div>
 		</div>
 
@@ -113,20 +119,20 @@ function smartdocs_single_doc_terms() {
 
 }
 
-function smartdocs_single_doc_comments() {
-	comments_template();
+function smartdocs_output_content_area_wrapper_start() {
+	if ( ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
+	?>
+		<div id="primary" class="content-area">
+	<?php
+	}
 }
 
-function smartdocs_output_single_doc_wrapper_start() {
+function smartdocs_output_content_area_wrapper_end() {
+	if ( ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
 	?>
-	<div id="primary" class="content-area">
+		</div>
 	<?php
-}
-
-function smartdocs_output_single_doc_wrapper_end() {
-	?>
-	</div>
-	<?php
+	}
 }
 
 function smartdocs_single_doc_header() {
@@ -145,4 +151,11 @@ function smartdocs_single_doc_content() {
 		<?php the_content(); ?>
 	</div>
 	<?php
+}
+
+function smartdocs_categorized_articles() {
+	while ( have_posts() ) :
+		the_post();
+		smartdocs_get_template_part( 'content', 'smartdocs-category' );
+	endwhile;
 }

@@ -29,7 +29,7 @@ class Widget {
 	public function register_sidebar() {
 		$args = array(
 			'name'          => __( 'Smart Docs Sidebar', 'smart-docs' ),
-			'id'            => 'smart-docs-sidebar-1',
+			'id'            => 'smart-docs-sidebar',
 			'description'   => __( 'Widgets in this area will be shown on all docs single posts and category.', 'smart-docs' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',

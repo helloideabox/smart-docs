@@ -138,7 +138,7 @@ function render_frontend_styles() {
 			/**
 			 * Grid Styles
 			 */
-			.smartdocs-categories.smartdocs-archive-layout-grid {
+			.smartdocs-categories {
 				grid-template-columns: repeat(<?php echo empty( $grid_columns ) ? 3 : $grid_columns; ?>, 1fr);
 				gap: <?php echo empty( $grid_gap ) ? '20px' : ( $grid_gap . 'px' ); ?>;
 			}
@@ -146,7 +146,7 @@ function render_frontend_styles() {
 			/**
 			 * List Styles
 			 */
-			.smartdocs-categories.smartdocs-archive-layout-list {
+			.smartdocs-categories.layout-list {
 				grid-template-columns: repeat(1, 1fr);
 				gap: <?php echo empty( $grid_gap ) ? '20px' : ( $grid_gap . 'px' ); ?>;
 			}
@@ -155,16 +155,16 @@ function render_frontend_styles() {
 			 * Single Category Item Styles
 			 */
 
-			 .smartdocs-category-info-wrapper {
+			 .smartdocs-category-info {
 				background-color: <?php echo esc_html( $cat_title_bg_color ); ?>;
 			 }
 
-			 .smartdocs-categories-list .smartdocs-category-title-description-wrapper .smartdocs-category-title {
+			 .smartdocs-categories-list .smartdocs-category-text .smartdocs-category-title {
 				 font-size: <?php echo esc_html( $cat_title_font_size ); ?>px;
 				 color: <?php echo esc_html( $cat_title_font_color ); ?>;
 			 }
 
-			 .smartdocs-categories-list .smartdocs-category-title-description-wrapper .smartdocs-category-description {
+			 .smartdocs-categories-list .smartdocs-category-text .smartdocs-category-description {
 				 font-size: <?php echo esc_html( $cat_description_font_size ); ?>px;
 				 color: <?php echo esc_html( $cat_descrtipion_font_color ); ?>;
 			 }
@@ -179,7 +179,7 @@ function render_frontend_styles() {
 				color: <?php echo esc_html( $cat_info_text_color ); ?>;
 			}
 
-			div.smartdocs-categories-list .smartdocs-category-info-wrapper {
+			div.smartdocs-categories-list .smartdocs-category-info {
 				padding: <?php echo $cat_item_padding->top; ?>px <?php echo $cat_item_padding->right; ?>px <?php echo $cat_item_padding->bottom; ?>px <?php echo $cat_item_padding->left; ?>px ;
 			 }
 			
@@ -208,11 +208,11 @@ function render_frontend_styles() {
 				/**
 				* Grid Styles Medium || Tablet
 				*/
-				.smartdocs-archive-layout-grid {
+				.smartdocs-categories {
 					grid-template-columns: repeat(<?php echo $grid_columns_tablet; ?>, 1fr);
 				}
 
-				div.smartdocs-categories-list .smartdocs-category-info-wrapper {
+				div.smartdocs-categories-list .smartdocs-category-info {
 					padding: <?php echo $cat_item_padding_tablet->top; ?>px <?php echo $cat_item_padding_tablet->right; ?>px <?php echo $cat_item_padding_tablet->bottom; ?>px <?php echo $cat_item_padding_tablet->left; ?>px ;
 				}
 
@@ -221,11 +221,11 @@ function render_frontend_styles() {
 					padding-left: <?php echo $cat_item_padding_tablet->left; ?>px ;
 				}
 
-				.smartdocs-categories-list .smartdocs-category-title-description-wrapper .smartdocs-category-title {
+				.smartdocs-categories-list .smartdocs-category-text .smartdocs-category-title {
 				 font-size: <?php echo esc_html( $cat_title_font_size_tablet ); ?>px;
 				}
 
-				.smartdocs-categories-list .smartdocs-category-title-description-wrapper .smartdocs-category-description {
+				.smartdocs-categories-list .smartdocs-category-text .smartdocs-category-description {
 				 font-size: <?php echo esc_html( $cat_description_font_size_tablet ); ?>px;
 			 }
 				
@@ -239,11 +239,11 @@ function render_frontend_styles() {
 				/**
 				* Grid Styles Small
 				*/
-				.smartdocs-archive-layout-grid {
+				.smartdocs-categoroies {
 					grid-template-columns: repeat(<?php echo $grid_columns_mobile; ?>, 1fr);
 				}
 
-				div.smartdocs-categories-list .smartdocs-category-info-wrapper {
+				div.smartdocs-categories-list .smartdocs-category-info {
 					padding: <?php echo $cat_item_padding_mobile->top; ?>px <?php echo $cat_item_padding_mobile->right; ?>px <?php echo $cat_item_padding_mobile->bottom; ?>px <?php echo $cat_item_padding_mobile->left; ?>px ;
 				}
 
@@ -252,11 +252,11 @@ function render_frontend_styles() {
 					padding-left: <?php echo $cat_item_padding_mobile->left; ?>px ;
 				}
 
-				.smartdocs-categories-list .smartdocs-category-title-description-wrapper .smartdocs-category-title {
+				.smartdocs-categories-list .smartdocs-category-text .smartdocs-category-title {
 				 font-size: <?php echo esc_html( $cat_title_font_size_mobile ); ?>px;
 				}
 
-				.smartdocs-categories-list .smartdocs-category-title-description-wrapper .smartdocs-category-description {
+				.smartdocs-categories-list .smartdocs-category-text .smartdocs-category-description {
 				 font-size: <?php echo esc_html( $cat_description_font_size_mobile ); ?>px;
 			 }
 

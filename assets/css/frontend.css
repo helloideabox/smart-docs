@@ -1,3 +1,50 @@
+@font-face {
+	font-family: 'smartdocs';
+	src: url('../fonts/smartdocs.eot?944nec');
+	src: url('../fonts/smartdocs.eot?944nec#iefix') format('embedded-opentype'),
+		url('../fonts/smartdocs.ttf?944nec') format('truetype'),
+		url('../fonts/smartdocs.woff?944nec') format('woff'),
+		url('../fonts/smartdocs.svg?944nec#smartdpcs') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+[class^="sd-icon-"],
+[class*=" sd-icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'smartdocs' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.sd-icon-book:before {
+	content: "\e91f";
+}
+
+.sd-icon-doc-1:before {
+	content: "\e926";
+}
+
+.sd-icon-doc-2:before {
+	content: "\eae3";
+}
+
+.sd-icon-spinner11:before {
+	content: "\e984";
+}
+
+.sd-icon-search:before {
+	content: "\e986";
+}
+
+
 /*********************************
  * Common
  ********************************/
@@ -6,9 +53,11 @@
 	content: "";
 	display: table;
 }
+
 .smartdocs-template .smartdocs-inner:after {
 	clear: both;
 }
+
 .smartdocs-template .smartdocs-inner {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -19,6 +68,7 @@
 .smartdocs-header {
 	background-color: #eee;
 }
+
 .smartdocs-header .smartdocs-hero-title,
 .smartdocs-header .smartdocs-hero-description {
 	text-align: center;
@@ -27,79 +77,99 @@
 /** Content, Sidebar */
 .smartdocs-template .smartdocs-content .smartdocs-inner {
 	padding: 0;
+	display: flex;
 }
+
 .smartdocs-template .smartdocs-content #primary {
-    float: left;
+	float: left;
 	width: 66.66666%;
 	padding-top: 30px;
 	padding-right: 30px;
-	border-right: 1px solid #eee;
 }
+
 .smartdocs-template .smartdocs-content .sidebar {
-    float: right;
+	float: right;
 	width: 33.33333%;
 	padding-top: 30px;
 	padding-left: 30px;
+	border-left: 1px solid #eee;
 }
 
 /** Sidebar Widgets */
 .smartdocs-template .smartdocs-sidebar .widget {
 	margin-bottom: 30px;
 }
+
 .smartdocs-template .smartdocs-sidebar .widget-title {
 	padding-bottom: 10px;
 	border-bottom: 1px solid #eee;
 }
+
 .smartdocs-template .smartdocs-sidebar .widget ul {
 	padding: 0;
 	margin: 0;
 	list-style: none;
 }
+
 .smartdocs-template .smartdocs-sidebar .widget ul.children {
 	padding-left: 30px;
 }
+
 .smartdocs-template .smartdocs-sidebar .widget ul li:last-child {
 	margin-bottom: 0;
 }
-.widget_smartdocs-categories-widget .cat-item {
+
+.widget_smartdocs-categories-widget li {
 	margin-bottom: 0;
 }
-.widget_smartdocs-categories-widget .cat-item.active {
+
+.widget_smartdocs-categories-widget li.active {
 	position: relative;
 }
+
 .widget_smartdocs-categories-widget .cat-item a {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	padding-top: 5px;
-    padding-bottom: 5px;
+	padding-bottom: 5px;
 }
-.widget_smartdocs-categories-widget .cat-item .children .cat-item a {
-    padding-left: 20px;
-    border-left: 1px solid #ddd;
+
+body:not(.single) .widget_smartdocs-categories-widget .cat-item .children .cat-item a,
+body.single .widget_smartdocs-categories-widget .cat-item .has-posts li a {
+	padding-left: 20px;
+	border-left: 1px solid #ddd;
 }
-.widget_smartdocs-categories-widget .children .cat-item.active:before {
+
+.widget_smartdocs-categories-widget .cat-item.active>a>.cat-label {
+	font-weight: bold;
+}
+
+body:not(.single) .widget_smartdocs-categories-widget .children .cat-item.active:before,
+body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	position: absolute;
-    content: '';
-    top: 0;
-    left: -1px;
-    width: 3px;
-    height: 100%;
-    border-radius: 5px;
-    background: #ddd;
+	content: '';
+	top: 0;
+	left: -1px;
+	width: 3px;
+	height: 100%;
+	border-radius: 5px;
+	background: #ddd;
 }
+
 .widget_smartdocs-categories-widget .cat-item a .cat-count {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 24px;
-    min-width: 24px;
-    font-size: 12px;
-    font-weight: 600;
-    background-color: #eee;
-    border-radius: 4px;
-    transition: all 0.10s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 24px;
+	min-width: 24px;
+	font-size: 12px;
+	font-weight: 600;
+	background-color: #eee;
+	border-radius: 4px;
+	transition: all 0.10s;
 }
+
 .widget_smartdocs-categories-widget .cat-item a:hover .cat-count {
 	background-color: #ddd;
 }
@@ -107,39 +177,35 @@
 /*********************************
  * Archive
  ********************************/
-
- /** Grid Layout **/
-.smartdocs-archive-layout-grid {
-	margin-right: 15%;
-	margin-left: 15%;
-	margin-top: 3em;
-	margin-bottom: 3em;
+.smartdocs-categories {
 	display: grid;
+	gap: 20px;
+	grid-template-columns: repeat(3, 1fr);
+	margin: 20px 0;
+	width: 100%;
 }
 
-.smartdocs-archive-layout-grid .smartdocs-category {
+.smartdocs-categories .smartdocs-category {
 	min-width: 1px;
 }
 
-.smartdocs-archive-layout-grid .smartdocs-category a {
-	border: 1px solid #e1e1e1;
-	border-radius: 3px;
+.smartdocs-categories .smartdocs-category a {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	height: 100%;
 	min-height: 250px;
+	border: 1px solid #e1e1e1;
+	border-radius: 3px;
 	text-decoration: none;
 	transition: border 0.2s linear;
 }
 
-.smartdocs-archive-layout-grid .smartdocs-category a:hover {
+.smartdocs-categories .smartdocs-category a:hover {
 	border-color: #c0c0c0;
 }
 
-.smartdocs-archive-layout-grid
-	.smartdocs-category
-	.smartdocs-category-info-wrapper {
+.smartdocs-categories .smartdocs-category .smartdocs-category-info {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -148,25 +214,21 @@
 	width: 100%;
 }
 
-.smartdocs-archive-layout-grid .smartdocs-category-title-description-wrapper {
+.smartdocs-categories .smartdocs-category-text {
 	text-align: center;
 }
 
-.smartdocs-archive-layout-grid
-	.smartdocs-category-title-description-wrapper
-	.smartdocs-category-title {
+.smartdocs-categories .smartdocs-category-text .smartdocs-category-title {
 	font-weight: bold;
 	margin-bottom: 20px;
 }
 
-.smartdocs-archive-layout-grid
-	.smartdocs-category-title-description-wrapper
-	.smartdocs-category-description {
+.smartdocs-categories .smartdocs-category-text .smartdocs-category-description {
 	color: #c0c0c0;
 	text-align: center;
 }
 
-.smartdocs-archive-layout-grid .smartdocs-posts-info {
+.smartdocs-categories .smartdocs-posts-info {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
@@ -175,100 +237,38 @@
 	margin-top: auto;
 }
 
-.smartdocs-archive-layout-grid
-	.smartdocs-posts-info
-	.smartdocs-category-posts-count {
-	font-weight: bold;
-	color: #2d2d2d;
+.smartdocs-template.archive .smartdocs-entry-title {
+	font-size: 1.2em;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 10px;
 }
-
-/** List Layout **/
-
-.smartdocs-categories.smartdocs-archive-layout-list {
-	display: grid;
-	gap: 20px;
-}
-
-.smartdocs-archive-layout-list .smartdocs-category {
-	width: 100%;
-}
-.smartdocs-archive-layout-list .smartdocs-category a {
-	border: 1px solid #e1e1e1;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	text-decoration: none;
-
-	height: 100%;
-
-	border-radius: 3px;
-}
-
-.smartdocs-archive-layout-list .smartdocs-category-info-wrapper {
-	display: flex;
-	align-items: center;
-	padding: 20px;
-
-	height: 100%;
-	width: 100%;
-}
-
-.smartdocs-archive-layout-list .smartdocs-category-info-wrapper img {
-	margin-right: 3em;
-}
-
-.smartdocs-archive-layout-list .smartdocs-category-title {
-	font-weight: bold;
-}
-
-.smartdocs-archive-layout-list .smartdocs-category-description {
-	color: #c0c0c0;
-}
-
-.smartdocs-archive-layout-list .smartdocs-posts-info {
-	height: 4em;
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	border-top: 1px solid #e1e1e1;
-}
-
-.smartdocs-archive-layout-list .smartdocs-category-posts-count {
-	width: 100%;
-	text-align: center;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: left;
-	padding-left: 20px;
-}
-
-.smartdocs-archive-layout-list
-	.smartdocs-category-posts-count
-	.smartdocs-posts-count {
-	margin-right: 5px;
-}
-
-.smartdocs-archive-layout-list .smartdocs-category-view-all {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	transition: all 0.2s ease-in-out;
-	padding-right: 20px;
+.smartdocs-template.archive .smartdocs-entry-title:before {
+	content: "\e926";
+	font-family: 'smartdocs' !important;
+	speak: never;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	margin-right: 10px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 
 /*********************************
  * Single
  ********************************/
- main.smartdocs-wrap {
-    margin-right: auto;
-    margin-left: auto;
+.smartdocs-entry-content img {
+    padding: 10px;
+    background: #eee;
+}
+
+main.smartdocs-wrap {
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .smartdocs-wrap .smartdocs-single-doc-wrap {
@@ -278,34 +278,34 @@
 }
 
 header.smartdocs-single-doc-search-hero {
-    padding-top: 125px;
-    padding-bottom: 125px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: #262626;
+	padding-top: 125px;
+	padding-bottom: 125px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #262626;
 }
 
 header.smartdocs-single-doc-header {
-    margin-bottom: 5%;
+	margin-bottom: 5%;
 }
 
 .smartdocs-single-doc-last-update-time {
-    color:  #c1c1c1;
-    font-size: 14px;
-    padding-top: 10px;
+	color: #c1c1c1;
+	font-size: 14px;
+	padding-top: 10px;
 }
 
 .smartdocs-single-doc-featured-image {
-    margin: 5%;
+	margin: 5%;
 }
 
 .smartdocs-single-doc-featured-image img {
-    width: 100%;
-    object-fit: contain;
-    height: 400px;
+	width: 100%;
+	object-fit: contain;
+	height: 400px;
 }
 
 .smardocs-single-doc-content-wrap {
-    background: #fff;
-    padding: 5%;
+	background: #fff;
+	padding: 5%;
 }

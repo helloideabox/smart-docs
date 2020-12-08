@@ -1,9 +1,9 @@
 <?php
 /**
- * The template for category docs page
+ * The template for single docs page
  *
  * @author IdeaBox
- * @package SmartDocs/ArchiveTemplate single post
+ * @package SmartDocs\Templates
  * @version 1.0.0
  */
 
@@ -12,51 +12,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header();
-?>
 
-	<?php
-		/**
-		 * Hook: smartdocs_before_main_content_single_post
-		 *
-		 * @hooked smartdocs_output_content_wrapper - 10
-		 */
-		do_action( 'smartdocs_before_main_content' );
-	?>
+/**
+ * Hook: smartdocs_before_main_content_single_post
+ *
+ * @hooked smartdocs_output_content_wrapper - 10
+ */
+do_action( 'smartdocs_before_main_content' );
 
-	<?php
-		if ( have_posts() ) :
-			?>
-			
-			<?php while ( have_posts() ) : ?>
+	if ( have_posts() ) :
+				
+		while ( have_posts() ) :
 
-				<?php the_post(); ?>
+			the_post();
 
-				<?php smartdocs_get_template_part( 'content', 'single-docs' ); ?>
+			smartdocs_get_template_part( 'content', 'single-docs' );
 
-			<?php endwhile; // End of the loop ?>
+		endwhile; // End of the loop.
 
-			<?php
-		endif;
-	?>
+	endif;
 
-	<?php
-		/**
-		 * Hook: smartdocs_sidebar
-		 * 
-		 * @hooked smartdocs_get_sidebar - 10
-		 */
-		do_action( 'smartdocs_sidebar' );
-	?>
+	/**
+	 * Hook: smartdocs_sidebar
+	 * 
+	 * @hooked smartdocs_get_sidebar - 10
+	 */
+	do_action( 'smartdocs_sidebar' );
 
-	<?php
+/**
+ * Hook: smartdocs_after_main_content_single_post
+ *
+ * @hooked smartdocs_output_content_wrapper_end - 10
+ */
+do_action( 'smartdocs_after_main_content' );
 
-		/**
-		 * Hook: smartdocs_after_main_content_single_post
-		 *
-		 * @hooked smartdocs_output_content_wrapper_end - 10
-		 */
-		do_action( 'smartdocs_after_main_content' );
-	?>
-
-<?php
 get_footer();

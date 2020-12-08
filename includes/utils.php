@@ -145,15 +145,67 @@ function smartdocs_get_template( $template_name, $args = array() ) {
 	}
 }
 
-function smartdocs_list_categories( $args, $count ) {
-	global $post;
+function smartdocs_get_current_terms() {
+	$current_terms = array();
 
-	$current_terms = $post ? wp_get_post_terms( $post->ID, 'smartdocs_category', array( 'fields' => 'slugs' ) ) : array();
+	if ( is_singular( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
+		global $post;
+		$current_terms = wp_get_post_terms( $post->ID, 'smartdocs_category', array( 'fields' => 'slugs' ) );
+	} elseif ( is_tax( 'smartdocs_category' ) ) {
+		$current_term = get_queried_object();
+		$current_terms[] = $current_term->slug;
+		if ( $current_term->parent ) {
+			$parent_term = get_term_by( 'id', $current_term->parent, 'smartdocs_category' );
+			if ( $parent_term ) {
+				$current_terms[] = $parent_term->slug;
+			}
+		}
+	}
+
+	if ( ! is_array( $current_terms ) ) {
+		$current_terms = array();
+	}
+
+	return $current_terms;
+}
+
+function smartdocs_list_docs( $term ) {
+	$post_type = SmartDocs\Plugin::instance()->cpt->post_type;
+	
+	if ( ! is_singular( $post_type ) ) {
+		return;
+	}
+
+	$current_post_id = get_the_ID();
+	$posts = get_posts(array(
+		'post_type' 	=> $post_type,
+		'numberposts' 	=> -1,
+		'tax_query' 	=> array(
+			array(
+				'taxonomy' => 'smartdocs_category',
+				'field' => 'term_id', 
+				'terms' => $term->term_id,
+				'include_children' => false
+			)
+		)
+	) );
+
+	if ( is_array( $posts ) && ! empty( $posts ) ) {
+		foreach ( $posts as $doc ) {
+			?>
+			<li class="<?php echo $current_post_id === $doc->ID ? 'active' : ''; ?>">
+				<a href="<?php echo get_permalink( $doc ); ?>"><?php echo get_the_title( $doc ); ?></a>
+			</li>
+			<?php
+		}
+	}
+}
+
+function smartdocs_list_categories( $args, $count ) {
 	$args['parent'] = 0;
 	$parent_cats = get_categories( $args );
-	?>
-	<ul>
-	<?php
+	$current_terms = smartdocs_get_current_terms();
+
 	if ( ! empty( $parent_cats ) ) {
 		foreach ( $parent_cats as $parent_cat ) {
 			$child_cat_args = $args;
@@ -167,6 +219,11 @@ function smartdocs_list_categories( $args, $count ) {
 					<span class="cat-count"><?php echo $parent_cat->count; ?></span>
 					<?php } ?>
 				</a>
+				<?php if ( in_array( $parent_cat->slug, $current_terms ) && $parent_cat->count && ! $child_cats ) { ?>
+					<ul class="has-posts">
+						<?php smartdocs_list_docs( $parent_cat ); ?>
+					</ul>
+				<?php } ?>
 				<?php if ( ! empty( $child_cats ) ) { ?>
 					<ul class="children">
 						<?php foreach ( $child_cats as $child_cat ) {
@@ -181,6 +238,11 @@ function smartdocs_list_categories( $args, $count ) {
 									<span class="cat-count"><?php echo $child_cat->count; ?></span>
 									<?php } ?>
 								</a>
+								<?php if ( in_array( $child_cat->slug, $current_terms ) && $child_cat->count && ! $grandchild_cats ) { ?>
+									<ul class="has-posts">
+										<?php smartdocs_list_docs( $child_cat ); ?>
+									</ul>
+								<?php } ?>
 								<?php if ( ! empty( $grandchild_cats ) ) { ?>
 									<ul class="children">
 										<?php foreach ( $grandchild_cats as $grandchild_cat ) { ?>
@@ -191,6 +253,11 @@ function smartdocs_list_categories( $args, $count ) {
 												<span class="cat-count"><?php echo $grandchild_cat->count; ?></span>
 												<?php } ?>
 											</a>
+											<?php if ( in_array( $grandchild_cat->slug, $current_terms ) && $grandchild_cat->count ) { ?>
+												<ul class="has-posts">
+													<?php smartdocs_list_docs( $grandchild_cat ); ?>
+												</ul>
+											<?php } ?>
 										</li>
 										<?php } ?>
 									</ul>
@@ -203,7 +270,8 @@ function smartdocs_list_categories( $args, $count ) {
 			<?php
 		}
 	}
-	?>
-	</ul>
-	<?php
+}
+
+function smartdocs_post_class( $class = '' ) {
+	echo implode( ' ', get_post_class( $class ) );
 }

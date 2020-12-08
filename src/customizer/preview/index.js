@@ -48,8 +48,8 @@
 	 */
 	wp.customize("smartdocs_archive_columns_gap", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-archive-layout-grid").css("gap", new_value + "px");
-			$(".smartdocs-archive-layout-list").css("gap", new_value + "px");
+			$(".layout-grid").css("gap", new_value + "px");
+			$(".layout-list").css("gap", new_value + "px");
 		});
 	});
 
@@ -58,7 +58,7 @@
 	 */
 	wp.customize("smartdocs_archive_columns", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-archive-layout-grid").css(
+			$(".layout-grid").css(
 				"grid-template-columns",
 				"repeat( " + new_value + ", 1fr)"
 			);
@@ -67,7 +67,7 @@
 
 	wp.customize("smartdocs_archive_columns_tablet", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-archive-layout-grid").css(
+			$(".layout-grid").css(
 				"grid-template-columns",
 				"repeat( " + new_value + ", 1fr)"
 			);
@@ -76,7 +76,7 @@
 
 	wp.customize("smartdocs_archive_columns_mobile", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-archive-layout-grid").css(
+			$(".layout-grid").css(
 				"grid-template-columns",
 				"repeat( " + new_value + ", 1fr)"
 			);
@@ -167,7 +167,7 @@
 
 	wp.customize("smartdocs_archive_list_item_title_bg_color", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-category-info-wrapper").css("background", new_value);
+			$(".smartdocs-category-info").css("background", new_value);
 		});
 	});
 
