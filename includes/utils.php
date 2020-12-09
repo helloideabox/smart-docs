@@ -97,8 +97,7 @@ function smartdocs_get_template_part( $slug, $name = '' ) {
 	if ( ! empty( $name ) ) {
 		$template = locate_template(
 			array(
-				"{$slug}-{$name}.php",
-				"templates/{$slug}-{$name}.php"
+				"smart-docs/{$slug}-{$name}.php",
 			)
 		);
 
@@ -110,8 +109,7 @@ function smartdocs_get_template_part( $slug, $name = '' ) {
 
 	if ( empty( $template ) ) {
 		$template = locate_template( array(
-			"{$slug}.php",
-			"templates/{$slug}.php"
+			"smart-docs/{$slug}.php"
 		) );
 
 		if ( ! $template ) {
@@ -128,8 +126,7 @@ function smartdocs_get_template_part( $slug, $name = '' ) {
 function smartdocs_get_template( $template_name, $args = array() ) {
 	$template = locate_template(
 		array(
-			"{$template_name}.php",
-			"templates/{$template_name}.php"
+			"smart-docs/{$template_name}.php"
 		)
 	);
 
