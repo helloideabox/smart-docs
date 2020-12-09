@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="smartdocs-header">
 	<div class="smartdocs-inner">
 		<?php if ( apply_filters( 'smartdocs_show_hero_title', true ) ) : ?>
-			<h1 class="smartdocs-hero-title"><?php echo esc_html( smartdocs_hero_title() ); ?></h1>
+			<h2 class="smartdocs-hero-title"><?php echo esc_html( smartdocs_hero_title() ); ?></h2>
 		<?php endif; ?>
 
 		<?php
