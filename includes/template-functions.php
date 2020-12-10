@@ -123,6 +123,14 @@ function smartdocs_output_content_area_wrapper_start() {
 	if ( ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
 	?>
 		<div id="primary" class="content-area">
+			<?php
+			/**
+			 * Hook: smartdocs_primary_content_area
+			 *
+			 * @hooked smartdocs_breadcrumb - 20
+			 */
+			do_action( 'smartdocs_primary_content_area' );
+			?>
 	<?php
 	}
 }
@@ -159,3 +167,46 @@ function smartdocs_categorized_articles() {
 		smartdocs_get_template_part( 'content', 'smartdocs-category' );
 	endwhile;
 }
+<<<<<<< HEAD
+=======
+
+/**
+ * Output the SmartDocs Breadcrumb.
+ *
+ * @param array $args Arguments.
+ */
+function smartdocs_breadcrumb( $args = array() ) {
+	$args = wp_parse_args(
+		$args,
+		apply_filters(
+			'smartdocs_breadcrumb_defaults',
+			array(
+				'delimiter'   => '&nbsp;&#187;&nbsp;',
+				'wrap_before' => '<nav class="smartdocs-breadcrumb">',
+				'wrap_after'  => '</nav>',
+				'before'      => '',
+				'after'       => '',
+			)
+		)
+	);
+
+	$breadcrumbs = new SmartDocs\Breadcrumb();
+
+	$args['breadcrumb'] = $breadcrumbs->generate();
+
+	do_action( 'smartdocs_breadcrumb', $breadcrumbs, $args );
+
+	smartdocs_get_template( 'breadcrumb', $args );
+}
+
+function smartdocs_category_title() {
+	if ( ! is_smartdocs_category() ) {
+		return;
+	}
+
+	$current_term = $GLOBALS['wp_query']->get_queried_object();
+	?>
+	<h1 class="smartdocs-category-title"><?php echo $current_term->name; ?></h1>
+	<?php
+}
+>>>>>>> master

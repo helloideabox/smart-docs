@@ -16,6 +16,7 @@ use SmartDocs\Admin;
 use SmartDocs\Widget;
 use SmartDocs\Templates;
 use SmartDocs\Search;
+use SmartDocs\Structured_Data;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -31,8 +32,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 class Plugin {
-
-
 	/**
 	 * Instance.
 	 *
@@ -44,7 +43,6 @@ class Plugin {
 	 *
 	 * @var Plugin
 	 */
-
 	public static $instance = null;
 
 	/**
@@ -54,11 +52,9 @@ class Plugin {
 	 *
 	 * @since 1.0.0
 	 * @access public
-	 * @static
 	 *
-	 * @var CPT
+	 * @var object $cpt
 	 */
-
 	public $cpt = null;
 
 	/**
@@ -68,11 +64,9 @@ class Plugin {
 	 *
 	 * @since 1.0.0
 	 * @access public
-	 * @static
 	 *
-	 * @var admin
+	 * @var object $admin
 	 */
-
 	public $admin = null;
 
 	/**
@@ -82,11 +76,9 @@ class Plugin {
 	 *
 	 * @since 1.0.0
 	 * @access public
-	 * @static
 	 *
-	 * @var shortcode
+	 * @var object $shortcode
 	 */
-
 	public $shortcode = null;
 
 	/**
@@ -96,11 +88,9 @@ class Plugin {
 	 *
 	 * @since 1.0.0
 	 * @access public
-	 * @static
 	 *
-	 * @var templates
+	 * @var object $template
 	 */
-
 	public $template = null;
 
 	/**
@@ -110,12 +100,36 @@ class Plugin {
 	 *
 	 * @since 1.0.0
 	 * @access public
+	 *
+	 * @var object $search
+	 */
+	public $search = null;
+
+	/**
+	 * Instance.
+	 *
+	 * Holds the Widget Class instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
 	 * @static
 	 *
-	 * @var search
+	 * @var object $widget
 	 */
+	public $widget = null;
 
-	public $search = null;
+	/**
+	 * Instance.
+	 *
+	 * Holds the Structured_Data Class instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @static
+	 *
+	 * @var object $structured_data
+	 */
+	public $structured_data = null;
 
 	/**
 	 * Instance.
@@ -124,11 +138,9 @@ class Plugin {
 	 *
 	 * @since 1.0.0
 	 * @access public
-	 * @static
 	 *
-	 * @var customizer
+	 * @var object $customizer
 	 */
-
 	public $customizer = null;
 
 	/**
@@ -219,6 +231,7 @@ class Plugin {
 		$this->search     = new Search();
 		$this->customizer = new Customizer();
 		$this->widget 	  = new Widget();
+		$this->structured_data  = new Structured_Data();
 
 		// Action to include script.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );

@@ -125,7 +125,7 @@ class Admin {
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
-				'default'      => 'Docs',
+				'default'      => esc_html__( 'Docs', 'smart-docs' ),
 			)
 		);
 

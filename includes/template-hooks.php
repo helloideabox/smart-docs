@@ -43,3 +43,12 @@ add_action( 'smartdocs_after_single_doc', 'smartdocs_output_content_area_wrapper
 
 add_action( 'smartdocs_before_single_doc_content', 'smartdocs_single_doc_header', 5 );
 add_action( 'smartdocs_single_doc_content', 'smartdocs_single_doc_content', 10 );
+
+/**
+ * Breadcrumbs.
+ *
+ * @see smartdocs_breadcrumb()
+ */
+add_action( 'smartdocs_primary_content_area', 'smartdocs_breadcrumb', 20, 0 );
+
+add_action( 'smartdocs_primary_content_area', 'smartdocs_category_title', 30 );

@@ -41,64 +41,13 @@ function get_style_depends( $style_name, $file_name, $style_dependencies = array
 	);
 }
 
-/**
- * Get Post Count of a Category.
- *
- * Includes Post Count of category children as well.
- *
- * @since 1.0.0
- *
- * @param integer $id Category ID.
- * @param string  $taxonomy_type Taxonomy Type of the Category.
- */
-function wp_get_postcount( $id, $taxonomy_type ) {
-
-	$cat      = get_term( $id, $taxonomy_type );
-	$count    = (int) $cat->count;
-	$taxonomy = $taxonomy_type;
-
-	$args      = array(
-		'child_of' => $id,
-	);
-	$tax_terms = get_terms( $taxonomy, $args );
-
-	foreach ( $tax_terms as $tax_term ) {
-		$count += $tax_term->count;
-	}
-	return $count;
-}
-
-/**
- * Get Settings.
- *
- * Fetch requested settings or return their default values if not found.
- *
- * @param string $setting_key Unique key of the setting.
- */
-
- function console( $output ) { 
-	 
-	if (is_array($output))
-	$output = implode(',', $output);
-
-	 ?>
-	<script>
-		(function(){
-			console.log('<?php print_r( $output )?>');
-		})()
-	</script>
-<?php }
-
-
-
 function smartdocs_get_template_part( $slug, $name = '' ) {
 	$template = false;
 
 	if ( ! empty( $name ) ) {
 		$template = locate_template(
 			array(
-				"{$slug}-{$name}.php",
-				"templates/{$slug}-{$name}.php"
+				"smart-docs/{$slug}-{$name}.php",
 			)
 		);
 
@@ -110,8 +59,7 @@ function smartdocs_get_template_part( $slug, $name = '' ) {
 
 	if ( empty( $template ) ) {
 		$template = locate_template( array(
-			"{$slug}.php",
-			"templates/{$slug}.php"
+			"smart-docs/{$slug}.php"
 		) );
 
 		if ( ! $template ) {
@@ -128,8 +76,7 @@ function smartdocs_get_template_part( $slug, $name = '' ) {
 function smartdocs_get_template( $template_name, $args = array() ) {
 	$template = locate_template(
 		array(
-			"{$template_name}.php",
-			"templates/{$template_name}.php"
+			"smart-docs/{$template_name}.php"
 		)
 	);
 
@@ -274,4 +221,16 @@ function smartdocs_list_categories( $args, $count ) {
 
 function smartdocs_post_class( $class = '' ) {
 	echo implode( ' ', get_post_class( $class ) );
+}
+
+function is_smartdocs_single() {
+	return is_singular( 'smart-docs' );
+}
+
+function is_smartdocs_category( $term = '' ) {
+	return is_tax( 'smartdocs_category', $term );
+}
+
+function is_smartdocs_tag( $term = '' ) {
+	return is_tax( 'smartdocs_tag', $term );
 }

@@ -73,7 +73,6 @@ function smartdocs_render_categories( $args = array() ) {
 			'columns'    => '3,2,1',
 			'hide_empty' => false,
 			'children'	 => false,
-			'layout'     => 'grid',
 			'title_tag'  => 'h4',
 		),
 		$args
@@ -111,49 +110,16 @@ function smartdocs_render_categories( $args = array() ) {
 	$columns_md = isset( $columns[1] ) && ! empty( trim( $columns[1] ) ) ? trim( $columns[1] ) : $columns_lg;
 	$columns_sm = isset( $columns[2] ) && ! empty( trim( $columns[2] ) ) ? trim( $columns[2] ) : $columns_md;
 
-	/**
-	 * Get settings
-	 */
-
-	$layout = get_theme_mod( 'smartdocs_archive_layout_setting', 'list' );
-
-	ob_start();
-	?>
-	<div class="smartdocs-categories">
-		<?php foreach ( $terms as $term ) : ?>
-			<div class="smartdocs-category">
-				<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
-					<div class="smartdocs-category-info">
-							<?php
-								$smartdocs_category_image = smartdocs_get_category_thumbnail_url( $term->term_id );
-
-							if ( is_array( $smartdocs_category_image ) && ! empty( $smartdocs_category_image ) ) :
-								?>
-								<img src="<?php echo $smartdocs_category_image[0]; ?>" alt="<?php echo $term->name; ?>" width="100px">
-
-							<?php endif; ?>
-							<div class="smartdocs-category-text">
-								<<?php echo esc_html( $args['title_tag'] ); ?> class="smartdocs-category-title"><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
-								<?php if ( ! empty( $term->description ) ) : ?>
-									<span class="smartdocs-category-description">
-										<?php echo esc_html( $term->description ); ?>
-									</span>
-								<?php endif; ?>
-							</div>
-					</div>
-					<div class="smartdocs-posts-info">
-						<div class="smartdocs-category-posts-count">
-							<span class="smartdocs-posts-count"><?php echo esc_html( $term->count ); ?></span>
-							<span class="smartdocs-posts-count-text"><?php echo esc_html( _n( 'Article', 'Articles', $term->count, 'smart-docs' ) ); ?></span>
-						</div>
-						<div class="smartdocs-category-view-all">
-							<span><?php echo __( 'View All', 'smart-docs' ); ?></span>
-						</div>
-					</div>
-				</a>
-			</div>
-		<?php endforeach; ?>
-	</div>
-	<?php
-	echo ob_get_clean();
+	smartdocs_get_template(
+		'categories',
+		array(
+			'terms' => $terms,
+			'args'	=> $args,
+			'columns' => array(
+				'lg' => $columns_lg,
+				'md' => $columns_md,
+				'sm' => $columns_sm,
+			),
+		)
+	);
 }

@@ -7,8 +7,10 @@ namespace SmartDocs;
  * Responsible for creating Custom Post Type.
  *
  * @since 1.0.0
- * @package SmartDocs
+ * @package SmartDocs\Classes
  */
+
+defined( 'ABSPATH' ) || exit;
 
 class Cpt {
 
