@@ -167,8 +167,6 @@ function smartdocs_categorized_articles() {
 		smartdocs_get_template_part( 'content', 'smartdocs-category' );
 	endwhile;
 }
-<<<<<<< HEAD
-=======
 
 /**
  * Output the SmartDocs Breadcrumb.
@@ -209,4 +207,3 @@ function smartdocs_category_title() {
 	<h1 class="smartdocs-category-title"><?php echo $current_term->name; ?></h1>
 	<?php
 }
->>>>>>> master
