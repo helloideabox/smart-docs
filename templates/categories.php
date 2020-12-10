@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="smartdocs-categories">
+<div class="smartdocs-categories <?php echo $columns_class; ?>">
 	<?php foreach ( $terms as $term ) : ?>
 		<div class="smartdocs-category">
 			<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">

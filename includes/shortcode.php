@@ -114,16 +114,14 @@ function smartdocs_render_categories( $args = array() ) {
 	$columns_md = isset( $columns[1] ) && ! empty( trim( $columns[1] ) ) ? trim( $columns[1] ) : $columns_lg;
 	$columns_sm = isset( $columns[2] ) && ! empty( trim( $columns[2] ) ) ? trim( $columns[2] ) : $columns_md;
 
+	$columns_class = "col-lg-$columns_lg col-md-$columns_md col-sm-$columns_sm";
+
 	smartdocs_get_template(
 		'categories',
 		array(
 			'terms' => $terms,
 			'args'	=> $args,
-			'columns' => array(
-				'lg' => $columns_lg,
-				'md' => $columns_md,
-				'sm' => $columns_sm,
-			),
+			'columns_class' => $columns_class,
 		)
 	);
 }
