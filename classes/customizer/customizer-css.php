@@ -224,6 +224,17 @@ function render_frontend_styles() {
 			}
 
 			@media only screen and (max-width:<?php echo esc_html( $breakpoint_medium ); ?>px) and (min-width:<?php echo esc_html( $breakpoint_small ); ?>px) {
+
+				<?php
+				for ( $x = 1; $x <= 12; $x++ ) {
+					?>
+					.col-md-<?php echo $x; ?> {
+						grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
+					}
+					<?php 
+				}
+				?>
+
 				/**
 				* Grid Styles Medium || Tablet
 				*/
@@ -255,6 +266,17 @@ function render_frontend_styles() {
 			}
 
 			@media only screen and (max-width:<?php echo esc_html( $breakpoint_small - 1 ); ?>px) {
+
+				<?php
+				for ( $x = 1; $x <= 12; $x++ ) {
+					?>
+					.col-sm-<?php echo $x; ?> {
+						grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
+					}
+					<?php 
+				}
+				?>
+
 				/**
 				* Grid Styles Small
 				*/
@@ -283,6 +305,17 @@ function render_frontend_styles() {
 					font-size: <?php echo esc_html( $cat_info_font_size_mobile ); ?>px;
 				}
 			}
+
+			/**Grid template columns classes for Desktop*/
+			<?php
+			for ( $x = 1; $x <= 12; $x++ ) {
+				?>
+				.col-lg-<?php echo $x; ?> {
+					grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
+				}
+				<?php 
+			}
+			?>
 		</style>
 		<?php
 }
