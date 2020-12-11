@@ -2,6 +2,7 @@ import {
 	BaseControl,
 	Button,
 	TextControl,
+	TextareaControl,
 	ToggleControl,
 	SelectControl,
 } from "@wordpress/components";
@@ -24,6 +25,11 @@ export default function General() {
 		"root",
 		"site",
 		"ibx_sd_archive_page_title"
+	);
+	const [description, setDescription] = useEntityProp(
+		"root",
+		"site",
+		"ibx_sd_archive_page_description"
 	);
 	const [archiveSlug, setArchiveSlug] = useEntityProp(
 		"root",
@@ -97,6 +103,7 @@ export default function General() {
 			.dispatch("core")
 			.saveSite({
 				ibx_sd_archive_page_title: title,
+				ibs_sd_archive_page_description: description,
 				ibx_sd_archive_page_slug: archiveSlug,
 				ibx_sd_category_slug: categorySlug,
 				ibx_sd_tag_slug: tagSlug,
@@ -157,6 +164,19 @@ export default function General() {
 					value={title}
 					placeholder={__("Documentation")}
 					onChange={setTitle}
+				/>
+			</BaseControl>
+			<BaseControl
+				label="Documentation Page Description"
+				help="Edit to change the default description for the documentation page."
+				className="mb-3"
+			>
+				<TextareaControl
+					id="sd_option-doc_homepage_description"
+					className="mt-2 block mb-2"
+					value={description}
+					placeholder={__("Add a meaningful description for the doc here.")}
+					onChange={setDescription}
 				/>
 			</BaseControl>
 			<BaseControl
