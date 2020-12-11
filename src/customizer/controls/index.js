@@ -187,7 +187,7 @@ function setPreview(setting) {
 		 * Hero Section Background Control Controller
 		 */
 		_initBackgroundControl: function () {
-			var val = api.settings.settings.smartdocs_archive_hero_bg_type.value;
+			var val = api.settings.settings.smartdocs_hero_bg_type.value;
 
 			if ("color" === val) {
 				$(
@@ -207,7 +207,7 @@ function setPreview(setting) {
 				);
 			}
 
-			api("smartdocs_archive_hero_bg_type", function (value) {
+			api("smartdocs_hero_bg_type", function (value) {
 				value.bind(function (newValue) {
 					if ("color" === newValue) {
 						$(
