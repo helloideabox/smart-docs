@@ -181,34 +181,6 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     font-size: .92em;
 }
 
-/** Doc action on single doc page */
-.smartdocs-doc-actions {
-    margin: 20px 0;
-    padding-top: 40px;
-    border-top: 1px solid #eee;
-}
-
-/** pre, code, etc */
-.smartdocs-template code,
-.smartdocs-template kbd,
-.smartdocs-template samp,
-.smartdocs-template pre {
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    border-radius: 2px;
-    background: rgba(233,235,239,.5);
-}
-.smartdocs-template pre {
-	overflow: auto;
-    padding: 15px 20px;
-}
-.smartdocs-template code,
-.smartdocs-template kbd,
-.smartdocs-template samp {
-	padding: 3px 6px;
-}
-
 /*********************************
  * Archive
  ********************************/
@@ -301,28 +273,43 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     background: #eee;
 }
 
-main.smartdocs-wrap {
-	margin-right: auto;
-	margin-left: auto;
+/** Meta */
+.smartdocs-entry-footer {
+	margin-top: 30px;
+}
+.smartdocs-entry-footer time {
+	font-weight: normal;
+	font-style: italic;
 }
 
-.smartdocs-wrap .smartdocs-single-doc-wrap {
-	display: grid;
-	grid-template-columns: 75% 25%;
-	gap: 20px;
+/** Doc action on single doc page */
+.smartdocs-doc-actions {
+    margin: 20px 0;
+    padding-top: 40px;
+    border-top: 1px solid #eee;
 }
 
-header.smartdocs-single-doc-search-hero {
-	padding-top: 125px;
-	padding-bottom: 125px;
-	padding-left: 20px;
-	padding-right: 20px;
-	background-color: #262626;
+/** pre, code, etc */
+.smartdocs-template code,
+.smartdocs-template kbd,
+.smartdocs-template samp,
+.smartdocs-template pre {
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    border-radius: 2px;
+    background: rgba(233,235,239,.5);
+}
+.smartdocs-template pre {
+	overflow: auto;
+    padding: 15px 20px;
+}
+.smartdocs-template code,
+.smartdocs-template kbd,
+.smartdocs-template samp {
+	padding: 3px 6px;
 }
 
-header.smartdocs-single-doc-header {
-	margin-bottom: 5%;
-}
 
 .smartdocs-single-doc-last-update-time {
 	color: #c1c1c1;

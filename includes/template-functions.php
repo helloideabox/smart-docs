@@ -104,14 +104,6 @@ function smartdocs_get_sidebar() {
 
 }
 
-function smartdocs_single_doc_last_updated_on() {
-	?>
-
-	<div class="smartdocs-single-doc-last-update-time"><?php esc_attr_e( 'Updated on ' . get_the_date( 'F j, Y' ), 'smart-docs' ); ?></div>
-
-	<?php
-}
-
 function smartdocs_single_doc_terms() {
 	// To get the related tags of that post.
 	the_terms( get_the_ID(), 'smartdocs_tag', '<ul class="smart-docs-tag"><span class="smart-docs-tag-label">Tagged Under: </span><li>', ',</li><li>', '</li></ul>' );
@@ -153,11 +145,7 @@ function smartdocs_single_doc_header() {
 }
 
 function smartdocs_single_doc_content() {
-	?>
-	<div class="smartdocs-entry-content">
-		<?php the_content(); ?>
-	</div>
-	<?php
+	the_content();
 }
 
 function smartdocs_categorized_articles() {
@@ -209,4 +197,17 @@ function smartdocs_category_title() {
 
 function smartdocs_doc_actions() {
 	smartdocs_get_template( 'single-doc-actions' );
+}
+
+function smartdocs_entry_footer() {
+	$modified_time_string = sprintf( __( 'Updated on %s', 'smart-docs' ), get_the_modified_date( 'F j, Y' ) );
+	?>
+	<footer class="smartdocs-entry-footer">
+		<div class="entry-time">
+			<meta itemprop="datePublished" content="<?php echo get_the_date( 'c' ); ?>">
+			<time itemprop="dateModified" datetime="<?php echo get_the_modified_date( 'c' ); ?>"><?php echo esc_html( $modified_time_string ); ?></time>
+		</div>
+	</footer>
+
+	<?php
 }
