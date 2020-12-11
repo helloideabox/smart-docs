@@ -135,7 +135,7 @@ export default function General() {
 				onChange={setEnableCustomDocPage}
 			/>
 			<>
-				{ ! enableCustomDocPage && (
+				{!enableCustomDocPage && (
 					<SelectControl
 						label={__("Select Custom Doc Page")}
 						labelPosition="top"
@@ -144,7 +144,7 @@ export default function General() {
 						value={customDocPage}
 						onChange={setCustomDocPage}
 					/>
-				) }
+				)}
 			</>
 			<BaseControl
 				label="Documentation Page Title"
