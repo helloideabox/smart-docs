@@ -51,7 +51,7 @@ function smartdocs_output_content_wrapper_end() {
 }
 
 function smartdocs_output_header() {
-	smartdocs_get_template_part( 'content', 'docs-header' );
+	smartdocs_get_template( 'header' );
 }
 
 // function smartdocs_output_page_wrap( $content ) {

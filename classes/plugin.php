@@ -296,15 +296,31 @@ class Plugin {
 	}
 
 	/**
-	 * Function to enque scripts.
+	 * Enqueue scripts.
 	 *
 	 * @return void
 	 */
 	public function enqueue_scripts( $hook ) {
+		global $post;
+
 		$post_type = $this->cpt->post_type;
-		
+		$should_enqueue = false;
+
+		wp_register_style( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/css/frontend.css', array(), SMART_DOCS_VERSION );
+		wp_register_script( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/js/frontend.js', array( 'jquery' ), SMART_DOCS_VERSION, true );
+		wp_localize_script( 'smartdocs-frontend', 'smartdocs', array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		) );
+
 		if ( is_post_type_archive( $post_type ) || is_singular( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
-			wp_enqueue_style( 'smartdocs-frontend' , SMART_DOCS_URL . 'assets/css/frontend.css', array(), SMART_DOCS_VERSION );
+			$should_enqueue = true;
+		} elseif ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->content,  'smartdocs-search' ) ) {
+			$should_enqueue = true;
+		}
+
+		if ( $should_enqueue ) {
+			wp_enqueue_style( 'smartdocs-frontend' );
+			wp_enqueue_script( 'smartdocs-frontend' );
 		}
 	}
 }

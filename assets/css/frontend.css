@@ -181,6 +181,61 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     font-size: .92em;
 }
 
+/** Search */
+.smartdocs-search {
+	position: relative;
+}
+.smartdocs-search .search-icon,
+.smartdocs-search .loading-spinner {
+	position: absolute;
+	top: 50%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+.smartdocs-search .search-icon {
+    left: 15px;
+    font-size: 15px;
+    opacity: 0.5;
+}
+.smartdocs-search .loading-spinner {
+	display: none;
+	right: 15px;
+    width: 20px;
+    height: 20px;
+}
+.smartdocs-search .loading-spinner img {
+	vertical-align: baseline;
+}
+.smartdocs-search .search-icon + input {
+	padding-left: 35px;
+}
+.smartdocs-search input.loading + .loading-spinner {
+	display: block;
+}
+.smartdocs-search .smartdocs-search-result {
+	list-style: none;
+    background: #fff;
+    padding: 3px 0;
+    position: absolute;
+    width: 100%;
+    margin-top: 4px;
+    border-radius: 4px;
+    z-index: 99;
+    border: 1px solid #eee;
+    box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.03);
+}
+.smartdocs-search .smartdocs-search-result li {
+	margin: 0;
+}
+.smartdocs-search .smartdocs-search-result li a {
+	padding: 3px 10px;
+    display: block;
+}
+.smartdocs-search .smartdocs-search-result li a:hover {
+	background-color: #f7f7f7;
+}
+
 /*********************************
  * Archive
  ********************************/
