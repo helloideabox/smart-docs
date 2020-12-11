@@ -25,7 +25,7 @@ function smartdocs_hero_title() {
 }
 
 function smartdocs_archive_description() {
-	$desc = get_option( 'ibx_sd_archive_description' );
+	$desc = get_option( 'ibx_sd_archive_page_description' );
 
 	if ( ! empty( $desc ) ) {
 		echo wpautop( $desc );
