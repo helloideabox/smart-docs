@@ -16,38 +16,30 @@ class Search {
 
 	public function __construct() {
 		// To load search results from ajax request.
-		add_action( 'wp_ajax_sd_load_search_results', array( $this, 'sd_load_search_results' ) );
-		add_action( 'wp_ajax_nopriv_sd_load_search_results', array( $this, 'sd_load_search_results' ) );
+		add_action( 'wp_ajax_smartdocs_search_results', array( $this, 'get_search_results' ) );
+		add_action( 'wp_ajax_nopriv_smartdocs_search_results', array( $this, 'get_search_results' ) );
 	}
 
 
 	/**
 	 * For render the search result.
 	 */
-	public function sd_load_search_results() {
-		// Checking for correct ajax request.
-		if ( check_ajax_referer( 'docs_search', 'security' ) ) {
-			if ( isset( $_POST['query'] ) && ! empty( $_POST['query'] ) ) {
-				$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
-			} else {
-				$query = esc_html__( 'No docs found', 'smart-docs' );
-			}
-		} else {
-			esc_attr_e( 'Nonce is invalid', 'smart-docs' );
-		}
+	public function get_search_results() {
+		$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
 
 		// To show which post to show.
-		$selectsd_post_types = get_option( 'sd_post_type_selected' );
-		$selectsd_post_types = ! $selectsd_post_types ? array( 'post', 'page' ) : $selectsd_post_types;
+		$post_types = get_option( 'sd_post_type_selected' );
+		$post_types = ! $post_types ? array( Plugin::instance()->cpt->post_type ) : $post_types;
 
 		// WordPress Query arguments.
 		$query_args = array(
-			'post_type'   => $selectsd_post_types,
+			'post_type'   => $post_types,
 			'post_status' => 'publish',
+			'posts_per_page' => '-1',
 			's'           => $query,
 		);
 
-		$search_results = new WP_Query( $query_args );
+		$search_results = new \WP_Query( $query_args );
 
 		ob_start();
 		?>
@@ -59,13 +51,13 @@ class Search {
 				while ( $search_results->have_posts() ) :
 					$search_results->the_post();
 					?>
-					<li class="smartdocs-search-list">
-						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+					<li>
+						<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 					</li>
 					<?php
 				endwhile;
 			else :
-				esc_attr_e( 'No Doc was found', 'smart-docs' );
+				echo '<li class="not-found">' . esc_attr__( 'No documentation found.', 'smart-docs' ) . '</li>';
 			endif;
 			?>
 
@@ -75,10 +67,7 @@ class Search {
 		wp_reset_postdata();
 		$content = ob_get_clean();
 
-		echo $content;
-
-		// To remove 0 appending at the end of the response.
-		wp_die();
+		wp_send_json_success( $content );
 	}
 
 }

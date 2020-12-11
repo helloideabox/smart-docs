@@ -13,52 +13,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // To render the search box of WordPress.
 add_shortcode( 'smartdocs_search', 'smartdocs_render_search_box' );
-
-
-
 /**
  * For rendering the search box.
  *
  * @param int $atts    Get attributes for the search field.
  * @param int $content Get content to search from.
  */
-function smartdocs_render_search_box( $atts, $content = null ) {
-	ob_start();
-	/**
-	 * Load required script dependents.
-	 */
-
-	get_script_depends( 'smartdocs-searchbox-script', 'search-script', array( 'jquery' ) );
-	wp_localize_script(
-		'smartdocs-searchbox-script',
-		'sd_ajax_url',
-		array(
-			'url'        => admin_url( 'admin-ajax.php' ),
-			'ajax_nonce' => wp_create_nonce( 'docs_search' ),
-		)
+function smartdocs_render_search_box( $args = array() ) {
+	$args = shortcode_atts(
+		array(),
+		$args
 	);
-	//get_style_depends( 'smartdocs-style', 'style' );
-	?>
-	<div class="smartdocs-search">
-		<div class="smartdocs-search-inner">
-			<form role="search" method="post" class="smartdocs-search-form" action="">
-				<input id="smartdocs-search-input" type="search" class="smartdocs-search-input" placeholder="<?php echo esc_attr_x( 'Search for answers…', 'placeholder', 'smart-docs' ); ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php echo esc_attr_x( 'Search', 'label', 'smart-docs' ); ?>" autocomplete="off" autocorrect="off" />
 
-				<div class="smartdocs-spinner live-search-loading" style="display:none">
-					<img src="<?php echo esc_url( plugins_url( '../assets/images/ring.gif', __FILE__ ) ); ?>" >
-				</div>
-			</form>
-		</div>
-	</div>
-	<?php
-	// Returning the html document.
-	return ob_get_clean();
+	$args = apply_filters( 'smartdocs_search_input_args', $args );
+
+	smartdocs_get_template( 'search', $args );
 }
 
 
 // To render the search box of WordPress.
 add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
-
 /**
  * Render category list for smartdocs categories.
  *
