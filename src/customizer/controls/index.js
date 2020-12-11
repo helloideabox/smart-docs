@@ -1,22 +1,3 @@
-wp.customize.bind("ready", function () {
-	//Add Preview URL
-	/* var api = wp.customize;
-
-	api.section("smartdocs_homepage_settings", function (section) {
-		section.expanded.bind(function (isExpanded) {
-			var url;
-			if (isExpanded) {
-				url = api.settings.url.home + "smart-docs";
-				api.previewer.previewUrl.set(url);
-			}
-		});
-	}); */
-	//setPreview("smartdocs_homepage_settings");
-	//setPreview("smartdocs_test_settings");
-	//setPreview("smartdocs_search_settings");
-	//setPreview("smartdocs_single_doc_settings");
-});
-
 function setPreview(setting) {
 	var api = wp.customize;
 	var slug = null;
