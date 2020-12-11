@@ -197,6 +197,10 @@ function setPreview(setting) {
 					"display",
 					"none"
 				);
+				$("#customize-control-smartdocs_hero_bg_image_overlay_color_control").css(
+					"display",
+					"none"
+				);
 			} else if ("image" === val) {
 				$(
 					"#customize-control-smartdocs_hero_background_color_control"
@@ -205,6 +209,11 @@ function setPreview(setting) {
 					"display",
 					"list-item"
 				);
+				$("#customize-control-smartdocs_hero_bg_image_overlay_color_control").css(
+					"display",
+					"list-item"
+				);
+				
 			}
 
 			api("smartdocs_hero_bg_type", function (value) {
@@ -217,11 +226,19 @@ function setPreview(setting) {
 							"display",
 							"none"
 						);
+						$("#customize-control-smartdocs_hero_bg_image_overlay_color_control").css(
+							"display",
+							"none"
+						);
 					} else if ("image" === newValue) {
 						$(
 							"#customize-control-smartdocs_hero_background_color_control"
 						).css("display", "none");
 						$("#customize-control-smartdocs_hero_bg_image_control").css(
+							"display",
+							"list-item"
+						);
+						$("#customize-control-smartdocs_hero_bg_image_overlay_color_control").css(
 							"display",
 							"list-item"
 						);

@@ -10,6 +10,7 @@ function render_frontend_styles() {
 	$breakpoint_small  = get_option( 'smartdocs_breakpoint_small', 768 );
 
 	$archive_title_color                = get_theme_mod( 'smartdocs_hero_title_color' );
+	$smartdocs_hero_description_color   = get_theme_mod( 'smartdocs_hero_description_color', '#cecece' );
 	$archive_item_list_title_color      = get_theme_mod( 'smartdocs_archive_list_item_title_color' );
 	$archive_item_list_post_count_color = get_theme_mod( 'smartdocs_archive_list_item_post_count_color' );
 	$archive_list_item_bg_color         = get_theme_mod( 'smartdocs_archive_list_item_bg_color' );
@@ -20,6 +21,7 @@ function render_frontend_styles() {
 	$background_type  = get_theme_mod( 'smartdocs_hero_bg_type' );
 	$background_color = get_theme_mod( 'smartdocs_hero_background_color', "#cecece" );
 	$background_image = get_theme_mod( 'smartdocs_hero_bg_image' );
+	$background_image_overlay_color = get_theme_mod( 'smartdocs_hero_bg_image_overlay_color');
 
 	/**
 	 * Grid Layout
@@ -108,7 +110,20 @@ function render_frontend_styles() {
 					background-position: center;
 				<?php endif; ?>
 					padding: 20px;
+					position: relative;
 			}
+
+			<?php if ( 'image' === $background_type ) : ?>
+			.smartdocs-header .smartdocs-inner::before {
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background-color: <?php echo $background_image_overlay_color; ?>;
+			}
+			<?php endif; ?>
+
 			.smartdocs-hero-title {
 			<?php if ( ! empty( $archive_title_color ) ) { ?>
 					color: <?php echo esc_attr( $archive_title_color ); ?>;
@@ -118,6 +133,10 @@ function render_frontend_styles() {
 					justify-content: center;
 					padding-top: 25px;
 					padding-bottom: 25px;
+			}
+			.smartdocs-header p {
+				color: <?php echo esc_attr( $smartdocs_hero_description_color ); ?>;
+				text-align: center;
 			}
 			.smartdocs-archive-cat-title {
 			<?php if ( ! empty( $archive_item_list_title_color ) ) { ?>

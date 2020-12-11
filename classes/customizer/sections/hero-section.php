@@ -81,6 +81,31 @@ use SmartDocs\Styler_Customizer_Control;
 	);
 
 	$wp_customize->add_setting(
+		'smartdocs_hero_bg_image_overlay_color',
+		array(
+			'default'    => '',
+			'capability' => 'edit_theme_options',
+			'transport'  => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new Styler_Customizer_Control(
+			$wp_customize,
+			'smartdocs_hero_bg_image_overlay_color_control',
+			array(
+				'label'    => __( 'Overlay Color', 'smart-docs' ),
+				'section'  => 'smartdocs_hero_section',
+				'settings' => 'smartdocs_hero_bg_image_overlay_color',
+				'type'     => 'styler-color',
+				'choices'  => array(
+					'alpha' => true,
+				),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
 		'smartdocs_hero_title_color',
 		array(
 			'default'    => '',
@@ -97,6 +122,31 @@ use SmartDocs\Styler_Customizer_Control;
 				'label'    => __( 'Title Color', 'smart-docs' ),
 				'section'  => 'smartdocs_hero_section',
 				'settings' => 'smartdocs_hero_title_color',
+				'type'     => 'styler-color',
+				'choices'  => array(
+					'alpha' => true,
+				),
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'smartdocs_hero_description_color',
+		array(
+			'default'    => '',
+			'capability' => 'edit_theme_options',
+			'transport'  => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		new Styler_Customizer_Control(
+			$wp_customize,
+			'smartdocs_hero_description_color_control',
+			array(
+				'label'    => __( 'Description Color', 'smart-docs' ),
+				'section'  => 'smartdocs_hero_section',
+				'settings' => 'smartdocs_hero_description_color',
 				'type'     => 'styler-color',
 				'choices'  => array(
 					'alpha' => true,

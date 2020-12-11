@@ -7,11 +7,23 @@
 			$(".smartdocs-header .smartdocs-inner").css("background-color", new_value);
 		});
 	});
+	wp.customize("smartdocs_hero_bg_image_overlay_color", function (value) {
+		value.bind(function (new_value) {
+			$(".smartdocs-header .smartdocs-inner::before").css("background-color", new_value);
+		});
+	});
 
 	/* Archive Title Color */
 	wp.customize("smartdocs_hero_title_color", function (value) {
 		value.bind(function (new_value) {
 			$(".smartdocs-hero-title").css("color", new_value);
+		});
+	});
+
+	/* Archive Description Color */
+	wp.customize("smartdocs_hero_description_color", function (value) {
+		value.bind(function (new_value) {
+			$(".smartdocs-header p").css("color", new_value);
 		});
 	});
 
