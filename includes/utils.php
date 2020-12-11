@@ -234,3 +234,19 @@ function is_smartdocs_category( $term = '' ) {
 function is_smartdocs_tag( $term = '' ) {
 	return is_tax( 'smartdocs_tag', $term );
 }
+
+function smartdocs_get_docs_page_link() {
+	$custom_docs_page = get_option( 'smartdocs_custom_doc_page_enable' );
+	$docs_page_id = get_option( 'smartdocs_custom_doc_page' );
+
+	if ( $custom_docs_page && ! empty( $docs_page_id ) ) {
+		$docs_page    	= get_post( $docs_page_id );
+		$permalink 		= $docs_page ? get_permalink( $docs_page ) : '';
+	}
+
+	if ( ! isset( $permalink ) || empty( $permalink ) ) {
+		$permalink = get_post_type_archive_link( 'smart-docs' );
+	}
+
+	return $permalink;
+}

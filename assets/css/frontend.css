@@ -181,6 +181,34 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     font-size: .92em;
 }
 
+/** Doc action on single doc page */
+.smartdocs-doc-actions {
+    margin: 20px 0;
+    padding-top: 40px;
+    border-top: 1px solid #eee;
+}
+
+/** pre, code, etc */
+.smartdocs-template code,
+.smartdocs-template kbd,
+.smartdocs-template samp,
+.smartdocs-template pre {
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    border-radius: 2px;
+    background: rgba(233,235,239,.5);
+}
+.smartdocs-template pre {
+	overflow: auto;
+    padding: 15px 20px;
+}
+.smartdocs-template code,
+.smartdocs-template kbd,
+.smartdocs-template samp {
+	padding: 3px 6px;
+}
+
 /*********************************
  * Archive
  ********************************/

@@ -206,3 +206,7 @@ function smartdocs_category_title() {
 	<h1 class="smartdocs-category-title"><?php echo $current_term->name; ?></h1>
 	<?php
 }
+
+function smartdocs_doc_actions() {
+	smartdocs_get_template( 'single-doc-actions' );
+}
