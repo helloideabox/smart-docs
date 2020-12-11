@@ -12,70 +12,6 @@ use SmartDocs\Styler_Customizer_Control;
 			)
 		);
 
-		$wp_customize->add_setting(
-			'smartdocs_archive_cat_list_section',
-			array(
-				'default'    => __( 'Grid Items', 'smart-docs' ),
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Styler_Customizer_Control(
-				$wp_customize,
-				'smartdocs_archive_cat_list_section_control',
-				array(
-					'label'    => __( 'Grid Items', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
-					'settings' => 'smartdocs_archive_cat_list_section',
-					'type'     => 'styler-section',
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'smartdocs_archive_list_layout_section',
-			array(
-				'default'    => '',
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Styler_Customizer_Control(
-				$wp_customize,
-				'smartdocs_archive_list_layout_section_control',
-				array(
-					'label'    => __( 'Layout', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
-					'settings' => 'smartdocs_archive_list_layout_section',
-					'type'     => 'styler-sub-section',
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'smartdocs_archive_layout_setting',
-			array(
-				'default'    => 'list',
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			'smartdocs_archive_layout_setting_control',
-			array(
-				'description' => __( 'Select layout type.', 'smart-docs' ),
-				'section'     => 'smartdocs_homepage_settings',
-				'settings'    => 'smartdocs_archive_layout_setting',
-				'type'        => 'select',
-				'choices'     => array(
-					'list' => __( 'List', 'smart-docs' ),
-					'grid' => __( 'Grid', 'smart-docs' ),
-				),
-			)
-		);
-
 		/**
 		 * Grid Settings
 		 */
@@ -149,7 +85,7 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_archive_columns_control_mobile',
 				array(
-					'label'    => __( 'Grid Columns', 'smart-docs' ),
+					'label'    => __( 'Columns', 'smart-docs' ),
 					'section'  => 'smartdocs_homepage_settings',
 					'settings' => 'smartdocs_archive_columns_mobile',
 					'type'     => 'styler-slider',

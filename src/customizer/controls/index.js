@@ -63,7 +63,6 @@ function setPreview(setting) {
 		init: function () {
 			console.log("Class Initialized");
 			SmartCustomizer._toggleResponsiveControls();
-			SmartCustomizer._initLayoutControlToggles();
 			SmartCustomizer._initResponsiveToggle();
 			SmartCustomizer._initPreview();
 			SmartCustomizer._initBackgroundControl();
@@ -239,38 +238,6 @@ function setPreview(setting) {
 							"list-item"
 						);
 						$("#customize-control-smartdocs_hero_bg_image_overlay_color_control").css(
-							"display",
-							"list-item"
-						);
-					}
-				});
-			});
-		},
-
-		_initLayoutControlToggles: function () {
-			var val = api.settings.settings.smartdocs_archive_layout_setting.value;
-
-			if ("list" === val) {
-				$("#customize-control-smartdocs_archive_columns_control").css(
-					"display",
-					"none"
-				);
-			} else if ("grid" === val) {
-				$("#customize-control-smartdocs_archive_columns_control").css(
-					"display",
-					"list-item"
-				);
-			}
-
-			api("smartdocs_archive_layout_setting", function (value) {
-				value.bind(function (newValue) {
-					if ("list" === newValue) {
-						$("#customize-control-smartdocs_archive_columns_control").css(
-							"display",
-							"none"
-						);
-					} else if ("grid" === newValue) {
-						$("#customize-control-smartdocs_archive_columns_control").css(
 							"display",
 							"list-item"
 						);
