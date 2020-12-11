@@ -130,6 +130,19 @@ class Admin {
 		);
 
 		/**
+		 * Register settings for documentation archive/home page title
+		 */
+		register_setting(
+			'smart-docs-settings-group',
+			'ibx_sd_archive_page_description',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => esc_html__( 'This is the description for the documentation.', 'smart-docs' ),
+			)
+		);
+
+		/**
 		 * Register setting for documentation root slug.
 		 *
 		 * When set the documentation archive page will be accessible at
