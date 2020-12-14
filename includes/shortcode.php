@@ -84,6 +84,10 @@ function smartdocs_render_categories( $args = array() ) {
 	$columns_md = isset( $columns[1] ) && ! empty( trim( $columns[1] ) ) ? trim( $columns[1] ) : $columns_lg;
 	$columns_sm = isset( $columns[2] ) && ! empty( trim( $columns[2] ) ) ? trim( $columns[2] ) : $columns_md;
 
+	$columns_lg = ! empty ( get_theme_mod( 'smartdocs_archive_columns' ) ) ? get_theme_mod( 'smartdocs_archive_columns' ) : $columns_lg;
+	$columns_md = ! empty ( get_theme_mod( 'smartdocs_archive_columns_tablet' ) ) ? get_theme_mod( 'smartdocs_archive_columns_tablet' ) : $columns_md;
+	$columns_sm = ! empty ( get_theme_mod( 'smartdocs_archive_columns_mobile' ) ) ? get_theme_mod( 'smartdocs_archive_columns_mobile' ) : $columns_sm;
+
 	$columns_class = "col-lg-$columns_lg col-md-$columns_md col-sm-$columns_sm";
 
 	smartdocs_get_template(
