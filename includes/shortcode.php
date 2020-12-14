@@ -41,7 +41,7 @@ add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
  */
 function smartdocs_render_categories( $args = array() ) {
 
-	if ( is_post_type_archive( 'smart-docs' ) ) {
+	if ( is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
 		include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
 	}
 
@@ -49,7 +49,7 @@ function smartdocs_render_categories( $args = array() ) {
 		array(
 			'show_count' => true,
 			'columns'    => '3,2,1',
-			'hide_empty' => false,
+			'hide_empty' => true,
 			'children'	 => false,
 			'title_tag'  => 'h4',
 		),
@@ -88,7 +88,7 @@ function smartdocs_render_categories( $args = array() ) {
 	$columns_md = isset( $columns[1] ) && ! empty( trim( $columns[1] ) ) ? trim( $columns[1] ) : $columns_lg;
 	$columns_sm = isset( $columns[2] ) && ! empty( trim( $columns[2] ) ) ? trim( $columns[2] ) : $columns_md;
 
-	$columns_class = "col-lg-$columns_lg col-md-$columns_md col-sm-$columns_sm";
+	$columns_class = "col-lg--$columns_lg col-md--$columns_md col-sm--$columns_sm";
 
 	smartdocs_get_template(
 		'categories',
