@@ -53,8 +53,39 @@
 		} );
 	};
 
+	var initFeedback = function() {
+		$( '.smartdocs-doc-feedback' ).on( 'click', 'a[data-id]', function(e) {
+			e.preventDefault();
+
+			var $wrapper = $( e.delegateTarget ),
+				$this = $( this );
+
+			$this.addClass( 'disabled' );
+
+			$.post(
+				smartdocs.ajaxurl,
+				{
+					nonce: smartdocs.feedback_nonce,
+					action: 'smartdocs_doc_feedback',
+					post_id: $this.data( 'id' ),
+					type: $this.hasClass( 'doc-upvote' ) ? 'upvote' : 'downvote'
+				},
+				function( response ) {
+					$this.removeClass( 'disabled' ); console.log(response);
+					if ( response.error && '' !== response.data ) {
+						$wrapper.html( '<div class="doc-feedback-failed">' + response.data + '</div>' );
+					}
+					if ( response.success && '' !== response.data ) {
+						$wrapper.html( '<div class="doc-feedback-success">' + response.data + '</div>' );
+					}
+				}
+			);
+		} );
+	};
+
 	$( document ).ready( function() {
 		initSearch();
+		initFeedback();
 	} );
 
 })(jQuery);

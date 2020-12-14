@@ -63,7 +63,7 @@ class Autoloader {
 			'Admin'                     => 'classes/admin-settings.php',
 			'Cpt'                       => 'classes/cpt.php',
 			'Breadcrumb'				=> 'classes/breadcrumb.php',
-			'Search'                    => 'classes/search.php',
+			'Ajax'                    	=> 'classes/ajax.php',
 			'Structured_Data'			=> 'classes/structured-data.php',
 			'Template'                 => 'classes/template.php',
 			'Widget'      				=> 'classes/widget.php',
