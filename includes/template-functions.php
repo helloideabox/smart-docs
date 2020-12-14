@@ -134,17 +134,15 @@ function smartdocs_output_content_area_wrapper_end() {
 	}
 }
 
-function smartdocs_single_doc_header() {
-	?>
-	<header class="entry-header smartdocs-entry-header">
-		<?php do_action(  'smartdocs_before_single_doc_title' ); ?>
-		<h1 class="smartdocs-entry-title"><?php the_title(); ?></h1>
-		<?php do_action( 'smartdocs_after_single_doc_title' ); ?>
-	</header>
-	<?php
+function smartdocs_entry_header() {
+	smartdocs_get_template( 'single-doc-header' );
 }
 
-function smartdocs_single_doc_content() {
+function smartdocs_entry_footer() {
+	smartdocs_get_template( 'single-doc-footer' );
+}
+
+function smartdocs_entry_content() {
 	the_content();
 }
 
@@ -200,40 +198,5 @@ function smartdocs_doc_actions() {
 }
 
 function smartdocs_doc_feedback() {
-	global $post;
-
-	$upvotes = get_post_meta( $post->ID, '_smartdocs_upvotes', true );
-	$downvotes = get_post_meta( $post->ID, '_smartdocs_downvotes', true );
-	?>
-	<div class="smartdocs-doc-feedback">
-		<p><?php esc_html_e( 'Was this article helpful to you?', 'smart-docs' ); ?></p>
-		<div class="doc-vote-links">
-			<a href="#" class="doc-upvote" data-id="<?php echo $post->ID; ?>" title="<?php echo ! $upvotes ? __( 'No votes yet', 'smart-docs' ) : sprintf( _n( '%d person found this useful', '%d persons found this useful', $upvotes ), $upvotes ); ?>">
-				<span class="vote-text"><?php _e( 'Yes', 'smart-docs' ); ?></span>
-				<?php if ( $upvotes ) { ?>
-				<span class="vote-count"><?php echo $upvotes; ?></span>
-				<?php } ?>
-			</a>
-			<a href="#" class="doc-downvote" data-id="<?php echo $post->ID; ?>" title="<?php echo ! $upvotes ? __( 'No votes yet', 'smart-docs' ) : sprintf( _n( '%d person found this not useful', '%d persons found this not useful', $downvotes ), $downvotes ); ?>">
-				<span class="vote-text"><?php _e( 'No', 'smart-docs' ); ?></span>
-				<?php if ( $downvotes ) { ?>
-				<span class="vote-count"><?php echo $downvotes; ?></span>
-				<?php } ?>
-			</a>
-		</div>
-	</div>
-	<?php
-}
-
-function smartdocs_entry_footer() {
-	$modified_time_string = sprintf( __( 'Updated on %s', 'smart-docs' ), get_the_modified_date( 'F j, Y' ) );
-	?>
-	<footer class="smartdocs-entry-footer">
-		<div class="entry-time">
-			<meta itemprop="datePublished" content="<?php echo get_the_date( 'c' ); ?>">
-			<time itemprop="dateModified" datetime="<?php echo get_the_modified_date( 'c' ); ?>"><?php echo esc_html( $modified_time_string ); ?></time>
-		</div>
-	</footer>
-
-	<?php
+	smartdocs_get_template( 'single-doc-feedback' );
 }

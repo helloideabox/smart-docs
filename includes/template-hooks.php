@@ -41,8 +41,8 @@ add_action( 'smartdocs_sidebar', 'smartdocs_get_sidebar', 10 );
 add_action( 'smartdocs_before_single_doc', 'smartdocs_output_content_area_wrapper_start', 10 );
 add_action( 'smartdocs_after_single_doc', 'smartdocs_output_content_area_wrapper_end', 10 );
 
-add_action( 'smartdocs_before_single_doc_content', 'smartdocs_single_doc_header', 5 );
-add_action( 'smartdocs_single_doc_content', 'smartdocs_single_doc_content', 10 );
+add_action( 'smartdocs_before_single_doc_content', 'smartdocs_entry_header', 5 );
+add_action( 'smartdocs_single_doc_content', 'smartdocs_entry_content', 10 );
 
 /**
  * Breadcrumbs.
