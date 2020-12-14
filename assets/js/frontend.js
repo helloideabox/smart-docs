@@ -71,8 +71,8 @@
 					type: $this.hasClass( 'doc-upvote' ) ? 'upvote' : 'downvote'
 				},
 				function( response ) {
-					$this.removeClass( 'disabled' ); console.log(response);
-					if ( response.error && '' !== response.data ) {
+					$this.removeClass( 'disabled' );
+					if ( ! response.success && '' !== response.data ) {
 						$wrapper.html( '<div class="doc-feedback-failed">' + response.data + '</div>' );
 					}
 					if ( response.success && '' !== response.data ) {
