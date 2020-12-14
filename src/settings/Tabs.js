@@ -19,11 +19,6 @@ export default function Tabs() {
 					className: tabClasses,
 				},
 				{
-					name: "layout",
-					title: "Layout",
-					className: tabClasses,
-				},
-				{
 					name: "search",
 					title: "Search",
 					className: tabClasses,
@@ -33,8 +28,6 @@ export default function Tabs() {
 			{(tab) => {
 				if ("general" === tab.name) {
 					return <General />;
-				} else if ("layout" === tab.name) {
-					return <Layout />;
 				} else if ("search" === tab.name) {
 					return <Search />;
 				}
