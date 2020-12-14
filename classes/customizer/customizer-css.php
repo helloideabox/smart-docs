@@ -158,16 +158,8 @@ function render_frontend_styles() {
 			 * Grid Styles
 			 */
 			.smartdocs-categories {
-				grid-template-columns: repeat(<?php echo empty( $grid_columns ) ? 3 : $grid_columns; ?>, 1fr);
 				gap: <?php echo empty( $grid_gap ) ? '20px' : ( $grid_gap . 'px' ); ?>;
-			}
-
-			/**
-			 * List Styles
-			 */
-			.smartdocs-categories.layout-list {
-				grid-template-columns: repeat(1, 1fr);
-				gap: <?php echo empty( $grid_gap ) ? '20px' : ( $grid_gap . 'px' ); ?>;
+				width: 100% !important;
 			}
 
 			/**
