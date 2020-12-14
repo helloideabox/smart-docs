@@ -51,7 +51,7 @@ function smartdocs_render_categories( $args = array() ) {
 			'columns'    => '3,2,1',
 			'hide_empty' => true,
 			'children'	 => false,
-			'title_tag'  => 'h4',
+			'title_tag'  => 'h5',
 		),
 		$args
 	);
