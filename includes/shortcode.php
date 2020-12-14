@@ -41,11 +41,15 @@ add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
  */
 function smartdocs_render_categories( $args = array() ) {
 
+	if ( is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
+		include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
+	}
+
 	$args = shortcode_atts(
 		array(
 			'show_count' => true,
 			'columns'    => '3,2,1',
-			'hide_empty' => false,
+			'hide_empty' => true,
 			'children'	 => false,
 			'title_tag'  => 'h4',
 		),
@@ -84,11 +88,7 @@ function smartdocs_render_categories( $args = array() ) {
 	$columns_md = isset( $columns[1] ) && ! empty( trim( $columns[1] ) ) ? trim( $columns[1] ) : $columns_lg;
 	$columns_sm = isset( $columns[2] ) && ! empty( trim( $columns[2] ) ) ? trim( $columns[2] ) : $columns_md;
 
-	$columns_lg = ! empty ( get_theme_mod( 'smartdocs_archive_columns' ) ) ? get_theme_mod( 'smartdocs_archive_columns' ) : $columns_lg;
-	$columns_md = ! empty ( get_theme_mod( 'smartdocs_archive_columns_tablet' ) ) ? get_theme_mod( 'smartdocs_archive_columns_tablet' ) : $columns_md;
-	$columns_sm = ! empty ( get_theme_mod( 'smartdocs_archive_columns_mobile' ) ) ? get_theme_mod( 'smartdocs_archive_columns_mobile' ) : $columns_sm;
-
-	$columns_class = "col-lg-$columns_lg col-md-$columns_md col-sm-$columns_sm";
+	$columns_class = "col-lg--$columns_lg col-md--$columns_md col-sm--$columns_sm";
 
 	smartdocs_get_template(
 		'categories',

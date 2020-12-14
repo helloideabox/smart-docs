@@ -200,6 +200,32 @@ function smartdocs_doc_actions() {
 	smartdocs_get_template( 'single-doc-actions' );
 }
 
+function smartdocs_doc_feedback() {
+	global $post;
+
+	$upvotes = get_post_meta( $post->ID, '_smartdocs_upvotes', true );
+	$downvotes = get_post_meta( $post->ID, '_smartdocs_downvotes', true );
+	?>
+	<div class="smartdocs-doc-feedback">
+		<p><?php esc_html_e( 'Was this article helpful to you?', 'smart-docs' ); ?></p>
+		<div class="doc-vote-links">
+			<a href="#" class="doc-upvote" data-id="<?php echo $post->ID; ?>" title="<?php echo ! $upvotes ? __( 'No votes yet', 'smart-docs' ) : sprintf( _n( '%d person found this useful', '%d persons found this useful', $upvotes ), $upvotes ); ?>">
+				<span class="vote-text"><?php _e( 'Yes', 'smart-docs' ); ?></span>
+				<?php if ( $upvotes ) { ?>
+				<span class="vote-count"><?php echo $upvotes; ?></span>
+				<?php } ?>
+			</a>
+			<a href="#" class="doc-downvote" data-id="<?php echo $post->ID; ?>" title="<?php echo ! $upvotes ? __( 'No votes yet', 'smart-docs' ) : sprintf( _n( '%d person found this not useful', '%d persons found this not useful', $downvotes ), $downvotes ); ?>">
+				<span class="vote-text"><?php _e( 'No', 'smart-docs' ); ?></span>
+				<?php if ( $downvotes ) { ?>
+				<span class="vote-count"><?php echo $downvotes; ?></span>
+				<?php } ?>
+			</a>
+		</div>
+	</div>
+	<?php
+}
+
 function smartdocs_entry_footer() {
 	$modified_time_string = sprintf( __( 'Updated on %s', 'smart-docs' ), get_the_modified_date( 'F j, Y' ) );
 	?>

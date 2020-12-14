@@ -15,7 +15,7 @@ use SmartDocs\Cpt;
 use SmartDocs\Admin;
 use SmartDocs\Widget;
 use SmartDocs\Templates;
-use SmartDocs\Search;
+use SmartDocs\Ajax;
 use SmartDocs\Structured_Data;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -96,14 +96,14 @@ class Plugin {
 	/**
 	 * Instance.
 	 *
-	 * Holds the Search Class instance.
+	 * Holds the Ajax Class instance.
 	 *
 	 * @since 1.0.0
 	 * @access public
 	 *
-	 * @var object $search
+	 * @var object $ajax
 	 */
-	public $search = null;
+	public $ajax = null;
 
 	/**
 	 * Instance.
@@ -225,12 +225,12 @@ class Plugin {
 	 */
 	private function init_components() {
 
-		$this->cpt        = new Cpt();
-		$this->admin      = new Admin();
-		$this->template   = new Template();
-		$this->search     = new Search();
-		$this->customizer = new Customizer();
-		$this->widget 	  = new Widget();
+		$this->cpt        	= new Cpt();
+		$this->admin      	= new Admin();
+		$this->template   	= new Template();
+		$this->ajax     	= new Ajax();
+		$this->customizer 	= new Customizer();
+		$this->widget 	  	= new Widget();
 		$this->structured_data  = new Structured_Data();
 
 		// Action to include script.
@@ -305,22 +305,27 @@ class Plugin {
 
 		$post_type = $this->cpt->post_type;
 		$should_enqueue = false;
+		$localized_vars = array(
+			'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
+			'nonce'		=> wp_create_nonce( 'smartdocs_front' ),
+		);
 
 		wp_register_style( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/css/frontend.css', array(), SMART_DOCS_VERSION );
 		wp_register_script( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/js/frontend.js', array( 'jquery' ), SMART_DOCS_VERSION, true );
-		wp_localize_script( 'smartdocs-frontend', 'smartdocs', array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-		) );
 
-		if ( is_post_type_archive( $post_type ) || is_singular( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
+		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
 			$should_enqueue = true;
-		} elseif ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->content,  'smartdocs-search' ) ) {
-			$should_enqueue = true;
+		} elseif ( is_a( $post, 'WP_Post' ) ) {
+			$localized_vars['feedback_nonce'] = wp_create_nonce( "smartdocs_feedback_{$post->ID}" );
+			if ( is_singular( $post_type ) || has_shortcode( $post->content,  'smartdocs-search' ) ) {
+				$should_enqueue = true;
+			}
 		}
 
 		if ( $should_enqueue ) {
 			wp_enqueue_style( 'smartdocs-frontend' );
 			wp_enqueue_script( 'smartdocs-frontend' );
+			wp_localize_script( 'smartdocs-frontend', 'smartdocs', $localized_vars );
 		}
 	}
 }

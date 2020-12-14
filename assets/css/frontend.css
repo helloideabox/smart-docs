@@ -323,6 +323,9 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 /*********************************
  * Single
  ********************************/
+.smartdocs-entry {
+	margin-bottom: 40px;
+}
 .smartdocs-entry-content img {
     padding: 10px;
     background: #eee;
@@ -337,11 +340,69 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	font-style: italic;
 }
 
-/** Doc action on single doc page */
-.smartdocs-doc-actions {
-    margin: 20px 0;
-    padding-top: 40px;
+/** Doc action and feedbac on single doc page */
+.smartdocs-doc-actions,
+.smartdocs-doc-feedback {
+    padding: 40px 0;
     border-top: 1px solid #eee;
+}
+.smartdocs-doc-actions p:last-of-type,
+.smartdocs-doc-feedback p:last-of-type {
+	margin: 0;
+}
+.smartdocs-doc-feedback {
+	display: flex;
+    justify-content: space-between;
+}
+.smartdocs-doc-feedback .doc-vote-links {
+	display: flex;
+}
+.smartdocs-doc-feedback .doc-vote-links a {
+    text-align: center;
+    padding: 2px 20px;
+	display: flex;
+	align-items: center;
+	border-radius: 4px;
+	background-color: #333;
+	color: #fff;
+}
+.smartdocs-doc-feedback .doc-vote-links a.doc-upvote {
+	margin-right: 10px;
+    background-color: #4CAF50;
+}
+.smartdocs-doc-feedback .doc-vote-links a.disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}
+.smartdocs-doc-feedback .doc-feedback-success,
+.smartdocs-doc-feedback .doc-feedback-failed {
+	width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+.smartdocs-doc-feedback span.vote-count {
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	text-align: center;
+	width: 20px;
+    height: 20px;
+    color: #333;
+    background: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+.smartdocs-doc-feedback .doc-feedback-success {
+	border: 1px solid #caeaa4;
+	background-color: #edf7e2;
+	color: #4CAF50;
+}
+.smartdocs-doc-feedback .doc-feedback-failed {
+	border: 1px solid #f5bfbb;
+	background-color: #fbe6e4;
+    color: #F44336;
 }
 
 /** pre, code, etc */
