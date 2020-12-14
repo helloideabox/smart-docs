@@ -75,33 +75,10 @@ function smartdocs_archive_content() {
 	}
 }
 
-function smartdocs_get_category_thumbnail_url( $term_id ) {
-
-	$smartdocs_category_thumb_id     = get_term_meta( $term_id, 'thumbnail_id', true );
-	$smartdocs_taxonomy_thumbnail_id = get_term_meta( $term_id, 'taxonomy_thumbnail_id', true );
-
-	if ( empty( $smartdocs_category_thumb_id ) ) {
-		$smartdocs_category_thumb_id = $smartdocs_taxonomy_thumbnail_id;
-	}
-
-	$smartdocs_category_image = wp_get_attachment_image_src( $smartdocs_category_thumb_id, 'thumbnail' );
-
-	return $smartdocs_category_image;
-}
-
 function smartdocs_get_sidebar() {
-
-	if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) :
-		?>
-
-		<div class="widget-area sidebar smartdocs-sidebar" itemscope="itemscope" itemtype="https://schema.org/WPSideBar">
-			<div class="sidebar-main content-area">
-				<?php dynamic_sidebar( 'smart-docs-sidebar' ); ?>
-			</div>
-		</div>
-
-	<?php endif;
-
+	if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
+		smartdocs_get_template( 'sidebar' );
+	}
 }
 
 function smartdocs_single_doc_terms() {
