@@ -200,22 +200,6 @@ function render_frontend_styles() {
 				padding-left: <?php echo $cat_item_padding->left; ?>px ;
 			}
 
-			/**
-			 * Search styles
-			 */
-			.smartdocs-spinner {
-				display: none;
-			}
-			.smartdocs-search-input {
-				border: 1px solid #c0c0c0 ;
-					height: 3em;
-			}
-			.smartdocs-search {
-				border: 1px solid blue;
-				margin-top: 50px;
-				margin-bottom: 50px;
-			}
-
 			@media only screen and (max-width:<?php echo esc_html( $breakpoint_medium ); ?>px) and (min-width:<?php echo esc_html( $breakpoint_small ); ?>px) {
 
 				<?php
