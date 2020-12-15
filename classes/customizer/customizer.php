@@ -53,7 +53,9 @@ class Customizer {
 
 		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_preview_script' ) );
 
-		add_action( 'customize_controls_print_styles', 'sync_customizer_breakpoints' );
+		add_action( 'customize_controls_print_styles', array( $this, 'sync_customizer_breakpoints' ) );
+
+		add_action( 'wp', array( $this, 'sync_customizer_settings' ) );
 
 	}
 
@@ -443,7 +445,7 @@ class Customizer {
 		return 'rgba(' . implode( ',', $rgba ) . ')';
 	}
 
-	function sync_customizer_breakpoints() {
+	public function sync_customizer_breakpoints() {
 		?>
 		<style>
 			.preview-tablet .wp-full-overlay-main {
@@ -455,5 +457,61 @@ class Customizer {
 			}
 		</style>
 		<?php
+	}
+
+	public function sync_customizer_settings() {
+
+		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_breadcrumbs' ) ) {
+			remove_action( 'smartdocs_primary_content_area', 'smartdocs_breadcrumb', 20 );
+		}
+
+		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_action_section' ) ) {
+			remove_action( 'smartdocs_after_single_doc', 'smartdocs_doc_actions', 5 );
+		}
+
+		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_feedback_section' ) ) {
+			remove_action( 'smartdocs_after_single_doc', 'smartdocs_doc_feedback', 6 );
+		}
+
+		if ( 'after_content' === get_theme_mod( 'smartdocs_single_doc_display_last_updated_on' ) ) {
+
+			if ( has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer' ) ) {
+
+				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer', 10 );
+
+			}
+
+			if ( ! has_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer' ) ) {
+
+				add_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 );
+
+			}
+		} elseif ( 'after_title' === get_theme_mod( 'smartdocs_single_doc_display_last_updated_on' ) ) {
+
+			if ( has_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer' ) ) {
+
+				remove_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 );
+
+			}
+
+			if ( ! has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer' ) ) {
+
+				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer', 10 );
+
+			}
+
+		} elseif ( 'hide' === get_theme_mod( 'smartdocs_single_doc_display_last_updated_on' ) ) {
+
+			if ( has_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer' ) ) {
+
+				remove_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 );
+
+			}
+			if ( has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer' ) ) {
+
+				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer', 10 );
+
+			}
+		}
 	}
 }
