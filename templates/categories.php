@@ -18,19 +18,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
 				<div class="smartdocs-category-info">
 						<?php
-							$cat_thumb = smartdocs_get_category_thumbnail_url( $term->term_id );
+						$cat_thumb = smartdocs_get_category_thumbnail_url( $term->term_id );
 
 						if ( is_array( $cat_thumb ) && ! empty( $cat_thumb ) ) :
-							?>
+						?>
+						<div class="smartdocs-category-thumb">
 							<img src="<?php echo $cat_thumb[0]; ?>" alt="<?php echo $term->name; ?>" width="100px" />
-
+						</div>
 						<?php endif; ?>
 						<div class="smartdocs-category-text">
 							<<?php echo esc_html( $args['title_tag'] ); ?> class="smartdocs-category-title"><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
 							<?php if ( ! empty( $term->description ) ) : ?>
-								<span class="smartdocs-category-description">
-									<?php echo esc_html( $term->description ); ?>
-								</span>
+								<div class="smartdocs-category-description">
+									<?php echo wpautop( $term->description ); ?>
+								</div>
 							<?php endif; ?>
 						</div>
 				</div>

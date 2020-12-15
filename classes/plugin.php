@@ -267,32 +267,17 @@ class Plugin {
 	/**
 	 * Plugin Activation.
 	 *
-	 * SmartDocson plugin activation.
-	 *
 	 * @since 1.0.0
 	 * @access public
 	 */
 	public function plugin_activation() {
 		flush_rewrite_rules();
-	}
 
-	/**
-	 * Instance.
-	 *
-	 * Ensures only one instance of the plugin class is loaded or can be loaded.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 * @static
-	 *
-	 * @return Plugin An instance of the class.
-	 */
-	public static function instance() {
-		if ( is_null( self::$instance ) ) {
-			self::$instance = new self();
-		}
+		$installed = get_option( 'smartdocs_installed_time' );
 
-		return self::$instance;
+        if ( ! $installed ) {
+            update_option( 'smartdocs_installed_time', time() );
+        }
 	}
 
 	/**
@@ -327,6 +312,25 @@ class Plugin {
 			wp_enqueue_script( 'smartdocs-frontend' );
 			wp_localize_script( 'smartdocs-frontend', 'smartdocs', $localized_vars );
 		}
+	}
+
+	/**
+	 * Instance.
+	 *
+	 * Ensures only one instance of the plugin class is loaded or can be loaded.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @static
+	 *
+	 * @return Plugin An instance of the class.
+	 */
+	public static function instance() {
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
 	}
 }
 
