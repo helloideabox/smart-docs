@@ -229,23 +229,4 @@
 		});
 	});
 
-	/**
-	 * SmartDocs Search
-	 */
-	wp.customize("smartdocs_search_placeholder_text_color", function (
-		value
-	) {
-		value.bind(function (new_value) {
-			$(".smartdocs-search-input").css("color", new_value);
-		});
-	});
-
-	wp.customize("smartdocs_search_input_text_color", function (
-		value
-	) {
-		value.bind(function (new_value) {
-			$(".smartdocs-search-input").css("color", new_value);
-		});
-	});
-
 })(jQuery);
