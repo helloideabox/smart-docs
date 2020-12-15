@@ -18,10 +18,10 @@ function render_frontend_styles() {
 	/**
 	 * Header Styles.
 	 */
-	$background_type  = get_theme_mod( 'smartdocs_hero_bg_type' );
-	$background_color = get_theme_mod( 'smartdocs_hero_background_color', "#cecece" );
-	$background_image = get_theme_mod( 'smartdocs_hero_bg_image' );
-	$background_image_overlay_color = get_theme_mod( 'smartdocs_hero_bg_image_overlay_color');
+	$background_type                = get_theme_mod( 'smartdocs_hero_bg_type' );
+	$background_color               = get_theme_mod( 'smartdocs_hero_background_color', '#cecece' );
+	$background_image               = get_theme_mod( 'smartdocs_hero_bg_image' );
+	$background_image_overlay_color = get_theme_mod( 'smartdocs_hero_bg_image_overlay_color' );
 
 	/**
 	 * Grid Layout
@@ -223,7 +223,7 @@ function render_frontend_styles() {
 					.col-md-<?php echo $x; ?> {
 						grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
 					}
-					<?php 
+					<?php
 				}
 				?>
 
@@ -265,7 +265,7 @@ function render_frontend_styles() {
 					.col-sm-<?php echo $x; ?> {
 						grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
 					}
-					<?php 
+					<?php
 				}
 				?>
 
@@ -305,7 +305,7 @@ function render_frontend_styles() {
 				.col-lg-<?php echo $x; ?> {
 					grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
 				}
-				<?php 
+				<?php
 			}
 			?>
 		</style>
