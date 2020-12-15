@@ -478,5 +478,9 @@ class Cpt {
 		if ( is_post_type_archive( 'smart-docs' ) ) {
 			include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
 		}
+
+		if ( is_singular() ) {
+			include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
+		}
 	}
 }
