@@ -347,6 +347,9 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	font-weight: normal;
 	font-style: italic;
 }
+.smartdocs-entry-footer .entry-author {
+	display: none;
+}
 
 /** Doc action and feedbac on single doc page */
 .smartdocs-doc-actions,
