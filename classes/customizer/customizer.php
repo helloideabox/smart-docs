@@ -284,17 +284,6 @@ class Customizer {
 		);
 
 		$this->_is_preview = true;
-
-		/*
-		$editor_css = 'assets/customizer/index.css';
-
-		wp_enqueue_style(
-		'smartdocs-settings-style',
-		SMART_DOCS_URL . $editor_css,
-		array( 'wp-components' ),
-		filemtime( "$dir/$editor_css" )
-		); */
-
 	}
 
 	public function enqueue_customizer_controls() {
