@@ -220,7 +220,7 @@ function render_frontend_styles() {
 				<?php
 				for ( $x = 1; $x <= 12; $x++ ) {
 					?>
-					.col-md-<?php echo $x; ?> {
+					.col-md--<?php echo $x; ?> {
 						grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
 					}
 					<?php
@@ -262,7 +262,7 @@ function render_frontend_styles() {
 				<?php
 				for ( $x = 1; $x <= 12; $x++ ) {
 					?>
-					.col-sm-<?php echo $x; ?> {
+					.col-sm--<?php echo $x; ?> {
 						grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
 					}
 					<?php
@@ -302,7 +302,7 @@ function render_frontend_styles() {
 			<?php
 			for ( $x = 1; $x <= 12; $x++ ) {
 				?>
-				.col-lg-<?php echo $x; ?> {
+				.col-lg--<?php echo $x; ?> {
 					grid-template-columns: repeat(<?php echo $x; ?>, 1fr);
 				}
 				<?php
