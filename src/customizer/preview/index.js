@@ -60,8 +60,7 @@
 	 */
 	wp.customize("smartdocs_archive_columns_gap", function (value) {
 		value.bind(function (new_value) {
-			$(".layout-grid").css("gap", new_value + "px");
-			$(".layout-list").css("gap", new_value + "px");
+			$(".smartdocs-categories").css("gap", new_value + "px");
 		});
 	});
 
@@ -70,7 +69,7 @@
 	 */
 	wp.customize("smartdocs_archive_columns", function (value) {
 		value.bind(function (new_value) {
-			$(".layout-grid").css(
+			$(".smartdocs-categories").css(
 				"grid-template-columns",
 				"repeat( " + new_value + ", 1fr)"
 			);
@@ -79,7 +78,7 @@
 
 	wp.customize("smartdocs_archive_columns_tablet", function (value) {
 		value.bind(function (new_value) {
-			$(".layout-grid").css(
+			$(".smartdocs-categories").css(
 				"grid-template-columns",
 				"repeat( " + new_value + ", 1fr)"
 			);
@@ -88,7 +87,7 @@
 
 	wp.customize("smartdocs_archive_columns_mobile", function (value) {
 		value.bind(function (new_value) {
-			$(".layout-grid").css(
+			$(".smartdocs-categories").css(
 				"grid-template-columns",
 				"repeat( " + new_value + ", 1fr)"
 			);

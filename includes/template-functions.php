@@ -62,7 +62,7 @@ function smartdocs_archive_content() {
 		$column_sm = (int) get_theme_mod( 'smartdocs_archive_columns_mobile', 1 );
 		$columns   = implode( ',', array( $column_lg, $column_md, $column_sm ) );
 
-		$item_title_wrapper = get_theme_mod( 'smartdocs_archive_list_item_title_wrapper', 'h4' );
+		$item_title_wrapper = get_theme_mod( 'smartdocs_archive_list_item_title_wrapper', 'h5' );
 
 		$args = array(
 			'columns'   => $columns,

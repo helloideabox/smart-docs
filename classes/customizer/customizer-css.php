@@ -170,31 +170,32 @@ function render_frontend_styles() {
 				background-color: <?php echo esc_html( $cat_title_bg_color ); ?>;
 			 }
 
-			 .smartdocs-categories-list .smartdocs-category-text .smartdocs-category-title {
+			.smartdocs-category-title {
 				 font-size: <?php echo esc_html( $cat_title_font_size ); ?>px;
 				 color: <?php echo esc_html( $cat_title_font_color ); ?>;
 			 }
 
-			 .smartdocs-categories-list .smartdocs-category-text .smartdocs-category-description {
+			 .smartdocs-categories .smartdocs-category-text .smartdocs-category-description {
 				 font-size: <?php echo esc_html( $cat_description_font_size ); ?>px;
 				 color: <?php echo esc_html( $cat_descrtipion_font_color ); ?>;
 			 }
 
-			 div.smartdocs-categories-list .smartdocs-posts-info {
+			 div.smartdocs-categories .smartdocs-posts-info {
 				 font-size: <?php echo esc_html( $cat_info_font_size ); ?>px;
 				 background-color: <?php echo esc_html( $cat_info_bg_color ); ?>;
 				 border-top-color: <?php echo empty( $cat_info_divider_color ) ? esc_html( $cat_info_bg_color ) : esc_html( $cat_info_divider_color ); ?>;
 			 }
 
-			div.smartdocs-categories-list .smartdocs-posts-info .smartdocs-category-view-all {
+			div.smartdocs-categories .smartdocs-posts-info .smartdocs-category-view-all,
+			div.smartdocs-categories .smartdocs-posts-info .smartdocs-posts-count {
 				color: <?php echo esc_html( $cat_info_text_color ); ?>;
 			}
 
-			div.smartdocs-categories-list .smartdocs-category-info {
+			div.smartdocs-categories .smartdocs-category-info {
 				padding: <?php echo $cat_item_padding->top; ?>px <?php echo $cat_item_padding->right; ?>px <?php echo $cat_item_padding->bottom; ?>px <?php echo $cat_item_padding->left; ?>px ;
 			 }
 			
-			div.smartdocs-categories-list .smartdocs-posts-info {
+			div.smartdocs-categories .smartdocs-posts-info {
 				padding-right: <?php echo $cat_item_padding->right; ?>px ;
 				padding-left: <?php echo $cat_item_padding->left; ?>px ;
 			}
@@ -234,24 +235,24 @@ function render_frontend_styles() {
 					grid-template-columns: repeat(<?php echo $grid_columns_tablet; ?>, 1fr);
 				}
 
-				div.smartdocs-categories-list .smartdocs-category-info {
+				div.smartdocs-categories .smartdocs-category-info {
 					padding: <?php echo $cat_item_padding_tablet->top; ?>px <?php echo $cat_item_padding_tablet->right; ?>px <?php echo $cat_item_padding_tablet->bottom; ?>px <?php echo $cat_item_padding_tablet->left; ?>px ;
 				}
 
-				div.smartdocs-categories-list .smartdocs-posts-info {
+				div.smartdocs-categories .smartdocs-posts-info {
 					padding-right: <?php echo $cat_item_padding_tablet->right; ?>px ;
 					padding-left: <?php echo $cat_item_padding_tablet->left; ?>px ;
 				}
 
-				.smartdocs-categories-list .smartdocs-category-text .smartdocs-category-title {
+				.smartdocs-category-title {
 				 font-size: <?php echo esc_html( $cat_title_font_size_tablet ); ?>px;
 				}
 
-				.smartdocs-categories-list .smartdocs-category-text .smartdocs-category-description {
+				.smartdocs-categories .smartdocs-category-text .smartdocs-category-description {
 				 font-size: <?php echo esc_html( $cat_description_font_size_tablet ); ?>px;
 			 }
 				
-				div.smartdocs-categories-list .smartdocs-posts-info {
+				div.smartdocs-categories .smartdocs-posts-info {
 					font-size: <?php echo esc_html( $cat_info_font_size_tablet ); ?>px;
 				}
 
@@ -276,24 +277,24 @@ function render_frontend_styles() {
 					grid-template-columns: repeat(<?php echo $grid_columns_mobile; ?>, 1fr);
 				}
 
-				div.smartdocs-categories-list .smartdocs-category-info {
+				div.smartdocs-categories .smartdocs-category-info {
 					padding: <?php echo $cat_item_padding_mobile->top; ?>px <?php echo $cat_item_padding_mobile->right; ?>px <?php echo $cat_item_padding_mobile->bottom; ?>px <?php echo $cat_item_padding_mobile->left; ?>px ;
 				}
 
-				div.smartdocs-categories-list .smartdocs-posts-info {
+				div.smartdocs-categories .smartdocs-posts-info {
 					padding-right: <?php echo $cat_item_padding_mobile->right; ?>px ;
 					padding-left: <?php echo $cat_item_padding_mobile->left; ?>px ;
 				}
 
-				.smartdocs-categories-list .smartdocs-category-text .smartdocs-category-title {
+				.smartdocs-category-title {
 				 font-size: <?php echo esc_html( $cat_title_font_size_mobile ); ?>px;
 				}
 
-				.smartdocs-categories-list .smartdocs-category-text .smartdocs-category-description {
+				.smartdocs-categories .smartdocs-category-text .smartdocs-category-description {
 				 font-size: <?php echo esc_html( $cat_description_font_size_mobile ); ?>px;
 			 }
 
-				div.smartdocs-categories-list .smartdocs-posts-info {
+				div.smartdocs-categories .smartdocs-posts-info {
 					font-size: <?php echo esc_html( $cat_info_font_size_mobile ); ?>px;
 				}
 			}

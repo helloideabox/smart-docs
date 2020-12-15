@@ -131,10 +131,10 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_archive_item_padding',
 			array(
 				'default'    => array(
-					'top'    => 14,
+					'top'    => 15,
 					'bottom' => 15,
-					'left'   => 13,
-					'right'  => 33,
+					'left'   => 15,
+					'right'  => 15,
 				),
 				'capability' => 'edit_theme_options',
 			)
@@ -164,10 +164,10 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_archive_item_padding_tablet',
 			array(
 				'default'    => array(
-					'top'    => 14,
-					'bottom' => 15,
-					'left'   => 13,
-					'right'  => 33,
+					'top'    => 10,
+					'bottom' => 10,
+					'left'   => 10,
+					'right'  => 10,
 				),
 				'capability' => 'edit_theme_options',
 			)
@@ -197,10 +197,10 @@ use SmartDocs\Styler_Customizer_Control;
 			'smartdocs_archive_item_padding_mobile',
 			array(
 				'default'    => array(
-					'top'    => 14,
-					'bottom' => 15,
-					'left'   => 13,
-					'right'  => 33,
+					'top'    => 10,
+					'bottom' => 10,
+					'left'   => 10,
+					'right'  => 10,
 				),
 				'capability' => 'edit_theme_options',
 			)
@@ -230,11 +230,13 @@ use SmartDocs\Styler_Customizer_Control;
 		 * Grid Settings End
 		 */
 
+		/**
+		 * Grid Item's Settigns
+		 */
 		$wp_customize->add_setting(
 			'smartdocs_archive_list_item_title_wrapper',
 			array(
 				'default'    => 'h2',
-				'type'       => 'option',
 				'capability' => 'edit_theme_options',
 			)
 		);
