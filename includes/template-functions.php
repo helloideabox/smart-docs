@@ -57,15 +57,15 @@ function smartdocs_output_header() {
 function smartdocs_archive_content() {
 	if ( ! is_tax( 'smartdocs_category' ) || apply_filters( 'smartdocs_tax_render_categories', false ) ) {
 
-		$column_lg = (int) get_theme_mod('smartdocs_archive_columns', 3);
-		$column_md = (int) get_theme_mod('smartdocs_archive_columns_tablet', 2);
-		$column_sm = (int) get_theme_mod('smartdocs_archive_columns_mobile', 1);
-		$columns = implode(",",array($column_lg, $column_md, $column_sm));
+		$column_lg = (int) get_theme_mod( 'smartdocs_archive_columns', 3 );
+		$column_md = (int) get_theme_mod( 'smartdocs_archive_columns_tablet', 2 );
+		$column_sm = (int) get_theme_mod( 'smartdocs_archive_columns_mobile', 1 );
+		$columns   = implode( ',', array( $column_lg, $column_md, $column_sm ) );
 
-		$item_title_wrapper = get_theme_mod('smartdocs_archive_list_item_title_wrapper', 'h4');
+		$item_title_wrapper = get_theme_mod( 'smartdocs_archive_list_item_title_wrapper', 'h4' );
 
 		$args = array(
-			'columns' => $columns,
+			'columns'   => $columns,
 			'title_tag' => $item_title_wrapper,
 		);
 		smartdocs_render_categories( $args );
@@ -114,7 +114,7 @@ function smartdocs_single_doc_terms() {
 
 function smartdocs_output_content_area_wrapper_start() {
 	if ( ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
-	?>
+		?>
 		<div id="primary" class="content-area">
 			<?php
 			/**
@@ -124,15 +124,15 @@ function smartdocs_output_content_area_wrapper_start() {
 			 */
 			do_action( 'smartdocs_primary_content_area' );
 			?>
-	<?php
+		<?php
 	}
 }
 
 function smartdocs_output_content_area_wrapper_end() {
 	if ( ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
-	?>
+		?>
 		</div>
-	<?php
+		<?php
 	}
 }
 
@@ -204,7 +204,7 @@ function smartdocs_doc_actions() {
 function smartdocs_doc_feedback() {
 	global $post;
 
-	$upvotes = get_post_meta( $post->ID, '_smartdocs_upvotes', true );
+	$upvotes   = get_post_meta( $post->ID, '_smartdocs_upvotes', true );
 	$downvotes = get_post_meta( $post->ID, '_smartdocs_downvotes', true );
 	?>
 	<div class="smartdocs-doc-feedback">
