@@ -17,6 +17,7 @@ use SmartDocs\Styler_Customizer_Control;
 			array(
 				'default'    => '#c0c0c0',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage',
 			)
 		);
 
@@ -41,6 +42,7 @@ use SmartDocs\Styler_Customizer_Control;
 			array(
 				'default'    => '#c0c0c0',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage',
 			)
 		);
 
@@ -65,6 +67,7 @@ use SmartDocs\Styler_Customizer_Control;
 			array(
 				'default'    => 16,
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage',
 			)
 		);
 
@@ -86,6 +89,7 @@ use SmartDocs\Styler_Customizer_Control;
 			array(
 				'default'    => '#0c0c0c',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage',
 			)
 		);
 
