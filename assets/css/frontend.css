@@ -81,14 +81,15 @@
 }
 
 .smartdocs-template .smartdocs-content #primary {
-	float: left;
-	width: 66.66666%;
 	padding-top: 30px;
 	padding-right: 30px;
 }
 
+.smartdocs-template.smartdocs-has-sidebar .smartdocs-content #primary {
+	width: 66.66666%;
+}
+
 .smartdocs-template .smartdocs-content .sidebar {
-	float: right;
 	width: 33.33333%;
 	padding-top: 30px;
 	padding-left: 30px;

@@ -106,6 +106,10 @@ class Template {
 			$classes[] = 'smartdocs-template';
 		}
 
+		if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( Plugin::instance()->cpt->post_type ) ) {
+			$classes[] = 'smartdocs-has-sidebar';
+		}
+
 		return $classes;
 	}
 }
