@@ -159,7 +159,6 @@ function render_frontend_styles() {
 			 */
 			.smartdocs-categories {
 				gap: <?php echo empty( $grid_gap ) ? '20px' : ( $grid_gap . 'px' ); ?>;
-				width: 100% !important;
 			}
 
 			/**
@@ -215,9 +214,6 @@ function render_frontend_styles() {
 				/**
 				* Grid Styles Medium || Tablet
 				*/
-				.smartdocs-categories {
-					grid-template-columns: repeat(<?php echo $grid_columns_tablet; ?>, 1fr);
-				}
 
 				div.smartdocs-categories .smartdocs-category-info {
 					padding: <?php echo $cat_item_padding_tablet->top; ?>px <?php echo $cat_item_padding_tablet->right; ?>px <?php echo $cat_item_padding_tablet->bottom; ?>px <?php echo $cat_item_padding_tablet->left; ?>px ;
@@ -257,9 +253,6 @@ function render_frontend_styles() {
 				/**
 				* Grid Styles Small
 				*/
-				.smartdocs-categoroies {
-					grid-template-columns: repeat(<?php echo $grid_columns_mobile; ?>, 1fr);
-				}
 
 				div.smartdocs-categories .smartdocs-category-info {
 					padding: <?php echo $cat_item_padding_mobile->top; ?>px <?php echo $cat_item_padding_mobile->right; ?>px <?php echo $cat_item_padding_mobile->bottom; ?>px <?php echo $cat_item_padding_mobile->left; ?>px ;
