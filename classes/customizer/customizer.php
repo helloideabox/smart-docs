@@ -76,6 +76,7 @@ class Customizer {
 		require SMART_DOCS_PATH . 'classes/customizer/sections/homepage-section.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/search-section.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/single-doc-section.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/breadcrumbs.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/breakpoints.php';
 	}
 
@@ -462,7 +463,16 @@ class Customizer {
 	public function sync_customizer_settings() {
 
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_breadcrumbs' ) ) {
-			remove_action( 'smartdocs_primary_content_area', 'smartdocs_breadcrumb', 20 );
+			if ( is_singular( Plugin::instance()->cpt->post_type ) ) {
+				remove_action( 'smartdocs_primary_content_area', 'smartdocs_breadcrumb', 20 );
+			}
+		}
+
+		if ( 'no' === get_theme_mod( 'smartdocs_taxonomy_archives_display_breadcrumbs' ) ) {
+
+			if ( is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
+				remove_action( 'smartdocs_primary_content_area', 'smartdocs_breadcrumb', 20 );
+			}
 		}
 
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_action_section' ) ) {
@@ -499,7 +509,6 @@ class Customizer {
 				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer', 10 );
 
 			}
-
 		} elseif ( 'hide' === get_theme_mod( 'smartdocs_single_doc_display_last_updated_on' ) ) {
 
 			if ( has_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer' ) ) {

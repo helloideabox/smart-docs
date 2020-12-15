@@ -12,29 +12,6 @@ use SmartDocs\Styler_Customizer_Control;
 		);
 
 		$wp_customize->add_setting(
-			'smartdocs_single_doc_display_breadcrumbs',
-			array(
-				'default'    => 'yes',
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			'smartdocs_single_doc_display_breadcrumbs_control',
-			array(
-				'label'       => __( 'Display Breadcrumbs', 'smart-docs' ),
-				'description' => __( 'Show breadcrumbs on the single doc page.', 'smart-docs' ),
-				'section'     => 'smartdocs_single_doc_settings',
-				'settings'    => 'smartdocs_single_doc_display_breadcrumbs',
-				'type'        => 'select',
-				'choices'     => array(
-					'yes' => __( 'Yes', 'smart-docs' ),
-					'no' => __( 'No', 'smart-docs' ),
-				),
-			)
-		);
-
-		$wp_customize->add_setting(
 			'smartdocs_single_doc_display_last_updated_on',
 			array(
 				'default'    => 'after_content',
