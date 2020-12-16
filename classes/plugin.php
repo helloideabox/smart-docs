@@ -339,7 +339,7 @@ class Plugin {
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
 
 			if ( is_singular( $post_type ) || has_shortcode( $post->content, 'smartdocs-search' ) ) {
-
+				render_hero_section_styles();
 			}
 		}
 		?>
