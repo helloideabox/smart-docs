@@ -188,6 +188,8 @@ class Plugin {
 		add_action( 'init', array( $this, 'init' ), 0 );
 
 		add_action( 'admin_init', array( $this, 'admin_init' ), 0 );
+
+		add_action( 'wp_head', array( $this, 'handle_customizer_styles' ), 10 );
 	}
 
 	/**
@@ -312,6 +314,38 @@ class Plugin {
 			wp_enqueue_script( 'smartdocs-frontend' );
 			wp_localize_script( 'smartdocs-frontend', 'smartdocs', $localized_vars );
 		}
+	}
+
+	/**
+	 * Handle Customizer Styles.
+	 *
+	 * @return void
+	 */
+	public function handle_customizer_styles ( ) {
+		
+		echo "DD";
+
+		global $post;
+
+		require_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
+
+		?>
+		<style type="text/css" class="smartdocs-customizer-styles">
+		<?php
+		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
+			
+			render_hero_section_styles();
+			render_catgory_item_grid_style();
+
+		} elseif ( is_a( $post, 'WP_Post' ) ) {
+
+			if ( is_singular( $post_type ) || has_shortcode( $post->content,  'smartdocs-search' ) ) {
+				
+			}
+		}
+		?>
+		</style>
+		<?php
 	}
 
 	/**

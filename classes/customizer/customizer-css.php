@@ -4,24 +4,16 @@
 	 *
 	 * @return void
 	 */
-function render_frontend_styles() {
+function render_catgory_item_grid_style() {
 
 	$breakpoint_medium = get_option( 'smartdocs_breakpoint_medium', 1024 );
 	$breakpoint_small  = get_option( 'smartdocs_breakpoint_small', 768 );
 
-	$archive_title_color                = get_theme_mod( 'smartdocs_hero_title_color' );
-	$smartdocs_hero_description_color   = get_theme_mod( 'smartdocs_hero_description_color', '#cecece' );
+	
+
 	$archive_item_list_title_color      = get_theme_mod( 'smartdocs_archive_list_item_title_color' );
 	$archive_item_list_post_count_color = get_theme_mod( 'smartdocs_archive_list_item_post_count_color' );
 	$archive_list_item_bg_color         = get_theme_mod( 'smartdocs_archive_list_item_bg_color' );
-
-	/**
-	 * Header Styles.
-	 */
-	$background_type                = get_theme_mod( 'smartdocs_hero_bg_type', 'color' );
-	$background_color               = get_theme_mod( 'smartdocs_hero_background_color', '#cecece' );
-	$background_image               = get_theme_mod( 'smartdocs_hero_bg_image' );
-	$background_image_overlay_color = get_theme_mod( 'smartdocs_hero_bg_image_overlay_color' );
 
 	/**
 	 * Grid Layout
@@ -96,47 +88,6 @@ function render_frontend_styles() {
 
 	$grid_gap = get_theme_mod( 'smartdocs_archive_columns_gap' );
 	?>
-		<style type="text/css" class="smartdocs-archive-dynamic-css">
-			/**
-			 * Header style.
-			 */
-			.smartdocs-header {
-			<?php if ( 'color' === $background_type ) : ?>
-					background-color: <?php echo esc_attr( $background_color ); ?>;
-				<?php elseif ( 'image' === $background_type ) : ?>
-					background-image: url('<?php echo esc_html( $background_image ); ?>');
-					background-repeat: no-repeat;
-					background-size: cover;
-					background-position: center;
-				<?php endif; ?>
-					position: relative;
-			}
-
-			<?php if ( 'image' === $background_type ) : ?>
-			.smartdocs-header .smartdocs-inner::before {
-					position: absolute;
-					left: 0;
-					top: 0;
-					width: 100%;
-					height: 100%;
-					background-color: <?php echo $background_image_overlay_color; ?>;
-			}
-			<?php endif; ?>
-
-			.smartdocs-hero-title {
-			<?php if ( ! empty( $archive_title_color ) ) { ?>
-					color: <?php echo esc_attr( $archive_title_color ); ?>;
-				<?php } ?>
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					padding-top: 25px;
-					padding-bottom: 25px;
-			}
-			.smartdocs-header p {
-				color: <?php echo esc_attr( $smartdocs_hero_description_color ); ?>;
-				text-align: center;
-			}
 			.smartdocs-archive-cat-title {
 			<?php if ( ! empty( $archive_item_list_title_color ) ) { ?>
 					color: <?php echo esc_attr( $archive_item_list_title_color ); ?>;
@@ -285,8 +236,62 @@ function render_frontend_styles() {
 				<?php
 			}
 			?>
-		</style>
 		<?php
 }
 
-render_frontend_styles();
+function render_hero_section_styles ( ) {
+
+	/**
+	 * Header Styles.
+	 */
+	$hero_background_type                 = get_theme_mod( 'smartdocs_hero_bg_type', 'color' );
+	$hero_title_color                	  = get_theme_mod( 'smartdocs_hero_title_color' );
+	$hero_description_color               = get_theme_mod( 'smartdocs_hero_description_color', '#cecece' );
+	$hero_background_color                = get_theme_mod( 'smartdocs_hero_background_color', '#cecece' );
+	$hero_background_image                = get_theme_mod( 'smartdocs_hero_bg_image' );
+	$hero_background_image_overlay_color  = get_theme_mod( 'smartdocs_hero_bg_image_overlay_color' );
+
+
+	/**
+	 * Header style.
+	 */
+	?>
+		.smartdocs-header {
+		<?php if ( 'color' === $hero_background_type ) : ?>
+				background-color: <?php echo esc_attr( $hero_background_color ); ?>;
+			<?php elseif ( 'image' === $hero_background_type ) : ?>
+				background-image: url('<?php echo esc_html( $hero_background_image ); ?>');
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			<?php endif; ?>
+				position: relative;
+		}
+
+		<?php if ( 'image' === $hero_background_type ) : ?>
+		.smartdocs-header .smartdocs-inner::before {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: <?php echo $hero_background_image_overlay_color; ?>;
+		}
+		<?php endif; ?>
+
+		.smartdocs-hero-title {
+		<?php if ( ! empty( $hero_title_color ) ) { ?>
+				color: <?php echo esc_attr( $hero_title_color ); ?>;
+			<?php } ?>
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-top: 25px;
+				padding-bottom: 25px;
+		}
+		.smartdocs-header p {
+			color: <?php echo esc_attr( $hero_description_color ); ?>;
+			text-align: center;
+		}
+		<?php
+}
