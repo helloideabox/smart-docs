@@ -326,7 +326,7 @@ class Plugin {
 		global $post;
 		$post_type = $this->cpt->post_type;
 
-		require_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
+		require_once SMART_DOCS_PATH . 'includes/dynamic-css.php';
 
 		?>
 		<style type="text/css" class="smartdocs-customizer-styles">
