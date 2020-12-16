@@ -100,7 +100,7 @@ function render_frontend_styles() {
 			/**
 			 * Header style.
 			 */
-			.smartdocs-header .smartdocs-inner {
+			.smartdocs-header {
 			<?php if ( 'color' === $background_type ) : ?>
 					background-color: <?php echo esc_attr( $background_color ); ?>;
 				<?php elseif ( 'image' === $background_type ) : ?>
@@ -109,7 +109,6 @@ function render_frontend_styles() {
 					background-size: cover;
 					background-position: center;
 				<?php endif; ?>
-					padding: 20px;
 					position: relative;
 			}
 
