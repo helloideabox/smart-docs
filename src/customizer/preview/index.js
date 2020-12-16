@@ -210,7 +210,7 @@
 
 	wp.customize("smartdocs_archive_category_info_text_color", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-posts-info").css("color", new_value);
+			$(".smartdocs-posts-info .smartdocs-posts-count, .smartdocs-posts-info .smartdocs-category-view-all").css("color", new_value);
 		});
 	});
 
