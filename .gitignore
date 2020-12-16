@@ -38,3 +38,6 @@ build/Release
 
 #mac
 .DS_Store
+
+# wp-env settings
+.wp-env.json
