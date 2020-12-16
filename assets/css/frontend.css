@@ -475,4 +475,5 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
  ********************************/
 .smartdocs-template #content .ast-container {
 	max-width: 100%;
+	padding: 0;
 }
