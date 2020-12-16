@@ -64,6 +64,10 @@
 	padding: 30px 0;
 }
 
+.smartdocs-template .smartdocs-content {
+	background-color: #fff;
+}
+
 /** Header */
 .smartdocs-header {
 	background-color: #eee;
@@ -334,6 +338,10 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	margin-right: 10px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.smartdocs-template .smartdocs-category-title {
+	margin-bottom: 20px;
 }
 
 
