@@ -18,7 +18,7 @@ function render_frontend_styles() {
 	/**
 	 * Header Styles.
 	 */
-	$background_type                = get_theme_mod( 'smartdocs_hero_bg_type' );
+	$background_type                = get_theme_mod( 'smartdocs_hero_bg_type', 'color' );
 	$background_color               = get_theme_mod( 'smartdocs_hero_background_color', '#cecece' );
 	$background_image               = get_theme_mod( 'smartdocs_hero_bg_image' );
 	$background_image_overlay_color = get_theme_mod( 'smartdocs_hero_bg_image_overlay_color' );
