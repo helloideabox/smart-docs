@@ -209,6 +209,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 }
 .smartdocs-search .search-icon + input {
 	padding-left: 35px;
+	width: 100%;
 }
 .smartdocs-search input.loading + .loading-spinner {
 	display: block;
