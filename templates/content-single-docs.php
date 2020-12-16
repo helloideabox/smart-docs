@@ -21,10 +21,10 @@ if ( post_password_required() ) {
 }
 ?>
 
-	<article class="<?php smartdocs_post_class( 'entry smartdocs-entry' ); ?>">
+	<article class="<?php smartdocs_post_class( 'entry smartdocs-entry' ); ?>" itemscope itemtype="http://schema.org/Article">
 		<?php do_action( 'smartdocs_before_single_doc_content' ); ?>	
 
-		<div class="entry-content smartdocs-entry-content">
+		<div class="entry-content smartdocs-entry-content" itemprop="articleBody">
 			<?php do_action( 'smartdocs_single_doc_content' ); ?>
 		</div>
 		

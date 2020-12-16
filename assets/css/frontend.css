@@ -69,6 +69,9 @@
 	background-color: #eee;
 }
 
+.smartdocs-header .smartdocs-hero-title {
+	margin-bottom: 20px;
+}
 .smartdocs-header .smartdocs-hero-title,
 .smartdocs-header .smartdocs-hero-description {
 	text-align: center;
@@ -81,14 +84,16 @@
 }
 
 .smartdocs-template .smartdocs-content #primary {
-	float: left;
-	width: 66.66666%;
 	padding-top: 30px;
 	padding-right: 30px;
 }
 
+.smartdocs-template.smartdocs-has-sidebar .smartdocs-content #primary {
+	width: 66.66666%;
+	margin: 0;
+}
+
 .smartdocs-template .smartdocs-content .sidebar {
-	float: right;
 	width: 33.33333%;
 	padding-top: 30px;
 	padding-left: 30px;
@@ -207,6 +212,9 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-search .loading-spinner img {
 	vertical-align: baseline;
 }
+.smartdocs-search input {
+	width: 100%;
+}
 .smartdocs-search .search-icon + input {
 	padding-left: 35px;
 	width: 100%;
@@ -220,6 +228,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     padding: 3px 0;
     position: absolute;
     width: 100%;
+	margin: 0;
     margin-top: 4px;
     border-radius: 4px;
     z-index: 99;
@@ -332,7 +341,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 /*********************************
  * Single
  ********************************/
-.smartdocs-entry {
+.smartdocs-template .smartdocs-entry {
 	margin-bottom: 40px;
 }
 .smartdocs-entry-content img {
@@ -347,6 +356,9 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-entry-footer time {
 	font-weight: normal;
 	font-style: italic;
+}
+.smartdocs-entry-footer .entry-author {
+	display: none;
 }
 
 /** Doc action and feedbac on single doc page */
@@ -455,4 +467,12 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smardocs-single-doc-content-wrap {
 	background: #fff;
 	padding: 5%;
+}
+
+
+/*********************************
+ * Theme Compatibility
+ ********************************/
+.smartdocs-template #content .ast-container {
+	max-width: 100%;
 }

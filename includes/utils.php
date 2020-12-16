@@ -184,7 +184,8 @@ function smartdocs_list_categories( $args, $count ) {
 }
 
 function smartdocs_post_class( $class = '' ) {
-	echo implode( ' ', get_post_class( $class ) );
+	//echo implode( ' ', get_post_class( $class ) );
+	echo $class;
 }
 
 function is_smartdocs_single() {

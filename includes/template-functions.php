@@ -167,7 +167,7 @@ function smartdocs_category_title() {
 
 	$current_term = $GLOBALS['wp_query']->get_queried_object();
 	?>
-	<h1 class="smartdocs-category-title"><?php echo $current_term->name; ?></h1>
+	<h1 class="smartdocs-category-title" itemprop="headline"><?php echo $current_term->name; ?></h1>
 	<?php
 }
 
