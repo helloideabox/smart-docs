@@ -227,13 +227,13 @@ class Plugin {
 	 */
 	private function init_components() {
 
-		$this->cpt        	= new Cpt();
-		$this->admin      	= new Admin();
-		$this->template   	= new Template();
-		$this->ajax     	= new Ajax();
-		$this->customizer 	= new Customizer();
-		$this->widget 	  	= new Widget();
-		$this->structured_data  = new Structured_Data();
+		$this->cpt             = new Cpt();
+		$this->admin           = new Admin();
+		$this->template        = new Template();
+		$this->ajax            = new Ajax();
+		$this->customizer      = new Customizer();
+		$this->widget          = new Widget();
+		$this->structured_data = new Structured_Data();
 
 		// Action to include script.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -277,9 +277,9 @@ class Plugin {
 
 		$installed = get_option( 'smartdocs_installed_time' );
 
-        if ( ! $installed ) {
-            update_option( 'smartdocs_installed_time', time() );
-        }
+		if ( ! $installed ) {
+			update_option( 'smartdocs_installed_time', time() );
+		}
 	}
 
 	/**
@@ -290,11 +290,11 @@ class Plugin {
 	public function enqueue_scripts( $hook ) {
 		global $post;
 
-		$post_type = $this->cpt->post_type;
+		$post_type      = $this->cpt->post_type;
 		$should_enqueue = false;
 		$localized_vars = array(
-			'ajaxurl' 	=> admin_url( 'admin-ajax.php' ),
-			'nonce'		=> wp_create_nonce( 'smartdocs_front' ),
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'smartdocs_front' ),
 		);
 
 		wp_register_style( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/css/frontend.css', array(), SMART_DOCS_VERSION );
@@ -304,7 +304,7 @@ class Plugin {
 			$should_enqueue = true;
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
 			$localized_vars['feedback_nonce'] = wp_create_nonce( "smartdocs_feedback_{$post->ID}" );
-			if ( is_singular( $post_type ) || has_shortcode( $post->content,  'smartdocs-search' ) ) {
+			if ( is_singular( $post_type ) || has_shortcode( $post->content, 'smartdocs-search' ) ) {
 				$should_enqueue = true;
 			}
 		}
@@ -321,11 +321,10 @@ class Plugin {
 	 *
 	 * @return void
 	 */
-	public function handle_customizer_styles ( ) {
-		
-		echo "DD";
+	public function handle_customizer_styles() {
 
 		global $post;
+		$post_type = $this->cpt->post_type;
 
 		require_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
 
@@ -333,14 +332,14 @@ class Plugin {
 		<style type="text/css" class="smartdocs-customizer-styles">
 		<?php
 		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
-			
+
 			render_hero_section_styles();
 			render_catgory_item_grid_style();
 
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
 
-			if ( is_singular( $post_type ) || has_shortcode( $post->content,  'smartdocs-search' ) ) {
-				
+			if ( is_singular( $post_type ) || has_shortcode( $post->content, 'smartdocs-search' ) ) {
+
 			}
 		}
 		?>
