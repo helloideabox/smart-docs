@@ -31,6 +31,9 @@ class Cpt {
 
 		add_filter( 'rewrite_rules_array', array( $this, 'fix_rewrite_rules' ) );
 		add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 2 );
+
+		add_filter( 'manage_' . $this->post_type . '_posts_columns', array( $this, 'cpt_columns' ) );
+		add_action( 'manage_' . $this->post_type . '_posts_custom_column', array( $this, 'cpt_columns_data' ), 10, 2 );
 	}
 
 	/**
@@ -256,6 +259,52 @@ class Cpt {
 		$permalink = str_replace( '%smartdocs_category%', $category_slug, $permalink );
 
 		return $permalink;
+	}
+
+	/**
+	 * CPT Columns
+	 *
+	 * Displays Feedback column.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @param int $columns contains the column names.
+	 */
+	public function cpt_columns( $columns ) {
+		$columns['doc_feedback'] = __( 'Feedback', 'smart-docs' );
+
+		return $columns;
+	}
+
+	/**
+	 * CPT Columns data
+	 *
+	 * Data to render in feedback column.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 * @param string $column contains the column names.
+	 * @param int    $post_id contains the post id.
+	 */
+	public function cpt_columns_data( $column, $post_id ) {
+
+		switch ( $column ) {
+
+			case 'doc_feedback':
+				$upvotes = (int) get_post_meta( $post_id, '_smartdocs_upvotes', true );
+				$downvotes = (int) get_post_meta( $post_id, '_smartdocs_downvotes', true );
+				?>
+				<div class="doc-feedback" style="display: flex;">
+					<div class="doc-upvotes" title="<?php esc_html_e( 'Upvotes', 'smart-docs' ); ?>" style="margin-right: 10px;">
+						<span class="dashicons dashicons-thumbs-up" style="margin-right: 5px; color: #3fab3e;"></span><?php echo $upvotes; ?>
+					</div>
+					<div class="doc-downvotes" title="<?php esc_html_e( 'Downvotes', 'smart-docs' ); ?>">
+						<span class="dashicons dashicons-thumbs-down" style="margin-right: 5px; color: #f35c51;"></span><?php echo $downvotes; ?>
+					</div>
+				</div>
+				<?php
+				break;
+		}
 	}
 
 	public function get_cpt_rewrite_slug() {
