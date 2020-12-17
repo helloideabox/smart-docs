@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="smartdocs-categories <?php echo $columns_class; ?>">
 	<?php foreach ( $terms as $term ) : ?>
 		<div class="smartdocs-category">
-			<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
+			<div class="smartdocs-category-inner">
 				<div class="smartdocs-category-info">
 						<?php
 						$cat_thumb = smartdocs_get_category_thumbnail_url( $term->term_id );
@@ -36,15 +36,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 				</div>
 				<div class="smartdocs-posts-info">
-					<div class="smartdocs-posts-count">
+					<a href="<?php echo esc_url( get_term_link( $term ) ); ?>" class="smartdocs-posts-count">
 						<span class="smartdocs-posts-count"><?php echo esc_html( $term->count ); ?></span>
 						<span class="smartdocs-posts-count-text"><?php echo esc_html( _n( 'Article', 'Articles', $term->count, 'smart-docs' ) ); ?></span>
-					</div>
-					<div class="smartdocs-category-view-all">
+					</a>
+					<a href="<?php echo esc_url( get_term_link( $term ) ); ?>" class="smartdocs-category-view-all">
 						<span><?php echo __( 'View All', 'smart-docs' ); ?></span>
-					</div>
+					</a>
 				</div>
-			</a>
+			</div>
 		</div>
 	<?php endforeach; ?>
 </div>

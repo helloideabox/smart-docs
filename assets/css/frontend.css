@@ -276,7 +276,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	min-width: 1px;
 }
 
-.smartdocs-categories .smartdocs-category a {
+.smartdocs-categories .smartdocs-category .smartdocs-category-inner {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -288,7 +288,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	transition: border 0.2s linear;
 }
 
-.smartdocs-categories .smartdocs-category a:hover {
+.smartdocs-categories .smartdocs-category:hover .smartdocs-category-inner {
 	border-color: #c0c0c0;
 }
 
