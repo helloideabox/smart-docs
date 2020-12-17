@@ -8,7 +8,6 @@ import {
 import { __ } from "@wordpress/i18n";
 import { useEntityProp } from "@wordpress/core-data";
 import { useDispatch } from "@wordpress/data";
-import SaveSettings from "../utils/save";
 
 export default function Search() {
 	const { createSuccessNotice, createErrorNotice } = useDispatch(
@@ -80,10 +79,10 @@ export default function Search() {
 				className="mb-3"
 			>
 				<ul>
-					{Object.keys(sd_vars.post_types).map((item, index) => (
+					{Object.keys(smartdocs_admin.post_types).map((item, index) => (
 						<li key={index}>
 							<CheckboxControl
-								label={sd_vars.post_types[item]}
+								label={smartdocs_admin.post_types[item]}
 								checked={types.some((value) => value === item)}
 								onChange={(isChecked) => {
 									if (isChecked) {

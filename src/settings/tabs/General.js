@@ -5,12 +5,15 @@ import {
 	ToggleControl,
 	SelectControl,
 } from "@wordpress/components";
+import { compose, withState } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 import { Fragment, useState } from "@wordpress/element";
 import { useEntityProp } from "@wordpress/core-data";
 import { __, sprintf } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
 
-export default function General() {
+
+const General = ( props ) => {
 	const { createSuccessNotice, createErrorNotice } = useDispatch(
 		"core/notices"
 	);
@@ -56,43 +59,33 @@ export default function General() {
 		"smartdocs_custom_doc_page"
 	);
 
-	const [enableCustomDocPage, setEnableCustomDocPage] = useEntityProp(
+	const [useBuiltInDocArchive, setUseBuiltInDocArchive] = useEntityProp(
 		"root",
 		"site",
-		"smartdocs_custom_doc_page_enable"
+		"smartdocs_use_built_in_doc_archive"
 	);
 
-	const [pageList, setPageList] = useState([
-		{ label: "Select docs page from the list", value: null },
-	]);
+	const pageList = [];
 
-	const postList = [{ label: "Select docs page from the list", value: null }];
-
-	/**Fetch all the pages */
-	wp.apiFetch({
-		path: "/wp/v2/pages",
-	})
-		.then((pages) => {
-			jQuery.each(pages, function (key, val) {
-				postList.push({ label: val.title.rendered, value: val.id });
-			});
-			setPageList(postList);
-		})
-		.catch((e) => {
-			console.log(e);
+	if ( props.pages ) {
+		pageList.push({ label: __( 'Select a page', 'smart-docs' ), value: null });
+		props.pages.forEach( (page) => {
+			pageList.push( { value: page.id, label: page.title.rendered } );
 		});
-
+	} else {
+		pageList.push( { label: __( 'Loading...', 'smart-docs' ), value: null } );
+	}
+	
 	/**
 	 * Button Saving state
 	 *
 	 * @since 1.0.0
 	 */
-
 	const [saving, setSaving] = useState(false);
-
-	function handleSaveSettings() {
-		setSaving(true);
-
+	
+	const handleSaveSettings = () => {
+		setSaving( true );
+	
 		const status = wp.data
 			.dispatch("core")
 			.saveSite({
@@ -102,13 +95,16 @@ export default function General() {
 				ibx_sd_tag_slug: tagSlug,
 				ibx_sd_enable_single_template: singleTemplate,
 				ibx_sd_enable_category_and_tag_template: archiveTax,
-				smartdocs_custom_doc_page_enable: enableCustomDocPage,
+				smartdocs_use_built_in_doc_archive: useBuiltInDocArchive,
 				smartdocs_custom_doc_page: customDocPage,
 			})
 			.then(function () {
 				createSuccessNotice("Settings Saved!", {
 					type: "snackbar",
 				});
+	
+				// Flush rewrite rules on settings save.
+				wp.ajax.post( 'smartdocs_on_settings_save', {} );
 			})
 			.catch(function (e) {
 				createErrorNotice(
@@ -119,9 +115,9 @@ export default function General() {
 				);
 				console.log(e);
 			});
-
-		setSaving(false);
-	}
+	
+			setSaving( false );
+	};
 
 	return (
 		<Fragment>
@@ -131,11 +127,11 @@ export default function General() {
 				help={__(
 					"Note: if you disable built-in documentation archive, you can use shortcode or page builder widgets to design your documentation page."
 				)}
-				checked={enableCustomDocPage}
-				onChange={setEnableCustomDocPage}
+				checked={useBuiltInDocArchive}
+				onChange={setUseBuiltInDocArchive}
 			/>
 			<>
-				{ ! enableCustomDocPage && (
+				{ ! useBuiltInDocArchive && (
 					<SelectControl
 						label={__("Select Custom Doc Page")}
 						labelPosition="top"
@@ -218,11 +214,19 @@ export default function General() {
 			<Button
 				className="mt-6 mb-3"
 				isPrimary="true"
-				isBusy={saving}
-				onClick={handleSaveSettings}
+				isBusy={ saving }
+				onClick={ handleSaveSettings }
 			>
 				Save Changes
 			</Button>
 		</Fragment>
 	);
 }
+
+export default compose(
+	withSelect( ( select ) => {
+		return {
+			pages: select( 'core' ).getEntityRecords( 'postType', 'page' )
+		};
+	} )
+)( General );

@@ -24,7 +24,8 @@ class Admin {
 	 */
 	public function __construct() {
 		// Action to register setting for get_option function.
-		add_action( 'init', array( $this, 'register_plugin_settings' ) );
+		add_action( 'rest_api_init', array( $this, 'register_plugin_settings' ) );
+		add_action( 'admin_init', array( $this, 'register_plugin_settings' ) );
 
 		// Action to register settings page menu in cpt(smart-doc).
 		add_action( 'admin_menu', array( $this, 'register_options_menu' ) );
@@ -95,7 +96,7 @@ class Admin {
 		 */
 		register_setting(
 			'smart-docs-settings-group',
-			'smartdocs_custom_doc_page_enable',
+			'smartdocs_use_built_in_doc_archive',
 			array(
 				'type'         => 'boolean',
 				'show_in_rest' => true,
@@ -142,7 +143,7 @@ class Admin {
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
-				'default'      => 'smart-docs',
+				'default'      => 'docs',
 			)
 		);
 
@@ -156,7 +157,7 @@ class Admin {
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
-				'default'      => 'smartdocs_category',
+				'default'      => 'docs-category',
 			)
 		);
 
@@ -170,7 +171,7 @@ class Admin {
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
-				'default'      => 'smartdocs_tag',
+				'default'      => 'docs-tag',
 			)
 		);
 
@@ -518,12 +519,12 @@ class Admin {
 		// Localising the script or creating global variable in script to send the number of post types created through ajax.
 		wp_localize_script(
 			'smartdocs-settings',
-			'sd_vars',
+			'smartdocs_admin',
 			array(
-				'url'        => admin_url( 'admin-ajax.php' ),
+				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
 				'ajax_nonce' => wp_create_nonce( 'docs_option' ),
 				'post_types' => $types,
-				'version'    => '1.0.0',
+				'version'    => SMART_DOCS_VERSION,
 			)
 		);
 	}

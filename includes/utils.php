@@ -201,7 +201,7 @@ function is_smartdocs_tag( $term = '' ) {
 }
 
 function smartdocs_get_docs_page_link() {
-	$custom_docs_page = get_option( 'smartdocs_custom_doc_page_enable' );
+	$custom_docs_page = get_option( 'smartdocs_use_built_in_doc_archive' );
 	$docs_page_id = get_option( 'smartdocs_custom_doc_page' );
 
 	if ( $custom_docs_page && ! empty( $docs_page_id ) ) {
