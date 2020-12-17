@@ -274,6 +274,13 @@ class Cpt {
 	public function cpt_columns( $columns ) {
 		$columns['doc_feedback'] = __( 'Feedback', 'smart-docs' );
 
+		if ( isset( $columns['taxonomy-smartdocs_category'] ) ) {
+			$columns['taxonomy-smartdocs_category'] = __( 'Categories', 'smart-docs' );
+		}
+		if ( isset( $columns['taxonomy-smartdocs_tag'] ) ) {
+			$columns['taxonomy-smartdocs_tag'] = __( 'Tags', 'smart-docs' );
+		}
+
 		return $columns;
 	}
 
