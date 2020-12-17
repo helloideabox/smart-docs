@@ -47,29 +47,25 @@ function smartdocs_render_categories( $args = array() ) {
 
 	$args = shortcode_atts(
 		array(
-			'show_count' => true,
+			'show_count' => 'yes',
 			'columns'    => '3,2,1',
-			'hide_empty' => true,
-			'children'	 => false,
+			'hide_empty' => 'yes',
 			'title_tag'  => 'h5',
 		),
 		$args
 	);
 
 	$terms_args = array(
-		'hide_empty' => apply_filters( 'smartdocs_hide_empty_categories', $args['hide_empty'] ),
+		'hide_empty' => 'no' === $args['hide_empty'] ? false : true,
+		'pad_counts' => 1,
 	);
-
-	if ( ! $args['children'] ) {
-		$terms_args['parent'] = 0;
-	}
 
 	$terms_args = apply_filters( 'smartdocs_categories_query_args', $terms_args );
 
 	if ( is_tax( 'smartdocs_category' ) ) {
 		// Query only child terms if we are on taxonomy archive.
 		$term_children = get_term_children( get_queried_object()->term_id , 'smartdocs_category' );
-		if ( is_array( $term_children ) && ! empty( $term_children ) ) {
+		if ( ! is_wp_error( $term_children ) && is_array( $term_children ) && ! empty( $term_children ) ) {
 			foreach ( $term_children as $term_child ) {
 				$terms[] = get_term( $term_child );
 			}

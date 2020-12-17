@@ -324,12 +324,15 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 
 .smartdocs-categories .smartdocs-posts-info {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	width: 100%;
 	border-top: 1px solid #e1e1e1;
 	padding: 25px 40px;
 	margin-top: auto;
 	font-size: 15px;
+}
+.smartdocs-categories .smartdocs-posts-info.with-count {
+	justify-content: space-between;
 }
 
 .smartdocs-template.archive .smartdocs-entry-title {
