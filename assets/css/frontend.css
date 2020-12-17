@@ -105,8 +105,12 @@
 }
 
 /** Sidebar Widgets */
+.smartdocs-template .smartdocs-sidebar .content-area {
+	width: 100%;
+}
 .smartdocs-template .smartdocs-sidebar .widget {
 	margin-bottom: 30px;
+	padding: 0;
 }
 
 .smartdocs-template .smartdocs-sidebar .widget-title {
@@ -128,8 +132,11 @@
 	margin-bottom: 0;
 }
 
-.widget_smartdocs-categories-widget li {
+.widget_smartdocs-categories-widget ul li {
 	margin-bottom: 0;
+}
+.widget_smartdocs-categories-widget li li {
+	margin-left: 0;
 }
 
 .widget_smartdocs-categories-widget li.active {
@@ -142,6 +149,7 @@
 	align-items: center;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	text-decoration: none;
 }
 
 body:not(.single) .widget_smartdocs-categories-widget .cat-item .children .cat-item a,
@@ -194,6 +202,9 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-search {
 	position: relative;
 }
+.smartdocs-search form {
+	margin-bottom: 0;
+}
 .smartdocs-search .search-icon,
 .smartdocs-search .loading-spinner {
 	position: absolute;
@@ -244,6 +255,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-search .smartdocs-search-result li a {
 	padding: 3px 10px;
     display: block;
+	text-decoration: none;
 }
 .smartdocs-search .smartdocs-search-result li a:hover {
 	background-color: #f7f7f7;
@@ -393,6 +405,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	border-radius: 4px;
 	background-color: #333;
 	color: #fff;
+	text-decoration: none;
 }
 .smartdocs-doc-feedback .doc-vote-links a.doc-upvote {
 	margin-right: 10px;
@@ -480,7 +493,32 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 /*********************************
  * Theme Compatibility
  ********************************/
+
+/** Astra */
 .smartdocs-template #content .ast-container {
+	max-width: 100%;
+	padding: 0;
+}
+
+/** Genesis */
+.smartdocs-template .site-inner {
+	max-width: 100%;
+	padding: 0;
+}
+
+/** GeneratePress */
+.smartdocs-template .grid-container {
+	max-width: 100%;
+}
+.smartdocs-template #content {
+	display: block;
+}
+
+/** Storefront */
+.smartdocs-template .site-header {
+	margin-bottom: 0;
+}
+.smartdocs-template #content .col-full {
 	max-width: 100%;
 	padding: 0;
 }
