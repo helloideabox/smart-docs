@@ -7,8 +7,8 @@ import {
 	__experimentalRadioGroup as RadioGroup,
 } from "@wordpress/components";
 import { useEntityProp } from "@wordpress/core-data";
-import { __ } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
 
 export default function DocPage() {
 	const { createSuccessNotice, createErrorNotice } = useDispatch(

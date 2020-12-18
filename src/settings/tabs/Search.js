@@ -2,15 +2,14 @@ import { Fragment, useState } from "@wordpress/element";
 import {
 	BaseControl,
 	Button,
-	CheckboxControl,
 	ToggleControl,
 } from "@wordpress/components";
-import { __ } from "@wordpress/i18n";
+import { compose } from '@wordpress/compose';
 import { useEntityProp } from "@wordpress/core-data";
-import { useDispatch } from "@wordpress/data";
-import SaveSettings from "../utils/save";
+import { withSelect, useDispatch } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
 
-export default function Search() {
+const Search = ( props ) => {
 	const { createSuccessNotice, createErrorNotice } = useDispatch(
 		"core/notices"
 	);
@@ -21,29 +20,28 @@ export default function Search() {
 		"ibx_sd_search_post_types"
 	);
 
+	const allPostTypes = [];
+
+	if ( props.postTypes ) {
+		props.postTypes.forEach( (type) => {
+			if ( type.viewable && 'attachment' !== type.slug ) {
+				allPostTypes.push( { value: type.slug, label: type.name } );
+			}
+		});
+	}
+
+	const [ selectedTypes, setSelectedTypes ] = useState( postTypes || [] );
+
+	if ( selectedTypes !== postTypes ) {
+		setPostTypes( selectedTypes );
+	}
+
 	/**
 	 * Button Saving state
 	 *
 	 * @since 1.0.0
 	 */
-
 	const [saving, setSaving] = useState(false);
-
-	// 1. Array to store previously selected post types
-
-	const [types, setTypes] = useState(postTypes);
-
-	/**
-	 * Update postTypes array when value of types is changes
-	 */
-
-	if (types !== postTypes) {
-		setPostTypes(types);
-	}
-
-	const settings = {
-		ibx_sd_search_post_types: postTypes,
-	};
 
 	function handleSaveSettings() {
 		setSaving(true);
@@ -79,24 +77,26 @@ export default function Search() {
 				help="Select post types to search in."
 				className="mb-3"
 			>
-				<ul>
-					{Object.keys(sd_vars.post_types).map((item, index) => (
-						<li key={index}>
-							<CheckboxControl
-								label={sd_vars.post_types[item]}
-								checked={types.some((value) => value === item)}
-								onChange={(isChecked) => {
-									if (isChecked) {
-										setTypes((types) => [...types, item]);
+				<ul className="post-types-list">
+					{ 0 !== allPostTypes.length && allPostTypes.map( ( item ) => (
+						<li key={ item.value }>
+							<ToggleControl
+								label={ item.label }
+								checked={ 'object' === typeof selectedTypes && selectedTypes.includes( item.value ) }
+								onChange={ ( isChecked ) => {
+									if ( isChecked ) {
+										setSelectedTypes( types => [ ...types, item.value ] );
 									} else {
-										let u = [];
-										u = types.filter((type) => type !== item);
-										setTypes(u);
+										let types = selectedTypes.filter((type) => type !== item.value);
+										setSelectedTypes( types );
 									}
-								}}
+								} }
 							/>
 						</li>
-					))}
+					) ) }
+					{
+						0 === allPostTypes.length && <li>{ __( 'Loading...', 'smart-docs' ) }</li>
+					}
 				</ul>
 			</BaseControl>
 			<Button
@@ -110,3 +110,11 @@ export default function Search() {
 		</Fragment>
 	);
 }
+
+export default compose(
+	withSelect( ( select ) => {
+		return {
+			postTypes: select( 'core' ).getPostTypes()
+		};
+	} )
+)( Search );

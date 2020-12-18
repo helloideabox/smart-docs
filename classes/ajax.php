@@ -14,6 +14,7 @@ namespace SmartDocs;
 class Ajax {
 
 	public function __construct() {
+		add_action( 'wp_ajax_smartdocs_on_settings_save', array( $this, 'on_settings_save' ) );
 		// To load search results from ajax request.
 		add_action( 'wp_ajax_smartdocs_search_results', array( $this, 'get_search_results' ) );
 		add_action( 'wp_ajax_nopriv_smartdocs_search_results', array( $this, 'get_search_results' ) );
@@ -23,6 +24,10 @@ class Ajax {
 		add_action( 'wp_ajax_nopriv_smartdocs_doc_feedback', array( $this, 'handle_doc_feedback' ) );
 	}
 
+	public function on_settings_save() {
+		flush_rewrite_rules();
+		wp_send_json_success();
+	}
 
 	/**
 	 * For render the search result.
@@ -30,8 +35,8 @@ class Ajax {
 	public function get_search_results() {
 		$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
 
-		// To show which post to show.
-		$post_types = get_option( 'sd_post_type_selected' );
+		// Post types to include.
+		$post_types = get_option( 'ibx_sd_search_post_types' );
 		$post_types = ! $post_types ? array( Plugin::instance()->cpt->post_type ) : $post_types;
 
 		// WordPress Query arguments.

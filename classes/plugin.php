@@ -184,6 +184,7 @@ class Plugin {
 		$this->register_autoloader();
 
 		register_activation_hook( SMART_DOCS_FILE, array( $this, 'plugin_activation' ) );
+		register_deactivation_hook( SMART_DOCS_FILE, array( $this, 'plugin_deactivation' ) );
 
 		add_action( 'init', array( $this, 'init' ), 0 );
 
@@ -218,7 +219,7 @@ class Plugin {
 	/**
 	 * Init components.
 	 *
-	 * Initialize SmartDocscomponents. Register actions, run setting manager,
+	 * Initialize SmartDocs components. Register actions, run setting manager,
 	 * initialize all the components that run plugin, and if in admin page
 	 * initialize admin components.
 	 *
@@ -249,7 +250,6 @@ class Plugin {
 
 		// Load shortcode.
 		include_once SMART_DOCS_PATH . 'includes/shortcode.php';
-
 	}
 
 	/**
@@ -257,11 +257,11 @@ class Plugin {
 	 *
 	 * SmartDocs autoloader loads all the classes needed to run the plugin.
 	 *
-	 * @since 1.6.0
+	 * @since 1.0.0
 	 * @access private
 	 */
 	private function register_autoloader() {
-		require SMART_DOCS_PATH . '/classes/autoloader.php';
+		require SMART_DOCS_PATH . 'classes/autoloader.php';
 
 		Autoloader::run();
 	}
@@ -280,6 +280,21 @@ class Plugin {
 		if ( ! $installed ) {
 			update_option( 'smartdocs_installed_time', time() );
 		}
+	}
+
+	/**
+	 * Plugin Deactivation.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function plugin_deactivation() {
+		/**
+		 * Delete the rewrite rules flag.
+		 * 
+		 * @see SmartDocs\Cpt\register_cpt()
+		 */
+		delete_option( 'smartdocs_rewrite_rules_flushed' );
 	}
 
 	/**

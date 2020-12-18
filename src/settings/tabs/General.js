@@ -6,12 +6,24 @@ import {
 	ToggleControl,
 	SelectControl,
 } from "@wordpress/components";
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 import { Fragment, useState } from "@wordpress/element";
 import { useEntityProp } from "@wordpress/core-data";
 import { __, sprintf } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
 
-export default function General() {
+
+const General = ( props ) => {
+	if ( 'object' !== typeof props.options || 0 === Object.keys( props.options ).length ) {
+		return <></>;
+	}
+
+	const [ options, setOptions ] = useState( props.options );
+
+	console.log(options);
+
+
 	const { createSuccessNotice, createErrorNotice } = useDispatch(
 		"core/notices"
 	);
@@ -21,84 +33,69 @@ export default function General() {
 	 *
 	 * @since 1.0.0
 	 */
-	const [title, setTitle] = useEntityProp(
-		"root",
-		"site",
-		"ibx_sd_archive_page_title"
-	);
-	const [description, setDescription] = useEntityProp(
-		"root",
-		"site",
-		"ibx_sd_archive_page_description"
-	);
-	const [archiveSlug, setArchiveSlug] = useEntityProp(
-		"root",
-		"site",
-		"ibx_sd_archive_page_slug"
-	);
-	const [categorySlug, setCategorySlug] = useEntityProp(
-		"root",
-		"site",
-		"ibx_sd_category_slug"
-	);
-	const [tagSlug, setTagSlug] = useEntityProp(
-		"root",
-		"site",
-		"ibx_sd_tag_slug"
-	);
-	const [singleTemplate, setSingleTemplate] = useEntityProp(
-		"root",
-		"site",
-		"ibx_sd_enable_single_template"
-	);
-	const [archiveTax, setArchiveTax] = useEntityProp(
-		"root",
-		"site",
-		"ibx_sd_enable_category_and_tag_template"
-	);
-	const [customDocPage, setCustomDocPage] = useEntityProp(
-		"root",
-		"site",
-		"smartdocs_custom_doc_page"
-	);
+	// const [title, setTitle] = useEntityProp(
+	// 	"root",
+	// 	"site",
+	// 	"ibx_sd_archive_page_title"
+	// );
+	// const [archiveSlug, setArchiveSlug] = useEntityProp(
+	// 	"root",
+	// 	"site",
+	// 	"ibx_sd_archive_page_slug"
+	// );
+	// const [categorySlug, setCategorySlug] = useEntityProp(
+	// 	"root",
+	// 	"site",
+	// 	"ibx_sd_category_slug"
+	// );
+	// const [tagSlug, setTagSlug] = useEntityProp(
+	// 	"root",
+	// 	"site",
+	// 	"ibx_sd_tag_slug"
+	// );
+	// const [singleTemplate, setSingleTemplate] = useEntityProp(
+	// 	"root",
+	// 	"site",
+	// 	"ibx_sd_enable_single_template"
+	// );
+	// const [archiveTax, setArchiveTax] = useEntityProp(
+	// 	"root",
+	// 	"site",
+	// 	"ibx_sd_enable_category_and_tag_template"
+	// );
+	// const [customDocPage, setCustomDocPage] = useEntityProp(
+	// 	"root",
+	// 	"site",
+	// 	"smartdocs_custom_doc_page"
+	// );
 
-	const [enableCustomDocPage, setEnableCustomDocPage] = useEntityProp(
-		"root",
-		"site",
-		"smartdocs_custom_doc_page_enable"
-	);
+	// const [useBuiltInDocArchive, setUseBuiltInDocArchive] = useEntityProp(
+	// 	"root",
+	// 	"site",
+	// 	"smartdocs_use_built_in_doc_archive"
+	// );
 
-	const [pageList, setPageList] = useState([
-		{ label: "Select docs page from the list", value: null },
-	]);
+	const pageList = [];
 
-	const postList = [{ label: "Select docs page from the list", value: null }];
-
-	/**Fetch all the pages */
-	wp.apiFetch({
-		path: "/wp/v2/pages",
-	})
-		.then((pages) => {
-			jQuery.each(pages, function (key, val) {
-				postList.push({ label: val.title.rendered, value: val.id });
-			});
-			setPageList(postList);
-		})
-		.catch((e) => {
-			console.log(e);
+	if ( props.pages ) {
+		pageList.push({ label: __( 'Select a page', 'smart-docs' ), value: null });
+		props.pages.forEach( (page) => {
+			pageList.push( { value: page.id, label: page.title.rendered } );
 		});
-
+	} else {
+		pageList.push( { label: __( 'Loading...', 'smart-docs' ), value: null } );
+	}
+	
 	/**
 	 * Button Saving state
 	 *
 	 * @since 1.0.0
 	 */
-
 	const [saving, setSaving] = useState(false);
-
-	function handleSaveSettings() {
-		setSaving(true);
-
+	
+	const handleSaveSettings = () => {
+		setSaving( true );
+	
 		const status = wp.data
 			.dispatch("core")
 			.saveSite({
@@ -109,13 +106,16 @@ export default function General() {
 				ibx_sd_tag_slug: tagSlug,
 				ibx_sd_enable_single_template: singleTemplate,
 				ibx_sd_enable_category_and_tag_template: archiveTax,
-				smartdocs_custom_doc_page_enable: enableCustomDocPage,
+				smartdocs_use_built_in_doc_archive: useBuiltInDocArchive,
 				smartdocs_custom_doc_page: customDocPage,
 			})
 			.then(function () {
 				createSuccessNotice("Settings Saved!", {
 					type: "snackbar",
 				});
+	
+				// Flush rewrite rules on settings save.
+				wp.ajax.post( 'smartdocs_on_settings_save', {} );
 			})
 			.catch(function (e) {
 				createErrorNotice(
@@ -126,9 +126,9 @@ export default function General() {
 				);
 				console.log(e);
 			});
-
-		setSaving(false);
-	}
+	
+			setSaving( false );
+	};
 
 	return (
 		<Fragment>
@@ -138,18 +138,18 @@ export default function General() {
 				help={__(
 					"Note: if you disable built-in documentation archive, you can use shortcode or page builder widgets to design your documentation page."
 				)}
-				checked={enableCustomDocPage}
-				onChange={setEnableCustomDocPage}
+				checked={ options.smartdocs_use_built_in_doc_archive }
+				onChange={ ( value ) => { setOptions( { ...options, smartdocs_use_built_in_doc_archive: value } ) } }
 			/>
 			<>
-				{!enableCustomDocPage && (
+				{ ! options.smartdocs_use_built_in_doc_archive && (
 					<SelectControl
 						label={__("Select Custom Doc Page")}
 						labelPosition="top"
 						id="smartdocs-option_select-custom-doc-page"
-						options={pageList}
-						value={customDocPage}
-						onChange={setCustomDocPage}
+						options={ pageList }
+						value={ options.smartdocs_custom_doc_page }
+						onChange={ ( value ) => setOptions( { ...options, smartdocs_custom_doc_page: value } ) }
 					/>
 				)}
 			</>
@@ -161,9 +161,9 @@ export default function General() {
 				<TextControl
 					id="sd_option-doc_homepage_title"
 					className="mt-2 block mb-2"
-					value={title}
 					placeholder={__("Documentation")}
-					onChange={setTitle}
+					value={ options.ibx_sd_archive_page_title }
+					onChange={ (value) => setOptions( { ...options, ibx_sd_archive_page_title: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -187,9 +187,9 @@ export default function General() {
 				<TextControl
 					id="sd_option-doc_homepage_slug"
 					className="mt-2 block mb-2"
-					value={archiveSlug}
 					placeholder={__("Add documentation archive/home page slug")}
-					onChange={setArchiveSlug}
+					value={ options.ibx_sd_archive_page_slug }
+					onChange={ (value) => setOptions( { ...options, ibx_sd_archive_page_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -200,9 +200,9 @@ export default function General() {
 				<TextControl
 					id="sd_option-doc_category_slug"
 					className="mt-2 block mb-2"
-					value={categorySlug}
 					placeholder={__("Add custom category slug")}
-					onChange={setCategorySlug}
+					value={ options.ibx_sd_category_slug }
+					onChange={ (value) => setOptions( { ...options, ibx_sd_category_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -212,9 +212,9 @@ export default function General() {
 				<TextControl
 					id="sd_option-doc_tag_slug"
 					className="mt-2 block mb-2"
-					value={tagSlug}
 					placeholder={__("Add custom tag slug")}
-					onChange={setTagSlug}
+					value={ options.ibx_sd_tag_slug }
+					onChange={ (value) => setOptions( { ...options, ibx_sd_tag_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -225,24 +225,55 @@ export default function General() {
 				<ToggleControl
 					className="mt-2 mb-2"
 					label={__("Use built-in template for Docs single page")}
-					checked={singleTemplate}
-					onChange={setSingleTemplate}
+					checked={ options.ibx_sd_enable_single_template }
+					onChange={ ( value ) => setOptions( { ...options, ibx_sd_enable_single_template: value } ) }
 				/>
 				<ToggleControl
 					className="mt-2 mb-2"
 					label={__("Use built-in template for Docs archive page")}
-					checked={archiveTax}
-					onChange={setArchiveTax}
+					checked={ options.ibx_sd_enable_category_and_tag_template }
+					onChange={ ( value ) => setOptions( { ...options, ibx_sd_enable_category_and_tag_template: value } ) }
 				/>
 			</BaseControl>
 			<Button
 				className="mt-6 mb-3"
 				isPrimary="true"
-				isBusy={saving}
-				onClick={handleSaveSettings}
+				isBusy={ saving }
+				onClick={ handleSaveSettings }
 			>
 				Save Changes
 			</Button>
 		</Fragment>
 	);
 }
+
+export default compose(
+	withSelect( ( select ) => {
+		const optionKeys = [
+			'smartdocs_use_built_in_doc_archive',
+			'smartdocs_custom_doc_page',
+			'ibx_sd_archive_page_title',
+			'ibx_sd_archive_page_slug',
+			'ibx_sd_category_slug',
+			'ibx_sd_tag_slug',
+			'ibx_sd_enable_single_template',
+			'ibx_sd_enable_category_and_tag_template',
+		];
+		
+		const settings = select( 'core' ).getEntityRecord( 'root', 'site' );
+		const options = {};
+
+		if ( settings ) {
+			optionKeys.forEach( ( key ) => {
+				if ( settings[key] ) {
+					options[key] = settings[key];
+				}
+			} );
+		}
+
+		return {
+			pages: select( 'core' ).getEntityRecords( 'postType', 'page' ),
+			options
+		};
+	} )
+)( General );
