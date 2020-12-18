@@ -17,7 +17,7 @@ const Search = ( props ) => {
 	const [postTypes, setPostTypes] = useEntityProp(
 		"root",
 		"site",
-		"ibx_sd_search_post_types"
+		"smartdocs_search_post_types"
 	);
 
 	const allPostTypes = [];
@@ -48,7 +48,7 @@ const Search = ( props ) => {
 		wp.data
 			.dispatch("core")
 			.saveSite({
-				ibx_sd_search_post_types: postTypes,
+				smartdocs_search_post_types: postTypes,
 			})
 			.then(function () {
 				createSuccessNotice("Settings Saved!", {

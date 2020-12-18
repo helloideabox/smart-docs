@@ -122,7 +122,7 @@ class Cpt {
 			'show_in_rest'      => true,
 		);
 
-		$category_slug = get_option( 'ibx_sd_category_slug' );
+		$category_slug = get_option( 'smartdocs_category_slug' );
 
 		if ( empty( $category_slug ) ) {
 			$category_slug = 'smartdocs_category';
@@ -167,7 +167,7 @@ class Cpt {
 			'show_in_rest'      => true,
 		);
 
-		$tag_slug = get_option( 'ibx_sd_tag_slug' );
+		$tag_slug = get_option( 'smartdocs_tag_slug' );
 
 		if ( empty( $tag_slug ) ) {
 			$tag_slug = 'smartdocs_tag';
@@ -323,7 +323,7 @@ class Cpt {
 	}
 
 	public function get_cpt_rewrite_slug() {
-		$rewrite_slug = get_option( 'ibx_sd_archive_page_slug' );
+		$rewrite_slug = get_option( 'smartdocs_archive_page_slug' );
 
 		if ( empty( $rewrite_slug ) ) {
 			$rewrite_slug = $this->post_type;
@@ -333,7 +333,7 @@ class Cpt {
 	}
 
 	public function get_category_rewrite_slug() {
-		$rewrite_slug = get_option( 'ibx_sd_category_slug' );
+		$rewrite_slug = get_option( 'smartdocs_category_slug' );
 
 		if ( empty( $rewrite_slug ) ) {
 			$rewrite_slug = 'smartdocs_category';
@@ -343,7 +343,7 @@ class Cpt {
 	}
 
 	public function get_tag_rewrite_slug() {
-		$rewrite_slug = get_option( 'ibx_sd_tag_slug' );
+		$rewrite_slug = get_option( 'smartdocs_tag_slug' );
 
 		if ( empty( $rewrite_slug ) ) {
 			$rewrite_slug = 'smartdocs_tag';

@@ -1,1 +1,1054 @@
-!function(e){var t={};function o(n){if(t[n])return t[n].exports;var a=t[n]={i:n,l:!1,exports:{}};return e[n].call(a.exports,a,a.exports,o),a.l=!0,a.exports}o.m=e,o.c=t,o.d=function(e,t,n){o.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},o.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},o.t=function(e,t){if(1&t&&(e=o(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var a in e)o.d(n,a,function(t){return e[t]}.bind(null,a));return n},o.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return o.d(t,"a",t),t},o.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},o.p="",o(o.s=21)}([function(e,t){e.exports=window.wp.element},function(e,t){e.exports=window.wp.components},function(e,t,o){var n=o(14),a=o(15),c=o(9),r=o(16);e.exports=function(e,t){return n(e)||a(e,t)||c(e,t)||r()}},function(e,t){e.exports=window.wp.coreData},function(e,t){e.exports=window.wp.i18n},function(e,t){e.exports=window.wp.data},function(e,t){function o(t){return"function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?e.exports=o=function(e){return typeof e}:e.exports=o=function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},o(t)}e.exports=o},function(e,t){e.exports=window.wp.compose},function(e,t){e.exports=window.lodash},function(e,t,o){var n=o(10);e.exports=function(e,t){if(e){if("string"==typeof e)return n(e,t);var o=Object.prototype.toString.call(e).slice(8,-1);return"Object"===o&&e.constructor&&(o=e.constructor.name),"Map"===o||"Set"===o?Array.from(e):"Arguments"===o||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(o)?n(e,t):void 0}}},function(e,t){e.exports=function(e,t){(null==t||t>e.length)&&(t=e.length);for(var o=0,n=new Array(t);o<t;o++)n[o]=e[o];return n}},function(e,t){e.exports=function(e,t,o){return t in e?Object.defineProperty(e,t,{value:o,enumerable:!0,configurable:!0,writable:!0}):e[t]=o,e}},function(e,t,o){var n=o(17),a=o(18),c=o(9),r=o(19);e.exports=function(e){return n(e)||a(e)||c(e)||r()}},function(e,t,o){},function(e,t){e.exports=function(e){if(Array.isArray(e))return e}},function(e,t){e.exports=function(e,t){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e)){var o=[],n=!0,a=!1,c=void 0;try{for(var r,s=e[Symbol.iterator]();!(n=(r=s.next()).done)&&(o.push(r.value),!t||o.length!==t);n=!0);}catch(e){a=!0,c=e}finally{try{n||null==s.return||s.return()}finally{if(a)throw c}}return o}}},function(e,t){e.exports=function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}},function(e,t,o){var n=o(10);e.exports=function(e){if(Array.isArray(e))return n(e)}},function(e,t){e.exports=function(e){if("undefined"!=typeof Symbol&&Symbol.iterator in Object(e))return Array.from(e)}},function(e,t){e.exports=function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}},function(e,t){e.exports=window.wp.notices},function(e,t,o){"use strict";o.r(t);var n=o(0),a=(o(13),o(4));function c(){return Object(n.createElement)(n.Fragment,null,Object(n.createElement)("div",{id:"smartdocs-setting-header",className:" mx-auto flex justify-center justify-items-center p-10 mb-8 shadow bg-white "},Object(n.createElement)("h2",{className:"text-5xl"},"Smart Docs"),Object(n.createElement)("sup",{className:"text-sm text-gray-500"},"v ",smartdocs_admin.version)))}var r=o(1),s=o(11),i=o.n(s),l=o(2),u=o.n(l),b=o(6),m=o.n(b),_=o(7),d=o(5),g=o(3);function p(e,t){var o=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),o.push.apply(o,n)}return o}function h(e){for(var t=1;t<arguments.length;t++){var o=null!=arguments[t]?arguments[t]:{};t%2?p(Object(o),!0).forEach((function(t){i()(e,t,o[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(o)):p(Object(o)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(o,t))}))}return e}var f=Object(_.compose)(Object(d.withSelect)((function(e){var t=e("core").getEntityRecord("root","site"),o={};return t&&["smartdocs_use_built_in_doc_archive","smartdocs_custom_doc_page","ibx_sd_archive_page_title","ibx_sd_archive_page_slug","ibx_sd_category_slug","ibx_sd_tag_slug","ibx_sd_enable_single_template","ibx_sd_enable_category_and_tag_template"].forEach((function(e){t[e]&&(o[e]=t[e])})),{pages:e("core").getEntityRecords("postType","page"),options:o}})))((function(e){if("object"!==m()(e.options)||0===Object.keys(e.options).length)return Object(n.createElement)(n.Fragment,null);var t=Object(n.useState)(e.options),o=u()(t,2),c=o[0],s=o[1];console.log(c);var i=Object(d.useDispatch)("core/notices"),l=i.createSuccessNotice,b=i.createErrorNotice,_=[];e.pages?(_.push({label:Object(a.__)("Select a page","smart-docs"),value:null}),e.pages.forEach((function(e){_.push({value:e.id,label:e.title.rendered})}))):_.push({label:Object(a.__)("Loading...","smart-docs"),value:null});var g=Object(n.useState)(!1),p=u()(g,2),f=p[0],y=p[1];return Object(n.createElement)(n.Fragment,null,Object(n.createElement)(r.ToggleControl,{className:"mt-2 mb-2",label:Object(a.__)("Use built-in Doc archive"),help:Object(a.__)("Note: if you disable built-in documentation archive, you can use shortcode or page builder widgets to design your documentation page."),checked:c.smartdocs_use_built_in_doc_archive,onChange:function(e){s(h(h({},c),{},{smartdocs_use_built_in_doc_archive:e}))}}),Object(n.createElement)(n.Fragment,null,!c.smartdocs_use_built_in_doc_archive&&Object(n.createElement)(r.SelectControl,{label:Object(a.__)("Select Custom Doc Page"),labelPosition:"top",id:"smartdocs-option_select-custom-doc-page",options:_,value:c.smartdocs_custom_doc_page,onChange:function(e){return s(h(h({},c),{},{smartdocs_custom_doc_page:e}))}})),Object(n.createElement)(r.BaseControl,{label:"Documentation Page Title",help:"Edit to change the default title for the documentation page.",className:"mb-3"},Object(n.createElement)(r.TextControl,{id:"sd_option-doc_homepage_title",className:"mt-2 block mb-2",placeholder:Object(a.__)("Documentation"),value:c.ibx_sd_archive_page_title,onChange:function(e){return s(h(h({},c),{},{ibx_sd_archive_page_title:e}))}})),Object(n.createElement)(r.BaseControl,{label:"Documentation Archive Slug",help:"Edit to change the default slug for the documentation page.",className:"mb-3"},Object(n.createElement)(r.TextControl,{id:"sd_option-doc_homepage_slug",className:"mt-2 block mb-2",placeholder:Object(a.__)("Add documentation archive/home page slug"),value:c.ibx_sd_archive_page_slug,onChange:function(e){return s(h(h({},c),{},{ibx_sd_archive_page_slug:e}))}})),Object(n.createElement)(r.BaseControl,{label:"Documentation Category Slug",help:"Edit to change the default slug for the documentation category.",className:"mb-3"},Object(n.createElement)(r.TextControl,{id:"sd_option-doc_category_slug",className:"mt-2 block mb-2",placeholder:Object(a.__)("Add custom category slug"),value:c.ibx_sd_category_slug,onChange:function(e){return s(h(h({},c),{},{ibx_sd_category_slug:e}))}})),Object(n.createElement)(r.BaseControl,{label:"Documentation Tag Slug",help:"Edit to change the default slug for the documentation tag."},Object(n.createElement)(r.TextControl,{id:"sd_option-doc_tag_slug",className:"mt-2 block mb-2",placeholder:Object(a.__)("Add custom tag slug"),value:c.ibx_sd_tag_slug,onChange:function(e){return s(h(h({},c),{},{ibx_sd_tag_slug:e}))}})),Object(n.createElement)(r.BaseControl,{className:"mt-3 mb-3",id:"smartdocs-custom-templates",label:Object(a.__)("Custom Templates")},Object(n.createElement)(r.ToggleControl,{className:"mt-2 mb-2",label:Object(a.__)("Use built-in template for Docs single page"),checked:c.ibx_sd_enable_single_template,onChange:function(e){return s(h(h({},c),{},{ibx_sd_enable_single_template:e}))}}),Object(n.createElement)(r.ToggleControl,{className:"mt-2 mb-2",label:Object(a.__)("Use built-in template for Docs archive page"),checked:c.ibx_sd_enable_category_and_tag_template,onChange:function(e){return s(h(h({},c),{},{ibx_sd_enable_category_and_tag_template:e}))}})),Object(n.createElement)(r.Button,{className:"mt-6 mb-3",isPrimary:"true",isBusy:f,onClick:function(){y(!0),wp.data.dispatch("core").saveSite({ibx_sd_archive_page_title:title,ibx_sd_archive_page_slug:archiveSlug,ibx_sd_category_slug:categorySlug,ibx_sd_tag_slug:tagSlug,ibx_sd_enable_single_template:singleTemplate,ibx_sd_enable_category_and_tag_template:archiveTax,smartdocs_use_built_in_doc_archive:useBuiltInDocArchive,smartdocs_custom_doc_page:customDocPage}).then((function(){l("Settings Saved!",{type:"snackbar"}),wp.ajax.post("smartdocs_on_settings_save",{})})).catch((function(e){b("There was some error saving settings! \nCheck console for more information on error.",{type:"snackbar"}),console.log(e)})),y(!1)}},"Save Changes"))}));function y(){var e=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_list_layout_icon"),t=u()(e,2),o=t[0],a=t[1],c=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_list_layout_columns"),s=u()(c,2),i=s[0],l=s[1];return Object(n.createElement)(n.Fragment,null,Object(n.createElement)("hr",{className:"my-5"}),Object(n.createElement)("h3",{className:"my-3 font-semibold"},"List Layout Settings"),Object(n.createElement)(r.BaseControl,{label:"List Columns",className:"inline-number-control"},Object(n.createElement)(r.__experimentalNumberControl,{className:"my-3 w-16 ml-4",isShiftStepEnabled:!0,onChange:l,shiftStep:1,value:i})),Object(n.createElement)(r.ToggleControl,{className:"my-3",label:"Show or Hide Doc Category Icon",checked:o,onChange:a}))}function j(){var e=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_grid_layout_icon"),t=u()(e,2),o=t[0],a=t[1],c=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_grid_layout_columns"),s=u()(c,2),i=s[0],l=s[1];return Object(n.createElement)(n.Fragment,null,Object(n.createElement)("hr",{className:"my-5"}),Object(n.createElement)("h3",{className:"my-3 font-semibold"},"Grid Layout Settings"),Object(n.createElement)(r.BaseControl,{label:"Grid Columns",className:"inline-number-control"},Object(n.createElement)(r.__experimentalNumberControl,{className:"my-3 w-16 ml-4",isShiftStepEnabled:!0,onChange:l,shiftStep:1,value:i})),Object(n.createElement)(r.ToggleControl,{className:"my-3",label:"Show or Hide Doc Category Icon",checked:o,onChange:a}))}function O(){var e=Object(d.useDispatch)("core/notices"),t=e.createSuccessNotice,o=e.createErrorNotice,a=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_layout"),c=u()(a,2),s=c[0],i=c[1],l=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_count"),b=u()(l,2),m=b[0],_=b[1],p=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_authors"),h=u()(p,2),f=h[0],O=h[1],v=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_search"),E=u()(v,2),x=E[0],S=E[1],C=Object(n.useState)(!1),w=u()(C,2),N=w[0],k=w[1],P=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_list_layout_icon"),T=u()(P,1)[0],D=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_list_layout_columns"),B=u()(D,1)[0],L=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_grid_layout_icon"),A=u()(L,1)[0],H=Object(g.useEntityProp)("root","site","ibx_sd_doc_page_grid_layout_columns"),F=u()(H,1)[0];return Object(n.createElement)(n.Fragment,null,Object(n.createElement)(r.BaseControl,{label:"Documentation Page Layout"},Object(n.createElement)(r.__experimentalRadioGroup,{id:"sd_option-doc-homepage-layout",className:"ml-5",label:"Documentation Page Layout",checked:s,onChange:i},Object(n.createElement)(r.__experimentalRadio,{value:"list"},"List"),Object(n.createElement)(r.__experimentalRadio,{value:"grid"},"Grid"))),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Docs Count",checked:m,onChange:_}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Docs Authors",checked:f,onChange:O}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Docs Authors",checked:x,onChange:S}),Object(n.createElement)("div",null,"list"===s?Object(n.createElement)(y,null):null),Object(n.createElement)("div",null,"grid"===s?Object(n.createElement)(j,null):null),Object(n.createElement)(r.Button,{className:"mt-6 mb-3",isPrimary:"true",isBusy:N,onClick:function(){k(!0);var e={ibx_sd_doc_page_layout:s,ibx_sd_doc_page_authors:f,ibx_sd_doc_page_search:x,ibx_sd_doc_page_count:m,ibx_sd_doc_page_list_layout_icon:T,ibx_sd_doc_page_list_layout_columns:B,ibx_sd_doc_page_grid_layout_icon:A,ibx_sd_doc_page_grid_layout_columns:F};wp.data.dispatch("core").saveSite(e).then((function(){t("Settings Saved!",{type:"snackbar"})})).catch((function(e){o("There was some error saving settings! \nCheck console for more information on error.",{type:"snackbar"}),console.log(e)})),k(!1)}},"Save Changes"))}function v(){var e=Object(d.useDispatch)("core/notices"),t=e.createSuccessNotice,o=e.createErrorNotice,a=Object(g.useEntityProp)("root","site","ibx_sd_single_page_sidebar"),c=u()(a,2),s=c[0],i=c[1],l=Object(g.useEntityProp)("root","site","ibx_sd_single_page_permalink"),b=u()(l,2),m=b[0],_=b[1],p=Object(g.useEntityProp)("root","site","ibx_sd_single_page_breadcrumbs"),h=u()(p,2),f=h[0],y=h[1],j=Object(g.useEntityProp)("root","site","ibx_sd_single_page_comments"),O=u()(j,2),v=O[0],E=O[1],x=Object(g.useEntityProp)("root","site","ibx_sd_single_page_social_share_options"),S=u()(x,2),C=S[0],w=S[1],N=Object(g.useEntityProp)("root","site","ibx_sd_single_ratings"),k=u()(N,2),P=k[0],T=k[1],D=Object(n.useState)(!1),B=u()(D,2),L=B[0],A=B[1];return Object(n.createElement)(n.Fragment,null,Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Sidebar",checked:s,onChange:i}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Doc Title Permalink Copy Icon",checked:m,onChange:_}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Breadcrumbs",checked:f,onChange:y}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Comments",checked:v,onChange:E}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Social Share options",checked:C,onChange:w}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Ratings Buttons",checked:P,onChange:T}),Object(n.createElement)(r.Button,{className:"mt-6 mb-3",isPrimary:"true",isBusy:L,onClick:function(){A(!0),wp.data.dispatch("core").saveSite({ibx_sd_single_page_sidebar:s,ibx_sd_single_page_permalink:m,ibx_sd_single_page_breadcrumbs:f,ibx_sd_single_page_comments:v,ibx_sd_single_page_social_share_options:C,ibx_sd_single_ratings:P}).then((function(){t("Settings Saved!",{type:"snackbar"})})).catch((function(e){o("There was some error saving settings! \nCheck console for more information on error.",{type:"snackbar"}),console.log(e)})),A(!1)}},"Save Changes"))}function E(){var e=Object(d.useDispatch)("core/notices"),t=e.createSuccessNotice,o=e.createErrorNotice,a=Object(g.useEntityProp)("root","site","ibx_sd_archive_sidebar"),c=u()(a,2),s=c[0],i=c[1],l=Object(g.useEntityProp)("root","site","ibx_sd_archive_layout"),b=u()(l,2),m=b[0],_=b[1],p=Object(g.useEntityProp)("root","site","ibx_sd_archive_search"),h=u()(p,2),f=h[0],y=h[1],j=Object(g.useEntityProp)("root","site","ibx_sd_archive_suggested"),O=u()(j,2),v=O[0],E=O[1],x=Object(n.useState)(!1),S=u()(x,2),C=S[0],w=S[1];return Object(n.createElement)(n.Fragment,null,Object(n.createElement)(r.BaseControl,{label:"Archive Page Layout"},Object(n.createElement)(r.__experimentalRadioGroup,{id:"sd_option-doc-archive-layout",className:"ml-5",label:"Documentation Archive Page Layout",checked:m,onChange:_},Object(n.createElement)(r.__experimentalRadio,{value:"list"},"List"),Object(n.createElement)(r.__experimentalRadio,{value:"grid"},"Grid"))),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Sidebar",checked:s,onChange:i}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Search Bar",checked:f,onChange:y}),Object(n.createElement)(r.ToggleControl,{label:"Show or Hide Suggested Articles",checked:v,onChange:E}),Object(n.createElement)(r.Button,{className:"mt-6 mb-3",isPrimary:"true",isBusy:C,onClick:function(){w(!0),wp.data.dispatch("core").saveSite({ibx_sd_archive_sidebar:s,ibx_sd_archive_layout:m,ibx_sd_archive_search:f,ibx_sd_archive_suggested:v}).then((function(){t("Settings Saved!",{type:"snackbar"})})).catch((function(e){o("There was some error saving settings! \nCheck console for more information on error.",{type:"snackbar"}),console.log(e)})),w(!1)}},"Save Changes"))}function x(){var e="py-3 px-4 text-sl duration-200";return Object(n.createElement)(r.TabPanel,{className:"smartdocs-layout-settings-tabs flex",activeClass:"is-active",orientation:"vertical",tabs:[{name:"documentation_page",title:"Doc Page",className:e},{name:"single_page",title:"Single Page",className:e},{name:"archive_page",title:"Archive Page",className:e}]},(function(e){return"documentation_page"===e.name?Object(n.createElement)(O,null):"single_page"===e.name?Object(n.createElement)(v,null):"archive_page"===e.name?Object(n.createElement)(E,null):void 0}))}var S=o(12),C=o.n(S),w=Object(_.compose)(Object(d.withSelect)((function(e){return{postTypes:e("core").getPostTypes()}})))((function(e){var t=Object(d.useDispatch)("core/notices"),o=t.createSuccessNotice,c=t.createErrorNotice,s=Object(g.useEntityProp)("root","site","ibx_sd_search_post_types"),i=u()(s,2),l=i[0],b=i[1],_=[];e.postTypes&&e.postTypes.forEach((function(e){e.viewable&&"attachment"!==e.slug&&_.push({value:e.slug,label:e.name})}));var p=Object(n.useState)(l||[]),h=u()(p,2),f=h[0],y=h[1];f!==l&&b(f);var j=Object(n.useState)(!1),O=u()(j,2),v=O[0],E=O[1];return Object(n.createElement)(n.Fragment,null,Object(n.createElement)(r.BaseControl,{id:"textarea-1",label:"Select Post Types",help:"Select post types to search in.",className:"mb-3"},Object(n.createElement)("ul",{className:"post-types-list"},0!==_.length&&_.map((function(e){return Object(n.createElement)("li",{key:e.value},Object(n.createElement)(r.ToggleControl,{label:e.label,checked:"object"===m()(f)&&f.includes(e.value),onChange:function(t){if(t)y((function(t){return[].concat(C()(t),[e.value])}));else{var o=f.filter((function(t){return t!==e.value}));y(o)}}}))})),0===_.length&&Object(n.createElement)("li",null,Object(a.__)("Loading...","smart-docs")))),Object(n.createElement)(r.Button,{className:"mt-6 mb-3",isPrimary:"true",isBusy:v,onClick:function(){E(!0),wp.data.dispatch("core").saveSite({ibx_sd_search_post_types:l}).then((function(){o("Settings Saved!",{type:"snackbar"})})).catch((function(e){c("There was some error saving settings! \nCheck console for more information on error.",{type:"snackbar"}),console.log(e)})),E(!1)}},"Save Changes"))}));function N(){var e="smartdocs-setting-primary-tab px-4 text-sm";return Object(n.createElement)(r.TabPanel,{className:"smartdocs-settings-tabs m-5 col-span-2 row-span-2 bg-white",activeClass:"is-active",tabs:[{name:"general",title:"General",className:e},{name:"layout",title:"Layout",className:e},{name:"search",title:"Search",className:e}]},(function(e){return"general"===e.name?Object(n.createElement)(f,null):"layout"===e.name?Object(n.createElement)(x,null):"search"===e.name?Object(n.createElement)(w,null):void 0}))}function k(){return Object(n.createElement)(r.Card,{isElevated:"true",className:"smart-docs-side-card col-span-1 m-5 h-fit-content"},Object(n.createElement)(r.CardHeader,{className:"smart-docs-card-header font-bold text-xl pl-5 pt-4 pb-3"},"Help/Support"),Object(n.createElement)(r.CardBody,null,"Found a issue? or Have a suggestion? ",Object(n.createElement)("br",null),Object(n.createElement)("br",null),"We use Github to track issues and suggestions. Click the link below to go to our Github Page and post issue/suggestion."),Object(n.createElement)(r.CardFooter,{className:"smart-docs-card-footer pt-4 pb-4"},Object(n.createElement)(r.ExternalLink,{className:"w-full inline-flex font-medium text-sm",href:"https://github.com/helloideabox/smart-docs/issues"},"Raise a Ticket")))}var P=o(8);function T(){var e=Object(d.useDispatch)("core/notices").removeNotice,t=Object(d.useSelect)((function(e){return e("core/notices").getNotices()}),[]),o=Object(P.filter)(t,{isDismissible:!0,type:"default"}),a=Object(P.filter)(t,{isDismissible:!1,type:"default"}),c=Object(P.filter)(t,{type:"snackbar"});return Object(n.createElement)(n.Fragment,null,Object(n.createElement)(r.NoticeList,{notices:a,className:"components-notice-list components-editor-notices__pinned"}),Object(n.createElement)(r.NoticeList,{notices:o,className:"components-notice-list components-editor-notices__dismissible",onRemove:e}),Object(n.createElement)(r.SnackbarList,{notices:c,className:"components-snackbar-list components-editor-notices__snackbar",onRemove:e}))}o(20);var D=document.querySelector(".loader"),B=function(){return D.classList.remove("loader--hide")},L=function(){return D.classList.add("loader--hide")},A=function(e){var t=e.hideLoader;return Object(n.useEffect)(t,[]),Object(n.createElement)(n.Fragment,null,Object(n.createElement)(c,null),Object(n.createElement)("div",{className:"grid grid-cols-3 grid-rows-2 container mx-auto"},Object(n.createElement)(N,null),Object(n.createElement)(k,null)),Object(n.createElement)(T,null))};setTimeout((function(){Object(n.render)(Object(n.createElement)(A,{hideLoader:L,showLoader:B}),document.getElementById("smartdocs-setting-root"))}),0)}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/settings/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+module.exports = _arrayLikeToArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+
+module.exports = _arrayWithoutHoles;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArray.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
+}
+
+module.exports = _iterableToArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableRest.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableRest.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableRest;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableSpread;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/slicedToArray.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles */ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js");
+
+var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit */ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js");
+
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js");
+
+var nonIterableRest = __webpack_require__(/*! ./nonIterableRest */ "./node_modules/@babel/runtime/helpers/nonIterableRest.js");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/toConsumableArray.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles */ "./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js");
+
+var iterableToArray = __webpack_require__(/*! ./iterableToArray */ "./node_modules/@babel/runtime/helpers/iterableToArray.js");
+
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js");
+
+var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread */ "./node_modules/@babel/runtime/helpers/nonIterableSpread.js");
+
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
+}
+
+module.exports = _toConsumableArray;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+
+module.exports = _unsupportedIterableToArray;
+
+/***/ }),
+
+/***/ "./src/settings/Header.js":
+/*!********************************!*\
+  !*** ./src/settings/Header.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Header; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * WordPress Dependencies
+ */
+
+function Header() {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    id: "smartdocs-setting-header",
+    className: "mx-auto flex justify-center justify-items-center p-10 mb-8 shadow bg-white"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", {
+    className: "text-5xl"
+  }, "Smart Docs"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("sup", {
+    className: "text-sm text-gray-500"
+  }, "v", smartdocs_admin.version)));
+}
+
+/***/ }),
+
+/***/ "./src/settings/SidePanel.js":
+/*!***********************************!*\
+  !*** ./src/settings/SidePanel.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SidePanel; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function SidePanel() {
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["Card"], {
+    isElevated: "true",
+    className: "smart-docs-side-card col-span-1 m-5 h-fit-content"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["CardHeader"], {
+    className: "smart-docs-card-header font-bold text-xl pl-5 pt-4 pb-3"
+  }, "Help/Support"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["CardBody"], null, "Found a issue? or Have a suggestion? ", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("br", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("br", null), "We use Github to track issues and suggestions. Click the link below to go to our Github Page and post issue/suggestion."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["CardFooter"], {
+    className: "smart-docs-card-footer pt-4 pb-4"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["ExternalLink"], {
+    className: "w-full inline-flex font-medium text-sm",
+    href: "https://github.com/helloideabox/smart-docs/issues"
+  }, "Raise a Ticket")));
+}
+
+/***/ }),
+
+/***/ "./src/settings/Tabs.js":
+/*!******************************!*\
+  !*** ./src/settings/Tabs.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Tabs; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tabs_General__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabs/General */ "./src/settings/tabs/General.js");
+/* harmony import */ var _tabs_Search__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabs/Search */ "./src/settings/tabs/Search.js");
+
+
+
+
+function Tabs() {
+  var tabClasses = "smartdocs-setting-primary-tab px-4 text-sm";
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__["TabPanel"], {
+    className: "smartdocs-settings-tabs m-5 col-span-2 row-span-2 bg-white",
+    activeClass: "is-active",
+    tabs: [{
+      name: "general",
+      title: "General",
+      className: tabClasses
+    }, {
+      name: "search",
+      title: "Search",
+      className: tabClasses
+    }]
+  }, function (tab) {
+    if ("general" === tab.name) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_tabs_General__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+    } else if ("search" === tab.name) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_tabs_Search__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+    }
+  });
+}
+
+/***/ }),
+
+/***/ "./src/settings/index.js":
+/*!*******************************!*\
+  !*** ./src/settings/index.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/settings/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./src/settings/Header.js");
+/* harmony import */ var _Tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tabs */ "./src/settings/Tabs.js");
+/* harmony import */ var _SidePanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SidePanel */ "./src/settings/SidePanel.js");
+/* harmony import */ var _notices_notices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./notices/notices */ "./src/settings/notices/notices.js");
+
+
+/**
+ * WordPress Dependencies
+ */
+
+/**
+ * Internal dependencies.
+ */
+
+
+
+
+
+
+var loader = document.querySelector(".loader"); // Show the loader when React loads data again
+
+var showLoader = function showLoader() {
+  return loader.classList.remove("loader--hide");
+};
+
+var hideLoader = function hideLoader() {
+  return loader.classList.add("loader--hide");
+};
+
+var App = function App(_ref) {
+  var hideLoader = _ref.hideLoader;
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(hideLoader, []);
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    className: "grid grid-cols-3 grid-rows-2 container mx-auto"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_Tabs__WEBPACK_IMPORTED_MODULE_3__["default"], null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_SidePanel__WEBPACK_IMPORTED_MODULE_4__["default"], null)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_notices_notices__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+};
+
+setTimeout(function () {
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["render"])(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(App, {
+    hideLoader: hideLoader,
+    showLoader: showLoader
+  }), document.getElementById("smartdocs-setting-root"));
+}, 0);
+
+/***/ }),
+
+/***/ "./src/settings/index.scss":
+/*!*********************************!*\
+  !*** ./src/settings/index.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/settings/notices/notices.js":
+/*!*****************************************!*\
+  !*** ./src/settings/notices/notices.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SettingsNotices; });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/notices */ "@wordpress/notices");
+/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_notices__WEBPACK_IMPORTED_MODULE_4__);
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+function SettingsNotices() {
+  var _useDispatch = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])('core/notices'),
+      removeNotice = _useDispatch.removeNotice;
+
+  var notices = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["useSelect"])(function (select) {
+    return select('core/notices').getNotices();
+  }, []);
+  var dismissibleNotices = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["filter"])(notices, {
+    isDismissible: true,
+    type: 'default'
+  });
+  var nonDismissibleNotices = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["filter"])(notices, {
+    isDismissible: false,
+    type: 'default'
+  });
+  var snackbarNotices = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["filter"])(notices, {
+    type: 'snackbar'
+  });
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["NoticeList"], {
+    notices: nonDismissibleNotices,
+    className: "components-notice-list components-editor-notices__pinned"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["NoticeList"], {
+    notices: dismissibleNotices,
+    className: "components-notice-list components-editor-notices__dismissible",
+    onRemove: removeNotice
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__["SnackbarList"], {
+    notices: snackbarNotices,
+    className: "components-snackbar-list components-editor-notices__snackbar",
+    onRemove: removeNotice
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/settings/tabs/General.js":
+/*!**************************************!*\
+  !*** ./src/settings/tabs/General.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
+/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__);
+
+
+
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
+
+
+
+
+
+var General = function General(props) {
+  if ('object' !== _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_2___default()(props.options) || 0 === Object.keys(props.options).length) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null);
+  }
+
+  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useState"])(props.options),
+      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState, 2),
+      options = _useState2[0],
+      setOptions = _useState2[1];
+
+  var pageList = [];
+
+  if (props.pages) {
+    pageList.push({
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Select a page', 'smart-docs'),
+      value: null
+    });
+    props.pages.forEach(function (page) {
+      pageList.push({
+        value: page.id,
+        label: page.title.rendered
+      });
+    });
+  } else {
+    pageList.push({
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])('Loading...', 'smart-docs'),
+      value: null
+    });
+  }
+
+  var _useDispatch = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_6__["useDispatch"])("core/notices"),
+      createSuccessNotice = _useDispatch.createSuccessNotice,
+      createErrorNotice = _useDispatch.createErrorNotice;
+  /**
+   * Button Saving state
+   *
+   * @since 1.0.0
+   */
+
+
+  var _useState3 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useState"])(false),
+      _useState4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1___default()(_useState3, 2),
+      saving = _useState4[0],
+      setSaving = _useState4[1];
+
+  var handleSaveSettings = function handleSaveSettings() {
+    setSaving(true);
+    var status = wp.data.dispatch("core").saveSite(options).then(function () {
+      createSuccessNotice("Settings Saved!", {
+        type: "snackbar"
+      }); // Flush rewrite rules on settings save.
+
+      wp.ajax.post('smartdocs_on_settings_save', {});
+    }).catch(function (e) {
+      createErrorNotice("There was some error saving settings! \nCheck console for more information on error.", {
+        type: "snackbar"
+      });
+      console.log(e);
+    });
+    setSaving(false);
+  };
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+    className: "mt-2 mb-2",
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Use built-in Doc archive"),
+    help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Note: if you disable built-in documentation archive, you can use shortcode or page builder widgets to design your documentation page."),
+    checked: options.smartdocs_use_built_in_doc_archive,
+    onChange: function onChange(value) {
+      setOptions(_objectSpread(_objectSpread({}, options), {}, {
+        smartdocs_use_built_in_doc_archive: value
+      }));
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, !options.smartdocs_use_built_in_doc_archive && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Select Custom Doc Page"),
+    labelPosition: "top",
+    id: "smartdocs-option_select-custom-doc-page",
+    options: pageList,
+    value: options.smartdocs_custom_doc_page,
+    onChange: function onChange(value) {
+      return setOptions(_objectSpread(_objectSpread({}, options), {}, {
+        smartdocs_custom_doc_page: value
+      }));
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["BaseControl"], {
+    label: "Documentation Page Title",
+    help: "Edit to change the default title for the documentation page.",
+    className: "mb-3"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+    id: "sd_option-doc_homepage_title",
+    className: "mt-2 block mb-2",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Documentation"),
+    value: options.smartdocs_archive_page_title,
+    onChange: function onChange(value) {
+      return setOptions(_objectSpread(_objectSpread({}, options), {}, {
+        smartdocs_archive_page_title: value
+      }));
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["BaseControl"], {
+    label: "Documentation Archive Slug",
+    help: "Edit to change the default slug for the documentation page.",
+    className: "mb-3"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+    id: "sd_option-doc_homepage_slug",
+    className: "mt-2 block mb-2",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Add documentation archive/home page slug"),
+    value: options.smartdocs_archive_page_slug,
+    onChange: function onChange(value) {
+      return setOptions(_objectSpread(_objectSpread({}, options), {}, {
+        smartdocs_archive_page_slug: value
+      }));
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["BaseControl"], {
+    label: "Documentation Category Slug",
+    help: "Edit to change the default slug for the documentation category.",
+    className: "mb-3"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+    id: "sd_option-doc_category_slug",
+    className: "mt-2 block mb-2",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Add custom category slug"),
+    value: options.smartdocs_category_slug,
+    onChange: function onChange(value) {
+      return setOptions(_objectSpread(_objectSpread({}, options), {}, {
+        smartdocs_category_slug: value
+      }));
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["BaseControl"], {
+    label: "Documentation Tag Slug",
+    help: "Edit to change the default slug for the documentation tag."
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+    id: "sd_option-doc_tag_slug",
+    className: "mt-2 block mb-2",
+    placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Add custom tag slug"),
+    value: options.smartdocs_tag_slug,
+    onChange: function onChange(value) {
+      return setOptions(_objectSpread(_objectSpread({}, options), {}, {
+        smartdocs_tag_slug: value
+      }));
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["BaseControl"], {
+    className: "mt-3 mb-3",
+    id: "smartdocs-custom-templates",
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Custom Templates")
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+    className: "mt-2 mb-2",
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Use built-in template for Docs single page"),
+    checked: options.smartdocs_enable_single_template,
+    onChange: function onChange(value) {
+      return setOptions(_objectSpread(_objectSpread({}, options), {}, {
+        smartdocs_enable_single_template: value
+      }));
+    }
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+    className: "mt-2 mb-2",
+    label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__["__"])("Use built-in template for Docs archive page"),
+    checked: options.smartdocs_enable_category_and_tag_template,
+    onChange: function onChange(value) {
+      return setOptions(_objectSpread(_objectSpread({}, options), {}, {
+        smartdocs_enable_category_and_tag_template: value
+      }));
+    }
+  })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+    className: "mt-6 mb-3",
+    isPrimary: "true",
+    isBusy: saving,
+    onClick: handleSaveSettings
+  }, "Save Changes"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__["compose"])(Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_6__["withSelect"])(function (select) {
+  var optionKeys = ['smartdocs_use_built_in_doc_archive', 'smartdocs_custom_doc_page', 'smartdocs_archive_page_title', 'smartdocs_archive_page_slug', 'smartdocs_category_slug', 'smartdocs_tag_slug', 'smartdocs_enable_single_template', 'smartdocs_enable_category_and_tag_template'];
+  var settings = select('core').getEntityRecord('root', 'site');
+  var options = {};
+
+  if (settings) {
+    optionKeys.forEach(function (key) {
+      if (settings[key]) {
+        options[key] = settings[key];
+      }
+    });
+  }
+
+  return {
+    pages: select('core').getEntityRecords('postType', 'page'),
+    options: options
+  };
+}))(General));
+
+/***/ }),
+
+/***/ "./src/settings/tabs/Search.js":
+/*!*************************************!*\
+  !*** ./src/settings/tabs/Search.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
+/* harmony import */ var _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__);
+
+
+
+
+
+
+
+
+
+
+
+var Search = function Search(props) {
+  var _useDispatch = Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_7__["useDispatch"])("core/notices"),
+      createSuccessNotice = _useDispatch.createSuccessNotice,
+      createErrorNotice = _useDispatch.createErrorNotice;
+
+  var _useEntityProp = Object(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_6__["useEntityProp"])("root", "site", "smartdocs_search_post_types"),
+      _useEntityProp2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default()(_useEntityProp, 2),
+      postTypes = _useEntityProp2[0],
+      setPostTypes = _useEntityProp2[1];
+
+  var allPostTypes = [];
+
+  if (props.postTypes) {
+    props.postTypes.forEach(function (type) {
+      if (type.viewable && 'attachment' !== type.slug) {
+        allPostTypes.push({
+          value: type.slug,
+          label: type.name
+        });
+      }
+    });
+  }
+
+  var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useState"])(postTypes || []),
+      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default()(_useState, 2),
+      selectedTypes = _useState2[0],
+      setSelectedTypes = _useState2[1];
+
+  if (selectedTypes !== postTypes) {
+    setPostTypes(selectedTypes);
+  }
+  /**
+   * Button Saving state
+   *
+   * @since 1.0.0
+   */
+
+
+  var _useState3 = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["useState"])(false),
+      _useState4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default()(_useState3, 2),
+      saving = _useState4[0],
+      setSaving = _useState4[1];
+
+  function handleSaveSettings() {
+    setSaving(true);
+    wp.data.dispatch("core").saveSite({
+      smartdocs_search_post_types: postTypes
+    }).then(function () {
+      createSuccessNotice("Settings Saved!", {
+        type: "snackbar"
+      });
+    }).catch(function (e) {
+      createErrorNotice("There was some error saving settings! \nCheck console for more information on error.", {
+        type: "snackbar"
+      });
+      console.log(e);
+    });
+    setSaving(false);
+  }
+
+  ; // Function to get values from toggle
+
+  return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["BaseControl"], {
+    id: "textarea-1",
+    label: "Select Post Types",
+    help: "Select post types to search in.",
+    className: "mb-3"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])("ul", {
+    className: "post-types-list"
+  }, 0 !== allPostTypes.length && allPostTypes.map(function (item) {
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])("li", {
+      key: item.value
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["ToggleControl"], {
+      label: item.label,
+      checked: 'object' === _babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_1___default()(selectedTypes) && selectedTypes.includes(item.value),
+      onChange: function onChange(isChecked) {
+        if (isChecked) {
+          setSelectedTypes(function (types) {
+            return [].concat(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(types), [item.value]);
+          });
+        } else {
+          var types = selectedTypes.filter(function (type) {
+            return type !== item.value;
+          });
+          setSelectedTypes(types);
+        }
+      }
+    }));
+  }), 0 === allPostTypes.length && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])("li", null, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Loading...', 'smart-docs')))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Button"], {
+    className: "mt-6 mb-3",
+    isPrimary: "true",
+    isBusy: saving,
+    onClick: handleSaveSettings
+  }, "Save Changes"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__["compose"])(Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_7__["withSelect"])(function (select) {
+  return {
+    postTypes: select('core').getPostTypes()
+  };
+}))(Search));
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/compose":
+/*!*********************************!*\
+  !*** external ["wp","compose"] ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["compose"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/core-data":
+/*!**********************************!*\
+  !*** external ["wp","coreData"] ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["coreData"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["data"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/notices":
+/*!*********************************!*\
+  !*** external ["wp","notices"] ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["notices"]; }());
+
+/***/ }),
+
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["lodash"]; }());
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=index.js.map

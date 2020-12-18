@@ -7,8 +7,7 @@ import {
 } from "@wordpress/components";
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
-import { Fragment, useState } from "@wordpress/element";
-import { useEntityProp } from "@wordpress/core-data";
+import { useState } from "@wordpress/element";
 import { __, sprintf } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
 
@@ -20,70 +19,20 @@ const General = ( props ) => {
 
 	const [ options, setOptions ] = useState( props.options );
 
-	console.log(options);
-
-
-	const { createSuccessNotice, createErrorNotice } = useDispatch(
-		"core/notices"
-	);
-
-	/**
-	 * [Getter, Setter] for SmartDocs Settings
-	 *
-	 * @since 1.0.0
-	 */
-	// const [title, setTitle] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_archive_page_title"
-	// );
-	// const [archiveSlug, setArchiveSlug] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_archive_page_slug"
-	// );
-	// const [categorySlug, setCategorySlug] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_category_slug"
-	// );
-	// const [tagSlug, setTagSlug] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_tag_slug"
-	// );
-	// const [singleTemplate, setSingleTemplate] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_enable_single_template"
-	// );
-	// const [archiveTax, setArchiveTax] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_enable_category_and_tag_template"
-	// );
-	// const [customDocPage, setCustomDocPage] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"smartdocs_custom_doc_page"
-	// );
-
-	// const [useBuiltInDocArchive, setUseBuiltInDocArchive] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"smartdocs_use_built_in_doc_archive"
-	// );
-
 	const pageList = [];
 
 	if ( props.pages ) {
-		pageList.push({ label: __( 'Select a page', 'smart-docs' ), value: null });
-		props.pages.forEach( (page) => {
+		pageList.push( { label: __( 'Select a page', 'smart-docs' ), value: null } );
+		props.pages.forEach( ( page ) => {
 			pageList.push( { value: page.id, label: page.title.rendered } );
 		});
 	} else {
 		pageList.push( { label: __( 'Loading...', 'smart-docs' ), value: null } );
 	}
+
+	const { createSuccessNotice, createErrorNotice } = useDispatch(
+		"core/notices"
+	);
 	
 	/**
 	 * Button Saving state
@@ -97,16 +46,7 @@ const General = ( props ) => {
 	
 		const status = wp.data
 			.dispatch("core")
-			.saveSite({
-				ibx_sd_archive_page_title: title,
-				ibx_sd_archive_page_slug: archiveSlug,
-				ibx_sd_category_slug: categorySlug,
-				ibx_sd_tag_slug: tagSlug,
-				ibx_sd_enable_single_template: singleTemplate,
-				ibx_sd_enable_category_and_tag_template: archiveTax,
-				smartdocs_use_built_in_doc_archive: useBuiltInDocArchive,
-				smartdocs_custom_doc_page: customDocPage,
-			})
+			.saveSite( options )
 			.then(function () {
 				createSuccessNotice("Settings Saved!", {
 					type: "snackbar",
@@ -129,7 +69,7 @@ const General = ( props ) => {
 	};
 
 	return (
-		<Fragment>
+		<>
 			<ToggleControl
 				className="mt-2 mb-2"
 				label={__("Use built-in Doc archive")}
@@ -160,8 +100,8 @@ const General = ( props ) => {
 					id="sd_option-doc_homepage_title"
 					className="mt-2 block mb-2"
 					placeholder={__("Documentation")}
-					value={ options.ibx_sd_archive_page_title }
-					onChange={ (value) => setOptions( { ...options, ibx_sd_archive_page_title: value } ) }
+					value={ options.smartdocs_archive_page_title }
+					onChange={ (value) => setOptions( { ...options, smartdocs_archive_page_title: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -173,8 +113,8 @@ const General = ( props ) => {
 					id="sd_option-doc_homepage_slug"
 					className="mt-2 block mb-2"
 					placeholder={__("Add documentation archive/home page slug")}
-					value={ options.ibx_sd_archive_page_slug }
-					onChange={ (value) => setOptions( { ...options, ibx_sd_archive_page_slug: value } ) }
+					value={ options.smartdocs_archive_page_slug }
+					onChange={ (value) => setOptions( { ...options, smartdocs_archive_page_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -186,8 +126,8 @@ const General = ( props ) => {
 					id="sd_option-doc_category_slug"
 					className="mt-2 block mb-2"
 					placeholder={__("Add custom category slug")}
-					value={ options.ibx_sd_category_slug }
-					onChange={ (value) => setOptions( { ...options, ibx_sd_category_slug: value } ) }
+					value={ options.smartdocs_category_slug }
+					onChange={ (value) => setOptions( { ...options, smartdocs_category_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -198,8 +138,8 @@ const General = ( props ) => {
 					id="sd_option-doc_tag_slug"
 					className="mt-2 block mb-2"
 					placeholder={__("Add custom tag slug")}
-					value={ options.ibx_sd_tag_slug }
-					onChange={ (value) => setOptions( { ...options, ibx_sd_tag_slug: value } ) }
+					value={ options.smartdocs_tag_slug }
+					onChange={ (value) => setOptions( { ...options, smartdocs_tag_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -210,14 +150,14 @@ const General = ( props ) => {
 				<ToggleControl
 					className="mt-2 mb-2"
 					label={__("Use built-in template for Docs single page")}
-					checked={ options.ibx_sd_enable_single_template }
-					onChange={ ( value ) => setOptions( { ...options, ibx_sd_enable_single_template: value } ) }
+					checked={ options.smartdocs_enable_single_template }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_single_template: value } ) }
 				/>
 				<ToggleControl
 					className="mt-2 mb-2"
 					label={__("Use built-in template for Docs archive page")}
-					checked={ options.ibx_sd_enable_category_and_tag_template }
-					onChange={ ( value ) => setOptions( { ...options, ibx_sd_enable_category_and_tag_template: value } ) }
+					checked={ options.smartdocs_enable_category_and_tag_template }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_category_and_tag_template: value } ) }
 				/>
 			</BaseControl>
 			<Button
@@ -228,7 +168,7 @@ const General = ( props ) => {
 			>
 				Save Changes
 			</Button>
-		</Fragment>
+		</>
 	);
 }
 
@@ -237,12 +177,12 @@ export default compose(
 		const optionKeys = [
 			'smartdocs_use_built_in_doc_archive',
 			'smartdocs_custom_doc_page',
-			'ibx_sd_archive_page_title',
-			'ibx_sd_archive_page_slug',
-			'ibx_sd_category_slug',
-			'ibx_sd_tag_slug',
-			'ibx_sd_enable_single_template',
-			'ibx_sd_enable_category_and_tag_template',
+			'smartdocs_archive_page_title',
+			'smartdocs_archive_page_slug',
+			'smartdocs_category_slug',
+			'smartdocs_tag_slug',
+			'smartdocs_enable_single_template',
+			'smartdocs_enable_category_and_tag_template',
 		];
 		
 		const settings = select( 'core' ).getEntityRecord( 'root', 'site' );

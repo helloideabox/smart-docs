@@ -1,7 +1,7 @@
 /**
  * WordPress Dependencies
  */
-import { Fragment, useEffect, render } from "@wordpress/element";
+import { useEffect, render } from "@wordpress/element";
 
 /**
  * Internal dependencies.
@@ -19,23 +19,23 @@ const hideLoader = () => loader.classList.add("loader--hide");
 
 const App = ({ hideLoader }) => {
 
-	useEffect(hideLoader, []);
+	useEffect( hideLoader, [] );
 
 	return (
-		<Fragment>
+		<>
 			<Header />
 			<div className="grid grid-cols-3 grid-rows-2 container mx-auto">
 				<Tabs />
 				<SidePanel />
 			</div>
 			<SettingNotices />
-		</Fragment>
+		</>
 	);
 };
 
 setTimeout(() => {
 	render(
-		<App hideLoader={hideLoader} showLoader={showLoader} />,
+		<App hideLoader={ hideLoader } showLoader={ showLoader } />,
 		document.getElementById("smartdocs-setting-root")
 	);
 }, 0);

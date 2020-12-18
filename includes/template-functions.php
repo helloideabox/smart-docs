@@ -16,7 +16,7 @@
  * @since 1.0.0
  */
 function smartdocs_hero_title() {
-	$title = get_option( 'ibx_sd_archive_page_title' );
+	$title = get_option( 'smartdocs_archive_page_title' );
 	if ( empty( $title ) ) {
 		$title = __( 'Documentation', 'smart-docs' );
 	}
@@ -25,7 +25,7 @@ function smartdocs_hero_title() {
 }
 
 function smartdocs_archive_description() {
-	$desc = get_option( 'ibx_sd_archive_description' );
+	$desc = get_option( 'smartdocs_archive_description' );
 
 	if ( ! empty( $desc ) ) {
 		echo wpautop( $desc );
