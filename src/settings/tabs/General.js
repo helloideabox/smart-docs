@@ -79,17 +79,22 @@ const General = ( props ) => {
 				checked={ options.smartdocs_use_built_in_doc_archive }
 				onChange={ ( value ) => { setOptions( { ...options, smartdocs_use_built_in_doc_archive: value } ) } }
 			/>
-			<>
-				{ ! options.smartdocs_use_built_in_doc_archive && (
+
+			{ ! options.smartdocs_use_built_in_doc_archive && (
+				<BaseControl
+					label={ __( 'Select Custom Page', 'smart-docs' ) }
+					className="mb-3"
+				>
 					<SelectControl
-						label={ __( 'Select Custom Page', 'smart-docs' ) }
+						className="mt-2 block mb-2"
 						labelPosition="top"
 						options={ pageList }
 						value={ options.smartdocs_custom_doc_page }
 						onChange={ ( value ) => setOptions( { ...options, smartdocs_custom_doc_page: value } ) }
 					/>
-				) }
-			</>
+				</BaseControl>
+			) }
+
 			<BaseControl
 				label={ __( 'Hero Title', 'smart-docs' ) }
 				help={ __( 'Edit to change the default title for the header section.', 'smart-docs' ) }
