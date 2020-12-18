@@ -5,12 +5,10 @@ import {
 	ToggleControl,
 	SelectControl,
 } from "@wordpress/components";
-import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
+import { withSelect, useDispatch } from '@wordpress/data';
 import { useState } from "@wordpress/element";
-import { __, sprintf } from "@wordpress/i18n";
-import { useDispatch } from "@wordpress/data";
-
+import { compose } from '@wordpress/compose';
+import { __ } from "@wordpress/i18n";
 
 const General = ( props ) => {
 	if ( 'object' !== typeof props.options || 0 === Object.keys( props.options ).length ) {
@@ -21,6 +19,7 @@ const General = ( props ) => {
 
 	const pageList = [];
 
+	// Build a list of pages.
 	if ( props.pages ) {
 		pageList.push( { label: __( 'Select a page', 'smart-docs' ), value: null } );
 		props.pages.forEach( ( page ) => {
@@ -44,11 +43,11 @@ const General = ( props ) => {
 	const handleSaveSettings = () => {
 		setSaving( true );
 	
-		const status = wp.data
+		wp.data
 			.dispatch("core")
 			.saveSite( options )
 			.then(function () {
-				createSuccessNotice("Settings Saved!", {
+				createSuccessNotice( __( 'Settings Saved!', 'smart-docs' ), {
 					type: "snackbar",
 				});
 	
@@ -57,7 +56,7 @@ const General = ( props ) => {
 			})
 			.catch(function (e) {
 				createErrorNotice(
-					"There was some error saving settings! \nCheck console for more information on error.",
+					__( "There was some error saving settings! \nCheck console for more information on error.", 'smart-docs' ),
 					{
 						type: "snackbar",
 					}
@@ -72,9 +71,10 @@ const General = ( props ) => {
 		<>
 			<ToggleControl
 				className="mt-2 mb-2"
-				label={__("Use built-in Doc archive")}
+				label={ __( 'Use built-in Docs archive', 'smart-docs' ) }
 				help={__(
-					"Note: if you disable built-in documentation archive, you can use shortcode or page builder widgets to design your documentation page."
+					'Note: If you disable built-in documentation archive, you can use shortcode or page builder widgets to design your own documentation page.',
+					'smart-docs'
 				)}
 				checked={ options.smartdocs_use_built_in_doc_archive }
 				onChange={ ( value ) => { setOptions( { ...options, smartdocs_use_built_in_doc_archive: value } ) } }
@@ -82,9 +82,8 @@ const General = ( props ) => {
 			<>
 				{ ! options.smartdocs_use_built_in_doc_archive && (
 					<SelectControl
-						label={__("Select Custom Doc Page")}
+						label={ __( 'Select Custom Page', 'smart-docs' ) }
 						labelPosition="top"
-						id="smartdocs-option_select-custom-doc-page"
 						options={ pageList }
 						value={ options.smartdocs_custom_doc_page }
 						onChange={ ( value ) => setOptions( { ...options, smartdocs_custom_doc_page: value } ) }
@@ -92,70 +91,66 @@ const General = ( props ) => {
 				) }
 			</>
 			<BaseControl
-				label="Documentation Page Title"
-				help="Edit to change the default title for the documentation page."
+				label={ __( 'Hero Title', 'smart-docs' ) }
+				help={ __( 'Edit to change the default title for the header section.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<TextControl
-					id="sd_option-doc_homepage_title"
 					className="mt-2 block mb-2"
-					placeholder={__("Documentation")}
+					placeholder={ __( 'Documentation', 'smart-docs' ) }
 					value={ options.smartdocs_archive_page_title }
-					onChange={ (value) => setOptions( { ...options, smartdocs_archive_page_title: value } ) }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_archive_page_title: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
-				label="Documentation Archive Slug"
-				help="Edit to change the default slug for the documentation page."
+				label={ __( 'Rewrite Archive Slug', 'smart-docs' ) }
+				help={ __( 'Edit to change the default slug for the documentation archive page.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<TextControl
-					id="sd_option-doc_homepage_slug"
 					className="mt-2 block mb-2"
-					placeholder={__("Add documentation archive/home page slug")}
+					placeholder={ __( 'Defaults to "smart-docs"', 'smart-docs' ) }
 					value={ options.smartdocs_archive_page_slug }
-					onChange={ (value) => setOptions( { ...options, smartdocs_archive_page_slug: value } ) }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_archive_page_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
-				label="Documentation Category Slug"
-				help="Edit to change the default slug for the documentation category."
+				label={ __( 'Rewrite Category Slug', 'smart-docs' ) }
+				help={ __( 'Edit to change the default slug for the documentation category page.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<TextControl
-					id="sd_option-doc_category_slug"
 					className="mt-2 block mb-2"
-					placeholder={__("Add custom category slug")}
+					placeholder={ __( 'Defaults to "smartdocs_category"', 'smart-docs' ) }
 					value={ options.smartdocs_category_slug }
-					onChange={ (value) => setOptions( { ...options, smartdocs_category_slug: value } ) }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_category_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
-				label="Documentation Tag Slug"
-				help="Edit to change the default slug for the documentation tag."
+				label={ __( 'Rewrite Tag Slug', 'smart-docs' ) }
+				help={ __( 'Edit to change the default slug for the documentation tag.', 'smart-docs' ) }
 			>
 				<TextControl
-					id="sd_option-doc_tag_slug"
 					className="mt-2 block mb-2"
-					placeholder={__("Add custom tag slug")}
+					placeholder={ __( 'Defaults to "smartdocs_tag"', 'smart-docs' ) }
 					value={ options.smartdocs_tag_slug }
-					onChange={ (value) => setOptions( { ...options, smartdocs_tag_slug: value } ) }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_tag_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
 				className="mt-3 mb-3"
 				id="smartdocs-custom-templates"
-				label={__("Custom Templates")}
+				label={ __( 'Template', 'smart-docs' ) }
 			>
 				<ToggleControl
 					className="mt-2 mb-2"
-					label={__("Use built-in template for Docs single page")}
+					label={ __( 'Use built-in template for Docs single page', 'smart-docs' ) }
 					checked={ options.smartdocs_enable_single_template }
 					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_single_template: value } ) }
 				/>
 				<ToggleControl
 					className="mt-2 mb-2"
-					label={__("Use built-in template for Docs archive page")}
+					label={ __( 'Use built-in template for Docs category page', 'smart-docs' ) }
 					checked={ options.smartdocs_enable_category_and_tag_template }
 					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_category_and_tag_template: value } ) }
 				/>
@@ -166,7 +161,7 @@ const General = ( props ) => {
 				isBusy={ saving }
 				onClick={ handleSaveSettings }
 			>
-				Save Changes
+				{ __( 'Save Changes', 'smart-docs' ) }
 			</Button>
 		</>
 	);
