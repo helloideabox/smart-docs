@@ -42,7 +42,7 @@ const General = ( props ) => {
 	
 	const handleSaveSettings = () => {
 		setSaving( true );
-	
+
 		wp.data
 			.dispatch("core")
 			.saveSite( options )
@@ -114,7 +114,7 @@ const General = ( props ) => {
 			>
 				<TextControl
 					className="mt-2 block mb-2"
-					placeholder={ __( 'Defaults to "smart-docs"', 'smart-docs' ) }
+					placeholder={ __( 'Defaults to "docs"', 'smart-docs' ) }
 					value={ options.smartdocs_archive_page_slug }
 					onChange={ ( value ) => setOptions( { ...options, smartdocs_archive_page_slug: value } ) }
 				/>
@@ -126,7 +126,7 @@ const General = ( props ) => {
 			>
 				<TextControl
 					className="mt-2 block mb-2"
-					placeholder={ __( 'Defaults to "smartdocs_category"', 'smart-docs' ) }
+					placeholder={ __( 'Defaults to "docs-category"', 'smart-docs' ) }
 					value={ options.smartdocs_category_slug }
 					onChange={ ( value ) => setOptions( { ...options, smartdocs_category_slug: value } ) }
 				/>
@@ -137,7 +137,7 @@ const General = ( props ) => {
 			>
 				<TextControl
 					className="mt-2 block mb-2"
-					placeholder={ __( 'Defaults to "smartdocs_tag"', 'smart-docs' ) }
+					placeholder={ __( 'Defaults to "docs-tag"', 'smart-docs' ) }
 					value={ options.smartdocs_tag_slug }
 					onChange={ ( value ) => setOptions( { ...options, smartdocs_tag_slug: value } ) }
 				/>

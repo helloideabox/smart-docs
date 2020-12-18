@@ -67,7 +67,7 @@ function smartdocs_archive_content() {
 	if ( ! is_tax( 'smartdocs_category' ) || apply_filters( 'smartdocs_tax_render_categories', false ) ) {
 		// TODO: Provide arguments from customizer
 		$args = array();
-		smartdocs_render_categories( $args );
+		echo smartdocs_render_categories( $args );
 	}
 
 	if ( is_tax( 'smartdocs_category' ) ) {

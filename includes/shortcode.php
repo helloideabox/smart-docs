@@ -11,7 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// To render the search box of WordPress.
 add_shortcode( 'smartdocs_search', 'smartdocs_render_search_box' );
 /**
  * For rendering the search box.
@@ -27,7 +26,9 @@ function smartdocs_render_search_box( $args = array() ) {
 
 	$args = apply_filters( 'smartdocs_search_input_args', $args );
 
+	ob_start();
 	smartdocs_get_template( 'search', $args );
+	return ob_get_clean();
 }
 
 
@@ -40,7 +41,6 @@ add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
  * @return html
  */
 function smartdocs_render_categories( $args = array() ) {
-
 	if ( is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
 		include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
 	}
@@ -86,6 +86,7 @@ function smartdocs_render_categories( $args = array() ) {
 
 	$columns_class = "col-lg--$columns_lg col-md--$columns_md col-sm--$columns_sm";
 
+	ob_start();
 	smartdocs_get_template(
 		'categories',
 		array(
@@ -94,4 +95,6 @@ function smartdocs_render_categories( $args = array() ) {
 			'columns_class' => $columns_class,
 		)
 	);
+
+	return ob_get_clean();
 }

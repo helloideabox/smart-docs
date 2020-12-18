@@ -122,16 +122,10 @@ class Cpt {
 			'show_in_rest'      => true,
 		);
 
-		$category_slug = get_option( 'smartdocs_category_slug' );
-
-		if ( empty( $category_slug ) ) {
-			$category_slug = 'smartdocs_category';
-		}
-
 		$category_args['rewrite'] = apply_filters(
 			'smartdocs_category_rewrite_slug',
 			array(
-				'slug' => $category_slug,
+				'slug' => $this->get_category_rewrite_slug(),
 				'with_front' => false,
 				'hierarchical' => true,
 			)
@@ -167,16 +161,10 @@ class Cpt {
 			'show_in_rest'      => true,
 		);
 
-		$tag_slug = get_option( 'smartdocs_tag_slug' );
-
-		if ( empty( $tag_slug ) ) {
-			$tag_slug = 'smartdocs_tag';
-		}
-
 		$tag_args['rewrite'] = apply_filters(
 			'smartdocs_tag_rewrite_slug',
 			array(
-				'slug' => $tag_slug,
+				'slug' => $this->get_tag_rewrite_slug(),
 				'with_front' => false,
 			)
 		);
@@ -326,7 +314,7 @@ class Cpt {
 		$rewrite_slug = get_option( 'smartdocs_archive_page_slug' );
 
 		if ( empty( $rewrite_slug ) ) {
-			$rewrite_slug = $this->post_type;
+			$rewrite_slug = 'docs';
 		}
 
 		return $rewrite_slug;
@@ -336,7 +324,7 @@ class Cpt {
 		$rewrite_slug = get_option( 'smartdocs_category_slug' );
 
 		if ( empty( $rewrite_slug ) ) {
-			$rewrite_slug = 'smartdocs_category';
+			$rewrite_slug = 'docs-category';
 		}
 
 		return $rewrite_slug;
@@ -346,7 +334,7 @@ class Cpt {
 		$rewrite_slug = get_option( 'smartdocs_tag_slug' );
 
 		if ( empty( $rewrite_slug ) ) {
-			$rewrite_slug = 'smartdocs_tag';
+			$rewrite_slug = 'docs-tag';
 		}
 
 		return $rewrite_slug;
