@@ -100,7 +100,7 @@ const General = ( props ) => {
 			.dispatch("core")
 			.saveSite({
 				ibx_sd_archive_page_title: title,
-				ibs_sd_archive_page_description: description,
+				ibx_sd_archive_page_description: description,
 				ibx_sd_archive_page_slug: archiveSlug,
 				ibx_sd_category_slug: categorySlug,
 				ibx_sd_tag_slug: tagSlug,
@@ -174,9 +174,9 @@ const General = ( props ) => {
 				<TextareaControl
 					id="sd_option-doc_homepage_description"
 					className="mt-2 block mb-2"
-					value={description}
+					value={options.ibx_sd_archive_page_description}
 					placeholder={__("Add a meaningful description for the doc here.")}
-					onChange={setDescription}
+					onChange={ (value) => setOptions( { ...options, ibx_sd_archive_page_description: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
