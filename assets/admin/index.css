@@ -908,21 +908,21 @@ video {
   }
 }
 
-.smartdocs-settings-tabs .components-tab-panel__tabs-item.is-active{
-  font-weight: 700
-}
-
-.smartdocs-settings-tabs .components-tab-panel__tabs-item{
-  font-weight: 400
-}
-
 .smartdocs-settings-tabs{
   box-shadow:rgba(0,0,0,0.2) 0px 1px 3px 0px,rgba(0,0,0,0.14) 0px 1px 1px 0px,rgba(0,0,0,0.12) 0px 2px 1px -1px;
   height:fit-content
 }
 
+.smartdocs-settings-tabs .components-tab-panel__tabs-item{
+  font-weight: 700
+}
+
 .smartdocs-settings-tabs>.components-tab-panel__tabs{
   border-bottom:1px solid #e2e4e7
+}
+
+.smartdocs-settings-tabs .post-types-list{
+  margin-top:20px
 }
 
 #tab-panel-0-general-view,#tab-panel-0-search-view{

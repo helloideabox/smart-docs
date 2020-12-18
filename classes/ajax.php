@@ -35,8 +35,8 @@ class Ajax {
 	public function get_search_results() {
 		$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
 
-		// To show which post to show.
-		$post_types = get_option( 'sd_post_type_selected' );
+		// Post types to include.
+		$post_types = get_option( 'ibx_sd_search_post_types' );
 		$post_types = ! $post_types ? array( Plugin::instance()->cpt->post_type ) : $post_types;
 
 		// WordPress Query arguments.

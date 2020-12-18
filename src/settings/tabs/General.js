@@ -5,7 +5,7 @@ import {
 	ToggleControl,
 	SelectControl,
 } from "@wordpress/components";
-import { compose, withState } from '@wordpress/compose';
+import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { Fragment, useState } from "@wordpress/element";
 import { useEntityProp } from "@wordpress/core-data";

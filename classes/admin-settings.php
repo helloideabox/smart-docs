@@ -16,7 +16,6 @@ namespace SmartDocs;
  * @since 1.0.0
  */
 class Admin {
-
 	/**
 	 * Construction fuction for class Admin
 	 *
@@ -24,8 +23,7 @@ class Admin {
 	 */
 	public function __construct() {
 		// Action to register setting for get_option function.
-		add_action( 'rest_api_init', array( $this, 'register_plugin_settings' ) );
-		add_action( 'admin_init', array( $this, 'register_plugin_settings' ) );
+		add_action( 'init', array( $this, 'register_plugin_settings' ) );
 
 		// Action to register settings page menu in cpt(smart-doc).
 		add_action( 'admin_menu', array( $this, 'register_options_menu' ) );

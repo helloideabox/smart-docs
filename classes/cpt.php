@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 
 class Cpt {
 	/**
-	 * Custom post type variable for registering taxonomy.
+	 * Docs post type.
 	 *
 	 * @var string $post_type
 	 */
@@ -43,6 +43,9 @@ class Cpt {
 	 * @return void
 	 */
 	public function register_cpt() {
+		if ( ! is_blog_installed() || post_type_exists( $this->post_type ) ) {
+			return;
+		}
 
 		$rewrite_slug = $this->get_cpt_rewrite_slug();
 
@@ -179,6 +182,11 @@ class Cpt {
 		);
 
 		register_taxonomy( 'smartdocs_tag', $this->post_type, $tag_args );
+
+		if ( ! get_option( 'smartdocs_rewrite_rules_flushed' ) ) {
+			flush_rewrite_rules();
+			update_option( 'smartdocs_rewrite_rules_flushed', 1 );
+		}
 	}
 
 	/**
