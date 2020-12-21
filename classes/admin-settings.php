@@ -51,7 +51,7 @@ class Admin {
 			__( 'Settings', 'smart-docs' ), // Page title.
 			__( 'Settings', 'smart-docs' ), // Menu title.
 			'manage_options', // Capability.
-			'smart_doc_settings', // Menu slug.
+			'smart_docs_settings', // Menu slug.
 			array( $this, 'render_options_page' ) // Callback function.
 		);
 	}
@@ -64,22 +64,6 @@ class Admin {
 	 */
 	public function render_options_page() {
 		echo '<div id="smartdocs-setting-root"></div>';
-			echo '<div class="loader">
-			<div class="smartdocs-settings-pre-loader">
-				<div class="smartdocs-loader-header mx-auto flex justify-center justify-items-center p-10 mb-8 bg-white">
-					<div class="header-loader"></div>
-				</div>
-				<div class="smartdocs-loader-body container mx-auto grid grid-cols-3 grid-rows-2 w-full">
-					<div class="smartdocs-loader-panel m-5 col-span-2 row-span-2 p-5 bg-white">
-						<div class="panel-loader"></div>
-					</div>
-					<div class="smartdocs-loader-side-panel m-5 col-span-1">
-						<div class="side-panel-loader"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		';
 	}
 
 	/**
@@ -220,7 +204,7 @@ class Admin {
 	 */
 	public function enqueue_admin_script( $hook ) {
 		// To check if the current page is SmartDocs setting or not.
-		if ( 'smart-docs_page_smart_doc_settings' !== $hook ) {
+		if ( 'smart-docs_page_smart_docs_settings' !== $hook ) {
 			return;
 		}
 

@@ -13,7 +13,7 @@ import { __ } from "@wordpress/i18n";
 
 const General = ( props ) => {
 	if ( 'object' !== typeof props.options || 0 === Object.keys( props.options ).length ) {
-		return <></>;
+		return <>{ __( 'Loading...', 'smart-docs' ) }</>;
 	}
 
 	const [ options, setOptions ] = useState( props.options );

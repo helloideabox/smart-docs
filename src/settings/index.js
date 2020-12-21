@@ -12,14 +12,7 @@ import Tabs from "./Tabs";
 import SidePanel from "./SidePanel";
 import SettingNotices from "./notices/notices";
 
-const loader = document.querySelector(".loader");
-// Show the loader when React loads data again
-const showLoader = () => loader.classList.remove("loader--hide");
-const hideLoader = () => loader.classList.add("loader--hide");
-
-const App = ({ hideLoader }) => {
-
-	useEffect( hideLoader, [] );
+const App = () => {
 
 	return (
 		<>
@@ -35,7 +28,7 @@ const App = ({ hideLoader }) => {
 
 setTimeout(() => {
 	render(
-		<App hideLoader={ hideLoader } showLoader={ showLoader } />,
+		<App />,
 		document.getElementById("smartdocs-setting-root")
 	);
 }, 0);
