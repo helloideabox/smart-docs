@@ -1,4 +1,4 @@
-.customize-control-styler-slider .styler-range-input {
+.customize-control-smartdocs-slider .smartdocs-range-input {
 	-webkit-appearance: none;
 	-webkit-transition: background 0.3s;
 	-moz-transition: background 0.3s;
@@ -9,14 +9,14 @@
 	padding: 0;
 	border-radius: 10px;
 }
-.customize-control-styler-slider .styler-range-input:hover {
+.customize-control-smartdocs-slider .smartdocs-range-input:hover {
 	background-color: rgba(0, 0, 0, 0.25);
 }
-.customize-control-styler-slider .styler-range-input:focus {
+.customize-control-smartdocs-slider .smartdocs-range-input:focus {
 	box-shadow: none;
 	outline: none;
 }
-.customize-control-styler-slider .styler-range-input::-webkit-slider-thumb {
+.customize-control-smartdocs-slider .smartdocs-range-input::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	width: 15px;
 	height: 15px;
@@ -24,48 +24,48 @@
 	-webkit-border-radius: 50%;
 	background-color: #008ec2;
 }
-.customize-control-styler-slider .styler-range-input::-moz-range-thumb {
+.customize-control-smartdocs-slider .smartdocs-range-input::-moz-range-thumb {
 	width: 15px;
 	height: 15px;
 	border: none;
 	border-radius: 50%;
 	background-color: #008ec2;
 }
-.customize-control-styler-slider .styler-range-input::-ms-thumb {
+.customize-control-smartdocs-slider .smartdocs-range-input::-ms-thumb {
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
 	border: 0;
 	background-color: #008ec2;
 }
-.customize-control-styler-slider .styler-range-input::-moz-range-track {
+.customize-control-smartdocs-slider .smartdocs-range-input::-moz-range-track {
 	border: inherit;
 	background: transparent;
 }
-.customize-control-styler-slider .styler-range-input::-ms-track {
+.customize-control-smartdocs-slider .smartdocs-range-input::-ms-track {
 	border: inherit;
 	color: transparent;
 	background: transparent;
 }
-.customize-control-styler-slider .styler-range-input::-ms-fill-lower,
-.customize-control-styler-slider .styler-range-input::-ms-fill-upper {
+.customize-control-smartdocs-slider .smartdocs-range-input::-ms-fill-lower,
+.customize-control-smartdocs-slider .smartdocs-range-input::-ms-fill-upper {
 	background: transparent;
 }
-.customize-control-styler-slider .styler-range-input::-ms-tooltip {
+.customize-control-smartdocs-slider .smartdocs-range-input::-ms-tooltip {
 	display: none;
 }
-.customize-control-styler-slider .styler-range-value {
+.customize-control-smartdocs-slider .smartdocs-range-value {
 	display: inline-block;
 	padding: 0 5px;
 	position: relative;
 	top: 1px;
 }
-.customize-control-styler-slider input.styler-range-value-input {
+.customize-control-smartdocs-slider input.smartdocs-range-value-input {
 	width: 52px;
 	height: 23px;
 	font-size: 13px;
 }
-.customize-control-styler-slider .styler-slider-reset {
+.customize-control-smartdocs-slider .smartdocs-slider-reset {
 	color: rgba(0, 0, 0, 0.2);
 	float: right;
 	-webkit-transition: color 0.5s ease-in;
@@ -74,35 +74,35 @@
 	-o-transition: color 0.5s ease-in;
 	transition: color 0.5s ease-in;
 }
-.customize-control-styler-slider .styler-slider-reset span {
+.customize-control-smartdocs-slider .smartdocs-slider-reset span {
 	font-size: 16px;
 	line-height: 22px;
 	cursor: pointer;
 }
-.customize-control-styler-dimension .styler-field {
+.customize-control-smartdocs-dimension .smartdocs-field {
 	float: left;
 	width: 24%;
 	margin-bottom: 5px;
 	margin-right: 2px;
 }
-.customize-control-styler-dimension .styler-field-label {
+.customize-control-smartdocs-dimension .smartdocs-field-label {
 	font-size: 11px;
 }
 
 /* Styles for Section Control */
 
-.customize-control-styler-section {
+.customize-control-smartdocs-section {
 	margin-top: 20px;
 }
-.customize-section-description-container + .customize-control-styler-section {
+.customize-section-description-container + .customize-control-smartdocs-section {
 	margin-top: 10px;
 }
-.customize-control-styler-section .styler-section-title {
+.customize-control-smartdocs-section .smartdocs-section-title {
 	margin-left: -12px;
 	margin-right: -12px;
 	margin-bottom: 5px;
 }
-.customize-control-styler-section .customize-control-title {
+.customize-control-smartdocs-section .customize-control-title {
 	background: #e5e5e5;
 	margin: 0;
 	padding: 6px 12px;
@@ -111,32 +111,32 @@
 
 /* Styles for Sub Section Control */
 
-.customize-control-styler-sub-section {
+.customize-control-smartdocs-sub-section {
 	margin-top: 20px;
 }
 .customize-sub-section-description-container
-	+ .customize-control-styler-sub-section {
+	+ .customize-control-smartdocs-sub-section {
 	margin-top: 10px;
 }
-.customize-control-styler-sub-section .styler-sub-section-title {
+.customize-control-smartdocs-sub-section .smartdocs-sub-section-title {
 	margin-left: -12px;
 	margin-right: -12px;
 	margin-bottom: 5px;
 }
-.customize-control-styler-sub-section .customize-control-title {
+.customize-control-smartdocs-sub-section .customize-control-title {
 	border-bottom: 1px dashed #c0c0c0;
 	margin: 0;
 	padding: 6px 12px;
 	display: block;
 }
 
-.customize-control-styler-color {
+.customize-control-smartdocs-color {
 	display: inline-grid;
 }
 
 /**Test**/
 
-.customize-control-styler-slider-responsive .styler-range-input {
+.customize-control-smartdocs-slider-responsive .smartdocs-range-input {
 	-webkit-appearance: none;
 	-webkit-transition: background 0.3s;
 	-moz-transition: background 0.3s;
@@ -147,15 +147,15 @@
 	padding: 0;
 	border-radius: 10px;
 }
-.customize-control-styler-slider-responsive .styler-range-input:hover {
+.customize-control-smartdocs-slider-responsive .smartdocs-range-input:hover {
 	background-color: rgba(0, 0, 0, 0.25);
 }
-.customize-control-styler-slider-responsive .styler-range-input:focus {
+.customize-control-smartdocs-slider-responsive .smartdocs-range-input:focus {
 	box-shadow: none;
 	outline: none;
 }
-.customize-control-styler-slider-responsive
-	.styler-range-input::-webkit-slider-thumb {
+.customize-control-smartdocs-slider-responsive
+	.smartdocs-range-input::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	width: 15px;
 	height: 15px;
@@ -163,51 +163,51 @@
 	-webkit-border-radius: 50%;
 	background-color: #008ec2;
 }
-.customize-control-styler-slider-responsive
-	.styler-range-input::-moz-range-thumb {
+.customize-control-smartdocs-slider-responsive
+	.smartdocs-range-input::-moz-range-thumb {
 	width: 15px;
 	height: 15px;
 	border: none;
 	border-radius: 50%;
 	background-color: #008ec2;
 }
-.customize-control-styler-slider-responsive .styler-range-input::-ms-thumb {
+.customize-control-smartdocs-slider-responsive .smartdocs-range-input::-ms-thumb {
 	width: 15px;
 	height: 15px;
 	border-radius: 50%;
 	border: 0;
 	background-color: #008ec2;
 }
-.customize-control-styler-slider-responsive
-	.styler-range-input::-moz-range-track {
+.customize-control-smartdocs-slider-responsive
+	.smartdocs-range-input::-moz-range-track {
 	border: inherit;
 	background: transparent;
 }
-.customize-control-styler-slider-responsive .styler-range-input::-ms-track {
+.customize-control-smartdocs-slider-responsive .smartdocs-range-input::-ms-track {
 	border: inherit;
 	color: transparent;
 	background: transparent;
 }
-.customize-control-styler-slider-responsive .styler-range-input::-ms-fill-lower,
-.customize-control-styler-slider-responsive
-	.styler-range-input::-ms-fill-upper {
+.customize-control-smartdocs-slider-responsive .smartdocs-range-input::-ms-fill-lower,
+.customize-control-smartdocs-slider-responsive
+	.smartdocs-range-input::-ms-fill-upper {
 	background: transparent;
 }
-.customize-control-styler-slider-responsive .styler-range-input::-ms-tooltip {
+.customize-control-smartdocs-slider-responsive .smartdocs-range-input::-ms-tooltip {
 	display: none;
 }
-.customize-control-styler-slider-responsive .styler-range-value {
+.customize-control-smartdocs-slider-responsive .smartdocs-range-value {
 	display: inline-block;
 	padding: 0 5px;
 	position: relative;
 	top: 1px;
 }
-.customize-control-styler-slider-responsive input.styler-range-value-input {
+.customize-control-smartdocs-slider-responsive input.smartdocs-range-value-input {
 	width: 52px;
 	height: 23px;
 	font-size: 13px;
 }
-.customize-control-styler-slider-responsive .styler-slider-reset {
+.customize-control-smartdocs-slider-responsive .smartdocs-slider-reset {
 	color: rgba(0, 0, 0, 0.2);
 	float: right;
 	-webkit-transition: color 0.5s ease-in;
@@ -216,13 +216,13 @@
 	-o-transition: color 0.5s ease-in;
 	transition: color 0.5s ease-in;
 }
-.customize-control-styler-slider-responsive .styler-slider-reset span {
+.customize-control-smartdocs-slider-responsive .smartdocs-slider-reset span {
 	font-size: 16px;
 	line-height: 22px;
 	cursor: pointer;
 }
 
-.customize-control-styler-slider-responsive .sub-settings-wrapper {
+.customize-control-smartdocs-slider-responsive .sub-settings-wrapper {
 	display: flex;
 	justify-content: space-between;
 }
@@ -257,6 +257,6 @@ i.smartdocs-responsive-control-toggle {
 	border-top: 1px solid #c0c0c0;
 }
 
-..smartdocs-divider-bottom {
+.smartdocs-divider-bottom {
 	border-bottom: 1px solid #c0c0c0;
 }

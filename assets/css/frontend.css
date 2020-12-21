@@ -71,6 +71,7 @@
 /** Header */
 .smartdocs-header {
 	background-color: #eee;
+	position: relative;
 }
 
 .smartdocs-header .smartdocs-hero-title {

@@ -1,11 +1,11 @@
 <?php
 
-use SmartDocs\Styler_Customizer_Control;
+use SmartDocs\Customizer_Control;
 
 		$wp_customize->add_section(
 			'smartdocs_breakpoints_section',
 			array(
-				'title'    => __( 'Breakpoints (in px)', 'smart-docs' ),
+				'title'    => __( 'Breakpoints', 'smart-docs' ),
 				'priority' => 6,
 			)
 		);
@@ -23,7 +23,7 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_breakpoint_medium_control',
 				array(
-					'label'          => __( 'Medium', 'smart-docs' ),
+					'label'          => __( 'Medium/Tablet (px)', 'smart-docs' ),
 					'section'        => 'smartdocs_breakpoints_section',
 					'settings'       => 'smartdocs_breakpoint_medium',
 					'type'           => 'number',
@@ -45,7 +45,7 @@ use SmartDocs\Styler_Customizer_Control;
 				$wp_customize,
 				'smartdocs_breakpoint_small_control',
 				array(
-					'label'          => __( 'Small', 'smart-docs' ),
+					'label'          => __( 'Small/Mobile (px)', 'smart-docs' ),
 					'section'        => 'smartdocs_breakpoints_section',
 					'settings'       => 'smartdocs_breakpoint_small',
 					'type'           => 'number',

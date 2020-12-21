@@ -1,45 +1,3 @@
-function setPreview(setting) {
-	var api = wp.customize;
-	var slug = null;
-
-	var sectionURLs = {
-		smartdocs_hero_section: "smart-docs",
-		smartdocs_homepage_settings: "smart-docs",
-		smartdocs_test_settings: "smart-docs",
-		smartdocs_search_settings: "smart-docs",
-		smartdocs_single_doc_settings: "smart-docs/how-to-update-smart-docs-2/",
-	};
-
-	api.section(setting, function (section) {
-		_.each(sectionURLs, function (value, key) {
-			if (setting === key) {
-				slug = value;
-			}
-		});
-
-		var previousUrl, clearPreviousUrl, previewUrlValue;
-		previewUrlValue = api.previewer.previewUrl;
-		clearPreviousUrl = function () {
-			previousUrl = null;
-		};
-
-		section.expanded.bind(function (isExpanded) {
-			var url;
-			if (isExpanded) {
-				url = api.settings.url.home + slug;
-				previousUrl = previewUrlValue.get();
-				previewUrlValue.set(url);
-				previewUrlValue.bind(clearPreviousUrl);
-			} else {
-				previewUrlValue.unbind(clearPreviousUrl);
-				if (previousUrl) {
-					previewUrlValue.set(previousUrl);
-				}
-			}
-		});
-	});
-}
-
 (function ($) {
 	/**
 	 * WP_Customize JS Object.
@@ -61,7 +19,6 @@ function setPreview(setting) {
 		 * @method init
 		 */
 		init: function () {
-			console.log("Class Initialized");
 			SmartCustomizer._toggleResponsiveControls();
 			SmartCustomizer._initResponsiveToggle();
 			SmartCustomizer._initPreview();
@@ -131,20 +88,21 @@ function setPreview(setting) {
 		 * Handle preview URLs
 		 */
 		_setPreview: function (setting) {
-			var slug = null;
+			var previewUrl = null;
 
 			var sectionURLs = {
-				smartdocs_hero_section: "smart-docs",
-				smartdocs_homepage_settings: "smart-docs",
-				smartdocs_test_settings: "smart-docs",
-				smartdocs_search_settings: "smart-docs",
-				smartdocs_single_doc_settings: "smart-docs/how-to-update-smart-docs-2/",
+				smartdocs_hero_section: smartdocs_customizer.cpt_slug,
+				smartdocs_archive_settings: smartdocs_customizer.cpt_slug,
+				smartdocs_search_settings: smartdocs_customizer.cpt_slug,
+				smartdocs_single_doc_settings: smartdocs_customizer.single_doc_url,
 			};
 
 			api.section(setting, function (section) {
 				_.each(sectionURLs, function (value, key) {
-					if (setting === key) {
-						slug = value;
+					if ( 'smartdocs_single_doc_settings' === setting ) {
+						previewUrl = value;
+					} else if (setting === key) {
+						previewUrl = api.settings.url.home + value;
 					}
 				});
 
@@ -157,7 +115,7 @@ function setPreview(setting) {
 				section.expanded.bind(function (isExpanded) {
 					var url;
 					if (isExpanded) {
-						url = api.settings.url.home + slug;
+						url = previewUrl;
 						previousUrl = previewUrlValue.get();
 						previewUrlValue.set(url);
 						previewUrlValue.bind(clearPreviousUrl);
@@ -175,8 +133,7 @@ function setPreview(setting) {
 		 * Set Preview URLs
 		 */
 		_initPreview: function () {
-			SmartCustomizer._setPreview("smartdocs_homepage_settings");
-			SmartCustomizer._setPreview("smartdocs_test_settings");
+			SmartCustomizer._setPreview("smartdocs_archive_settings");
 			SmartCustomizer._setPreview("smartdocs_search_settings");
 			SmartCustomizer._setPreview("smartdocs_single_doc_settings");
 			SmartCustomizer._setPreview("smartdocs_hero_section");

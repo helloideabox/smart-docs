@@ -31,7 +31,6 @@ class Cpt {
 
 		add_filter( 'rewrite_rules_array', array( $this, 'fix_rewrite_rules' ) );
 		add_filter( 'post_type_link', array( $this, 'filter_post_type_link' ), 10, 2 );
-		add_action( 'wp_head', array( $this, 'render_frontend_styles' ), 20 );
 
 		add_filter( 'manage_' . $this->post_type . '_posts_columns', array( $this, 'cpt_columns' ) );
 		add_action( 'manage_' . $this->post_type . '_posts_custom_column', array( $this, 'cpt_columns_data' ), 10, 2 );
@@ -524,15 +523,5 @@ class Cpt {
 			<span class="description"><?php printf( esc_html__( 'Add an image from media library to this %1$s.', 'smart-docs' ), esc_html( $name ) ); ?></span>
 		</div>
 		<?php
-	}
-
-	public function render_frontend_styles() {
-		if ( is_post_type_archive( 'smart-docs' ) ) {
-			include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
-		}
-
-		if ( is_singular() ) {
-			include_once SMART_DOCS_PATH . 'classes/customizer/customizer-css.php';
-		}
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-use SmartDocs\Styler_Customizer_Control;
+use SmartDocs\Customizer_Control;
 
 		// Docs page Settings
 
@@ -22,7 +22,7 @@ use SmartDocs\Styler_Customizer_Control;
 		$wp_customize->add_control(
 			'smartdocs_single_doc_display_breadcrumbs_control',
 			array(
-				'label'       => __( 'Single Doc', 'smart-docs' ),
+				'label'       => __( 'Show on Single Doc', 'smart-docs' ),
 				'description' => __( 'Show breadcrumbs on the single doc page.', 'smart-docs' ),
 				'section'     => 'smartdocs_breadcrumbs_settings',
 				'settings'    => 'smartdocs_single_doc_display_breadcrumbs',
@@ -45,8 +45,8 @@ use SmartDocs\Styler_Customizer_Control;
 		$wp_customize->add_control(
 			'smartdocs_taxonomy_archives_display_breadcrumbs_control',
 			array(
-				'label'       => __( 'Taxonomy Archives', 'smart-docs' ),
-				'description' => __( 'Show breadcrumbs on the taxonomy (category, tag, etc.) archives.', 'smart-docs' ),
+				'label'       => __( 'Show on Taxonomy Archives', 'smart-docs' ),
+				'description' => __( 'Show breadcrumbs on the taxonomy (category, tag) archives.', 'smart-docs' ),
 				'section'     => 'smartdocs_breadcrumbs_settings',
 				'settings'    => 'smartdocs_taxonomy_archives_display_breadcrumbs',
 				'type'        => 'select',

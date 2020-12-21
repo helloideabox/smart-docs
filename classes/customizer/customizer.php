@@ -10,7 +10,7 @@
 
 namespace SmartDocs;
 
-use SmartDocs\Styler_Customizer_Control;
+use SmartDocs\Customizer_Control;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -28,8 +28,6 @@ if ( ! class_exists( 'WP_Customize_Control' ) ) {
  * @since 1.0.0
  */
 class Customizer {
-
-
 	/**
 	 * A flag for whether we're in a Customizer
 	 * preview or not.
@@ -46,17 +44,11 @@ class Customizer {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-
 		add_action( 'customize_register', array( $this, 'add_sections' ) );
-
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_controls' ) );
-
 		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_preview_script' ) );
-
 		add_action( 'customize_controls_print_styles', array( $this, 'sync_customizer_breakpoints' ) );
-
 		add_action( 'wp', array( $this, 'sync_customizer_settings' ) );
-
 	}
 
 	public function add_sections( $wp_customize ) {
@@ -67,13 +59,13 @@ class Customizer {
 				'priority'       => 30,
 				'theme_supports' => '',
 				'title'          => __( 'SmartDocs', 'smart-docs' ),
-				'description'    => __( 'Controls the design settings for the SmartDocs plugin.', 'smart-docs' ),
+				'description'    => __( 'Controls the design of SmartDocs frontend.', 'smart-docs' ),
 			)
 		);
 		
 		require SMART_DOCS_PATH . 'classes/customizer/sections/hero-section.php';
-		require SMART_DOCS_PATH . 'classes/customizer/sections/homepage-section.php';
-		require SMART_DOCS_PATH . 'classes/customizer/sections/single-doc-section.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/archive.php';
+		require SMART_DOCS_PATH . 'classes/customizer/sections/single.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/breadcrumbs.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/breakpoints.php';
 	}
@@ -89,7 +81,7 @@ class Customizer {
 		// Docs page Settings
 
 		$wp_customize->add_section(
-			'smartdocs_homepage_settings',
+			'smartdocs_archive_settings',
 			array(
 				'title'    => __( 'Docs Home Page', 'smart-docs' ),
 				'priority' => 100,
@@ -112,7 +104,7 @@ class Customizer {
 				'docs_title_color',
 				array(
 					'label'    => \__( 'Title Color', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
+					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'smartdocs_homepage_title_color',
 				)
 			)
@@ -127,14 +119,14 @@ class Customizer {
 		);
 
 		$wp_customize->add_control(
-			new Styler_Customizer_Control(
+			new Customizer_Control(
 				$wp_customize,
 				'docs_section_divider',
 				array(
 					'label'    => \__( 'Grid Items', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
+					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'smartdocs_homepage_grid_items',
-					'type'     => 'styler-section',
+					'type'     => 'smartdocs-section',
 				)
 			)
 		);
@@ -145,7 +137,7 @@ class Customizer {
 				'docs_category_font_size',
 				array(
 					'label'    => \__( 'Category Title Font Size', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
+					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'smartdocs_homepage_grid_items',
 					'type'     => 'number',
 					'default'  => '16',
@@ -162,14 +154,14 @@ class Customizer {
 		);
 
 		$wp_customize->add_control(
-			new Styler_Customizer_Control(
+			new Customizer_Control(
 				$wp_customize,
 				'test_two_control',
 				array(
 					'label'    => __( 'Test Control', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
+					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'smartdocs_homepage_test_control',
-					'type'     => 'styler-slider',
+					'type'     => 'smartdocs-slider',
 				)
 			)
 		);
@@ -188,14 +180,14 @@ class Customizer {
 		);
 
 		$wp_customize->add_control(
-			new Styler_Customizer_Control(
+			new Customizer_Control(
 				$wp_customize,
 				'dimension_1_control',
 				array(
 					'label'    => __( 'Test Control', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
+					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'dimension_control',
-					'type'     => 'styler-dimension',
+					'type'     => 'smartdocs-dimension',
 					'choices'  => array(
 						'top'    => 'Top',
 						'right'  => 'Right',
@@ -215,14 +207,14 @@ class Customizer {
 		);
 
 		$wp_customize->add_control(
-			new Styler_Customizer_Control(
+			new Customizer_Control(
 				$wp_customize,
-				'styler_color_control',
+				'smartdocs_color_control',
 				array(
 					'label'    => __( 'Color Control', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
+					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'color_control',
-					'type'     => 'styler-color',
+					'type'     => 'smartdocs-color',
 					'choices'  => array( 'alpha' => true ),
 				)
 			)
@@ -237,14 +229,14 @@ class Customizer {
 		);
 
 		$wp_customize->add_control(
-			new Styler_Customizer_Control(
+			new Customizer_Control(
 				$wp_customize,
-				'styler_section_control',
+				'smartdocs_section_control',
 				array(
 					'label'    => __( 'Section Control', 'smart-docs' ),
-					'section'  => 'smartdocs_homepage_settings',
+					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'section_control',
-					'type'     => 'styler-section',
+					'type'     => 'smartdocs-section',
 				)
 			)
 		);
@@ -252,7 +244,7 @@ class Customizer {
 		/**
 		 * Register Sections.
 		 */
-		$wp_customize->get_section( 'smartdocs_homepage_settings' )->panel = 'smartdocs_style_options';
+		$wp_customize->get_section( 'smartdocs_archive_settings' )->panel = 'smartdocs_style_options';
 	}
 
 	/**
@@ -274,11 +266,10 @@ class Customizer {
 
 		$index_js     = 'assets/customizer/preview/index.js';
 		$script_asset = require $script_asset_path;
-		$index_js_src = 'src/customizer/preview/index.js';
 
 		wp_enqueue_script(
 			'smartdocs-customizer-preview',
-			SMART_DOCS_URL . $index_js_src,
+			SMART_DOCS_URL . $index_js,
 			array_push( $script_asset['dependencies'], 'customize-preview' ),
 			$script_asset['version'],
 			true
@@ -299,19 +290,18 @@ class Customizer {
 		}
 
 		$index_js     = 'assets/customizer/controls/index.js';
-		$index_js_src = 'src/customizer/controls/index.js';
 		$script_asset = require $script_asset_path;
 
 		wp_enqueue_script(
 			'smartdocs-customizer-controls',
-			SMART_DOCS_URL . $index_js_src,
+			SMART_DOCS_URL . $index_js,
 			array_push( $script_asset['dependencies'], 'customize-controls' ),
 			$script_asset['version'],
 			true
 		);
 
 		// Enqueue styles.
-		wp_enqueue_style( 'styler-customizer', SMART_DOCS_URL . 'assets/css/customizer.css', array(), SMART_DOCS_VERSION );
+		wp_enqueue_style( 'smartdocs-customizer', SMART_DOCS_URL . 'assets/css/customizer.css', array(), SMART_DOCS_VERSION );
 
 		// Enqueue scripts.
 		wp_enqueue_script(
@@ -323,15 +313,32 @@ class Customizer {
 		);
 
 		wp_enqueue_script(
-			'styler-customizer',
+			'smartdocs-customizer',
 			SMART_DOCS_URL . 'assets/js/customizer/customizer.js',
 			array( 'jquery', 'wp-color-picker-alpha' ),
 			SMART_DOCS_VERSION,
 			true
 		);
+
+		$single_post = get_posts( array(
+			'post_type' => Plugin::instance()->cpt->post_type,
+			'numberposts' => 1,
+			'post_status' => 'publish',
+			'orderby' => 'date',
+			'order' => 'ASC'
+		) );
+
+		$single_doc_url = '';
+
+		if ( is_array( $single_post ) && ! empty( $single_post ) && is_a( $single_post[0], 'WP_Post' ) ) {
+			$single_doc_url = get_permalink( $single_post[0] );
+		}
+
+		wp_localize_script( 'smartdocs-customizer', 'smartdocs_customizer', array(
+			'cpt_slug' => Plugin::instance()->cpt->get_cpt_rewrite_slug(),
+			'single_doc_url' => $single_doc_url
+		) );
 	}
-
-
 
 	/**
 	 * Checks to see if this is a Customizer preview or not.

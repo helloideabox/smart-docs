@@ -7,7 +7,7 @@
 
 		api.section.each(function (section) {
 			if (
-				"styler-nested" !== section.params.type ||
+				"smartdocs-nested" !== section.params.type ||
 				"undefined" === typeof section.params.section
 			) {
 				return;
@@ -31,7 +31,7 @@
 
 		api.panel.each(function (panel) {
 			if (
-				"styler-nested" !== panel.params.type ||
+				"smartdocs-nested" !== panel.params.type ||
 				"undefined" === typeof panel.params.panel
 			) {
 				return;
@@ -58,7 +58,7 @@
 	wp.customize.Panel = wp.customize.Panel.extend({
 		attachEvents: function () {
 			if (
-				"styler-nested" !== this.params.type ||
+				"smartdocs-nested" !== this.params.type ||
 				"undefined" === typeof this.params.panel
 			) {
 				_panelAttachEvents.call(this);
@@ -98,7 +98,7 @@
 
 		embed: function () {
 			if (
-				"styler-nested" !== this.params.type ||
+				"smartdocs-nested" !== this.params.type ||
 				"undefined" === typeof this.params.panel
 			) {
 				_panelEmbed.call(this);
@@ -115,7 +115,7 @@
 		},
 
 		isContextuallyActive: function () {
-			if ("styler-nested" !== this.params.type) {
+			if ("smartdocs-nested" !== this.params.type) {
 				return _panelIsContextuallyActive.call(this);
 			}
 
@@ -157,7 +157,7 @@
 	wp.customize.Section = wp.customize.Section.extend({
 		attachEvents: function () {
 			if (
-				"styler-nested" !== this.params.type ||
+				"smartdocs-nested" !== this.params.type ||
 				"undefined" === typeof this.params.section
 			) {
 				_sectionAttachEvents.call(this);
@@ -197,7 +197,7 @@
 
 		embed: function () {
 			if (
-				"styler-nested" !== this.params.type ||
+				"smartdocs-nested" !== this.params.type ||
 				"undefined" === typeof this.params.section
 			) {
 				_sectionEmbed.call(this);
@@ -214,7 +214,7 @@
 		},
 
 		isContextuallyActive: function () {
-			if ("styler-nested" !== this.params.type) {
+			if ("smartdocs-nested" !== this.params.type) {
 				return _sectionIsContextuallyActive.call(this);
 			}
 
@@ -269,9 +269,9 @@
 	 * Helper class for the main Customizer interface.
 	 *
 	 * @since 1.0.0
-	 * @class StylerCustomizer
+	 * @class SmartDocsCustomizer
 	 */
-	StylerCustomizer = {
+	SmartDocsCustomizer = {
 		/**
 		 * Initializes our custom logic for the Customizer.
 		 *
@@ -279,8 +279,8 @@
 		 * @method init
 		 */
 		init: function () {
-			//StylerCustomizer._initToggles();
-			StylerCustomizer._initControls();
+			//SmartDocsCustomizer._initToggles();
+			SmartDocsCustomizer._initControls();
 		},
 
 		/**
@@ -292,11 +292,11 @@
 		 * @method _initToggles
 		 */
 		_initToggles: function () {
-			if (Object.keys(styler_customizer_toggles).length < 1) {
+			if (Object.keys(smartdocs_customizer_toggles).length < 1) {
 				return;
 			}
 			// Loop through each setting.
-			$.each(styler_customizer_toggles, function (settingId, toggles) {
+			$.each(smartdocs_customizer_toggles, function (settingId, toggles) {
 				// Get the setting object.
 				api(settingId, function (setting) {
 					// Loop through the toggles for the setting.
@@ -308,7 +308,7 @@
 								// Define the visibility callback.
 								var visibility = function (to) {
 									control.container.toggle(
-										StylerCustomizer._matchValues(to, toggle.value)
+										SmartDocsCustomizer._matchValues(to, toggle.value)
 									);
 								};
 
@@ -326,30 +326,30 @@
 
 		_initControls: function () {
 			// Initialize the slider control.
-			api.controlConstructor["styler-slider"] = api.Control.extend({
+			api.controlConstructor["smartdocs-slider"] = api.Control.extend({
 				ready: function () {
-					StylerCustomizer._initSliderControl(this);
+					SmartDocsCustomizer._initSliderControl(this);
 				},
 			});
 
 			// Initialize the slider control.
-			api.controlConstructor["styler-slider-responsive"] = api.Control.extend({
+			api.controlConstructor["smartdocs-slider-responsive"] = api.Control.extend({
 				ready: function () {
-					StylerCustomizer._initResponsiveSliderControl(this);
+					SmartDocsCustomizer._initResponsiveSliderControl(this);
 				},
 			});
 
 			// Initialize the dimension control.
-			api.controlConstructor["styler-dimension"] = api.Control.extend({
+			api.controlConstructor["smartdocs-dimension"] = api.Control.extend({
 				ready: function () {
-					StylerCustomizer._initDimensionControl();
+					SmartDocsCustomizer._initDimensionControl();
 				},
 			});
 
 			// Initialize the color control.
-			api.controlConstructor["styler-color"] = api.Control.extend({
+			api.controlConstructor["smartdocs-color"] = api.Control.extend({
 				ready: function () {
-					StylerCustomizer._initColorControl(this);
+					SmartDocsCustomizer._initColorControl(this);
 				},
 			});
 		},
@@ -361,11 +361,11 @@
 		 * @method _initSliderControl
 		 */
 		_initSliderControl: function (control) {
-			control.container.find(".styler-slider-reset").on("click", function () {
-				var $slider = $(this).closest("label").find(".styler-range-input"),
+			control.container.find(".smartdocs-slider-reset").on("click", function () {
+				var $slider = $(this).closest("label").find(".smartdocs-range-input"),
 					$text_input = $(this)
 						.closest("label")
-						.find(".styler-range-value-input"),
+						.find(".smartdocs-range-value-input"),
 					value = $text_input.val(),
 					default_value = $slider.data("original");
 
@@ -379,11 +379,11 @@
 				//wp.customize.previewer.refresh();
 			});
 
-			$(".customize-control-styler-slider input[type=range]").each(function () {
+			$(".customize-control-smartdocs-slider input[type=range]").each(function () {
 				var $slider = $(this),
 					$text_input = $(this)
 						.closest("label")
-						.find(".styler-range-value-input");
+						.find(".smartdocs-range-value-input");
 
 				(value = $slider.val()), (min = $slider.attr("min"));
 
@@ -417,14 +417,14 @@
 
 			$mode.forEach(function ($mode) {
 				control.container
-					.find(".styler-slider-reset-" + $mode)
+					.find(".smartdocs-slider-reset-" + $mode)
 					.on("click", function () {
 						var $slider = $(this)
 								.closest("label")
-								.find(".styler-range-input-" + $mode),
+								.find(".smartdocs-range-input-" + $mode),
 							$text_input = $(this)
 								.closest("label")
-								.find(".styler-range-value-input-" + $mode),
+								.find(".smartdocs-range-value-input-" + $mode),
 							value = $text_input.val(),
 							default_value = $slider.data("original");
 
@@ -439,7 +439,7 @@
 					});
 			});
 
-			$(".customize-control-styler-slider-responsive input[type=range]").each(
+			$(".customize-control-smartdocs-slider-responsive input[type=range]").each(
 				function () {
 					var $mode = ["desktop", "tablet", "mobile"];
 					_this = this;
@@ -448,7 +448,7 @@
 						var $slider = $(_this),
 							$text_input = $(_this)
 								.closest("label")
-								.find(".styler-range-value-input" + $mode);
+								.find(".smartdocs-range-value-input" + $mode);
 						(value = $slider.val()), (min = $slider.attr("min"));
 
 						$slider.on("input", function () {
@@ -473,12 +473,12 @@
 		},
 
 		_initDimensionControl: function () {
-			$(".customize-control-styler-dimension .styler-field input").on(
+			$(".customize-control-smartdocs-dimension .smartdocs-field input").on(
 				"keyup change",
 				function () {
 					var $dimension = $(this)
 							.closest("label")
-							.find(".styler-dimension-value"),
+							.find(".smartdocs-dimension-value"),
 						value = $dimension.data("value"),
 						choice = $(this).data("key");
 
@@ -489,7 +489,7 @@
 				}
 			);
 
-			$(".customize-control-styler-dimension .styler-dimension-value").each(
+			$(".customize-control-smartdocs-dimension .smartdocs-dimension-value").each(
 				function () {
 					var $dimension = $(this),
 						value = $dimension.data("value");
@@ -500,7 +500,7 @@
 		},
 
 		_initColorControl: function (control) {
-			control.container.find(".styler-color-control").wpColorPicker({
+			control.container.find(".smartdocs-color-control").wpColorPicker({
 				change: function (event, ui) {
 					var color = ui.color.toString();
 					control.setting.set(color);
@@ -531,5 +531,5 @@
 		},
 	};
 
-	StylerCustomizer.init();
+	SmartDocsCustomizer.init();
 })(jQuery);

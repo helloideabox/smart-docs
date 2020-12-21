@@ -70,7 +70,8 @@ class Autoloader {
 			'Widgets\Category_Widget'      => 'classes/widgets/category.php',
 			'Widgets\Recent_Docs_Widget'   => 'classes/widgets/recent-docs.php',
 			'Customizer'                => 'classes/customizer/customizer.php',
-			'Styler_Customizer_Control' => 'classes/customizer/custom-controls.php',
+			'Customizer_Control' => 'classes/customizer/custom-controls.php',
+			'Dynamic_CSS' 				=> 'classes/dynamic-css.php',
 		);
 	}
 

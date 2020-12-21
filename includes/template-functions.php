@@ -56,8 +56,16 @@ function smartdocs_output_header() {
 
 function smartdocs_archive_content() {
 	if ( ! is_tax( 'smartdocs_category' ) || apply_filters( 'smartdocs_tax_render_categories', false ) ) {
+		$columns        = get_theme_mod( 'smartdocs_archive_columns', 3 );
+		$columns_tablet = get_theme_mod( 'smartdocs_archive_columns_tablet', 2 );
+		$columns_mobile = get_theme_mod( 'smartdocs_archive_columns_mobile', 1 );
+
 		// TODO: Provide arguments from customizer
-		$args = array();
+		$args = array(
+			'columns' => "$columns,$columns_tablet,$columns_mobile",
+			'title_tag' => get_theme_mod( 'smartdocs_archive_category_title_tag' )
+		);
+
 		echo smartdocs_render_categories( $args );
 	}
 

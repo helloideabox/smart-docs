@@ -144,6 +144,18 @@ class Plugin {
 	public $customizer = null;
 
 	/**
+	 * Instance.
+	 *
+	 * Holds the Dynamic CSS Class instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @var object $dynamic_css
+	 */
+	public $dynamic_css = null;
+
+	/**
 	 * Clone.
 	 *
 	 * Disable class cloning and throw an error on object clone.
@@ -233,6 +245,7 @@ class Plugin {
 		$this->template        = new Template();
 		$this->ajax            = new Ajax();
 		$this->customizer      = new Customizer();
+		$this->dynamic_css     = new Dynamic_CSS();
 		$this->widget          = new Widget();
 		$this->structured_data = new Structured_Data();
 
@@ -344,26 +357,25 @@ class Plugin {
 
 		global $post;
 		$post_type = $this->cpt->post_type;
-
-		require_once SMART_DOCS_PATH . 'includes/dynamic-css.php';
-
-		?>
-		<style type="text/css" class="smartdocs-customizer-styles">
-		<?php
+		
 		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
 
-			render_hero_section_styles();
-			render_catgory_item_grid_style();
+			$this->dynamic_css->build_hero_section_style();
+			$this->dynamic_css->build_categories_grid_style();
+			//render_catgory_item_grid_style();
 
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
-
-			if ( is_singular( $post_type ) || has_shortcode( $post->content, 'smartdocs-search' ) ) {
-				render_hero_section_styles();
+			if (
+				is_singular( $post_type ) || 
+				has_shortcode( $post->post_content,  'smartdocs_search' ) || 
+				has_shortcode( $post->post_content,  'smartdocs_categories' )
+			) {
+				$this->dynamic_css->build_hero_section_style();
+				//render_hero_section_styles();
 			}
 		}
-		?>
-		</style>
-		<?php
+
+		$this->dynamic_css->render_styles();
 	}
 
 	/**

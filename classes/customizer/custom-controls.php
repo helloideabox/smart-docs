@@ -1,6 +1,6 @@
 <?php
 /**
- * Styler Custom Controls.
+ * SmartDocs Customizer Custom Controls.
  *
  * Style Custom Controls are designed for quickly creating and using
  * basic custom controls in the customizer. The API currently supports
@@ -29,7 +29,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 	 *
 	 * @since 1.0.0
 	 */
-	final class Styler_Customizer_Control extends \WP_Customize_Control {
+	final class Customizer_Control extends \WP_Customize_Control {
 
 		/**
 		 * Used to connect controls to each other.
@@ -99,31 +99,31 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		protected function render_content() {
 			switch ( $this->type ) {
 
-				case 'styler-line':
+				case 'smartdocs-line':
 					$this->render_line();
 					break;
 
-				case 'styler-slider':
+				case 'smartdocs-slider':
 					$this->render_slider();
 					break;
 
-				case 'styler-slider-responsive':
+				case 'smartdocs-slider-responsive':
 					$this->render_responsive_slider();
 					break;
 
-				case 'styler-dimension':
+				case 'smartdocs-dimension':
 					$this->render_dimension();
 					break;
 
-				case 'styler-color':
+				case 'smartdocs-color':
 					$this->render_color_picker();
 					break;
 
-				case 'styler-section':
+				case 'smartdocs-section':
 					$this->render_section();
 					break;
 
-				case 'styler-sub-section':
+				case 'smartdocs-sub-section':
 					$this->render_sub_section();
 					break;
 			}
@@ -198,14 +198,14 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			echo '<label>';
 			$this->render_content_title();
 			echo '<div class="wrapper">';
-			echo '<input class="styler-range-input" type="range" min="' . $this->choices['min'] . '" max="' . $this->choices['max'] . '" step="' . $this->choices['step'] . '" value="' . $this->value() . '"';
+			echo '<input class="smartdocs-range-input" type="range" min="' . $this->choices['min'] . '" max="' . $this->choices['max'] . '" step="' . $this->choices['step'] . '" value="' . $this->value() . '"';
 			echo 'data-original="' . $this->settings['default']->default . '">';
-			echo '<div class="styler-range-value">';
-			echo '<input type="number" class="styler-range-value-input" value="' . $this->value() . '"';
+			echo '<div class="smartdocs-range-value">';
+			echo '<input type="number" class="smartdocs-range-value-input" value="' . $this->value() . '"';
 			$this->link();
 			echo '>';
 			echo '</div>';
-			echo '<div class="styler-slider-reset">';
+			echo '<div class="smartdocs-slider-reset">';
 			echo '<span class="dashicons dashicons-image-rotate"></span>';
 			echo '</div>';
 			echo '</div>';
@@ -237,18 +237,18 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 						<span class="responsive-toggle">Responsive Icons</span>
 					</div>
 
-					<input class="styler-range-input styler-range-input-<?php echo $mode; ?>" type="range" min="<?php echo $this->choices['min']; ?>" max="<?php echo $this->choices['max']; ?>" step="<?php echo $this->choices['step']; ?>" value="<?php echo $this->value()[ $mode ]['value']; ?>" data-original="<?php echo $this->settings['default']->default[ $mode ]['value']; ?>">
-					<div class="styler-range-value styler-range-value-<?php echo $mode; ?>">
-						<input type="number" id="styler-range-value-input-<?php echo $mode; ?>" value="<?php absint( $this->value()[ $mode ]['value'] ); ?>">
+					<input class="smartdocs-range-input smartdocs-range-input-<?php echo $mode; ?>" type="range" min="<?php echo $this->choices['min']; ?>" max="<?php echo $this->choices['max']; ?>" step="<?php echo $this->choices['step']; ?>" value="<?php echo $this->value()[ $mode ]['value']; ?>" data-original="<?php echo $this->settings['default']->default[ $mode ]['value']; ?>">
+					<div class="smartdocs-range-value smartdocs-range-value-<?php echo $mode; ?>">
+						<input type="number" id="smartdocs-range-value-input-<?php echo $mode; ?>" value="<?php absint( $this->value()[ $mode ]['value'] ); ?>">
 					</div>
-					<div class="styler-slider-reset styler-slider-reset-<?php echo $mode; ?>">
+					<div class="smartdocs-slider-reset smartdocs-slider-reset-<?php echo $mode; ?>">
 						<span class="dashicons dashicons-image-rotate"></span>
 					</div>
 				</div>
 				<?php
 			endforeach;
 
-			echo '<input type="hidden" class="styler-dimension-value" value="' . $value . '" data-value="' . $value . '" ' . $this->get_link() . '/>';
+			echo '<input type="hidden" class="smartdocs-dimension-value" value="' . $value . '" data-value="' . $value . '" ' . $this->get_link() . '/>';
 
 			echo '</label>'; // closing tab.
 		}
@@ -269,12 +269,12 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 				<?php $this->render_content_title(); ?>
 				<div class="wrapper">
 					<?php foreach ( $this->choices as $key => $label ) { ?>
-						<div class="styler-field">
-							<span class="styler-field-label"><?php echo $label; ?></span>
+						<div class="smartdocs-field">
+							<span class="smartdocs-field-label"><?php echo $label; ?></span>
 							<input type="number" data-key="<?php echo $key; ?>" value="<?php echo isset( $field_value[ $key ] ) ? $field_value[ $key ] : ''; ?>" />
 						</div>
 					<?php } ?>
-					<input type="hidden" class="styler-dimension-value" value='<?php echo $value; ?>' data-value='<?php echo $value; ?>' <?php echo $this->get_link(); ?> />
+					<input type="hidden" class="smartdocs-dimension-value" value='<?php echo $value; ?>' data-value='<?php echo $value; ?>' <?php echo $this->get_link(); ?> />
 				</div>
 			</label>
 			<?php
@@ -300,7 +300,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 
 			?>
 			<label><?php $this->render_content_title(); ?></label>
-			<input type="text" class="color-picker styler-color-control" placeholder="#RRGGBB" value="<?php echo $this->value(); ?>"<?php echo $attrs; ?>/>
+			<input type="text" class="color-picker smartdocs-color-control" placeholder="#RRGGBB" value="<?php echo $this->value(); ?>"<?php echo $attrs; ?>/>
 			<?php
 		}
 
@@ -313,7 +313,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 */
 		protected function render_section() {
 			?>
-			<div class="styler-section-title"><?php $this->render_content_title(); ?></div>
+			<div class="smartdocs-section-title"><?php $this->render_content_title(); ?></div>
 			<?php
 		}
 
@@ -326,7 +326,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 */
 		protected function render_sub_section() {
 			?>
-			<div class="styler-sub-section-title"><?php $this->render_content_title(); ?></div>
+			<div class="smartdocs-sub-section-title"><?php $this->render_content_title(); ?></div>
 			<?php
 		}
 
