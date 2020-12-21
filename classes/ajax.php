@@ -36,7 +36,7 @@ class Ajax {
 		$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
 
 		// Post types to include.
-		$post_types = get_option( 'ibx_sd_search_post_types' );
+		$post_types = get_option( 'smartdocs_search_post_types' );
 		$post_types = ! $post_types ? array( Plugin::instance()->cpt->post_type ) : $post_types;
 
 		// WordPress Query arguments.

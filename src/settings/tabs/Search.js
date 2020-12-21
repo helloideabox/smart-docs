@@ -1,12 +1,12 @@
-import { Fragment, useState } from "@wordpress/element";
 import {
 	BaseControl,
 	Button,
 	ToggleControl,
 } from "@wordpress/components";
-import { compose } from '@wordpress/compose';
 import { useEntityProp } from "@wordpress/core-data";
 import { withSelect, useDispatch } from "@wordpress/data";
+import { useState } from "@wordpress/element";
+import { compose } from '@wordpress/compose';
 import { __ } from "@wordpress/i18n";
 
 const Search = ( props ) => {
@@ -17,7 +17,7 @@ const Search = ( props ) => {
 	const [postTypes, setPostTypes] = useEntityProp(
 		"root",
 		"site",
-		"ibx_sd_search_post_types"
+		"smartdocs_search_post_types"
 	);
 
 	const allPostTypes = [];
@@ -44,20 +44,20 @@ const Search = ( props ) => {
 	const [saving, setSaving] = useState(false);
 
 	function handleSaveSettings() {
-		setSaving(true);
+		setSaving( true );
 		wp.data
 			.dispatch("core")
 			.saveSite({
-				ibx_sd_search_post_types: postTypes,
+				smartdocs_search_post_types: postTypes,
 			})
 			.then(function () {
-				createSuccessNotice("Settings Saved!", {
+				createSuccessNotice( __( 'Settings Saved!', 'smart-docs' ), {
 					type: "snackbar",
 				});
 			})
 			.catch(function (e) {
 				createErrorNotice(
-					"There was some error saving settings! \nCheck console for more information on error.",
+					__( "There was some error saving settings! \nCheck console for more information on error.", 'smart-docs' ),
 					{
 						type: "snackbar",
 					}
@@ -65,16 +65,14 @@ const Search = ( props ) => {
 				console.log(e);
 			});
 
-		setSaving(false);
+		setSaving( false );
 	};
 
-	// Function to get values from toggle
 	return (
-		<Fragment>
+		<>
 			<BaseControl
-				id="textarea-1"
-				label="Select Post Types"
-				help="Select post types to search in."
+				label={ __( 'Select Post Types', 'smart-docs' ) }
+				help={ __( 'Select post type(s) to include their articles in search result.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<ul className="post-types-list">
@@ -87,7 +85,7 @@ const Search = ( props ) => {
 									if ( isChecked ) {
 										setSelectedTypes( types => [ ...types, item.value ] );
 									} else {
-										let types = selectedTypes.filter((type) => type !== item.value);
+										let types = selectedTypes.filter( ( type ) => type !== item.value );
 										setSelectedTypes( types );
 									}
 								} }
@@ -102,12 +100,12 @@ const Search = ( props ) => {
 			<Button
 				className="mt-6 mb-3"
 				isPrimary="true"
-				isBusy={saving}
-				onClick={handleSaveSettings}
+				isBusy={ saving }
+				onClick={ handleSaveSettings }
 			>
-				Save Changes
+				{ __( 'Save Changes', 'smart-docs' ) }
 			</Button>
-		</Fragment>
+		</>
 	);
 }
 

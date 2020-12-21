@@ -1,7 +1,6 @@
 import { TabPanel } from "@wordpress/components";
 
 import General from "./tabs/General";
-import Layout from "./tabs/Layout";
 import Search from "./tabs/Search";
 
 export default function Tabs() {

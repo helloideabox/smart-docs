@@ -16,7 +16,7 @@
  * @since 1.0.0
  */
 function smartdocs_hero_title() {
-	$title = get_option( 'ibx_sd_archive_page_title' );
+	$title = get_option( 'smartdocs_archive_page_title' );
 	if ( empty( $title ) ) {
 		$title = __( 'Documentation', 'smart-docs' );
 	}
@@ -25,7 +25,7 @@ function smartdocs_hero_title() {
 }
 
 function smartdocs_archive_description() {
-	$desc = get_option( 'ibx_sd_archive_page_description' );
+	$desc = get_option( 'smartdocs_archive_description' );
 
 	if ( ! empty( $desc ) ) {
 		echo wpautop( $desc );
@@ -56,19 +56,9 @@ function smartdocs_output_header() {
 
 function smartdocs_archive_content() {
 	if ( ! is_tax( 'smartdocs_category' ) || apply_filters( 'smartdocs_tax_render_categories', false ) ) {
-
-		$column_lg = (int) get_theme_mod( 'smartdocs_archive_columns', 3 );
-		$column_md = (int) get_theme_mod( 'smartdocs_archive_columns_tablet', 2 );
-		$column_sm = (int) get_theme_mod( 'smartdocs_archive_columns_mobile', 1 );
-		$columns   = implode( ',', array( $column_lg, $column_md, $column_sm ) );
-
-		$item_title_wrapper = get_theme_mod( 'smartdocs_archive_list_item_title_wrapper', 'h5' );
-
-		$args = array(
-			'columns'   => $columns,
-			'title_tag' => $item_title_wrapper,
-		);
-		smartdocs_render_categories( $args );
+		// TODO: Provide arguments from customizer
+		$args = array();
+		echo smartdocs_render_categories( $args );
 	}
 
 	if ( is_tax( 'smartdocs_category' ) ) {

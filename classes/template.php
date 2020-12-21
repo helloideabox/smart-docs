@@ -42,8 +42,8 @@ class Template {
 	 */
 	public function __construct() {
 
-		$override_single      = get_option( 'ibx_sd_enable_single_template', '1' );
-		$override_tax_archive = get_option( 'ibx_sd_enable_category_and_tag_template', '1' );
+		$override_single      = get_option( 'smartdocs_enable_single_template', '1' );
+		$override_tax_archive = get_option( 'smartdocs_enable_category_and_tag_template', '1' );
 
 		if ( '1' == $override_single ) {
 			$this->override_single = true;

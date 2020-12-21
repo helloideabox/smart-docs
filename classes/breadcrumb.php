@@ -84,12 +84,12 @@ class Breadcrumb {
 		$use_doc_archive = get_option( 'smartdocs_use_built_in_doc_archive' );
 		$docs_page_id = get_option( 'smartdocs_custom_doc_page' );
 
-		if ( $use_doc_archive && ! empty( $docs_page_id ) ) {
+		if ( ! $use_doc_archive && ! empty( $docs_page_id ) ) {
 			$docs_page    	= get_post( $docs_page_id );
 			$docs_title 	= $docs_page ? get_the_title( $docs_page ) : '';
 			$permalink 		= $docs_page ? get_permalink( $docs_page ) : '';
 		} else {
-			$docs_title = get_option( 'ibx_sd_archive_page_title' );
+			$docs_title = get_option( 'smartdocs_archive_page_title' );
 		}
 
 		if ( ! isset( $docs_title ) || empty( $docs_title ) ) {

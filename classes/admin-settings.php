@@ -88,7 +88,6 @@ class Admin {
 	 * @return void
 	 */
 	public function register_plugin_settings() {
-
 		/**
 		 * Register settings for documentation archive/home page title
 		 */
@@ -116,41 +115,24 @@ class Admin {
 		);
 
 		/**
-		 * Register settings for documentation archive/home page title
+		 * Register settings for documentation archive page title
 		 */
 		register_setting(
 			'smart-docs-settings-group',
-			'ibx_sd_archive_page_title',
+			'smartdocs_archive_page_title',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
-				'default'      => esc_html__( 'Docs', 'smart-docs' ),
+				'default'      => esc_html__( 'Documentation', 'smart-docs' ),
 			)
 		);
 
 		/**
-		 * Register settings for documentation archive/home page title
+		 * Register settings for documentation archive page slug.
 		 */
 		register_setting(
 			'smart-docs-settings-group',
-			'ibx_sd_archive_page_description',
-			array(
-				'type'         => 'string',
-				'show_in_rest' => true,
-				'default'      => esc_html__( 'This is the description for the documentation.', 'smart-docs' ),
-			)
-		);
-
-		/**
-		 * Register setting for documentation root slug.
-		 *
-		 * When set the documentation archive page will be accessible at
-		 * https://example.com/smart-docs/.
-		 */
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_archive_page_slug',
+			'smartdocs_archive_page_slug',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
@@ -161,10 +143,9 @@ class Admin {
 		/**
 		 * Register documentation category slug.
 		 */
-
 		register_setting(
 			'smart-docs-settings-group',
-			'ibx_sd_category_slug',
+			'smartdocs_category_slug',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
@@ -175,10 +156,9 @@ class Admin {
 		/**
 		 * Register documentation tag slug.
 		 */
-
 		register_setting(
 			'smart-docs-settings-group',
-			'ibx_sd_tag_slug',
+			'smartdocs_tag_slug',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,
@@ -189,10 +169,9 @@ class Admin {
 		/**
 		 * Enable custom template for single doc page.
 		 */
-
 		register_setting(
 			'smart-docs-settings-group',
-			'ibx_sd_enable_single_template',
+			'smartdocs_enable_single_template',
 			array(
 				'type'         => 'boolean',
 				'show_in_rest' => true,
@@ -203,43 +182,9 @@ class Admin {
 		/**
 		 * Enable custom template for categories and tags archive page.
 		 */
-
 		register_setting(
 			'smart-docs-settings-group',
-			'ibx_sd_enable_category_and_tag_template',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		$this->register_doc_homepage_settings();
-
-		$this->register_single_page_layout_settings();
-
-		$this->register_archive_page_layout_settings();
-
-		$this->register_search_page_layout_settings();
-	}
-
-	/**
-	 * Documentation Home Page Settings.*/
-	protected function register_doc_homepage_settings() {
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_doc_page_layout',
-			array(
-				'type'         => 'string',
-				'show_in_rest' => true,
-				'default'      => 'list',
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_doc_page_count',
+			'smartdocs_enable_category_and_tag_template',
 			array(
 				'type'         => 'boolean',
 				'show_in_rest' => true,
@@ -249,204 +194,7 @@ class Admin {
 
 		register_setting(
 			'smart-docs-settings-group',
-			'ibx_sd_doc_page_authors',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_doc_page_search',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		$this->register_doc_homepage_list_layout_settings();
-		$this->register_doc_homepage_grid_layout_settings();
-	}
-
-	/**
-	 * Documentation Home Page List Layout Settings.
-	 * */
-	protected function register_doc_homepage_list_layout_settings() {
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_doc_page_list_layout_columns',
-			array(
-				'type'         => 'number',
-				'show_in_rest' => true,
-				'default'      => '1',
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_doc_page_list_layout_icon',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-	}
-
-	/**
-	 * Documentation Home Page Grid Layout Settings.*/
-	protected function register_doc_homepage_grid_layout_settings() {
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_doc_page_grid_layout_columns',
-			array(
-				'type'         => 'number',
-				'show_in_rest' => true,
-				'default'      => '1',
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_doc_page_grid_layout_icon',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-	}
-
-	/**
-	 * Single Page Layout Settings.*/
-	protected function register_single_page_layout_settings() {
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_single_page_sidebar',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_single_page_permalink',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_single_page_sidebar',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_single_page_breadcrumbs',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_single_page_comments',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_single_social_share_options',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_single_ratings',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-	}
-
-	/**
-	 * Archive Page Layout Settings.*/
-	protected function register_archive_page_layout_settings() {
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_archive_sidebar',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_archive_layout',
-			array(
-				'type'         => 'string',
-				'show_in_rest' => true,
-				'default'      => 'list',
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_archive_search',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_archive_suggested',
-			array(
-				'type'         => 'boolean',
-				'show_in_rest' => true,
-				'default'      => true,
-			)
-		);
-	}
-
-	/**
-	 * Search Tab Layout Settings.*/
-	protected function register_search_page_layout_settings() {
-
-		register_setting(
-			'smart-docs-settings-group',
-			'ibx_sd_search_post_types',
+			'smartdocs_search_post_types',
 			array(
 				'type'         => 'array',
 				'show_in_rest' => array(
@@ -460,8 +208,8 @@ class Admin {
 				'default'      => array( 'smart-docs' ),
 			)
 		);
-	}
 
+	}
 
 	/**
 	 * Function to enque admin side script(Settings page).
@@ -564,7 +312,7 @@ class Admin {
 			return;
 		}
 
-		$docs_slug = get_option( 'ibx_sd_archive_page_slug' );
+		$docs_slug = get_option( 'smartdocs_archive_page_slug' );
 
 		if ( empty( $docs_slug ) ) {
 			$docs_slug = 'smart-docs';

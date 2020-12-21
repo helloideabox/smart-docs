@@ -265,11 +265,6 @@ textarea {
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
-
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
@@ -621,10 +616,6 @@ video {
   font-weight: 500 !important;
 }
 
-.font-semibold {
-  font-weight: 600 !important;
-}
-
 .font-bold {
   font-weight: 700 !important;
 }
@@ -637,8 +628,8 @@ video {
   font-size: 0.875rem !important;
 }
 
-.text-xl {
-  font-size: 1.25rem !important;
+.text-lg {
+  font-size: 1.125rem !important;
 }
 
 .text-5xl {
@@ -647,16 +638,6 @@ video {
 
 .m-5 {
   margin: 1.25rem !important;
-}
-
-.my-3 {
-  margin-top: 0.75rem !important;
-  margin-bottom: 0.75rem !important;
-}
-
-.my-5 {
-  margin-top: 1.25rem !important;
-  margin-bottom: 1.25rem !important;
 }
 
 .mx-auto {
@@ -680,14 +661,6 @@ video {
   margin-bottom: 0.75rem !important;
 }
 
-.ml-4 {
-  margin-left: 1rem !important;
-}
-
-.ml-5 {
-  margin-left: 1.25rem !important;
-}
-
 .mt-6 {
   margin-top: 1.5rem !important;
 }
@@ -698,11 +671,6 @@ video {
 
 .p-10 {
   padding: 2.5rem !important;
-}
-
-.py-3 {
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
 }
 
 .px-4 {
@@ -726,18 +694,10 @@ video {
   padding-left: 1.25rem !important;
 }
 
-.shadow {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
-}
-
 .text-gray-500 {
   --text-opacity: 1 !important;
   color: #a0aec0 !important;
   color: rgba(160, 174, 192, var(--text-opacity)) !important;
-}
-
-.w-16 {
-  width: 4rem !important;
 }
 
 .w-full {
@@ -762,10 +722,6 @@ video {
 
 .row-span-2 {
   grid-row: span 2 / span 2 !important;
-}
-
-.duration-200 {
-  transition-duration: 200ms !important;
 }
 
 @keyframes spin {
@@ -908,6 +864,10 @@ video {
   }
 }
 
+.smartdocs-settings-header{
+  box-shadow:0px 0px 10px 0 rgba(0,0,0,0.1)
+}
+
 .smartdocs-settings-tabs{
   box-shadow:rgba(0,0,0,0.2) 0px 1px 3px 0px,rgba(0,0,0,0.14) 0px 1px 1px 0px,rgba(0,0,0,0.12) 0px 2px 1px -1px;
   height:fit-content
@@ -923,6 +883,10 @@ video {
 
 .smartdocs-settings-tabs .post-types-list{
   margin-top:20px
+}
+
+.smartdocs-settings-tabs .components-text-control__input{
+  font-size:14px
 }
 
 #tab-panel-0-general-view,#tab-panel-0-search-view{
@@ -974,6 +938,12 @@ video {
 .smartdocs-layout-settings-tabs .components-tab-panel__tab-content{
   width: 100%;
   padding: 1.25rem
+}
+
+.smartdocs-side-card{
+  border:none !important;
+  border-radius:0 !important;
+  box-shadow:rgba(0,0,0,0.2) 0px 1px 3px 0px,rgba(0,0,0,0.14) 0px 1px 1px 0px,rgba(0,0,0,0.12) 0px 2px 1px -1px
 }
 
 @media (min-width: 640px) {

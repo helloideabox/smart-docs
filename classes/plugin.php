@@ -319,7 +319,11 @@ class Plugin {
 			$should_enqueue = true;
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
 			$localized_vars['feedback_nonce'] = wp_create_nonce( "smartdocs_feedback_{$post->ID}" );
-			if ( is_singular( $post_type ) || has_shortcode( $post->content, 'smartdocs-search' ) ) {
+			if (
+				is_singular( $post_type ) || 
+				has_shortcode( $post->post_content,  'smartdocs_search' ) || 
+				has_shortcode( $post->post_content,  'smartdocs_categories' )
+			) {
 				$should_enqueue = true;
 			}
 		}

@@ -6,13 +6,10 @@ import {
 	ToggleControl,
 	SelectControl,
 } from "@wordpress/components";
+import { withSelect, useDispatch } from '@wordpress/data';
+import { useState } from "@wordpress/element";
 import { compose } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
-import { Fragment, useState } from "@wordpress/element";
-import { useEntityProp } from "@wordpress/core-data";
-import { __, sprintf } from "@wordpress/i18n";
-import { useDispatch } from "@wordpress/data";
-
+import { __ } from "@wordpress/i18n";
 
 const General = ( props ) => {
 	if ( 'object' !== typeof props.options || 0 === Object.keys( props.options ).length ) {
@@ -21,70 +18,21 @@ const General = ( props ) => {
 
 	const [ options, setOptions ] = useState( props.options );
 
-	console.log(options);
-
-
-	const { createSuccessNotice, createErrorNotice } = useDispatch(
-		"core/notices"
-	);
-
-	/**
-	 * [Getter, Setter] for SmartDocs Settings
-	 *
-	 * @since 1.0.0
-	 */
-	// const [title, setTitle] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_archive_page_title"
-	// );
-	// const [archiveSlug, setArchiveSlug] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_archive_page_slug"
-	// );
-	// const [categorySlug, setCategorySlug] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_category_slug"
-	// );
-	// const [tagSlug, setTagSlug] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_tag_slug"
-	// );
-	// const [singleTemplate, setSingleTemplate] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_enable_single_template"
-	// );
-	// const [archiveTax, setArchiveTax] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"ibx_sd_enable_category_and_tag_template"
-	// );
-	// const [customDocPage, setCustomDocPage] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"smartdocs_custom_doc_page"
-	// );
-
-	// const [useBuiltInDocArchive, setUseBuiltInDocArchive] = useEntityProp(
-	// 	"root",
-	// 	"site",
-	// 	"smartdocs_use_built_in_doc_archive"
-	// );
-
 	const pageList = [];
 
+	// Build a list of pages.
 	if ( props.pages ) {
-		pageList.push({ label: __( 'Select a page', 'smart-docs' ), value: null });
-		props.pages.forEach( (page) => {
+		pageList.push( { label: __( 'Select a page', 'smart-docs' ), value: null } );
+		props.pages.forEach( ( page ) => {
 			pageList.push( { value: page.id, label: page.title.rendered } );
 		});
 	} else {
 		pageList.push( { label: __( 'Loading...', 'smart-docs' ), value: null } );
 	}
+
+	const { createSuccessNotice, createErrorNotice } = useDispatch(
+		"core/notices"
+	);
 	
 	/**
 	 * Button Saving state
@@ -95,22 +43,12 @@ const General = ( props ) => {
 	
 	const handleSaveSettings = () => {
 		setSaving( true );
-	
-		const status = wp.data
+
+		wp.data
 			.dispatch("core")
-			.saveSite({
-				ibx_sd_archive_page_title: title,
-				ibx_sd_archive_page_description: description,
-				ibx_sd_archive_page_slug: archiveSlug,
-				ibx_sd_category_slug: categorySlug,
-				ibx_sd_tag_slug: tagSlug,
-				ibx_sd_enable_single_template: singleTemplate,
-				ibx_sd_enable_category_and_tag_template: archiveTax,
-				smartdocs_use_built_in_doc_archive: useBuiltInDocArchive,
-				smartdocs_custom_doc_page: customDocPage,
-			})
+			.saveSite( options )
 			.then(function () {
-				createSuccessNotice("Settings Saved!", {
+				createSuccessNotice( __( 'Settings Saved!', 'smart-docs' ), {
 					type: "snackbar",
 				});
 	
@@ -119,7 +57,7 @@ const General = ( props ) => {
 			})
 			.catch(function (e) {
 				createErrorNotice(
-					"There was some error saving settings! \nCheck console for more information on error.",
+					__( "There was some error saving settings! \nCheck console for more information on error.", 'smart-docs' ),
 					{
 						type: "snackbar",
 					}
@@ -131,108 +69,96 @@ const General = ( props ) => {
 	};
 
 	return (
-		<Fragment>
+		<>
 			<ToggleControl
 				className="mt-2 mb-2"
-				label={__("Use built-in Doc archive")}
+				label={ __( 'Use built-in Docs archive', 'smart-docs' ) }
 				help={__(
-					"Note: if you disable built-in documentation archive, you can use shortcode or page builder widgets to design your documentation page."
+					'Note: If you disable built-in documentation archive, you can use shortcode or page builder widgets to design your own documentation page.',
+					'smart-docs'
 				)}
 				checked={ options.smartdocs_use_built_in_doc_archive }
 				onChange={ ( value ) => { setOptions( { ...options, smartdocs_use_built_in_doc_archive: value } ) } }
 			/>
-			<>
-				{ ! options.smartdocs_use_built_in_doc_archive && (
+
+			{ ! options.smartdocs_use_built_in_doc_archive && (
+				<BaseControl
+					label={ __( 'Select Custom Page', 'smart-docs' ) }
+					className="mb-3"
+				>
 					<SelectControl
-						label={__("Select Custom Doc Page")}
+						className="mt-2 block mb-2"
 						labelPosition="top"
-						id="smartdocs-option_select-custom-doc-page"
 						options={ pageList }
 						value={ options.smartdocs_custom_doc_page }
 						onChange={ ( value ) => setOptions( { ...options, smartdocs_custom_doc_page: value } ) }
 					/>
-				)}
-			</>
+				</BaseControl>
+			) }
+
 			<BaseControl
-				label="Documentation Page Title"
-				help="Edit to change the default title for the documentation page."
+				label={ __( 'Hero Title', 'smart-docs' ) }
+				help={ __( 'Edit to change the default title for the header section.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<TextControl
-					id="sd_option-doc_homepage_title"
 					className="mt-2 block mb-2"
-					placeholder={__("Documentation")}
-					value={ options.ibx_sd_archive_page_title }
-					onChange={ (value) => setOptions( { ...options, ibx_sd_archive_page_title: value } ) }
+					placeholder={ __( 'Documentation', 'smart-docs' ) }
+					value={ options.smartdocs_archive_page_title }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_archive_page_title: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
-				label="Documentation Page Description"
-				help="Edit to change the default description for the documentation page."
-				className="mb-3"
-			>
-				<TextareaControl
-					id="sd_option-doc_homepage_description"
-					className="mt-2 block mb-2"
-					value={options.ibx_sd_archive_page_description}
-					placeholder={__("Add a meaningful description for the doc here.")}
-					onChange={ (value) => setOptions( { ...options, ibx_sd_archive_page_description: value } ) }
-				/>
-			</BaseControl>
-			<BaseControl
-				label="Documentation Archive Slug"
-				help="Edit to change the default slug for the documentation page."
+				label={ __( 'Rewrite Archive Slug', 'smart-docs' ) }
+				help={ __( 'Edit to change the default slug for the documentation archive page.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<TextControl
-					id="sd_option-doc_homepage_slug"
 					className="mt-2 block mb-2"
-					placeholder={__("Add documentation archive/home page slug")}
-					value={ options.ibx_sd_archive_page_slug }
-					onChange={ (value) => setOptions( { ...options, ibx_sd_archive_page_slug: value } ) }
+					placeholder={ __( 'Defaults to "docs"', 'smart-docs' ) }
+					value={ options.smartdocs_archive_page_slug }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_archive_page_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
-				label="Documentation Category Slug"
-				help="Edit to change the default slug for the documentation category."
+				label={ __( 'Rewrite Category Slug', 'smart-docs' ) }
+				help={ __( 'Edit to change the default slug for the documentation category page.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<TextControl
-					id="sd_option-doc_category_slug"
 					className="mt-2 block mb-2"
-					placeholder={__("Add custom category slug")}
-					value={ options.ibx_sd_category_slug }
-					onChange={ (value) => setOptions( { ...options, ibx_sd_category_slug: value } ) }
+					placeholder={ __( 'Defaults to "docs-category"', 'smart-docs' ) }
+					value={ options.smartdocs_category_slug }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_category_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
-				label="Documentation Tag Slug"
-				help="Edit to change the default slug for the documentation tag."
+				label={ __( 'Rewrite Tag Slug', 'smart-docs' ) }
+				help={ __( 'Edit to change the default slug for the documentation tag.', 'smart-docs' ) }
 			>
 				<TextControl
-					id="sd_option-doc_tag_slug"
 					className="mt-2 block mb-2"
-					placeholder={__("Add custom tag slug")}
-					value={ options.ibx_sd_tag_slug }
-					onChange={ (value) => setOptions( { ...options, ibx_sd_tag_slug: value } ) }
+					placeholder={ __( 'Defaults to "docs-tag"', 'smart-docs' ) }
+					value={ options.smartdocs_tag_slug }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_tag_slug: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
 				className="mt-3 mb-3"
 				id="smartdocs-custom-templates"
-				label={__("Custom Templates")}
+				label={ __( 'Template', 'smart-docs' ) }
 			>
 				<ToggleControl
 					className="mt-2 mb-2"
-					label={__("Use built-in template for Docs single page")}
-					checked={ options.ibx_sd_enable_single_template }
-					onChange={ ( value ) => setOptions( { ...options, ibx_sd_enable_single_template: value } ) }
+					label={ __( 'Use built-in template for Docs single page', 'smart-docs' ) }
+					checked={ options.smartdocs_enable_single_template }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_single_template: value } ) }
 				/>
 				<ToggleControl
 					className="mt-2 mb-2"
-					label={__("Use built-in template for Docs archive page")}
-					checked={ options.ibx_sd_enable_category_and_tag_template }
-					onChange={ ( value ) => setOptions( { ...options, ibx_sd_enable_category_and_tag_template: value } ) }
+					label={ __( 'Use built-in template for Docs category page', 'smart-docs' ) }
+					checked={ options.smartdocs_enable_category_and_tag_template }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_category_and_tag_template: value } ) }
 				/>
 			</BaseControl>
 			<Button
@@ -241,9 +167,9 @@ const General = ( props ) => {
 				isBusy={ saving }
 				onClick={ handleSaveSettings }
 			>
-				Save Changes
+				{ __( 'Save Changes', 'smart-docs' ) }
 			</Button>
-		</Fragment>
+		</>
 	);
 }
 
@@ -252,12 +178,12 @@ export default compose(
 		const optionKeys = [
 			'smartdocs_use_built_in_doc_archive',
 			'smartdocs_custom_doc_page',
-			'ibx_sd_archive_page_title',
-			'ibx_sd_archive_page_slug',
-			'ibx_sd_category_slug',
-			'ibx_sd_tag_slug',
-			'ibx_sd_enable_single_template',
-			'ibx_sd_enable_category_and_tag_template',
+			'smartdocs_archive_page_title',
+			'smartdocs_archive_page_slug',
+			'smartdocs_category_slug',
+			'smartdocs_tag_slug',
+			'smartdocs_enable_single_template',
+			'smartdocs_enable_category_and_tag_template',
 		];
 		
 		const settings = select( 'core' ).getEntityRecord( 'root', 'site' );
