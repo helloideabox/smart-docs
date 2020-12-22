@@ -632,10 +632,6 @@ video {
   font-size: 1.125rem !important;
 }
 
-.text-5xl {
-  font-size: 3rem !important;
-}
-
 .m-5 {
   margin: 1.25rem !important;
 }
@@ -667,10 +663,6 @@ video {
 
 .mb-8 {
   margin-bottom: 2rem !important;
-}
-
-.p-10 {
-  padding: 2.5rem !important;
 }
 
 .px-4 {
@@ -801,10 +793,25 @@ video {
 }
 
 .smartdocs-settings-header{
-  box-shadow:0px 0px 10px 0 rgba(0,0,0,0.1)
+  box-shadow:0px 0px 10px 0 rgba(0,0,0,0.1);
+  padding:10px;
+  align-items:center
+}
+
+.smartdocs-settings-header img{
+  border:none
+}
+
+.smartdocs-settings-header .smartdocs-version{
+  background:#eee;
+  padding:1px 5px;
+  color:#888
 }
 
 .smartdocs-settings-tabs{
+  --wp-admin-theme-color: #6127e0;
+  --wp-admin-theme-color-darker-10: darken( #6127e0, 10 );
+  --wp-admin-theme-color-darker-20: darken( #6127e0, 20 );
   box-shadow:rgba(0,0,0,0.2) 0px 1px 3px 0px,rgba(0,0,0,0.14) 0px 1px 1px 0px,rgba(0,0,0,0.12) 0px 2px 1px -1px;
   height:fit-content
 }
@@ -813,8 +820,28 @@ video {
   font-weight: 700
 }
 
+.smartdocs-settings-tabs .components-tab-panel__tabs-item.is-active{
+  box-shadow:inset 0 0 0 1.5px transparent,inset 0 -4px 0 0 #6127e0
+}
+
+.smartdocs-settings-tabs .components-tab-panel__tabs-item:hover,.smartdocs-settings-tabs .components-tab-panel__tabs-item:focus{
+  color:#6127e0
+}
+
 .smartdocs-settings-tabs>.components-tab-panel__tabs{
   border-bottom:1px solid #e2e4e7
+}
+
+.smartdocs-settings-tabs .components-form-toggle.is-checked .components-form-toggle__track{
+  background-color:#6127e0
+}
+
+.smartdocs-settings-tabs .components-button.is-primary{
+  background:#6127e0
+}
+
+.smartdocs-settings-tabs .components-button.is-primary:hover:not(:disabled){
+  background:#4c1bb9
 }
 
 .smartdocs-settings-tabs .post-types-list{

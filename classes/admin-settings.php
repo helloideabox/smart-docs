@@ -279,8 +279,8 @@ class Admin {
 			array(
 				'ajaxurl'    => admin_url( 'admin-ajax.php' ),
 				'ajax_nonce' => wp_create_nonce( 'docs_option' ),
-				'post_types' => $types,
 				'version'    => SMART_DOCS_VERSION,
+				'logo_url'	 => SMART_DOCS_URL . 'assets/images/smartdocs-logo.png'
 			)
 		);
 	}

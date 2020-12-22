@@ -1,3 +1,5 @@
+$accentColor: #6127e0;
+
 @import "tailwindcss/base";
 
 @import "tailwindcss/components";
@@ -15,18 +17,46 @@
 
 .smartdocs-settings-header {
 	box-shadow: 0px 0px 10px 0 rgba(0,0,0,0.1);
+	padding: 10px;
+	align-items: center;
+	img {
+		border: none;
+	}
+	.smartdocs-version {
+		background: #eee;
+		padding: 1px 5px;
+		color: #888;
+	}
 }
 
 /* Main Tabs */
 .smartdocs-settings-tabs {
+	--wp-admin-theme-color: #6127e0;
+	--wp-admin-theme-color-darker-10: darken( #6127e0, 10 );
+	--wp-admin-theme-color-darker-20: darken( #6127e0, 20 );
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
 		rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
 	height: fit-content;
 	.components-tab-panel__tabs-item {
 		@apply font-bold;
+		&.is-active {
+			box-shadow: inset 0 0 0 1.5px transparent, inset 0 -4px 0 0 $accentColor;
+		}
+		&:hover, &:focus {
+			color: $accentColor;
+		}
 	}
 	> .components-tab-panel__tabs {
 		border-bottom: 1px solid rgb(226, 228, 231);
+	}
+	.components-form-toggle.is-checked .components-form-toggle__track {
+		background-color: $accentColor;
+	}
+	.components-button.is-primary {
+		background: $accentColor;
+		&:hover:not(:disabled) {
+			background: darken( $accentColor, 10 );
+		}
 	}
 	.post-types-list {
 		margin-top: 20px;
