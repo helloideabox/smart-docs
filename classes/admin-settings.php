@@ -226,7 +226,7 @@ class Admin {
 		$script_asset_path = "$dir/assets/admin/index.asset.php";
 		if ( ! file_exists( $script_asset_path ) ) {
 			throw new Error(
-				'You need to run `npm start` or `npm run build` for the "create-block/docs2" block first.'
+				'You need to run `npm start` or `npm run build` first.'
 			);
 		}
 
@@ -249,28 +249,6 @@ class Admin {
 			array( 'wp-components' ),
 			filemtime( "$dir/$editor_css" )
 		);
-
-		$exclude_post_types = array( 'attachment', 'elementor_library' );
-
-		// To get all the registered post types.
-		$post_types = get_post_types(
-			array(
-				'public'             => true,
-				'publicly_queryable' => true,
-			),
-			'objects'
-		);
-
-		$types = array();
-
-		foreach ( $post_types as $type ) {
-
-			if ( true === in_array( $type->name, $exclude_post_types, true ) ) {
-				continue;
-			}
-
-			$types[ $type->name ] = $type->labels->name;
-		}
 
 		// Localising the script or creating global variable in script to send the number of post types created through ajax.
 		wp_localize_script(

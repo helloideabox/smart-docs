@@ -21,10 +21,11 @@ const Search = ( props ) => {
 	);
 
 	const allPostTypes = [];
+	const excludeTypes = [ 'attachment', 'fl-builder-template', 'elementor_library' ];
 
 	if ( props.postTypes ) {
 		props.postTypes.forEach( (type) => {
-			if ( type.viewable && 'attachment' !== type.slug ) {
+			if ( type.viewable && ! excludeTypes.includes( type.slug ) ) {
 				allPostTypes.push( { value: type.slug, label: type.name } );
 			}
 		});
