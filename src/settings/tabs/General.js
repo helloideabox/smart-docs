@@ -145,7 +145,6 @@ const General = ( props ) => {
 			</BaseControl>
 			<BaseControl
 				className="mt-3 mb-3"
-				id="smartdocs-custom-templates"
 				label={ __( 'Template', 'smart-docs' ) }
 			>
 				<ToggleControl
@@ -159,6 +158,18 @@ const General = ( props ) => {
 					label={ __( 'Use built-in template for Docs category page', 'smart-docs' ) }
 					checked={ options.smartdocs_enable_category_and_tag_template }
 					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_category_and_tag_template: value } ) }
+				/>
+			</BaseControl>
+			<BaseControl
+				label={ __( 'Your Support Page URL', 'smart-docs' ) }
+				help={ __( 'Please enter your support or contact page URL.', 'smart-docs' ) }
+				className="smartdocs-field--support-page mt-3"
+			>
+				<TextControl
+					className="mt-2 block mb-2"
+					placeholder={ __( 'https://example.com/contact/', 'smart-docs' ) }
+					value={ options.smartdocs_support_page_url }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_support_page_url: value } ) }
 				/>
 			</BaseControl>
 			<Button
@@ -184,6 +195,7 @@ export default compose(
 			'smartdocs_tag_slug',
 			'smartdocs_enable_single_template',
 			'smartdocs_enable_category_and_tag_template',
+			'smartdocs_support_page_url',
 		];
 		
 		const settings = select( 'core' ).getEntityRecord( 'root', 'site' );

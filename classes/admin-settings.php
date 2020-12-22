@@ -176,6 +176,19 @@ class Admin {
 			)
 		);
 
+		/**
+		 * Register setting for support page URL.
+		 */
+		register_setting(
+			'smart-docs-settings-group',
+			'smartdocs_support_page_url',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => '',
+			)
+		);
+
 		register_setting(
 			'smart-docs-settings-group',
 			'smartdocs_search_post_types',

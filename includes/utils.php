@@ -216,6 +216,10 @@ function smartdocs_get_docs_page_link() {
 	return $permalink;
 }
 
+function smartdocs_get_support_page_link() {
+	return get_option( 'smartdocs_support_page_url', '#' );
+}
+
 function smartdocs_get_category_thumbnail_url( $term_id ) {
 
 	$smartdocs_category_thumb_id     = get_term_meta( $term_id, 'thumbnail_id', true );
