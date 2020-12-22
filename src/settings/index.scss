@@ -1,4 +1,4 @@
-$accentColor: #6127e0;
+$accentColor: #3F51B5;
 
 @import "tailwindcss/base";
 
@@ -31,9 +31,9 @@ $accentColor: #6127e0;
 
 /* Main Tabs */
 .smartdocs-settings-tabs {
-	--wp-admin-theme-color: #6127e0;
-	--wp-admin-theme-color-darker-10: darken( #6127e0, 10 );
-	--wp-admin-theme-color-darker-20: darken( #6127e0, 20 );
+	--wp-admin-theme-color: #3F51B5;
+	--wp-admin-theme-color-darker-10: darken( #3F51B5, 10 );
+	--wp-admin-theme-color-darker-20: darken( #3F51B5, 20 );
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
 		rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
 	height: fit-content;

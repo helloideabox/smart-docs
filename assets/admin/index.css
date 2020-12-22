@@ -809,9 +809,9 @@ video {
 }
 
 .smartdocs-settings-tabs{
-  --wp-admin-theme-color: #6127e0;
-  --wp-admin-theme-color-darker-10: darken( #6127e0, 10 );
-  --wp-admin-theme-color-darker-20: darken( #6127e0, 20 );
+  --wp-admin-theme-color: #3F51B5;
+  --wp-admin-theme-color-darker-10: darken( #3F51B5, 10 );
+  --wp-admin-theme-color-darker-20: darken( #3F51B5, 20 );
   box-shadow:rgba(0,0,0,0.2) 0px 1px 3px 0px,rgba(0,0,0,0.14) 0px 1px 1px 0px,rgba(0,0,0,0.12) 0px 2px 1px -1px;
   height:fit-content
 }
@@ -821,11 +821,11 @@ video {
 }
 
 .smartdocs-settings-tabs .components-tab-panel__tabs-item.is-active{
-  box-shadow:inset 0 0 0 1.5px transparent,inset 0 -4px 0 0 #6127e0
+  box-shadow:inset 0 0 0 1.5px transparent,inset 0 -4px 0 0 #3F51B5
 }
 
 .smartdocs-settings-tabs .components-tab-panel__tabs-item:hover,.smartdocs-settings-tabs .components-tab-panel__tabs-item:focus{
-  color:#6127e0
+  color:#3F51B5
 }
 
 .smartdocs-settings-tabs>.components-tab-panel__tabs{
@@ -833,15 +833,15 @@ video {
 }
 
 .smartdocs-settings-tabs .components-form-toggle.is-checked .components-form-toggle__track{
-  background-color:#6127e0
+  background-color:#3F51B5
 }
 
 .smartdocs-settings-tabs .components-button.is-primary{
-  background:#6127e0
+  background:#3F51B5
 }
 
 .smartdocs-settings-tabs .components-button.is-primary:hover:not(:disabled){
-  background:#4c1bb9
+  background:#32408f
 }
 
 .smartdocs-settings-tabs .post-types-list{
