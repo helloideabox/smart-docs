@@ -55,5 +55,7 @@ add_action( 'smartdocs_primary_content_area', 'smartdocs_category_title', 30 );
 
 add_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 );
 
+add_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta', 5 );
+
 add_action( 'smartdocs_after_single_doc', 'smartdocs_doc_actions', 5 );
 add_action( 'smartdocs_after_single_doc', 'smartdocs_doc_feedback', 6 );

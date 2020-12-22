@@ -7,11 +7,6 @@
 			$(".smartdocs-header").css("background-color", new_value);
 		});
 	});
-	wp.customize("smartdocs_hero_bg_image_overlay_color", function (value) {
-		value.bind(function (new_value) {
-			$(".smartdocs-header:before").css("background-color", new_value);
-		});
-	});
 
 	/* Archive Title Color */
 	wp.customize("smartdocs_hero_title_color", function (value) {

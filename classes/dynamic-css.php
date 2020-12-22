@@ -26,8 +26,8 @@ class Dynamic_CSS {
 
 	public function __construct() {
 		$this->breakpoints = array(
-			'tablet' => get_option( 'smartdocs_breakpoint_medium', 1024 ),
-			'mobile' => get_option( 'smartdocs_breakpoint_small', 768 ),
+			'tablet' => $this->get_mod( 'breakpoint_medium', 1024 ),
+			'mobile' => $this->get_mod( 'breakpoint_small', 768 ),
 		);
 	}
 
@@ -70,6 +70,7 @@ class Dynamic_CSS {
 
 			// Background overlay.
 			$this->add_rule( '.smartdocs-header:before', array(
+				'content'	=> '',
 				'position' 	=> 'absolute',
 				'top' 		=> '0px',
 				'left' 		=> '0px',
@@ -91,21 +92,21 @@ class Dynamic_CSS {
 	}
 
 	public function build_categories_grid_style() {
-		$gap 						= $this->get_mod( 'smartdocs_archive_columns_gap' );
-		$title_font_size 			= $this->get_mod( 'smartdocs_archive_category_title_font_size' );
-		$title_font_size_tablet 	= $this->get_mod( 'smartdocs_archive_category_title_font_size_tablet' );
-		$title_font_size_mobile 	= $this->get_mod( 'smartdocs_archive_category_title_font_size_mobile' );
-		$title_color 				= $this->get_mod( 'smartdocs_archive_category_title_color' );
-		$description_font_size 		= $this->get_mod( 'smartdocs_archive_category_description_font_size' );
-		$description_font_size_tablet = $this->get_mod( 'smartdocs_archive_category_description_font_size_tablet' );
-		$description_font_size_mobile = $this->get_mod( 'smartdocs_archive_category_description_font_size_mobile' );
-		$description_color 			= $this->get_mod( 'smartdocs_archive_category_description_color' );
-		$action_font_size 			= $this->get_mod( 'smartdocs_archive_category_action_font_size' );
-		$action_font_size_tablet 	= $this->get_mod( 'smartdocs_archive_category_action_font_size_tablet' );
-		$action_font_size_mobile 	= $this->get_mod( 'smartdocs_archive_category_action_font_size_mobile' );
-		$action_color 				= $this->get_mod( 'smartdocs_archive_category_action_color' );
-		$action_bg_color 			= $this->get_mod( 'smartdocs_archive_category_action_bg_color' );
-		$action_border_color 		= $this->get_mod( 'smartdocs_archive_category_action_border_color' );
+		$gap 						= $this->get_mod( 'archive_columns_gap' );
+		$title_font_size 			= $this->get_mod( 'archive_category_title_font_size' );
+		$title_font_size_tablet 	= $this->get_mod( 'archive_category_title_font_size_tablet' );
+		$title_font_size_mobile 	= $this->get_mod( 'archive_category_title_font_size_mobile' );
+		$title_color 				= $this->get_mod( 'archive_category_title_color' );
+		$description_font_size 		= $this->get_mod( 'archive_category_description_font_size' );
+		$description_font_size_tablet = $this->get_mod( 'archive_category_description_font_size_tablet' );
+		$description_font_size_mobile = $this->get_mod( 'archive_category_description_font_size_mobile' );
+		$description_color 			= $this->get_mod( 'archive_category_description_color' );
+		$action_font_size 			= $this->get_mod( 'archive_category_action_font_size' );
+		$action_font_size_tablet 	= $this->get_mod( 'archive_category_action_font_size_tablet' );
+		$action_font_size_mobile 	= $this->get_mod( 'archive_category_action_font_size_mobile' );
+		$action_color 				= $this->get_mod( 'archive_category_action_color' );
+		$action_bg_color 			= $this->get_mod( 'archive_category_action_bg_color' );
+		$action_border_color 		= $this->get_mod( 'archive_category_action_border_color' );
 
 		if ( false !== $gap ) {
 			$this->add_rule( '.smartdocs-categories', array(
@@ -224,7 +225,11 @@ class Dynamic_CSS {
 
 						echo "$selector { ";
 							foreach ( $props as $prop => $value ) {
-								echo "$prop: $value;";
+								if ( 'content' === $prop && empty( $value ) ) {
+									echo 'content: " ";';
+								} else {
+									echo "$prop: $value;";
+								}
 							}
 						echo " } ";
 					}

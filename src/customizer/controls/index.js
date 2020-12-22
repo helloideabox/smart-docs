@@ -9,9 +9,9 @@
 	 * Helper class for the main Customizer interface.
 	 *
 	 * @since 1.0.0
-	 * @class SmartCustomizer
+	 * @class SmartDocsCustomizer
 	 */
-	var SmartCustomizer = {
+	var SmartDocsCustomizer = {
 		/**
 		 * Initializer
 		 *
@@ -19,10 +19,10 @@
 		 * @method init
 		 */
 		init: function () {
-			SmartCustomizer._toggleResponsiveControls();
-			SmartCustomizer._initResponsiveToggle();
-			SmartCustomizer._initPreview();
-			SmartCustomizer._initBackgroundControl();
+			SmartDocsCustomizer._toggleResponsiveControls();
+			SmartDocsCustomizer._initResponsiveToggle();
+			SmartDocsCustomizer._initPreview();
+			SmartDocsCustomizer._initBackgroundControl();
 		},
 
 		/**
@@ -74,13 +74,13 @@
 			});
 
 			devices.find(".preview-desktop").on("click", function () {
-				SmartCustomizer._toggleResponsiveControls();
+				SmartDocsCustomizer._toggleResponsiveControls();
 			});
 			devices.find(".preview-tablet").on("click", function () {
-				SmartCustomizer._toggleResponsiveControls();
+				SmartDocsCustomizer._toggleResponsiveControls();
 			});
 			devices.find(".preview-mobile").on("click", function () {
-				SmartCustomizer._toggleResponsiveControls();
+				SmartDocsCustomizer._toggleResponsiveControls();
 			});
 		},
 
@@ -133,10 +133,10 @@
 		 * Set Preview URLs
 		 */
 		_initPreview: function () {
-			SmartCustomizer._setPreview("smartdocs_archive_settings");
-			SmartCustomizer._setPreview("smartdocs_search_settings");
-			SmartCustomizer._setPreview("smartdocs_single_doc_settings");
-			SmartCustomizer._setPreview("smartdocs_hero_section");
+			SmartDocsCustomizer._setPreview("smartdocs_archive_settings");
+			SmartDocsCustomizer._setPreview("smartdocs_search_settings");
+			SmartDocsCustomizer._setPreview("smartdocs_single_doc_settings");
+			SmartDocsCustomizer._setPreview("smartdocs_hero_section");
 		},
 
 		/**
@@ -204,5 +204,5 @@
 		},
 	};
 	/**Initiate JS */
-	api.bind("ready", SmartCustomizer.init);
+	api.bind("ready", SmartDocsCustomizer.init);
 })(jQuery);

@@ -63,7 +63,7 @@ function smartdocs_archive_content() {
 		// TODO: Provide arguments from customizer
 		$args = array(
 			'columns' => "$columns,$columns_tablet,$columns_mobile",
-			'title_tag' => get_theme_mod( 'smartdocs_archive_category_title_tag' )
+			'title_tag' => get_theme_mod( 'smartdocs_archive_category_title_tag', 'h5' )
 		);
 
 		echo smartdocs_render_categories( $args );
@@ -120,6 +120,10 @@ function smartdocs_entry_footer() {
 
 function smartdocs_entry_content() {
 	the_content();
+}
+
+function smartdocs_entry_meta() {
+	smartdocs_get_template( 'single-doc-meta' );
 }
 
 function smartdocs_categorized_articles() {

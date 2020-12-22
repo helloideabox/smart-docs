@@ -4,13 +4,13 @@ use SmartDocs\Customizer_Control;
 $wp_customize->add_section(
 	'smartdocs_single_doc_settings',
 	array(
-		'title'    => __( 'Single Doc', 'smart-docs' ),
+		'title'    => __( 'Docs Single', 'smart-docs' ),
 		'priority' => 3,
 	)
 );
 
 $wp_customize->add_setting(
-	'smartdocs_single_doc_display_last_updated_on',
+	'smartdocs_single_doc_display_meta',
 	array(
 		'default'    => 'after_content',
 		'capability' => 'edit_theme_options',
@@ -18,11 +18,11 @@ $wp_customize->add_setting(
 );
 
 $wp_customize->add_control(
-	'smartdocs_single_doc_display_last_updated_on_control',
+	'smartdocs_single_doc_display_meta_control',
 	array(
-		'label'       => __( 'Last Updated On', 'smart-docs' ),
+		'label'       => __( 'Show Meta Data', 'smart-docs' ),
 		'section'     => 'smartdocs_single_doc_settings',
-		'settings'    => 'smartdocs_single_doc_display_last_updated_on',
+		'settings'    => 'smartdocs_single_doc_display_meta',
 		'type'        => 'select',
 		'choices'     => array(
 			'after_content' => __( 'After Content', 'smart-docs' ),
@@ -43,7 +43,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_single_doc_display_action_section_control',
 	array(
-		'label'       => __( 'Action Section', 'smart-docs' ),
+		'label'       => __( 'Show Action Content', 'smart-docs' ),
 		'section'     => 'smartdocs_single_doc_settings',
 		'settings'    => 'smartdocs_single_doc_display_action_section',
 		'type'        => 'select',
@@ -65,7 +65,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_single_doc_display_feedback_section_control',
 	array(
-		'label'       => __( 'Feedback Section', 'smart-docs' ),
+		'label'       => __( 'Show Feedback Content', 'smart-docs' ),
 		'section'     => 'smartdocs_single_doc_settings',
 		'settings'    => 'smartdocs_single_doc_display_feedback_section',
 		'type'        => 'select',

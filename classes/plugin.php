@@ -334,8 +334,8 @@ class Plugin {
 			$localized_vars['feedback_nonce'] = wp_create_nonce( "smartdocs_feedback_{$post->ID}" );
 			if (
 				is_singular( $post_type ) || 
-				has_shortcode( $post->post_content,  'smartdocs_search' ) || 
-				has_shortcode( $post->post_content,  'smartdocs_categories' )
+				has_shortcode( $post->post_content, 'smartdocs_search' ) || 
+				has_shortcode( $post->post_content, 'smartdocs_categories' )
 			) {
 				$should_enqueue = true;
 			}
@@ -354,24 +354,22 @@ class Plugin {
 	 * @return void
 	 */
 	public function handle_customizer_styles() {
-
 		global $post;
+
 		$post_type = $this->cpt->post_type;
 		
 		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
 
 			$this->dynamic_css->build_hero_section_style();
 			$this->dynamic_css->build_categories_grid_style();
-			//render_catgory_item_grid_style();
+
+		} elseif ( is_singular( $post_type ) ) {
+
+			$this->dynamic_css->build_hero_section_style();
 
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
-			if (
-				is_singular( $post_type ) || 
-				has_shortcode( $post->post_content,  'smartdocs_search' ) || 
-				has_shortcode( $post->post_content,  'smartdocs_categories' )
-			) {
-				$this->dynamic_css->build_hero_section_style();
-				//render_hero_section_styles();
+			if ( has_shortcode( $post->post_content, 'smartdocs_categories' ) ) {
+				$this->dynamic_css->build_categories_grid_style();
 			}
 		}
 

@@ -48,7 +48,7 @@ class Customizer {
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_customizer_controls' ) );
 		add_action( 'customize_preview_init', array( $this, 'enqueue_customizer_preview_script' ) );
 		add_action( 'customize_controls_print_styles', array( $this, 'sync_customizer_breakpoints' ) );
-		add_action( 'wp', array( $this, 'sync_customizer_settings' ) );
+		add_action( 'template_redirect', array( $this, 'perform_template_actions' ) );
 	}
 
 	public function add_sections( $wp_customize ) {
@@ -279,33 +279,12 @@ class Customizer {
 	}
 
 	public function enqueue_customizer_controls() {
-
-		$dir = SMART_DOCS_PATH;
-
-		$script_asset_path = "$dir/assets/customizer/controls/index.asset.php";
-		if ( ! file_exists( $script_asset_path ) ) {
-			throw new \Error(
-				'You need to run `npm start` or `npm run build` for the "create-block/docs2" block first.'
-			);
-		}
-
-		$index_js     = 'assets/customizer/controls/index.js';
-		$script_asset = require $script_asset_path;
-
-		wp_enqueue_script(
-			'smartdocs-customizer-controls',
-			SMART_DOCS_URL . $index_js,
-			array_push( $script_asset['dependencies'], 'customize-controls' ),
-			$script_asset['version'],
-			true
-		);
-
 		// Enqueue styles.
 		wp_enqueue_style( 'smartdocs-customizer', SMART_DOCS_URL . 'assets/css/customizer.css', array(), SMART_DOCS_VERSION );
 
 		// Enqueue scripts.
-		wp_enqueue_script(
-			'wp-color-picker-alpha',
+		wp_register_script(
+			'smartdocs-wp-color-picker-alpha',
 			SMART_DOCS_URL . 'assets/js/customizer/wp-color-picker-alpha.js',
 			array( 'wp-color-picker' ),
 			SMART_DOCS_VERSION,
@@ -315,7 +294,7 @@ class Customizer {
 		wp_enqueue_script(
 			'smartdocs-customizer',
 			SMART_DOCS_URL . 'assets/js/customizer/customizer.js',
-			array( 'jquery', 'wp-color-picker-alpha' ),
+			array( 'jquery', 'smartdocs-wp-color-picker-alpha' ),
 			SMART_DOCS_VERSION,
 			true
 		);
@@ -338,6 +317,26 @@ class Customizer {
 			'cpt_slug' => Plugin::instance()->cpt->get_cpt_rewrite_slug(),
 			'single_doc_url' => $single_doc_url
 		) );
+
+		$dir = SMART_DOCS_PATH;
+
+		$script_asset_path = "$dir/assets/customizer/controls/index.asset.php";
+		if ( ! file_exists( $script_asset_path ) ) {
+			throw new \Error(
+				'You need to run `npm start` or `npm run build` for the "create-block/docs2" block first.'
+			);
+		}
+
+		$index_js     = 'assets/customizer/controls/index.js';
+		$script_asset = require $script_asset_path;
+
+		wp_enqueue_script(
+			'smartdocs-customizer-controls',
+			SMART_DOCS_URL . $index_js,
+			array_push( $script_asset['dependencies'], 'customize-controls', 'smartdocs-customizer' ),
+			$script_asset['version'],
+			true
+		);
 	}
 
 	/**
@@ -465,8 +464,7 @@ class Customizer {
 		<?php
 	}
 
-	public function sync_customizer_settings() {
-
+	public function perform_template_actions() {
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_breadcrumbs' ) ) {
 			if ( is_singular( Plugin::instance()->cpt->post_type ) ) {
 				remove_action( 'smartdocs_primary_content_area', 'smartdocs_breadcrumb', 20 );
@@ -474,7 +472,6 @@ class Customizer {
 		}
 
 		if ( 'no' === get_theme_mod( 'smartdocs_taxonomy_archives_display_breadcrumbs' ) ) {
-
 			if ( is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
 				remove_action( 'smartdocs_primary_content_area', 'smartdocs_breadcrumb', 20 );
 			}
@@ -488,43 +485,28 @@ class Customizer {
 			remove_action( 'smartdocs_after_single_doc', 'smartdocs_doc_feedback', 6 );
 		}
 
-		if ( 'after_content' === get_theme_mod( 'smartdocs_single_doc_display_last_updated_on' ) ) {
+		$entry_meta = get_theme_mod( 'smartdocs_single_doc_display_meta' );
 
-			if ( has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer' ) ) {
-
-				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer', 10 );
-
+		if ( 'after_content' === $entry_meta ) {
+			if ( has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_meta' ) ) {
+				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_meta', 5 );
 			}
-
-			if ( ! has_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer' ) ) {
-
-				add_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 );
-
+			if ( ! has_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta' ) ) {
+				add_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta', 5 );
 			}
-		} elseif ( 'after_title' === get_theme_mod( 'smartdocs_single_doc_display_last_updated_on' ) ) {
-
-			if ( has_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer' ) ) {
-
-				remove_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 );
-
+		} elseif ( 'after_title' === $entry_meta ) {
+			if ( has_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta' ) ) {
+				remove_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta', 5 );
 			}
-
-			if ( ! has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer' ) ) {
-
-				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer', 10 );
-
+			if ( ! has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_meta' ) ) {
+				add_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_meta', 5 );
 			}
-		} elseif ( 'hide' === get_theme_mod( 'smartdocs_single_doc_display_last_updated_on' ) ) {
-
-			if ( has_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer' ) ) {
-
-				remove_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 );
-
+		} elseif ( 'hide' === $entry_meta ) {
+			if ( has_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta' ) ) {
+				remove_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta', 5 );
 			}
-			if ( has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer' ) ) {
-
-				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_footer', 10 );
-
+			if ( has_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_meta' ) ) {
+				remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_entry_meta', 5 );
 			}
 		}
 	}

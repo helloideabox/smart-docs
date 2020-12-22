@@ -85,7 +85,6 @@ $wp_customize->add_setting(
 	array(
 		'default'    => '',
 		'capability' => 'edit_theme_options',
-		'transport'  => 'postMessage',
 	)
 );
 
