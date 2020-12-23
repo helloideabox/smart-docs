@@ -2,7 +2,7 @@
 /**
  * SmartDocs Customizer Custom Controls.
  *
- * Style Custom Controls are designed for quickly creating and using
+ * Custom Controls are designed for quickly creating and using
  * basic custom controls in the customizer. The API currently supports
  * following controls.
  *
@@ -11,10 +11,6 @@
  *  - 4-Box Dimension Control
  *  - Color Picker with Alpha Channel and Palettes
  *  - Section Title
- *
- * @author Achal Jain <achal@ideaboxcreations.com>
- *
- * @version 1.0.0
  *
  * @since 1.0.0
  *
@@ -342,28 +338,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		 * @param array  $args Control arguments.
 		 */
 		public function render_responsive_control( $customizer, $key, $args ) {
-
-			/***
-				$args = array(
-				'settings' => array(
-					'default' => 'default_value',
-					'key' => '',
-				),
-				'control' => array(
-					'label' => 'Control Label',
-					'description' => 'This is control description',
-					'section' => 'section control is linked appears in',
-					'setting' => 'setting control is linked to',
-					'classes' => 'additional classes to be added to the contorl',
-					'priority' => '10',
-				),
-			)
-			*/
-
 			$label      = $args['control']['label'];
 			$priority   = $args['control']['priority'];
 			$responsive = array( 'desktop', 'tablet', 'mobile' );
-
 		}
 	}
 }

@@ -2,8 +2,7 @@
 
 use SmartDocs\Customizer_Control;
 
-// Docs page Settings.
-
+// Archive.
 $wp_customize->add_section(
 	'smartdocs_archive_settings',
 	array(

@@ -248,30 +248,16 @@ class Customizer {
 	}
 
 	/**
-	 * Function to enque admin side script(Settings page).
+	 * Enqueue customizer preview scripts.
 	 *
-	 * @throws Error Warn user regarding a process that is mandatory.
 	 * @return void
 	 */
 	public function enqueue_customizer_preview_script() {
-
-		$dir = SMART_DOCS_PATH;
-
-		$script_asset_path = "$dir/assets/customizer/preview/index.asset.php";
-		if ( ! file_exists( $script_asset_path ) ) {
-			throw new \Error(
-				'You need to run `npm start` or `npm run build` for the "create-block/docs2" block first.'
-			);
-		}
-
-		$index_js     = 'assets/customizer/preview/index.js';
-		$script_asset = require $script_asset_path;
-
 		wp_enqueue_script(
 			'smartdocs-customizer-preview',
-			SMART_DOCS_URL . $index_js,
-			array_push( $script_asset['dependencies'], 'customize-preview' ),
-			$script_asset['version'],
+			SMART_DOCS_URL . 'assets/js/customizer/preview.js',
+			array( 'customize-preview' ),
+			SMART_DOCS_VERSION,
 			true
 		);
 
@@ -318,23 +304,11 @@ class Customizer {
 			'single_doc_url' => $single_doc_url
 		) );
 
-		$dir = SMART_DOCS_PATH;
-
-		$script_asset_path = "$dir/assets/customizer/controls/index.asset.php";
-		if ( ! file_exists( $script_asset_path ) ) {
-			throw new \Error(
-				'You need to run `npm start` or `npm run build` for the "create-block/docs2" block first.'
-			);
-		}
-
-		$index_js     = 'assets/customizer/controls/index.js';
-		$script_asset = require $script_asset_path;
-
 		wp_enqueue_script(
 			'smartdocs-customizer-controls',
-			SMART_DOCS_URL . $index_js,
-			array_push( $script_asset['dependencies'], 'customize-controls', 'smartdocs-customizer' ),
-			$script_asset['version'],
+			SMART_DOCS_URL . 'assets/js/customizer/control.js',
+			array( 'customize-controls', 'smartdocs-customizer' ),
+			SMART_DOCS_VERSION,
 			true
 		);
 	}
@@ -454,11 +428,11 @@ class Customizer {
 		?>
 		<style>
 			.preview-tablet .wp-full-overlay-main {
-				width: 1024px;
+				width: <?php echo get_theme_mod( 'smartdocs_breakpoint_medium', 1024 ); ?>px;
 			}
 	
 			.preview-mobile .wp-full-overlay-main {
-				width: 720px;
+				width: <?php echo get_theme_mod( 'smartdocs_breakpoint_medium', 768 ); ?>px;
 			}
 		</style>
 		<?php

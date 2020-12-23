@@ -9,9 +9,9 @@
 	 * Helper class for the main Customizer interface.
 	 *
 	 * @since 1.0.0
-	 * @class SmartDocsCustomizer
+	 * @class SmartDocsCustomizerControl
 	 */
-	var SmartDocsCustomizer = {
+	var SmartDocsCustomizerControl = {
 		/**
 		 * Initializer
 		 *
@@ -19,10 +19,10 @@
 		 * @method init
 		 */
 		init: function () {
-			SmartDocsCustomizer._toggleResponsiveControls();
-			SmartDocsCustomizer._initResponsiveToggle();
-			SmartDocsCustomizer._initPreview();
-			SmartDocsCustomizer._initBackgroundControl();
+			SmartDocsCustomizerControl._toggleResponsiveControls();
+			SmartDocsCustomizerControl._initResponsiveToggle();
+			SmartDocsCustomizerControl._initPreview();
+			SmartDocsCustomizerControl._initBackgroundControl();
 		},
 
 		/**
@@ -74,13 +74,13 @@
 			});
 
 			devices.find(".preview-desktop").on("click", function () {
-				SmartDocsCustomizer._toggleResponsiveControls();
+				SmartDocsCustomizerControl._toggleResponsiveControls();
 			});
 			devices.find(".preview-tablet").on("click", function () {
-				SmartDocsCustomizer._toggleResponsiveControls();
+				SmartDocsCustomizerControl._toggleResponsiveControls();
 			});
 			devices.find(".preview-mobile").on("click", function () {
-				SmartDocsCustomizer._toggleResponsiveControls();
+				SmartDocsCustomizerControl._toggleResponsiveControls();
 			});
 		},
 
@@ -133,10 +133,10 @@
 		 * Set Preview URLs
 		 */
 		_initPreview: function () {
-			SmartDocsCustomizer._setPreview("smartdocs_archive_settings");
-			SmartDocsCustomizer._setPreview("smartdocs_search_settings");
-			SmartDocsCustomizer._setPreview("smartdocs_single_doc_settings");
-			SmartDocsCustomizer._setPreview("smartdocs_hero_section");
+			SmartDocsCustomizerControl._setPreview("smartdocs_archive_settings");
+			SmartDocsCustomizerControl._setPreview("smartdocs_search_settings");
+			SmartDocsCustomizerControl._setPreview("smartdocs_single_doc_settings");
+			SmartDocsCustomizerControl._setPreview("smartdocs_hero_section");
 		},
 
 		/**
@@ -204,5 +204,5 @@
 		},
 	};
 	/**Initiate JS */
-	api.bind("ready", SmartDocsCustomizer.init);
+	api.bind("ready", SmartDocsCustomizerControl.init);
 })(jQuery);

@@ -1,6 +1,7 @@
 <?php
 use SmartDocs\Customizer_Control;
 
+// Single doc.
 $wp_customize->add_section(
 	'smartdocs_single_doc_settings',
 	array(

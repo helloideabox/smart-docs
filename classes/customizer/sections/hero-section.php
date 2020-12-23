@@ -2,8 +2,7 @@
 
 use SmartDocs\Customizer_Control;
 
-// Hero Section Settings.
-
+// Hero/Header Section.
 $wp_customize->add_section(
 	'smartdocs_hero_section',
 	array(
