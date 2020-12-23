@@ -26,7 +26,7 @@ function smartdocs_render_search_box( $args = array() ) {
 	$args = apply_filters( 'smartdocs_search_input_args', $args );
 
 	ob_start();
-	smartdocs_get_template( 'search', $args );
+	smartdocs_get_template( 'search-form', $args );
 	return ob_get_clean();
 }
 add_shortcode( 'smartdocs_search', 'smartdocs_render_search_box' );
