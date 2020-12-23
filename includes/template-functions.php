@@ -16,7 +16,7 @@
  * @since 1.0.0
  */
 function smartdocs_hero_title() {
-	$title = get_option( 'smartdocs_archive_page_title' );
+	$title = get_option( 'smartdocs_hero_title' );
 	if ( empty( $title ) ) {
 		$title = __( 'Documentation', 'smart-docs' );
 	}
@@ -24,8 +24,8 @@ function smartdocs_hero_title() {
 	return $title;
 }
 
-function smartdocs_archive_description() {
-	$desc = get_option( 'smartdocs_archive_description' );
+function smartdocs_hero_description() {
+	$desc = get_option( 'smartdocs_hero_description' );
 
 	if ( ! empty( $desc ) ) {
 		echo wpautop( $desc );
@@ -50,7 +50,7 @@ function smartdocs_output_content_wrapper_end() {
 	<?php
 }
 
-function smartdocs_output_header() {
+function smartdocs_header() {
 	smartdocs_get_template( 'header' );
 }
 

@@ -27,9 +27,13 @@ get_header();
  */
 do_action( 'smartdocs_before_main_content' );
 
+	/**
+	 * Hook: smartdocs_before_archive_content
+	 * 
+	 * @hooked smartdocs_output_content_area_wrapper_start - 10
+	 */
 	do_action( 'smartdocs_before_archive_content' );
 
-	// Post condition and loop for displaying post.
 	if ( have_posts() ) {
 
 		/**
@@ -43,6 +47,11 @@ do_action( 'smartdocs_before_main_content' );
 		esc_html_e( 'Not yet started. Add some categories to see them on the SmartDocs Archive Page.', 'smart-docs' );
 	}
 
+	/**
+	 * Hook: smartdocs_after_archive_content
+	 * 
+	 * @hooked smartdocs_output_content_area_wrapper_end - 10
+	 */
 	do_action( 'smartdocs_after_archive_content' );
 
 	/**

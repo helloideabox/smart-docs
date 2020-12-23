@@ -20,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Hook: smartdocs_before_single_doc
+ * 
+ * @hooked smartdocs_output_content_area_wrapper_start - 10
  */
 do_action( 'smartdocs_before_single_doc' );
 
@@ -30,17 +32,40 @@ if ( post_password_required() ) {
 ?>
 
 	<article class="<?php smartdocs_post_class( 'entry smartdocs-entry' ); ?>" itemscope itemtype="http://schema.org/Article">
-		<?php do_action( 'smartdocs_before_single_doc_content' ); ?>	
+		<?php
+			/**
+			 * Hook: smartdocs_before_single_doc_content
+			 * 
+			 * @hooked smartdocs_entry_header - 5
+			 */
+			do_action( 'smartdocs_before_single_doc_content' );
+		?>
 
 		<div class="entry-content smartdocs-entry-content" itemprop="articleBody">
-			<?php do_action( 'smartdocs_single_doc_content' ); ?>
+			<?php
+				/**
+				 * Hook: smartdocs_single_doc_content
+				 * 
+				 * @hooked smartdocs_entry_content - 10
+				 */
+				do_action( 'smartdocs_single_doc_content' );
+			?>
 		</div>
 		
-		<?php do_action( 'smartdocs_after_single_doc_content' ); ?>
+		<?php
+			/**
+			 * Hook: smartdocs_after_single_doc_content
+			 * 
+			 * @hooked smartdocs_entry_footer - 10
+			 */
+			do_action( 'smartdocs_after_single_doc_content' );
+		?>
 	</article>
 
 <?php
 /**
  * Hook: smartdocs_after_single_doc
+ * 
+ * @hooked smartdocs_output_content_area_wrapper_end - 10
  */
 do_action( 'smartdocs_after_single_doc' );

@@ -20,7 +20,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <header class="entry-header smartdocs-entry-header">
-	<?php do_action(  'smartdocs_before_single_doc_title' ); ?>
+	<?php
+		/**
+		 * Hook: smartdocs_before_single_doc_title
+		 */
+		do_action(  'smartdocs_before_single_doc_title' );
+	?>
+
 	<h1 class="smartdocs-entry-title" itemprop="headline"><?php the_title(); ?></h1>
-	<?php do_action( 'smartdocs_after_single_doc_title' ); ?>
+
+	<?php
+		/**
+		 * Hook: smartdocs_after_single_doc_title
+		 */
+		do_action( 'smartdocs_after_single_doc_title' );
+	?>
 </header>

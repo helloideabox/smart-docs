@@ -85,9 +85,6 @@ class Admin {
 			)
 		);
 
-		/**
-		 * Register settings for documentation archive/home page title
-		 */
 		register_setting(
 			'smart-docs-settings-group',
 			'smartdocs_custom_doc_page',
@@ -99,11 +96,11 @@ class Admin {
 		);
 
 		/**
-		 * Register settings for documentation archive page title
+		 * Register settings for documentation header title
 		 */
 		register_setting(
 			'smart-docs-settings-group',
-			'smartdocs_archive_page_title',
+			'smartdocs_hero_title',
 			array(
 				'type'         => 'string',
 				'show_in_rest' => true,

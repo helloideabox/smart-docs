@@ -104,8 +104,8 @@ const General = ( props ) => {
 				<TextControl
 					className="mt-2 block mb-2"
 					placeholder={ __( 'Documentation', 'smart-docs' ) }
-					value={ options.smartdocs_archive_page_title }
-					onChange={ ( value ) => setOptions( { ...options, smartdocs_archive_page_title: value } ) }
+					value={ options.smartdocs_hero_title }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_hero_title: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -189,7 +189,7 @@ export default compose(
 		const optionKeys = [
 			'smartdocs_use_built_in_doc_archive',
 			'smartdocs_custom_doc_page',
-			'smartdocs_archive_page_title',
+			'smartdocs_hero_title',
 			'smartdocs_archive_page_slug',
 			'smartdocs_category_slug',
 			'smartdocs_tag_slug',

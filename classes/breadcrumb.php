@@ -89,7 +89,7 @@ class Breadcrumb {
 			$docs_title 	= $docs_page ? get_the_title( $docs_page ) : '';
 			$permalink 		= $docs_page ? get_permalink( $docs_page ) : '';
 		} else {
-			$docs_title = get_option( 'smartdocs_archive_page_title' );
+			$docs_title = get_option( 'smartdocs_hero_title' );
 		}
 
 		if ( ! isset( $docs_title ) || empty( $docs_title ) ) {
