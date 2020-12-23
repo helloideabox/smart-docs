@@ -29,18 +29,11 @@ add_action( 'smartdocs_before_main_content', 'smartdocs_output_content_wrapper_s
 add_action( 'smartdocs_after_main_content', 'smartdocs_output_content_wrapper_end', 10 );
 
 /**
- * Header description.
- *
- * @see smartdocs_hero_description()
- */
-add_action( 'smartdocs_hero_description', 'smartdocs_hero_description', 10 );
-
-/**
- * Search form.
+ * Header elements.
  *
  * @see smartdocs_search_form()
  */
-add_action( 'smartdocs_before_header_end', 'smartdocs_search_form', 10 );
+add_action( 'smartdocs_header_content', 'smartdocs_search_form', 10 );
 
 /**
  * Archive content.

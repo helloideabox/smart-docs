@@ -27,20 +27,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php
 		/**
-		 * Hook: smartdocs_hero_description.
-		 *
-		 * @hooked smartdocs_hero_description - 10
-		 */
-		do_action( 'smartdocs_hero_description' );
-		?>
-
-		<?php
-		/**
-		 * Hook: smartdocs_before_header_end.
+		 * Hook: smartdocs_header_content.
 		 *
 		 * @hooked smartdocs_search_form - 10
 		 */
-		do_action( 'smartdocs_before_header_end' );
+		do_action( 'smartdocs_header_content' );
 		?>
 	</div>
 </div>
