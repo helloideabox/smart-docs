@@ -20,6 +20,7 @@
 						smartdocs.ajaxurl,
 						{
 							query: query,
+							nonce: smartdocs.nonce,
 							action: 'smartdocs_search_results'
 						},
 						function( response ) {

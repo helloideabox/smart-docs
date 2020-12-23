@@ -1,18 +1,24 @@
 <?php
-
-namespace SmartDocs;
-
 /**
- * Ajax Class.
- *
  * Ajax class is responsible for handling the XHR events and responses.
- * 
- * @package SmartDocs
+ *
+ * @package SmartDocs\Classes
  * @since 1.0.0
  */
 
-class Ajax {
+namespace SmartDocs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+/**
+ * Ajax class.
+ */
+class Ajax {
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'wp_ajax_smartdocs_on_settings_save', array( $this, 'on_settings_save' ) );
 
@@ -25,22 +31,39 @@ class Ajax {
 		add_action( 'wp_ajax_nopriv_smartdocs_doc_feedback', array( $this, 'handle_doc_feedback' ) );
 	}
 
+	/**
+	 * Fires on settings save event.
+	 *
+	 * @since 1.0.0
+	 */
 	public function on_settings_save() {
 		flush_rewrite_rules();
 		wp_send_json_success();
 	}
 
 	/**
-	 * For render the search result.
+	 * To render the search result.
+	 *
+	 * @since 1.0.0
 	 */
 	public function get_search_results() {
+		// Check for the security to determine we get the request from the correct page.
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( wp_unslash( $_POST['nonce'] ),  'smartdocs_front' ) ) {
+			wp_send_json_error();
+		}
+
+		// Check whether we got search query or not.
+		if ( ! isset( $_POST['query'] ) ) {
+			wp_send_json_error();
+		}
+
 		$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
 
 		// Post types to include.
 		$post_types = get_option( 'smartdocs_search_post_types' );
-		$post_types = ! $post_types ? array( Plugin::instance()->cpt->post_type ) : $post_types;
+		$post_types = empty( $post_types ) ? array( Plugin::instance()->cpt->post_type ) : $post_types;
 
-		// WordPress Query arguments.
+		// WP_Query arguments.
 		$query_args = array(
 			'post_type'   => $post_types,
 			'post_status' => 'publish',
@@ -54,7 +77,6 @@ class Ajax {
 		?>
 
 		<ul class="smartdocs-search-result">
-
 			<?php
 			if ( $search_results->have_posts() ) :
 				while ( $search_results->have_posts() ) :
@@ -69,7 +91,6 @@ class Ajax {
 				echo '<li class="not-found">' . esc_attr__( 'No documentation found.', 'smart-docs' ) . '</li>';
 			endif;
 			?>
-
 		</ul>
 		<?php
 
@@ -79,6 +100,11 @@ class Ajax {
 		wp_send_json_success( $content );
 	}
 
+	/**
+	 * Handle doc upvotes and downvotes. Save them in post meta.
+	 *
+	 * @since 1.0.0
+	 */
 	public function handle_doc_feedback() {
 		// Check for the post ID first.
 		$post_id = isset( $_POST['post_id'] ) ? absint( wp_unslash( $_POST['post_id'] ) ) : 0;
@@ -89,12 +115,13 @@ class Ajax {
 		}
 
 		// Check whether we got valid feedback type or not.
-		if ( ! isset( $_POST['type'] ) || ! in_array( $_POST['type'], array( 'upvote', 'downvote' ) ) ) {
+		if ( ! isset( $_POST['type'] ) || ! in_array( wp_unslash( $_POST['type'] ), array( 'upvote', 'downvote' ) ) ) {
 			wp_send_json_error();
 		}
 
 		$type = sanitize_text_field( wp_unslash( $_POST['type'] ) );
-		$user_feedbacks = isset( $_COOKIE['smartdocs_feedback'] ) ? explode( ',', $_COOKIE['smartdocs_feedback'] ) : array();
+		$saved_cookie = isset( $_COOKIE['smartdocs_feedback'] ) ? wp_unslash( $_COOKIE['smartdocs_feedback'] ) : false;
+		$user_feedbacks = $saved_cookie ? explode( ',', esc_attr( $saved_cookie ) ) : array();
 
 		// Check if the user has already voted.
 		if ( in_array( $post_id, $user_feedbacks ) ) {
