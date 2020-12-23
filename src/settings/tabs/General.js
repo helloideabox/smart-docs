@@ -163,7 +163,7 @@ const General = ( props ) => {
 			<BaseControl
 				label={ __( 'Your Support Page URL', 'smart-docs' ) }
 				help={ __( 'Please enter your support or contact page URL.', 'smart-docs' ) }
-				className="smartdocs-field--support-page mt-3"
+				className="smartdocs-field--support-page"
 			>
 				<TextControl
 					className="mt-2 block mb-2"

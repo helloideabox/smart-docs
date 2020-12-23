@@ -872,6 +872,12 @@ video {
   margin-bottom:0 !important
 }
 
+.smartdocs-settings-tabs .smartdocs-field--support-page{
+  padding:20px;
+  background:#f6f7fb;
+  margin-top:30px
+}
+
 #tab-panel-0-general-view,#tab-panel-0-search-view{
   padding: 1rem
 }
