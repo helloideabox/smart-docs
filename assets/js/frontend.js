@@ -1,12 +1,18 @@
 ;(function($) {
 
 	var initSearch = function() {
-		if ( $( '.smartdocs-search' ).length === 0 ) {
+		if ( $( '.smartdocs-search-form' ).length === 0 ) {
 			return;
 		}
+
 		var lastValue = '';
 		var timeout = null;
-		$( '.smartdocs-search input.smartdocs-search-input' ).on( 'keyup', function() {
+
+		$( '.smartdocs-search-form' ).on( 'submit', function( e ) {
+			e.preventDefault();
+		} );
+
+		$( '.smartdocs-search-form input.smartdocs-search-input' ).on( 'keyup', function() {
 			var $input = $(this);
 
 			if ( $input.val().length >= 3 && $input.val() !== lastValue ) {
