@@ -22,10 +22,10 @@ class Admin {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		// Action to register setting for get_option function.
+		// Register plugin setting.
 		add_action( 'init', array( $this, 'register_plugin_settings' ) );
 
-		// Action to register settings page menu in cpt(smart-doc).
+		// Action to register settings page menu under custom post type.
 		add_action( 'admin_menu', array( $this, 'register_options_menu' ) );
 
 		// Add admin bar menu.

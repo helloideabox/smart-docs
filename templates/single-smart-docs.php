@@ -28,7 +28,7 @@ do_action( 'smartdocs_before_main_content' );
 
 			smartdocs_get_template_part( 'content', 'single-docs' );
 
-		endwhile; // End of the loop.
+		endwhile;
 
 	endif;
 

@@ -1,4 +1,5 @@
 import { TabPanel } from "@wordpress/components";
+import { __ } from "@wordpress/i18n";
 
 import General from "./tabs/General";
 import Search from "./tabs/Search";
@@ -14,12 +15,12 @@ export default function Tabs() {
 			tabs={[
 				{
 					name: "general",
-					title: "General",
+					title: __( 'General', 'smart-docs' ),
 					className: tabClasses,
 				},
 				{
 					name: "search",
-					title: "Search",
+					title: __( 'Search', 'smart-docs' ),
 					className: tabClasses,
 				},
 			]}

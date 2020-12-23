@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			placeholder="<?php echo esc_attr_x( 'Search for answers..', 'placeholder', 'smart-docs' ); ?>"
 			value="<?php echo get_search_query(); ?>"
 			name="s"
-			title="<?php echo esc_attr_x( 'Search', 'label', 'smart-docs' ); ?>"
+			title="<?php echo esc_attr_x( 'Search', 'text for input title attribute', 'smart-docs' ); ?>"
 			autocomplete="off"
 			autocapitalize="off"
 			autocorrect="off"

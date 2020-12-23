@@ -65,13 +65,13 @@ class Autoloader {
 			'Breadcrumb'				=> 'classes/breadcrumb.php',
 			'Ajax'                    	=> 'classes/ajax.php',
 			'Structured_Data'			=> 'classes/structured-data.php',
-			'Template'                 => 'classes/template.php',
-			'Widget'      				=> 'classes/widget.php',
-			'Widgets\Category_Widget'      => 'classes/widgets/category.php',
-			'Widgets\Recent_Docs_Widget'   => 'classes/widgets/recent-docs.php',
-			'Customizer'                => 'classes/customizer/customizer.php',
-			'Customizer_Control' => 'classes/customizer/custom-controls.php',
-			'Dynamic_CSS' 				=> 'classes/dynamic-css.php',
+			'Template'                 	=> 'classes/template.php',
+			'Widget'      					=> 'classes/widget.php',
+			'Widgets\Category_Widget'      	=> 'classes/widgets/category.php',
+			'Widgets\Recent_Docs_Widget'   	=> 'classes/widgets/recent-docs.php',
+			'Customizer'                	=> 'classes/customizer/customizer.php',
+			'Customizer_Control' 			=> 'classes/customizer/custom-controls.php',
+			'Dynamic_CSS' 					=> 'classes/dynamic-css.php',
 		);
 	}
 

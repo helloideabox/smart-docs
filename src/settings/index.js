@@ -1,7 +1,7 @@
 /**
  * WordPress Dependencies
  */
-import { useEffect, render } from "@wordpress/element";
+import { render } from "@wordpress/element";
 
 /**
  * Internal dependencies.
@@ -29,6 +29,6 @@ const App = () => {
 setTimeout(() => {
 	render(
 		<App />,
-		document.getElementById("smartdocs-setting-root")
+		document.getElementById( 'smartdocs-setting-root' )
 	);
 }, 0);

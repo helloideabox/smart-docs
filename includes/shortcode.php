@@ -11,7 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_shortcode( 'smartdocs_search', 'smartdocs_render_search_box' );
 /**
  * For rendering the search box.
  *
@@ -30,15 +29,13 @@ function smartdocs_render_search_box( $args = array() ) {
 	smartdocs_get_template( 'search', $args );
 	return ob_get_clean();
 }
+add_shortcode( 'smartdocs_search', 'smartdocs_render_search_box' );
 
-
-// To render the search box of WordPress.
-add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );
 /**
  * Render category list for smartdocs categories.
  *
- * @param [array] $args Array of shortcode arguments.
- * @return html
+ * @param array $args Array of shortcode arguments.
+ * @return string
  */
 function smartdocs_render_categories( $args = array() ) {
 	$args = shortcode_atts(
@@ -94,3 +91,4 @@ function smartdocs_render_categories( $args = array() ) {
 
 	return ob_get_clean();
 }
+add_shortcode( 'smartdocs_categories', 'smartdocs_render_categories' );

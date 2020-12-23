@@ -96,15 +96,8 @@ class Category_Widget extends \WP_Widget {
 			$cat_args['depth'] = 2;
 			?>
 			<ul>
-			<?php
-			smartdocs_list_categories( $cat_args, $count );
-			?>
+				<?php smartdocs_list_categories( $cat_args, $count ); ?>
 			</ul>
-
-			<!--<ul>-->
-				<?php //wp_list_categories( $cat_args ); // Returns categories list in html form according to the argument passed. ?>
-			<!--</ul>-->
-
 			<?php
 		}
 

@@ -78,8 +78,6 @@ class Customizer {
 	 */
 	public function add_docs_homepage_section( $wp_customize ) {
 
-		// Docs page Settings
-
 		$wp_customize->add_section(
 			'smartdocs_archive_settings',
 			array(
@@ -87,8 +85,6 @@ class Customizer {
 				'priority' => 100,
 			)
 		);
-
-		// Set Title Color
 
 		$wp_customize->add_setting(
 			'smartdocs_homepage_title_color',
@@ -103,7 +99,7 @@ class Customizer {
 				$wp_customize,
 				'docs_title_color',
 				array(
-					'label'    => \__( 'Title Color', 'smart-docs' ),
+					'label'    => __( 'Title Color', 'smart-docs' ),
 					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'smartdocs_homepage_title_color',
 				)
@@ -123,7 +119,7 @@ class Customizer {
 				$wp_customize,
 				'docs_section_divider',
 				array(
-					'label'    => \__( 'Grid Items', 'smart-docs' ),
+					'label'    => __( 'Grid Items', 'smart-docs' ),
 					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'smartdocs_homepage_grid_items',
 					'type'     => 'smartdocs-section',
@@ -136,7 +132,7 @@ class Customizer {
 				$wp_customize,
 				'docs_category_font_size',
 				array(
-					'label'    => \__( 'Category Title Font Size', 'smart-docs' ),
+					'label'    => __( 'Category Title Font Size', 'smart-docs' ),
 					'section'  => 'smartdocs_archive_settings',
 					'settings' => 'smartdocs_homepage_grid_items',
 					'type'     => 'number',

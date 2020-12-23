@@ -15,6 +15,7 @@ class Ajax {
 
 	public function __construct() {
 		add_action( 'wp_ajax_smartdocs_on_settings_save', array( $this, 'on_settings_save' ) );
+
 		// To load search results from ajax request.
 		add_action( 'wp_ajax_smartdocs_search_results', array( $this, 'get_search_results' ) );
 		add_action( 'wp_ajax_nopriv_smartdocs_search_results', array( $this, 'get_search_results' ) );
@@ -112,5 +113,4 @@ class Ajax {
 
 		wp_send_json_success( esc_html__( 'Thanks for the vote!', 'smart-docs' ) );
 	}
-
 }
