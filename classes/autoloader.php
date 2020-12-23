@@ -14,9 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * PowerPack Elements API autoloader.
+ * Autoloader class.
  *
- * PowerPack Elements API autoloader handler class is responsible for loading the different
+ * Autoloader handler class is responsible for loading the different
  * classes needed to run the plugin.
  *
  * @since 1.0.0

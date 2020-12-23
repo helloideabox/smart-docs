@@ -1,65 +1,94 @@
 <?php
 /**
- * Templates class to manage overriding of default theme templates.
+ * Class to override default templates when required.
  *
+ * @package SmartDocs\Classes
  * @since 1.0.0
- * @package SmartDocs
  */
 
 namespace SmartDocs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
- * Templates.
- *
- * Core class used to override default templates when required.
- *
- * @package SmartDocs
- * @since 1.0.0
+ * Template class.
  */
 class Template {
-
 	/**
-	 * Default CPT Name
+	 * SmartDocs CPT Name.
 	 *
 	 * @since 1.0.0
 	 * @var string $post_type
+	 * @access private
 	 */
-	public $post_type = null;
+	private $post_type = null;
 
-	public $override_single = false;
+	/**
+	 * Override single.
+	 *
+	 * @since 1.0.0
+	 * @var boolean $override_single
+	 * @access private
+	 */
+	private $override_single = false;
 
-	public $override_tax_archive = false;
+	/**
+	 * Override taxonomy archive.
+	 *
+	 * @since 1.0.0
+	 * @var boolean $override_tax_archive
+	 * @access private
+	 */
+	private $override_tax_archive = false;
 
+	/**
+	 * Has docs template.
+	 *
+	 * @since 1.0.0
+	 * @var boolean $has_docs_template
+	 * @access protected
+	 */
 	protected $has_docs_template = false;
 
 	/**
 	 * Class constructor.
 	 *
-	 * Responsible for loading all the required methods and action in the class
-	 * when it is instantiated.
-	 *
-	 * @since 1.0.0
+	 * Responsible for loading all the required methods and actions/filters
+	 * in the class when it is instantiated.
 	 */
 	public function __construct() {
+		$override_single      = (int) get_option( 'smartdocs_enable_single_template', '1' );
+		$override_tax_archive = (int) get_option( 'smartdocs_enable_category_and_tag_template', '1' );
 
-		$override_single      = get_option( 'smartdocs_enable_single_template', '1' );
-		$override_tax_archive = get_option( 'smartdocs_enable_category_and_tag_template', '1' );
-
-		if ( '1' == $override_single ) {
+		if ( 1 === $override_single ) {
 			$this->override_single = true;
 		}
-		if ( '1' == $override_tax_archive ) {
+		if ( 1 === $override_tax_archive ) {
 			$this->override_tax_archive = true;
 		}
 
 		$this->post_type = Plugin::instance()->cpt->post_type;
 
-		// Filter to rewrite the default archive theme template for particular cpt.
+		// Filter to override the default theme template for smart-docs cpt.
 		add_filter( 'template_include', array( $this, 'template_loader' ) );
 
+		// Filter to add generator meta tag for SmartDocs templates.
+		add_filter( 'get_the_generator_html', array( $this, 'generator_meta_tag' ), 10, 2 );
+		add_filter( 'get_the_generator_xhtml', array( $this, 'generator_meta_tag' ), 10, 2 );
+
+		// Add body classes for SmartDocs templates.
 		add_filter( 'body_class', array( $this, 'body_class' ) );
 	}
 
+	/**
+	 * Load SmartDocs template for CPT.
+	 *
+	 * @since 1.0.0
+	 * @param  string $template Template path.
+	 * @return string
+	 */
 	public function template_loader( $template ) {
 		$template_file = '';
 
@@ -82,7 +111,7 @@ class Template {
 			$exists_in_theme = locate_template(
 				array(
 					$template_file,
-					$this->get_template_path( $template_file )
+					$this->get_template_path( $template_file ),
 				),
 				false
 			);
@@ -97,16 +126,57 @@ class Template {
 		return $template;
 	}
 
+	/**
+	 * Retrieves the path of the template file.
+	 *
+	 * @since 1.0.0
+	 * @param string $filename Template filename.
+	 * @return string
+	 */
 	public function get_template_path( $filename = '' ) {
 		return SMART_DOCS_PATH . 'templates/' . $filename;
 	}
 
+	/**
+	 * Output generator tag to aid debugging.
+	 *
+	 * @since 1.0.0
+	 * @param string $gen Generator.
+	 * @param string $type Type.
+	 * @return string
+	 */
+	public function generator_meta_tag( $gen, $type ) {
+		if ( ! $this->has_docs_template ) {
+			return $gen;
+		}
+
+		$version = SMART_DOCS_VERSION;
+
+		switch ( $type ) {
+			case 'html':
+				$gen .= "\n" . '<meta name="generator" content="SmartDocs ' . esc_attr( $version ) . '">';
+				break;
+			case 'xhtml':
+				$gen .= "\n" . '<meta name="generator" content="SmartDocs ' . esc_attr( $version ) . '" />';
+				break;
+		}
+
+		return $gen;
+	}
+
+	/**
+	 * Add body classes for SmartDocs pages.
+	 *
+	 * @since 1.0.0
+	 * @param  array $classes Body Classes.
+	 * @return array
+	 */
 	public function body_class( $classes ) {
 		if ( $this->has_docs_template ) {
 			$classes[] = 'smartdocs-template';
 		}
 
-		if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( Plugin::instance()->cpt->post_type ) ) {
+		if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( $this->post_type ) ) {
 			$classes[] = 'smartdocs-has-sidebar';
 		}
 
