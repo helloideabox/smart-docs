@@ -137,7 +137,7 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_archive_category_title_tag_control',
 	array(
-		'label'       => __( 'Title HTML Tag', 'smart-docs' ),
+		'label'       => __( 'Category Title HTML Tag', 'smart-docs' ),
 		'description' => __( 'Select HTML tag for the category title.', 'smart-docs' ),
 		'section'     => 'smartdocs_archive_settings',
 		'settings'    => 'smartdocs_archive_category_title_tag',
