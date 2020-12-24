@@ -76,11 +76,17 @@
 }
 
 .smartdocs-header .smartdocs-hero-title {
-	margin-bottom: 20px;
+	margin-bottom: 8px;
 }
 .smartdocs-header .smartdocs-hero-title,
 .smartdocs-header .smartdocs-hero-description {
 	text-align: center;
+}
+.smartdocs-header .smartdocs-hero-description p:last-of-type {
+	margin-bottom: 0;
+}
+.smartdocs-header .smartdocs-search {
+	margin-top: 20px;
 }
 
 /** Content, Sidebar */
