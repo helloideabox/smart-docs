@@ -133,44 +133,6 @@ class Cpt {
 
 		register_taxonomy( 'smartdocs_category', $this->post_type, $category_args );
 
-		// Resgistering tags taxonomy.
-		$tag_labels = array(
-			'name'                       => __( 'Docs tags', 'smart-docs' ),
-			'singular_name'              => __( 'Doc Tag', 'smart-docs' ),
-			'menu_name'                  => _x( 'Tags', 'Admin menu name', 'smart-docs' ),
-			'search_items'               => __( 'Search tags', 'smart-docs' ),
-			'all_items'                  => __( 'All tags', 'smart-docs' ),
-			'edit_item'                  => __( 'Edit tag', 'smart-docs' ),
-			'update_item'                => __( 'Update tag', 'smart-docs' ),
-			'add_new_item'               => __( 'Add new tag', 'smart-docs' ),
-			'new_item_name'              => __( 'New tag name', 'smart-docs' ),
-			'popular_items'              => __( 'Popular tags', 'smart-docs' ),
-			'separate_items_with_commas' => __( 'Separate tags with commas', 'smart-docs' ),
-			'add_or_remove_items'        => __( 'Add or remove tags', 'smart-docs' ),
-			'choose_from_most_used'      => __( 'Choose from the most used tags', 'smart-docs' ),
-			'not_found'                  => __( 'No tags found', 'smart-docs' ),
-		);
-
-		$tag_args = array(
-			'hierarchical'      => false,
-			'query_var'         => true,
-			'public'            => true,
-			'labels'            => $tag_labels,
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'show_in_rest'      => true,
-		);
-
-		$tag_args['rewrite'] = apply_filters(
-			'smartdocs_tag_rewrite_slug',
-			array(
-				'slug' => $this->get_tag_rewrite_slug(),
-				'with_front' => false,
-			)
-		);
-
-		register_taxonomy( 'smartdocs_tag', $this->post_type, $tag_args );
-
 		if ( ! get_option( 'smartdocs_rewrite_rules_flushed' ) ) {
 			flush_rewrite_rules();
 			update_option( 'smartdocs_rewrite_rules_flushed', 1 );
@@ -272,9 +234,6 @@ class Cpt {
 		if ( isset( $columns['taxonomy-smartdocs_category'] ) ) {
 			$columns['taxonomy-smartdocs_category'] = __( 'Categories', 'smart-docs' );
 		}
-		if ( isset( $columns['taxonomy-smartdocs_tag'] ) ) {
-			$columns['taxonomy-smartdocs_tag'] = __( 'Tags', 'smart-docs' );
-		}
 
 		return $columns;
 	}
@@ -325,16 +284,6 @@ class Cpt {
 
 		if ( empty( $rewrite_slug ) ) {
 			$rewrite_slug = 'docs-category';
-		}
-
-		return $rewrite_slug;
-	}
-
-	public function get_tag_rewrite_slug() {
-		$rewrite_slug = get_option( 'smartdocs_tag_slug' );
-
-		if ( empty( $rewrite_slug ) ) {
-			$rewrite_slug = 'docs-tag';
 		}
 
 		return $rewrite_slug;

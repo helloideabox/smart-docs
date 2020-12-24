@@ -58,7 +58,6 @@ class Breadcrumb {
 		$conditionals = array(
 			'is_smartdocs_single',
 			'is_smartdocs_category',
-			'is_smartdocs_tag',
 		);
 
 		if ( ( ! is_front_page() && ! ( intval( get_option( 'page_on_front' ) ) === get_option( 'smartdocs_custom_doc_page' ) ) ) || is_paged() ) {
@@ -153,18 +152,6 @@ class Breadcrumb {
 		$this->prepend_docs_page();
 		$this->term_ancestors( $current_term->term_id, 'smartdocs_category' );
 		$this->add_crumb( $current_term->name, get_term_link( $current_term, 'smartdocs_category' ) );
-	}
-
-	/**
-	 * Docs tag trail.
-	 */
-	protected function add_crumbs_smartdocs_tag() {
-		$current_term = $GLOBALS['wp_query']->get_queried_object();
-
-		$this->prepend_docs_page();
-
-		/* translators: %s: smartdocs tag */
-		$this->add_crumb( sprintf( __( 'Docs tagged &ldquo;%s&rdquo;', 'smart-docs' ), $current_term->name ), get_term_link( $current_term, 'smartdocs_tag' ) );
 	}
 
 	/**

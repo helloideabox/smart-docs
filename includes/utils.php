@@ -196,10 +196,6 @@ function is_smartdocs_category( $term = '' ) {
 	return is_tax( 'smartdocs_category', $term );
 }
 
-function is_smartdocs_tag( $term = '' ) {
-	return is_tax( 'smartdocs_tag', $term );
-}
-
 function smartdocs_get_docs_page_link() {
 	$use_built_in = get_option( 'smartdocs_use_built_in_doc_archive' );
 	$docs_page_id = get_option( 'smartdocs_custom_doc_page' );

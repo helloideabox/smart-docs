@@ -60,7 +60,7 @@ class Template {
 	 */
 	public function __construct() {
 		$override_single      = (int) get_option( 'smartdocs_enable_single_template', '1' );
-		$override_tax_archive = (int) get_option( 'smartdocs_enable_category_and_tag_template', '1' );
+		$override_tax_archive = (int) get_option( 'smartdocs_enable_taxonomy_template', '1' );
 
 		if ( 1 === $override_single ) {
 			$this->override_single = true;
@@ -100,9 +100,6 @@ class Template {
 		}
 		if ( is_tax( 'smartdocs_category' ) && $this->override_tax_archive ) {
 			$template_file = 'taxonomy-smartdocs-category.php';
-		}
-		if ( is_tax( 'smartdocs_tag' ) && $this->override_tax_archive ) {
-			$template_file = 'taxonomy-smartdocs-tag.php';
 		}
 
 		if ( ! empty( $template_file ) ) {

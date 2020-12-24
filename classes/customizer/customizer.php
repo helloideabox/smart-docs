@@ -442,7 +442,7 @@ class Customizer {
 		}
 
 		if ( 'no' === get_theme_mod( 'smartdocs_taxonomy_archives_display_breadcrumbs' ) ) {
-			if ( is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
+			if ( is_tax( 'smartdocs_category' ) ) {
 				remove_action( 'smartdocs_primary_content_area', 'smartdocs_breadcrumb', 20 );
 			}
 		}

@@ -72,12 +72,6 @@ function smartdocs_get_sidebar() {
 	}
 }
 
-function smartdocs_single_doc_terms() {
-	// To get the related tags of that post.
-	the_terms( get_the_ID(), 'smartdocs_tag', '<ul class="smart-docs-tag"><span class="smart-docs-tag-label">Tagged Under: </span><li>', ',</li><li>', '</li></ul>' );
-
-}
-
 function smartdocs_output_content_area_wrapper_start() {
 	if ( ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
 		?>

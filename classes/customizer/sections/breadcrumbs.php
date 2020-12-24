@@ -45,7 +45,7 @@ $wp_customize->add_control(
 	'smartdocs_taxonomy_archives_display_breadcrumbs_control',
 	array(
 		'label'       => __( 'Show on Taxonomy Archives', 'smart-docs' ),
-		'description' => __( 'Show breadcrumbs on the taxonomy (category, tag) archives.', 'smart-docs' ),
+		'description' => __( 'Show breadcrumbs on the taxonomy archives.', 'smart-docs' ),
 		'section'     => 'smartdocs_breadcrumbs_settings',
 		'settings'    => 'smartdocs_taxonomy_archives_display_breadcrumbs',
 		'type'        => 'select',

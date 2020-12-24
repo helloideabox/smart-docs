@@ -328,7 +328,7 @@ class Plugin {
 		wp_register_style( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/css/frontend.css', array(), SMART_DOCS_VERSION );
 		wp_register_script( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/js/frontend.js', array( 'jquery' ), SMART_DOCS_VERSION, true );
 
-		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
+		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) ) {
 			$should_enqueue = true;
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
 			$localized_vars['feedback_nonce'] = wp_create_nonce( "smartdocs_feedback_{$post->ID}" );
@@ -358,7 +358,7 @@ class Plugin {
 
 		$post_type = $this->cpt->post_type;
 		
-		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) || is_tax( 'smartdocs_tag' ) ) {
+		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) ) {
 
 			$this->dynamic_css->build_hero_section_style();
 			$this->dynamic_css->build_categories_grid_style();

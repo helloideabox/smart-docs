@@ -133,17 +133,6 @@ const General = ( props ) => {
 				/>
 			</BaseControl>
 			<BaseControl
-				label={ __( 'Rewrite Tag Slug', 'smart-docs' ) }
-				help={ __( 'Edit to change the default slug for the documentation tag.', 'smart-docs' ) }
-			>
-				<TextControl
-					className="mt-2 block mb-2"
-					placeholder={ __( 'Defaults to "docs-tag"', 'smart-docs' ) }
-					value={ options.smartdocs_tag_slug }
-					onChange={ ( value ) => setOptions( { ...options, smartdocs_tag_slug: value } ) }
-				/>
-			</BaseControl>
-			<BaseControl
 				className="mt-3 mb-3"
 				label={ __( 'Template', 'smart-docs' ) }
 			>
@@ -156,8 +145,8 @@ const General = ( props ) => {
 				<ToggleControl
 					className="mt-2 mb-2"
 					label={ __( 'Use built-in template for Docs category page', 'smart-docs' ) }
-					checked={ options.smartdocs_enable_category_and_tag_template }
-					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_category_and_tag_template: value } ) }
+					checked={ options.smartdocs_enable_taxonomy_template }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_taxonomy_template: value } ) }
 				/>
 			</BaseControl>
 			<BaseControl
@@ -192,9 +181,8 @@ export default compose(
 			'smartdocs_hero_title',
 			'smartdocs_archive_page_slug',
 			'smartdocs_category_slug',
-			'smartdocs_tag_slug',
 			'smartdocs_enable_single_template',
-			'smartdocs_enable_category_and_tag_template',
+			'smartdocs_enable_taxonomy_template',
 			'smartdocs_support_page_url',
 		];
 		

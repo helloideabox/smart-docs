@@ -127,16 +127,6 @@ class Admin {
 
 		register_setting(
 			'smart-docs-settings-group',
-			'smartdocs_tag_slug',
-			array(
-				'type'         => 'string',
-				'show_in_rest' => true,
-				'default'      => 'docs-tag',
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
 			'smartdocs_enable_single_template',
 			array(
 				'type'         => 'boolean',
@@ -147,7 +137,7 @@ class Admin {
 
 		register_setting(
 			'smart-docs-settings-group',
-			'smartdocs_enable_category_and_tag_template',
+			'smartdocs_enable_taxonomy_template',
 			array(
 				'type'         => 'boolean',
 				'show_in_rest' => true,
