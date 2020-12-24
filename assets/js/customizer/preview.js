@@ -11,7 +11,7 @@
 	/* Archive Title Color */
 	wp.customize("smartdocs_hero_title_color", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-header smartdocs-hero-title").css("color", new_value);
+			$(".smartdocs-header .smartdocs-hero-title").css("color", new_value);
 		});
 	});
 
