@@ -77,6 +77,26 @@ class Admin {
 	public function register_plugin_settings() {
 		register_setting(
 			'smart-docs-settings-group',
+			'smartdocs_hero_title',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => esc_html__( 'Documentation', 'smart-docs' ),
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
+			'smartdocs_hero_description',
+			array(
+				'type'         => 'string',
+				'show_in_rest' => true,
+				'default'      => '',
+			)
+		);
+
+		register_setting(
+			'smart-docs-settings-group',
 			'smartdocs_use_built_in_doc_archive',
 			array(
 				'type'         => 'boolean',
@@ -92,16 +112,6 @@ class Admin {
 				'type'         => 'string',
 				'show_in_rest' => true,
 				'default'		=> '',
-			)
-		);
-
-		register_setting(
-			'smart-docs-settings-group',
-			'smartdocs_hero_title',
-			array(
-				'type'         => 'string',
-				'show_in_rest' => true,
-				'default'      => esc_html__( 'Documentation', 'smart-docs' ),
 			)
 		);
 

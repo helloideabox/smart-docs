@@ -24,6 +24,13 @@ function smartdocs_hero_title() {
 	return $title;
 }
 
+function smartdocs_hero_description() {
+	$desc = get_option( 'smartdocs_hero_description' );
+	if ( ! empty( $desc ) ) {
+		echo '<div class="smartdocs-hero-description">' . wpautop( $desc ) . '</div>';
+	}
+}
+
 function smartdocs_search_form() {
 	echo do_shortcode( '[smartdocs_search]' );
 }

@@ -31,8 +31,10 @@ add_action( 'smartdocs_after_main_content', 'smartdocs_output_content_wrapper_en
 /**
  * Header elements.
  *
+ * @see smartdocs_hero_description()
  * @see smartdocs_search_form()
  */
+add_action( 'smartdocs_header_content', 'smartdocs_hero_description', 5 );
 add_action( 'smartdocs_header_content', 'smartdocs_search_form', 10 );
 
 /**

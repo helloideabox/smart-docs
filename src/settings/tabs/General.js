@@ -89,6 +89,18 @@ const General = ( props ) => {
 			</BaseControl>
 
 			<BaseControl
+				label={ __( 'Hero Description', 'smart-docs' ) }
+				help={ __( 'Edit to change or add description for header.', 'smart-docs' ) }
+				className="mb-3"
+			>
+				<TextareaControl
+					className="mt-2 block mb-2"
+					value={ options.smartdocs_hero_description }
+					onChange={ ( value ) => setOptions( { ...options, smartdocs_hero_description: value } ) }
+				/>
+			</BaseControl>
+
+			<BaseControl
 				label={ __( 'Search', 'smart-docs' ) }
 				className="mb-3"
 			>
@@ -160,6 +172,7 @@ export default compose(
 	withSelect( ( select ) => {
 		const optionKeys = [
 			'smartdocs_hero_title',
+			'smartdocs_hero_description',
 			'smartdocs_search_post_types',
 			'smartdocs_support_page_url',
 		];
