@@ -4,7 +4,6 @@ import {
 	TextControl,
 	TextareaControl,
 	ToggleControl,
-	SelectControl,
 } from "@wordpress/components";
 import { withSelect, useDispatch } from '@wordpress/data';
 import { useState } from "@wordpress/element";
@@ -18,16 +17,22 @@ const General = ( props ) => {
 
 	const [ options, setOptions ] = useState( props.options );
 
-	const pageList = [];
+	const allPostTypes = [];
+	const savedPostTypes = options.smartdocs_search_post_types;
+	const excludeTypes = [ 'attachment', 'fl-builder-template', 'elementor_library' ];
 
-	// Build a list of pages.
-	if ( props.pages ) {
-		pageList.push( { label: __( 'Select a page', 'smart-docs' ), value: null } );
-		props.pages.forEach( ( page ) => {
-			pageList.push( { value: page.id, label: page.title.rendered } );
+	if ( props.postTypes ) {
+		props.postTypes.forEach( (type) => {
+			if ( type.viewable && ! excludeTypes.includes( type.slug ) ) {
+				allPostTypes.push( { value: type.slug, label: type.name } );
+			}
 		});
-	} else {
-		pageList.push( { label: __( 'Loading...', 'smart-docs' ), value: null } );
+	}
+
+	const [ selectedTypes, setSelectedTypes ] = useState( savedPostTypes || [] );
+
+	if ( selectedTypes !== savedPostTypes ) {
+		setPostTypes( selectedTypes );
 	}
 
 	const { createSuccessNotice, createErrorNotice } = useDispatch(
@@ -70,32 +75,6 @@ const General = ( props ) => {
 
 	return (
 		<>
-			<ToggleControl
-				className="mt-2 mb-2"
-				label={ __( 'Use built-in Docs archive', 'smart-docs' ) }
-				help={__(
-					'Note: If you disable built-in documentation archive, you can use shortcode or page builder widgets to design your own documentation page.',
-					'smart-docs'
-				)}
-				checked={ options.smartdocs_use_built_in_doc_archive }
-				onChange={ ( value ) => { setOptions( { ...options, smartdocs_use_built_in_doc_archive: value } ) } }
-			/>
-
-			{ ! options.smartdocs_use_built_in_doc_archive && (
-				<BaseControl
-					label={ __( 'Select Custom Page', 'smart-docs' ) }
-					className="mb-3"
-				>
-					<SelectControl
-						className="mt-2 block mb-2"
-						labelPosition="top"
-						options={ pageList }
-						value={ options.smartdocs_custom_doc_page }
-						onChange={ ( value ) => setOptions( { ...options, smartdocs_custom_doc_page: value } ) }
-					/>
-				</BaseControl>
-			) }
-
 			<BaseControl
 				label={ __( 'Hero Title', 'smart-docs' ) }
 				help={ __( 'Edit to change the default title for the header section.', 'smart-docs' ) }
@@ -108,47 +87,50 @@ const General = ( props ) => {
 					onChange={ ( value ) => setOptions( { ...options, smartdocs_hero_title: value } ) }
 				/>
 			</BaseControl>
+
 			<BaseControl
-				label={ __( 'Rewrite Archive Slug', 'smart-docs' ) }
-				help={ __( 'Edit to change the default slug for the documentation archive page.', 'smart-docs' ) }
+				label={ __( 'Search', 'smart-docs' ) }
 				className="mb-3"
 			>
-				<TextControl
-					className="mt-2 block mb-2"
-					placeholder={ __( 'Defaults to "docs"', 'smart-docs' ) }
-					value={ options.smartdocs_archive_page_slug }
-					onChange={ ( value ) => setOptions( { ...options, smartdocs_archive_page_slug: value } ) }
-				/>
+				<p className="components-base-control__help">{ __( 'Select post type(s) to include their articles in search result.', 'smart-docs' ) }</p>
+				<ul className="post-types-list">
+					{ 0 !== allPostTypes.length && allPostTypes.map( ( item ) => (
+						<li key={ item.value }>
+							<ToggleControl
+								label={ item.label }
+								checked={ 'object' === typeof selectedTypes && selectedTypes.includes( item.value ) }
+								onChange={ ( isChecked ) => {
+									if ( isChecked ) {
+										setSelectedTypes( types => [ ...types, item.value ] );
+									} else {
+										let types = selectedTypes.filter( ( type ) => type !== item.value );
+										setSelectedTypes( types );
+									}
+								} }
+							/>
+						</li>
+					) ) }
+					{
+						0 === allPostTypes.length && <li>{ __( 'Loading...', 'smart-docs' ) }</li>
+					}
+				</ul>
 			</BaseControl>
+
 			<BaseControl
-				label={ __( 'Rewrite Category Slug', 'smart-docs' ) }
-				help={ __( 'Edit to change the default slug for the documentation category page.', 'smart-docs' ) }
-				className="mb-3"
+				label=""
+				className="mt-3 smartdocs-field--customize"
 			>
-				<TextControl
-					className="mt-2 block mb-2"
-					placeholder={ __( 'Defaults to "docs-category"', 'smart-docs' ) }
-					value={ options.smartdocs_category_slug }
-					onChange={ ( value ) => setOptions( { ...options, smartdocs_category_slug: value } ) }
-				/>
+				<div className="col-1">
+					<span className="components-base-control__label">{ __( 'Style & Customize', 'smart-docs' ) }</span>
+					<p className="components-base-control__help">
+						{ __( 'You can style and customize the docs elements to suit your needs.', 'smart-docs' ) }
+					</p>
+				</div>
+				<div className="col-2">
+					<a href={ smartdocs_admin.customizer_url } className="components-button is-secondary" target="_blank">{ __( 'Customize', 'smart-docs' ) }</a>
+				</div>
 			</BaseControl>
-			<BaseControl
-				className="mt-3 mb-3"
-				label={ __( 'Template', 'smart-docs' ) }
-			>
-				<ToggleControl
-					className="mt-2 mb-2"
-					label={ __( 'Use built-in template for Docs single page', 'smart-docs' ) }
-					checked={ options.smartdocs_enable_single_template }
-					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_single_template: value } ) }
-				/>
-				<ToggleControl
-					className="mt-2 mb-2"
-					label={ __( 'Use built-in template for Docs category page', 'smart-docs' ) }
-					checked={ options.smartdocs_enable_taxonomy_template }
-					onChange={ ( value ) => setOptions( { ...options, smartdocs_enable_taxonomy_template: value } ) }
-				/>
-			</BaseControl>
+
 			<BaseControl
 				label={ __( 'Your Support Page URL', 'smart-docs' ) }
 				help={ __( 'Please enter your support or contact page URL.', 'smart-docs' ) }
@@ -161,6 +143,7 @@ const General = ( props ) => {
 					onChange={ ( value ) => setOptions( { ...options, smartdocs_support_page_url: value } ) }
 				/>
 			</BaseControl>
+
 			<Button
 				className="mt-6 mb-3"
 				isPrimary="true"
@@ -176,13 +159,8 @@ const General = ( props ) => {
 export default compose(
 	withSelect( ( select ) => {
 		const optionKeys = [
-			'smartdocs_use_built_in_doc_archive',
-			'smartdocs_custom_doc_page',
 			'smartdocs_hero_title',
-			'smartdocs_archive_page_slug',
-			'smartdocs_category_slug',
-			'smartdocs_enable_single_template',
-			'smartdocs_enable_taxonomy_template',
+			'smartdocs_search_post_types',
 			'smartdocs_support_page_url',
 		];
 		
@@ -198,7 +176,7 @@ export default compose(
 		}
 
 		return {
-			pages: select( 'core' ).getEntityRecords( 'postType', 'page' ),
+			postTypes: select( 'core' ).getPostTypes(),
 			options
 		};
 	} )

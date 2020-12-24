@@ -224,6 +224,7 @@ class Admin {
 				'ajax_nonce' => wp_create_nonce( 'docs_option' ),
 				'version'    => SMART_DOCS_VERSION,
 				'logo_url'	 => SMART_DOCS_URL . 'assets/images/smartdocs-logo.png',
+				'customizer_url' => admin_url( 'customize.php?url=' . smartdocs_get_docs_page_link() . '&autofocus[panel]=smartdocs_style_options' )
 			)
 		);
 	}

@@ -1,4 +1,6 @@
 $accentColor: #3F51B5;
+$darken10: darken( #3F51B5, 10% );
+$darken20: darken( #3F51B5, 20% );
 
 @import "tailwindcss/base";
 
@@ -6,7 +8,7 @@ $accentColor: #3F51B5;
 
 @import "tailwindcss/utilities";
 
-@import "./notices/notices.scss";
+@import "./notices/notices";
 
 @import "./sidePanel";
 
@@ -31,12 +33,16 @@ $accentColor: #3F51B5;
 
 /* Main Tabs */
 .smartdocs-settings-tabs {
-	--wp-admin-theme-color: #3F51B5;
-	--wp-admin-theme-color-darker-10: darken( #3F51B5, 10 );
-	--wp-admin-theme-color-darker-20: darken( #3F51B5, 20 );
+	--wp-admin-theme-color: #{$accentColor};
+	--wp-admin-theme-color-darker-10: #{$darken10};
+	--wp-admin-theme-color-darker-20: #{$darken20};
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
 		rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
 	height: fit-content;
+
+	.components-tab-panel__tab-content {
+		@apply p-4;
+	}
 	.components-tab-panel__tabs-item {
 		@apply font-bold;
 		&.is-active {
@@ -74,6 +80,7 @@ $accentColor: #3F51B5;
 	.components-base-control__help {
 		@apply text-xs;
 		margin-top: 0.25rem !important;
+		color: rgb(117, 117, 117);
 	}
 
 	.inline-number-control .components-base-control__field {
@@ -86,15 +93,23 @@ $accentColor: #3F51B5;
 	}
 
 	.smartdocs-field--support-page {
-		padding: 20px;
-		background: #f6f7fb;
-		margin-top: 30px;
+		// padding: 20px;
+		// background: #f6f7fb;
+		margin-top: 20px;
 	}
-}
 
-#tab-panel-0-general-view,
-#tab-panel-0-search-view {
-	@apply p-4;
+	.smartdocs-field--customize {
+		border: 1px solid #ddd;
+    	padding: 20px;
+		margin-top: 30px !important;
+		.components-base-control__field {
+			margin: 0;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
 }
 
 .smartdocs-side-card {

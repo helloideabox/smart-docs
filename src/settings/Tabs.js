@@ -2,7 +2,7 @@ import { TabPanel } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 
 import General from "./tabs/General";
-import Search from "./tabs/Search";
+import Advanced from "./tabs/Advanced";
 
 export default function Tabs() {
 
@@ -14,22 +14,22 @@ export default function Tabs() {
 			activeClass="is-active"
 			tabs={[
 				{
-					name: "general",
+					name: 'general',
 					title: __( 'General', 'smart-docs' ),
 					className: tabClasses,
 				},
 				{
-					name: "search",
-					title: __( 'Search', 'smart-docs' ),
+					name: 'advanced',
+					title: __( 'Advanced', 'smart-docs' ),
 					className: tabClasses,
 				},
 			]}
 		>
 			{(tab) => {
-				if ("general" === tab.name) {
+				if ( 'general' === tab.name ) {
 					return <General />;
-				} else if ("search" === tab.name) {
-					return <Search />;
+				} else if ( 'advanced' === tab.name ) {
+					return <Advanced />;
 				}
 			}}
 		</TabPanel>
