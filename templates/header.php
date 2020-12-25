@@ -17,12 +17,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$title_tag = is_smartdocs_archive() ? 'h1' : 'h2';
 ?>
 
 <div class="smartdocs-header">
 	<div class="smartdocs-inner">
 		<?php if ( apply_filters( 'smartdocs_show_hero_title', true ) ) : ?>
-			<h2 class="smartdocs-hero-title"><?php echo esc_html( smartdocs_hero_title() ); ?></h2>
+			<<?php echo $title_tag; ?> class="smartdocs-hero-title">
+				<?php echo esc_html( smartdocs_hero_title() ); ?>
+			</<?php echo $title_tag; ?>>
 		<?php endif; ?>
 
 		<?php

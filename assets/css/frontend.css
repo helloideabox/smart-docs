@@ -14,7 +14,6 @@
 [class*=" sd-icon-"] {
 	/* use !important to prevent issues with browser extensions that change fonts */
 	font-family: 'smartdocs' !important;
-	speak: never;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
@@ -359,7 +358,6 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-template.archive .smartdocs-entry-title:before {
 	content: "\e926";
 	font-family: 'smartdocs' !important;
-	speak: never;
 	font-style: normal;
 	font-weight: normal;
 	font-variant: normal;
