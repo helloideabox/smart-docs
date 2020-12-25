@@ -70,6 +70,32 @@ function smartdocs_get_template( $template_name, $args = array() ) {
 }
 
 /**
+ * Cached version of wp_get_post_terms().
+ * This is a private function (internal use ONLY).
+ *
+ * @since  1.0.0
+ * @param  int    $doc_id 	Doc ID.
+ * @param  string $taxonomy Taxonomy slug.
+ * @param  array  $args     Query arguments.
+ * @return array
+ */
+function _smartdocs_get_doc_terms( $doc_id, $taxonomy, $args = array() ) {
+	$cache_key   = 'smartdocs_' . $taxonomy . md5( wp_json_encode( $args ) );
+	$cache_group = 'smartdocs_post_' . $doc_id;
+	$terms 		 = wp_cache_get( $cache_key, $cache_group );
+
+	if ( false !== $terms ) {
+		return $terms;
+	}
+
+	$terms = wp_get_post_terms( $doc_id, $taxonomy, $args );
+
+	wp_cache_add( $cache_key, $terms, $cache_group );
+
+	return $terms;
+}
+
+/**
  * See if current page is SmartDocs post type archive or not.
  *
  * @return boolean

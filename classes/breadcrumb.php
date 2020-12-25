@@ -1,17 +1,22 @@
 <?php
-namespace SmartDocs;
-
 /**
  * Breadcrumb Class.
  *
  * Responsible for creating breadcrumbs.
  *
- * @since 1.0.0
  * @package SmartDocs\Classes
+ * @since 1.0.0
  */
 
-defined( 'ABSPATH' ) || exit;
+namespace SmartDocs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+/**
+ * Breadcrumb class.
+ */
 class Breadcrumb {
 	/**
 	 * Breadcrumb trail.
@@ -97,7 +102,7 @@ class Breadcrumb {
 		if ( ! isset( $permalink ) || empty( $permalink ) ) {
 			$permalink = get_post_type_archive_link( 'smart-docs' );
 		}
-		
+
 		if ( intval( get_option( 'page_on_front' ) ) !== $docs_page_id ) {
 			$this->add_crumb( $docs_title, $permalink );
 		}
@@ -122,7 +127,7 @@ class Breadcrumb {
 
 		$this->prepend_docs_page();
 
-		$terms = wp_get_post_terms(
+		$terms = _smartdocs_get_doc_terms(
 			$post->ID,
 			'smartdocs_category',
 			apply_filters(
