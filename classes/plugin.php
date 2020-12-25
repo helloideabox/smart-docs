@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin loader class
+ * Plugin loader class.
  *
  * Loads the plugin and all the required classes and functions when the
  * plugin is activate.
  *
+ * @package SmartDocs\Classes
  * @since 1.0.0
- * @package SmartDocs
  */
 
 namespace SmartDocs;
@@ -27,9 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Main plugin class responsible for initiazling SmartDocs Plugin. The class
  * registers all the components required to run the plugin.
- *
- * @package SmartDocs
- * @since 1.0.0
  */
 class Plugin {
 	/**
@@ -187,7 +184,7 @@ class Plugin {
 	/**
 	 * Plugin constructor.
 	 *
-	 * Initializing smart-docst plugin.
+	 * Initializing smart-docs plugin.
 	 *
 	 * @since 1.0.0
 	 * @access private
@@ -208,7 +205,7 @@ class Plugin {
 	/**
 	 * Init.
 	 *
-	 * Initialize SmartDocsPlugin.
+	 * Initialize plugin components.
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -220,7 +217,7 @@ class Plugin {
 	/**
 	 * Admin Init.
 	 *
-	 * Initialize SmartDocsPlugin Admin Components.
+	 * Initialize admin components.
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -283,7 +280,6 @@ class Plugin {
 	 * Plugin Activation.
 	 *
 	 * @since 1.0.0
-	 * @access public
 	 */
 	public function plugin_activation() {
 		flush_rewrite_rules();
@@ -299,12 +295,11 @@ class Plugin {
 	 * Plugin Deactivation.
 	 *
 	 * @since 1.0.0
-	 * @access public
 	 */
 	public function plugin_deactivation() {
 		/**
 		 * Delete the rewrite rules flag.
-		 * 
+		 *
 		 * @see SmartDocs\Cpt\register_cpt()
 		 */
 		delete_option( 'smartdocs_rewrite_rules_flushed' );
@@ -313,9 +308,9 @@ class Plugin {
 	/**
 	 * Enqueue scripts.
 	 *
-	 * @return void
+	 * @since 1.0.0
 	 */
-	public function enqueue_scripts( $hook ) {
+	public function enqueue_scripts() {
 		global $post;
 
 		$post_type      = $this->cpt->post_type;
@@ -333,8 +328,8 @@ class Plugin {
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
 			$localized_vars['feedback_nonce'] = wp_create_nonce( "smartdocs_feedback_{$post->ID}" );
 			if (
-				is_singular( $post_type ) || 
-				has_shortcode( $post->post_content, 'smartdocs_search' ) || 
+				is_singular( $post_type ) ||
+				has_shortcode( $post->post_content, 'smartdocs_search' ) ||
 				has_shortcode( $post->post_content, 'smartdocs_categories' )
 			) {
 				$should_enqueue = true;
@@ -357,7 +352,7 @@ class Plugin {
 		global $post;
 
 		$post_type = $this->cpt->post_type;
-		
+
 		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) ) {
 
 			$this->dynamic_css->build_hero_section_style();
