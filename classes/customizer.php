@@ -154,8 +154,8 @@ class Customizer {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array  $shadow
-	 * @param string $color
+	 * @param array  $shadow Array of box shadow properties.
+	 * @param string $color Box shadow color string.
 	 *
 	 * @return string
 	 */
@@ -199,7 +199,7 @@ class Customizer {
 	 * Sanitize callback for Customizer number field.
 	 *
 	 * @since 1.0.0
-	 *
+	 * @param mixed $val Value.
 	 * @return int
 	 */
 	public static function sanitize_number( $val ) {
@@ -210,7 +210,7 @@ class Customizer {
 	 * Sanitize callback for integer value.
 	 *
 	 * @since 1.0.0
-	 *
+	 * @param mixed $val Value.
 	 * @return int
 	 */
 	public static function sanitize_integer( $val ) {
@@ -228,7 +228,8 @@ class Customizer {
 	 * Converts hex color to rgba.
 	 *
 	 * @since 1.0.0
-	 *
+	 * @param string $hex Color in hex.
+	 * @param int 	 $opacity Optional. Color opacity.
 	 * @return string
 	 */
 	public function hex2rgba( $hex, $opacity = 1 ) {
@@ -256,20 +257,20 @@ class Customizer {
 	 * @since 1.0.0
 	 */
 	public function sync_customizer_breakpoints() {
-		$tablet_width = get_theme_mod( 'smartdocs_breakpoint_medium' );
-		$mobile_width = get_theme_mod( 'smartdocs_breakpoint_small' );
+		$tablet_width = (int) get_theme_mod( 'smartdocs_breakpoint_medium' );
+		$mobile_width = (int) get_theme_mod( 'smartdocs_breakpoint_small' );
 		?>
 		<style>
 			<?php if ( ! empty( $tablet_width ) ) { ?>
 			.wp-customizer .preview-tablet .wp-full-overlay-main {
-				width: <?php echo $tablet_width; ?>px;
-				margin-left: -<?php echo $tablet_width / 2; ?>px;
+				width: <?php echo esc_attr( $tablet_width ); ?>px;
+				margin-left: -<?php echo esc_attr( $tablet_width ) / 2; ?>px;
 			}
 			<?php } ?>
 			<?php if ( ! empty( $mobile_width ) ) { ?>
 			.wp-customizer .preview-mobile .wp-full-overlay-main {
-				width: <?php echo $mobile_width; ?>px;
-				margin-left: -<?php echo $mobile_width / 2; ?>px;
+				width: <?php echo esc_attr( $mobile_width ); ?>px;
+				margin-left: -<?php echo esc_attr( $mobile_width ) / 2; ?>px;
 			}
 			<?php } ?>
 		</style>
