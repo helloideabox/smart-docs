@@ -1,27 +1,34 @@
 <?php
-namespace SmartDocs;
-
 /**
  * Structured Data Class.
  *
  * Responsible for generating structured data.
  *
- * @since 1.0.0
  * @package SmartDocs\Classes
+ * @since 1.0.0
  */
 
-defined( 'ABSPATH' ) || exit;
+namespace SmartDocs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+/**
+ * Structure data class.
+ */
 class Structured_Data {
 	/**
 	 * Stores the structured data.
 	 *
+	 * @access private
+	 * @since 1.0.0
 	 * @var array $_data Array of structured data.
 	 */
 	private $_data = array();
 
 	/**
-	 * Constructor.
+	 * Class constructor.
 	 */
 	public function __construct() {
 		// Generate structured data.
@@ -33,6 +40,7 @@ class Structured_Data {
 	/**
 	 * Sets data.
 	 *
+	 * @since 1.0.0
 	 * @param  array $data  Structured data.
 	 * @param  bool  $reset Unset data (default: false).
 	 * @return bool
@@ -54,6 +62,7 @@ class Structured_Data {
 	/**
 	 * Gets data.
 	 *
+	 * @since 1.0.0
 	 * @return array
 	 */
 	public function get_data() {
@@ -67,6 +76,7 @@ class Structured_Data {
 	 *
 	 * 'breadcrumblist',
 	 *
+	 * @since 1.0.0
 	 * @param  array $types Structured data types.
 	 * @return array
 	 */
@@ -101,6 +111,7 @@ class Structured_Data {
 	/**
 	 * Get data types for pages.
 	 *
+	 * @since 1.0.0
 	 * @return array
 	 */
 	protected function get_data_type_for_page() {
@@ -114,19 +125,22 @@ class Structured_Data {
 	 * Sanitizes, encodes and outputs structured data.
 	 *
 	 * Hooked into `wp_footer` action hook.
+	 *
+	 * @since 1.0.0
 	 */
 	public function output_structured_data() {
 		$types = $this->get_data_type_for_page();
 		$data  = $this->get_structured_data( $types );
 
 		if ( $data ) {
-			echo '<script type="application/ld+json">' . $this->esc_json( wp_json_encode( $data ), true ) . '</script>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<script type="application/ld+json">' . $this->esc_json( wp_json_encode( $data ), true ) . '</script>'; // WPCS: XSS ok.
 		}
 	}
 
 	/**
 	 * Escape JSON for use on HTML or attribute text nodes.
 	 *
+	 * @since 1.0.0
 	 * @param string $json JSON to escape.
 	 * @param bool   $html True if escaping for HTML text node, false for attributes. Determines how quotes are handled.
 	 * @return string Escaped JSON.
@@ -145,6 +159,7 @@ class Structured_Data {
 	 *
 	 * Hooked into `smartdocs_breadcrumb` action hook.
 	 *
+	 * @since 1.0.0
 	 * @param SmartDocs\Breadcrumb $breadcrumbs Breadcrumb data.
 	 */
 	public function generate_breadcrumblist_data( $breadcrumbs ) {
@@ -170,7 +185,7 @@ class Structured_Data {
 			if ( ! empty( $crumb[1] ) ) {
 				$markup['itemListElement'][ $key ]['item'] += array( '@id' => $crumb[1] );
 			} elseif ( isset( $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI'] ) ) {
-				$current_url = set_url_scheme( 'http://' . wp_unslash( $_SERVER['HTTP_HOST'] ) . wp_unslash( $_SERVER['REQUEST_URI'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				$current_url = set_url_scheme( 'http://' . wp_unslash( $_SERVER['HTTP_HOST'] ) . wp_unslash( $_SERVER['REQUEST_URI'] ) ); // @codingStandardsIgnoreLine.
 
 				$markup['itemListElement'][ $key ]['item'] += array( '@id' => $current_url );
 			}
