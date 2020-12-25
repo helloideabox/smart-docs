@@ -2,11 +2,13 @@
 /**
  * Autoloader.
  *
- * Handles the autoloading of classes as per PSR-4 Standard.
+ * Autoloader handler class is responsible for loading the different
+ * classes needed to run the plugin.
  *
+ * @package SmartDocs\Classes
  * @since 1.0.0
- * @package SmartDocs
  */
+
 namespace SmartDocs;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,23 +17,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Autoloader class.
- *
- * Autoloader handler class is responsible for loading the different
- * classes needed to run the plugin.
- *
- * @since 1.0.0
  */
 class Autoloader {
 	/**
 	 * Classes map.
 	 *
-	 * Maps PowerPack Elements API classes to file names.
+	 * Maps SmartDocs classes to file names.
 	 *
 	 * @since 1.0.0
 	 * @access private
 	 * @static
 	 *
-	 * @var array Classes used by plugin.
+	 * @var array $classes_map Classes used by plugin.
 	 */
 	private static $classes_map;
 
@@ -41,13 +38,20 @@ class Autoloader {
 	 * Register a function as `__autoload()` implementation.
 	 *
 	 * @since 1.0.0
-	 * @access public
 	 * @static
 	 */
 	public static function run() {
 		spl_autoload_register( array( __CLASS__, 'autoload' ) );
 	}
 
+	/**
+	 * Get classes map with file names.
+	 *
+	 * @since 1.0.0
+	 * @static
+	 * @see self::init_classes_map()
+	 * @return array
+	 */
 	public static function get_classes_map() {
 		if ( ! self::$classes_map ) {
 			self::init_classes_map();
@@ -56,6 +60,12 @@ class Autoloader {
 		return self::$classes_map;
 	}
 
+	/**
+	 * Initializes classes map with file names.
+	 *
+	 * @since 1.0.0
+	 * @static
+	 */
 	private static function init_classes_map() {
 
 		self::$classes_map = array(
