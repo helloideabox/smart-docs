@@ -1,47 +1,42 @@
 <?php
 /**
- * Plugin Customizer Settings
+ * Plugin Customizer Settings.
  *
- * Responsible for registering style settings in Customizer.
+ * Responsible for registering sections and controls in Customizer.
+ * Responsible for enqueuing relevant scripts into Customizer.
  *
+ * @package SmartDocs\Classes
  * @since 1.0.0
- * @package SmartDocs
  */
 
 namespace SmartDocs;
 
 use SmartDocs\Customizer_Control;
 
-// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
-// Exit if WP_Customize_Control does not exsist.
 if ( ! class_exists( 'WP_Customize_Control' ) ) {
-	return null;
+	return null; // Return if WP_Customize_Control does not exist.
 }
 
 /**
  * Customizer Class.
- *
- * @since 1.0.0
  */
 class Customizer {
 	/**
-	 * A flag for whether we're in a Customizer
+	 * A flag to check whether we're in a Customizer
 	 * preview or not.
 	 *
 	 * @since 1.0.0
 	 * @access private
-	 * @var bool $_in_customizer_preview
+	 * @var bool $_is_preview
 	 */
 	private $_is_preview = false;
 
 	/**
-	 * Construction fuction for class Customizer
-	 *
-	 * @since 1.0.0
+	 * Class constructor.
 	 */
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'add_sections' ) );
@@ -51,18 +46,24 @@ class Customizer {
 		add_action( 'template_redirect', array( $this, 'perform_template_actions' ) );
 	}
 
+	/**
+	 * Add panels and sections into Customizer.
+	 *
+	 * @since 1.0.0
+	 * @param object $wp_customize WP Customizer class object.
+	 */
 	public function add_sections( $wp_customize ) {
-		 // Create custom panels
+		// Create custom panels.
 		$wp_customize->add_panel(
 			'smartdocs_style_options',
 			array(
 				'priority'       => 30,
 				'theme_supports' => '',
-				'title'          => __( 'SmartDocs', 'smart-docs' ),
-				'description'    => __( 'Controls the design of SmartDocs frontend.', 'smart-docs' ),
+				'title'          => __( 'Smart Docs', 'smart-docs' ),
+				'description'    => __( 'Controls the layout and elements of SmartDocs frontend.', 'smart-docs' ),
 			)
 		);
-		
+
 		require SMART_DOCS_PATH . 'classes/customizer/sections/hero-section.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/archive.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/single.php';
@@ -71,182 +72,9 @@ class Customizer {
 	}
 
 	/**
-	 * Docs Homepage Section.
-	 *
-	 * @param WP_Customize_Manager $wp_customize Theme Customizer Object.
-	 * @return void
-	 */
-	public function add_docs_homepage_section( $wp_customize ) {
-
-		$wp_customize->add_section(
-			'smartdocs_archive_settings',
-			array(
-				'title'    => __( 'Docs Home Page', 'smart-docs' ),
-				'priority' => 100,
-			)
-		);
-
-		$wp_customize->add_setting(
-			'smartdocs_homepage_title_color',
-			array(
-				'default'    => '#000000',
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new \WP_Customize_Color_Control(
-				$wp_customize,
-				'docs_title_color',
-				array(
-					'label'    => __( 'Title Color', 'smart-docs' ),
-					'section'  => 'smartdocs_archive_settings',
-					'settings' => 'smartdocs_homepage_title_color',
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'smartdocs_homepage_grid_items',
-			array(
-				'default'    => '#000000',
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Customizer_Control(
-				$wp_customize,
-				'docs_section_divider',
-				array(
-					'label'    => __( 'Grid Items', 'smart-docs' ),
-					'section'  => 'smartdocs_archive_settings',
-					'settings' => 'smartdocs_homepage_grid_items',
-					'type'     => 'smartdocs-section',
-				)
-			)
-		);
-
-		$wp_customize->add_control(
-			new \WP_Customize_Control(
-				$wp_customize,
-				'docs_category_font_size',
-				array(
-					'label'    => __( 'Category Title Font Size', 'smart-docs' ),
-					'section'  => 'smartdocs_archive_settings',
-					'settings' => 'smartdocs_homepage_grid_items',
-					'type'     => 'number',
-					'default'  => '16',
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'smartdocs_homepage_test_control',
-			array(
-				'default'    => 0,
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Customizer_Control(
-				$wp_customize,
-				'test_two_control',
-				array(
-					'label'    => __( 'Test Control', 'smart-docs' ),
-					'section'  => 'smartdocs_archive_settings',
-					'settings' => 'smartdocs_homepage_test_control',
-					'type'     => 'smartdocs-slider',
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'dimension_control',
-			array(
-				'default'    => array(
-					'top'    => 0,
-					'bottom' => 10,
-					'left'   => 20,
-					'right'  => 50,
-				),
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Customizer_Control(
-				$wp_customize,
-				'dimension_1_control',
-				array(
-					'label'    => __( 'Test Control', 'smart-docs' ),
-					'section'  => 'smartdocs_archive_settings',
-					'settings' => 'dimension_control',
-					'type'     => 'smartdocs-dimension',
-					'choices'  => array(
-						'top'    => 'Top',
-						'right'  => 'Right',
-						'bottom' => 'Bottom',
-						'left'   => 'Left',
-					),
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'color_control',
-			array(
-				'default'    => '#ffffff',
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Customizer_Control(
-				$wp_customize,
-				'smartdocs_color_control',
-				array(
-					'label'    => __( 'Color Control', 'smart-docs' ),
-					'section'  => 'smartdocs_archive_settings',
-					'settings' => 'color_control',
-					'type'     => 'smartdocs-color',
-					'choices'  => array( 'alpha' => true ),
-				)
-			)
-		);
-
-		$wp_customize->add_setting(
-			'section_control',
-			array(
-				'default'    => 'Section Control',
-				'capability' => 'edit_theme_options',
-			)
-		);
-
-		$wp_customize->add_control(
-			new Customizer_Control(
-				$wp_customize,
-				'smartdocs_section_control',
-				array(
-					'label'    => __( 'Section Control', 'smart-docs' ),
-					'section'  => 'smartdocs_archive_settings',
-					'settings' => 'section_control',
-					'type'     => 'smartdocs-section',
-				)
-			)
-		);
-
-		/**
-		 * Register Sections.
-		 */
-		$wp_customize->get_section( 'smartdocs_archive_settings' )->panel = 'smartdocs_style_options';
-	}
-
-	/**
 	 * Enqueue customizer preview scripts.
 	 *
-	 * @return void
+	 * @since 1.0.0
 	 */
 	public function enqueue_customizer_preview_script() {
 		wp_enqueue_script(
@@ -260,6 +88,11 @@ class Customizer {
 		$this->_is_preview = true;
 	}
 
+	/**
+	 * Enqueue customizer controls scripts.
+	 *
+	 * @since 1.0.0
+	 */
 	public function enqueue_customizer_controls() {
 		// Enqueue styles.
 		wp_enqueue_style( 'smartdocs-customizer', SMART_DOCS_URL . 'assets/css/customizer.css', array(), SMART_DOCS_VERSION );
@@ -286,7 +119,7 @@ class Customizer {
 			'numberposts' => 1,
 			'post_status' => 'publish',
 			'orderby' => 'date',
-			'order' => 'ASC'
+			'order' => 'ASC',
 		) );
 
 		$single_doc_url = '';
@@ -297,7 +130,7 @@ class Customizer {
 
 		wp_localize_script( 'smartdocs-customizer', 'smartdocs_customizer', array(
 			'cpt_slug' => Plugin::instance()->cpt->get_cpt_rewrite_slug(),
-			'single_doc_url' => $single_doc_url
+			'single_doc_url' => $single_doc_url,
 		) );
 
 		wp_enqueue_script(
@@ -420,24 +253,38 @@ class Customizer {
 		return 'rgba(' . implode( ',', $rgba ) . ')';
 	}
 
+	/**
+	 * Sync Customizer responsive preview dimensions with
+	 * custom breakpoints.
+	 *
+	 * @since 1.0.0
+	 */
 	public function sync_customizer_breakpoints() {
-		$tablet_width = get_theme_mod( 'smartdocs_breakpoint_medium', 1024 );
-		$mobile_width = get_theme_mod( 'smartdocs_breakpoint_small', 768 );
+		$tablet_width = get_theme_mod( 'smartdocs_breakpoint_medium' );
+		$mobile_width = get_theme_mod( 'smartdocs_breakpoint_small' );
 		?>
 		<style>
+			<?php if ( ! empty( $tablet_width ) ) { ?>
 			.wp-customizer .preview-tablet .wp-full-overlay-main {
 				width: <?php echo $tablet_width; ?>px;
 				margin-left: -<?php echo $tablet_width / 2; ?>px;
 			}
-	
+			<?php } ?>
+			<?php if ( ! empty( $mobile_width ) ) { ?>
 			.wp-customizer .preview-mobile .wp-full-overlay-main {
 				width: <?php echo $mobile_width; ?>px;
 				margin-left: -<?php echo $mobile_width / 2; ?>px;
 			}
+			<?php } ?>
 		</style>
 		<?php
 	}
 
+	/**
+	 * Add or remove elements based on Customizer setting.
+	 *
+	 * @since 1.0.0
+	 */
 	public function perform_template_actions() {
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_breadcrumbs' ) ) {
 			if ( is_singular( Plugin::instance()->cpt->post_type ) ) {
