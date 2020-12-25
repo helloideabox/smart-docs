@@ -14,7 +14,8 @@ namespace SmartDocs;
 use SmartDocs\Cpt;
 use SmartDocs\Admin;
 use SmartDocs\Widget;
-use SmartDocs\Templates;
+use SmartDocs\Template;
+use SmartDocs\Customizer;
 use SmartDocs\Ajax;
 use SmartDocs\Structured_Data;
 
