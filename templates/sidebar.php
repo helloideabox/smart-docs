@@ -21,6 +21,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="widget-area sidebar smartdocs-sidebar" itemscope="itemscope" itemtype="https://schema.org/WPSideBar">
 	<div class="sidebar-main content-area">
-		<?php dynamic_sidebar( 'smart-docs-sidebar' ); ?>
+		<?php
+		if ( is_active_sidebar( 'smart-docs-sidebar' ) ) :
+			dynamic_sidebar( 'smart-docs-sidebar' );
+		else :
+			?>
+			<div class="smartdocs-no-sidebar">
+				<?php echo sprintf( __( 'This is Smart Docs Sidebar. You can add Categories widget or edit the content that appears here by visting <a href="%s">Widgets panel</a>', 'smart-docs' ), admin_url( 'widgets.php' ) ); ?>
+			</div>
+			<?php
+		endif;
+		?>
 	</div>
 </div>

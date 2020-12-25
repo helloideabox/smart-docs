@@ -30,7 +30,7 @@ class Widget {
 		$args = array(
 			'name'          => __( 'Smart Docs Sidebar', 'smart-docs' ),
 			'id'            => 'smart-docs-sidebar',
-			'description'   => __( 'Widgets in this area will be shown on all docs single posts and category.', 'smart-docs' ),
+			'description'   => __( 'Widgets in this area will be shown on all single docs and category pages.', 'smart-docs' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</div>',
 			'before_title'  => '<h3 class="widget-title">',
@@ -44,6 +44,6 @@ class Widget {
 
 	private function register_wp_widgets() {
 		register_widget( 'SmartDocs\Widgets\Category_Widget' );
-		register_widget( 'SmartDocs\Widgets\Recent_Docs_Widget' );
+		//register_widget( 'SmartDocs\Widgets\Recent_Docs_Widget' );
 	}
 }

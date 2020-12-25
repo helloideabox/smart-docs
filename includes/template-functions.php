@@ -74,7 +74,7 @@ function smartdocs_archive_content() {
 }
 
 function smartdocs_get_sidebar() {
-	if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
+	if ( ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
 		smartdocs_get_template( 'sidebar' );
 	}
 }

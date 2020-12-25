@@ -31,7 +31,7 @@ class Category_Widget extends \WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'smartdocs-categories-widget',
-			esc_html__( 'Categories - SmartDocs', 'smart-docs' ),
+			esc_html__( 'Smart Docs - Categories', 'smart-docs' ),
 			array(
 				'description' => __( 'Widget to display list of docs categories.', 'smart-docs' ),
 			)

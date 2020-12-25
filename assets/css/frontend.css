@@ -98,6 +98,7 @@
 .smartdocs-template .smartdocs-content #primary {
 	padding-top: 30px;
 	padding-right: 30px;
+	width: 100%;
 }
 
 .smartdocs-template.smartdocs-has-sidebar .smartdocs-content #primary {
@@ -138,6 +139,11 @@
 
 .smartdocs-template .smartdocs-sidebar .widget ul li:last-child {
 	margin-bottom: 0;
+}
+
+.smartdocs-sidebar .smartdocs-no-sidebar {
+	padding: 20px;
+    background: #eee;
 }
 
 .widget_smartdocs-categories-widget ul li {
