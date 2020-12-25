@@ -17,10 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'WP_Customize_Control' ) ) {
-	return null; // Return if WP_Customize_Control does not exist.
-}
-
 /**
  * Customizer Class.
  */
