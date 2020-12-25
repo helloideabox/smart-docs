@@ -1,17 +1,22 @@
 <?php
-namespace SmartDocs;
-
 /**
  * Cpt Manager Class.
  *
  * Responsible for creating Custom Post Type.
  *
- * @since 1.0.0
  * @package SmartDocs\Classes
+ * @since 1.0.0
  */
 
-defined( 'ABSPATH' ) || exit;
+namespace SmartDocs;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+/**
+ * Cpt class.
+ */
 class Cpt {
 	/**
 	 * Docs post type.
@@ -40,7 +45,6 @@ class Cpt {
 	 * Register custom post type and taxonomies.
 	 *
 	 * @since 1.0.0
-	 * @return void
 	 */
 	public function register_cpt() {
 		if ( ! is_blog_installed() || post_type_exists( $this->post_type ) ) {
@@ -258,10 +262,10 @@ class Cpt {
 				?>
 				<div class="doc-feedback" style="display: flex;">
 					<div class="doc-upvotes" title="<?php esc_html_e( 'Upvotes', 'smart-docs' ); ?>" style="margin-right: 10px;">
-						<span class="dashicons dashicons-thumbs-up" style="margin-right: 5px; color: #3fab3e;"></span><?php echo $upvotes; ?>
+						<span class="dashicons dashicons-thumbs-up" style="margin-right: 5px; color: #3fab3e;"></span><?php echo esc_html( $upvotes ); ?>
 					</div>
 					<div class="doc-downvotes" title="<?php esc_html_e( 'Downvotes', 'smart-docs' ); ?>">
-						<span class="dashicons dashicons-thumbs-down" style="margin-right: 5px; color: #f35c51;"></span><?php echo $downvotes; ?>
+						<span class="dashicons dashicons-thumbs-down" style="margin-right: 5px; color: #f35c51;"></span><?php echo esc_html( $downvotes ); ?>
 					</div>
 				</div>
 				<?php
@@ -269,6 +273,14 @@ class Cpt {
 		}
 	}
 
+	/**
+	 * Get CPT rewrite slug.
+	 *
+	 * Get the rewrite slug for doc post type from SmartDocs settings.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
 	public function get_cpt_rewrite_slug() {
 		$rewrite_slug = get_option( 'smartdocs_archive_page_slug' );
 
@@ -279,6 +291,14 @@ class Cpt {
 		return $rewrite_slug;
 	}
 
+	/**
+	 * Get category rewrite slug.
+	 *
+	 * Get the rewrite slug for doc category from SmartDocs settings.
+	 *
+	 * @since 1.0.0
+	 * @return string
+	 */
 	public function get_category_rewrite_slug() {
 		$rewrite_slug = get_option( 'smartdocs_category_slug' );
 
@@ -289,6 +309,13 @@ class Cpt {
 		return $rewrite_slug;
 	}
 
+	/**
+	 * Taxonomy admin scripts.
+	 *
+	 * Enqueue docs taxonomy thumbnail related scripts.
+	 *
+	 * @since 1.0.0
+	 */
 	public function taxonomy_admin_scripts() {
 		if ( ! did_action( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
@@ -296,6 +323,13 @@ class Cpt {
 		wp_enqueue_script( 'smartdocs-taxonomy-thumbnail-upload', SMART_DOCS_URL . '/assets/js/admin/taxonomy-thumbnail.js', array( 'jquery' ), null, false );
 	}
 
+	/**
+	 * Taxonomy admin styles.
+	 *
+	 * Print docs taxonomy thumbnail related styles.
+	 *
+	 * @since 1.0.0
+	 */
 	public function taxonomy_admin_styles() {
 		?>
 		<style>
@@ -307,11 +341,9 @@ class Cpt {
 	}
 
 	/**
-	 * Dynamically create hooks for each taxonomy for edit page.
+	 * Enable category thumbnail.
 	 *
-	 * Adds hooks for each taxonomy that the user has selected
-	 * via settings page. These hooks
-	 * enable the image interface on wp-admin/edit-tags.php.
+	 * Enable the image interface for SmartDocs taxonomy terms.
 	 *
 	 * @since 1.0.0
 	 */
@@ -332,11 +364,10 @@ class Cpt {
 	/**
 	 * Save Edited Term.
 	 *
-	 * @see enable_category_thumbnail()
-	 *
-	 * @param array A list of columns.
-	 * @return array List of columns with "Images" inserted after the checked.
 	 * @since 1.0.0
+	 * @param int 	 $term_id 	Term ID.
+	 * @param int 	 $tt_id 		Term Taxonomy ID.
+	 * @param string $taxonomy 	Taxonomy slug.
 	 */
 	public function taxonomy_thumbnail_save_term( $term_id, $tt_id, $taxonomy ) {
 		if ( isset( $_POST['taxonomy_thumbnail_id'] ) ) {
@@ -349,17 +380,15 @@ class Cpt {
 	 *
 	 * Insert a new column on wp-admin/edit-tags.php.
 	 *
-	 * @see enable_category_thumbnail()
-	 *
-	 * @param array A list of columns.
-	 * @return array List of columns with "Images" inserted after the checked.
 	 * @since 1.0.0
+	 * @param array $columns A list of columns.
+	 * @return array List of columns with "Images" inserted after the checkbox.
 	 */
-	public function manage_taxonomy_columns( $original_columns ) {
-		$new_columns = $original_columns;
+	public function manage_taxonomy_columns( $columns ) {
+		$new_columns = $columns;
 		array_splice( $new_columns, 1 );
 		$new_columns['taxonomy_thumbnail'] = esc_html__( 'Image', 'smart-docs' );
-		return array_merge( $new_columns, $original_columns );
+		return array_merge( $new_columns, $columns );
 	}
 
 	/**
@@ -367,13 +396,11 @@ class Cpt {
 	 *
 	 * Create image control for each term row of wp-admin/edit-tags.php.
 	 *
-	 * @see enable_category_thumbnail()
-	 *
-	 * @param string    Row.
-	 * @param string    Name of the current column.
-	 * @param int   Term ID.
-	 * @return    string    @see taxonomy_thumbnail_control_image()
 	 * @since 1.0.0
+	 * @param string $row Current row.
+	 * @param string $column_name Name of the current column.
+	 * @param int 	 $term_id Term ID.
+	 * @return string
 	 */
 	public function manage_taxonomy_custom_column( $row, $column_name, $term_id ) {
 		if ( 'taxonomy_thumbnail' === $column_name ) {
@@ -397,12 +424,12 @@ class Cpt {
 	/**
 	 * Edit Term Control.
 	 *
-	 * Create image control for wp-admin/edit-tag-form.php.
-	 * Hooked into the $taxonomy. '_edit_form_fields' action.
+	 * Edit image control for wp-admin/edit-tag-form.php.
+	 * Hooked into the $taxonomy . '_edit_form_fields' action.
 	 *
-	 * @param stdClass  Term object.
-	 * @param string    Taxonomy slug.
 	 * @since 1.0.0
+	 * @param object $term Term object.
+	 * @param string $taxonomy Taxonomy slug.
 	 */
 	public function taxonomy_thumbnail_edit_tag_form( $term, $taxonomy ) {
 		$taxonomy = get_taxonomy( $taxonomy );
@@ -423,13 +450,13 @@ class Cpt {
 					if ( ! empty( $obj_taxonomy_thumbnail ) ) {
 						$taxonomy_thumbnail_img_url = $obj_taxonomy_thumbnail[0];
 						?>
-						<img id="taxonomy_thumbnail_preview_img" width="150" height="150" src="<?php echo $taxonomy_thumbnail_img_url; ?>" ><br>
+						<img id="taxonomy_thumbnail_preview_img" width="150" height="150" src="<?php echo esc_url( $taxonomy_thumbnail_img_url ); ?>" ><br>
 						<?php
 					}
 				}
 				?>
 				</div>
-				<input id="taxonomy_thumbnail_id" type="hidden" name="taxonomy_thumbnail_id" value="<?php echo $taxonomy_thumbnail_id; ?>" />
+				<input id="taxonomy_thumbnail_id" type="hidden" name="taxonomy_thumbnail_id" value="<?php echo absint( $taxonomy_thumbnail_id ); ?>" />
 				<input id="upload_taxonomy_thumbnail_button" type="button" class="button button-primary" value="<?php echo esc_html__( 'Upload', 'smart-docs' ); ?>" />
 				<?php
 				$delete_button_inline_css = 'display:none';
@@ -437,17 +464,28 @@ class Cpt {
 					$delete_button_inline_css = '';
 				}
 				?>
-				<input style="<?php echo $delete_button_inline_css; ?>" id="delete_taxonomy_thumbnail_button" type="button" class="button button-danger" value="<?php echo esc_html__( 'Delete', 'smart-docs' ); ?>" />
+				<input style="<?php echo esc_attr( $delete_button_inline_css ); ?>" id="delete_taxonomy_thumbnail_button" type="button" class="button button-danger" value="<?php echo esc_html__( 'Delete', 'smart-docs' ); ?>" />
 				<div class="clear"></div>
-				<?php
-				// translators: %1$s for label.
-				?>
-				<span class="description"><?php printf( esc_html__( 'Add an image from media library to this %1$s.', 'smart-docs' ), esc_html( $name ) ); ?></span>
+				<span class="description">
+					<?php
+					// translators: %1$s for label.
+					printf( esc_html__( 'Add an image from media library to this %1$s.', 'smart-docs' ), esc_html( $name ) );
+					?>
+				</span>
 			</td>
 		</tr>
 		<?php
 	}
 
+	/**
+	 * Add Term Control.
+	 *
+	 * Create image control for wp-admin/edit-tag-form.php.
+	 * Hooked into the $taxonomy . '_add_form_fields' action.
+	 *
+	 * @since 1.0.0
+	 * @param string $taxonomy Taxonomy slug.
+	 */
 	public function taxonomy_thumbnail_add_tag_form( $taxonomy ) {
 		$taxonomy = get_taxonomy( $taxonomy );
 		$name     = __( 'term', 'smart-docs' );
@@ -464,12 +502,14 @@ class Cpt {
 			<?php
 				$delete_button_inline_css = 'display:none';
 			?>
-			<input style="<?php echo $delete_button_inline_css; ?>" id="delete_taxonomy_thumbnail_button" type="button" class="button button-danger" value="<?php echo esc_html__( 'Delete', 'smart-docs' ); ?>" />
+			<input style="<?php echo esc_attr( $delete_button_inline_css ); ?>" id="delete_taxonomy_thumbnail_button" type="button" class="button button-danger" value="<?php echo esc_html__( 'Delete', 'smart-docs' ); ?>" />
 			<div class="clear"></div>
-			<?php
+			<span class="description">
+				<?php
 				// translators: %1$s for label.
-			?>
-			<span class="description"><?php printf( esc_html__( 'Add an image from media library to this %1$s.', 'smart-docs' ), esc_html( $name ) ); ?></span>
+				printf( esc_html__( 'Add an image from media library to this %1$s.', 'smart-docs' ), esc_html( $name ) );
+				?>
+			</span>
 		</div>
 		<?php
 	}
