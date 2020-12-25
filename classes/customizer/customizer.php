@@ -421,14 +421,18 @@ class Customizer {
 	}
 
 	public function sync_customizer_breakpoints() {
+		$tablet_width = get_theme_mod( 'smartdocs_breakpoint_medium', 1024 );
+		$mobile_width = get_theme_mod( 'smartdocs_breakpoint_small', 768 );
 		?>
 		<style>
-			.preview-tablet .wp-full-overlay-main {
-				width: <?php echo get_theme_mod( 'smartdocs_breakpoint_medium', 1024 ); ?>px;
+			.wp-customizer .preview-tablet .wp-full-overlay-main {
+				width: <?php echo $tablet_width; ?>px;
+				margin-left: -<?php echo $tablet_width / 2; ?>px;
 			}
 	
-			.preview-mobile .wp-full-overlay-main {
-				width: <?php echo get_theme_mod( 'smartdocs_breakpoint_medium', 768 ); ?>px;
+			.wp-customizer .preview-mobile .wp-full-overlay-main {
+				width: <?php echo $mobile_width; ?>px;
+				margin-left: -<?php echo $mobile_width / 2; ?>px;
 			}
 		</style>
 		<?php
