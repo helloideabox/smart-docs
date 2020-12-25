@@ -19,7 +19,7 @@ use SmartDocs\Ajax;
 use SmartDocs\Structured_Data;
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
 /**
