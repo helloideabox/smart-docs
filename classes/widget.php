@@ -1,6 +1,4 @@
 <?php
-namespace SmartDocs;
-
 /**
  * Register and load the widget.
  *
@@ -8,12 +6,14 @@ namespace SmartDocs;
  * @author Ideabox
  */
 
+namespace SmartDocs;
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
 /**
- * @class Widget
+ * Widget class.
  */
 class Widget {
 	/**
@@ -42,8 +42,10 @@ class Widget {
 		$this->register_wp_widgets();
 	}
 
+	/**
+	 * Register widgets.
+	 */
 	private function register_wp_widgets() {
 		register_widget( 'SmartDocs\Widgets\Category_Widget' );
-		//register_widget( 'SmartDocs\Widgets\Recent_Docs_Widget' );
 	}
 }
