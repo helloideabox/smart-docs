@@ -12,9 +12,8 @@
  *  - Color Picker with Alpha Channel and Palettes
  *  - Section Title
  *
+ * @package SmartDocs\Classes\Customizer
  * @since 1.0.0
- *
- * @package SmartDocs/Customizer
  */
 
 namespace SmartDocs;
@@ -68,7 +67,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		/**
 		 * Renders the control wrapper and calls $this->render_content() for the internals.
 		 *
-		 * @since 1.7
+		 * @since 1.0.0
 		 * @return void
 		 */
 		protected function render() {
