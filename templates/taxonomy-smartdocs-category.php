@@ -15,7 +15,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed direcly
+	exit; // Exit if accessed directly.
 }
 
 smartdocs_get_template( 'archive-smart-docs' );

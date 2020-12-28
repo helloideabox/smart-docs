@@ -1,4 +1,11 @@
 <?php
+/**
+ * SmartDocs Customizer Controls for Single Doc layout.
+ *
+ * @package SmartDocs\Classes\Customizer
+ * @since 1.0.0
+ */
+
 use SmartDocs\Customizer_Control;
 
 // Single doc.

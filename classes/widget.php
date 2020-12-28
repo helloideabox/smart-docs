@@ -2,8 +2,8 @@
 /**
  * Register and load the widget.
  *
- * @package SmartDocs/Widgets
- * @author Ideabox
+ * @package SmartDocs/Classes
+ * @since 1.0.0
  */
 
 namespace SmartDocs;

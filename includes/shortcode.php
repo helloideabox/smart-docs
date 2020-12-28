@@ -2,37 +2,64 @@
 /**
  * Functions related to shortcode for live search
  *
- * @package SmartDocs/Shortcode
- * @author IdeaBox
+ * @package SmartDocs\Functions
  * @version 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
 /**
- * For rendering the search box.
+ * Renders SmartDocs search form.
  *
- * @param int $atts    Get attributes for the search field.
- * @param int $content Get content to search from.
+ * @param array $atts Array of shortcode arguments.
  */
 function smartdocs_render_search_box( $args = array() ) {
-	$args = shortcode_atts(
-		array(),
-		$args
+	$args = array_merge(
+		array(
+			'type' 			=> 'text',
+			'class' 		=> '',
+			'placeholder' 	=> esc_attr_x( 'Search for answers..', 'placeholder', 'smart-docs' ),
+			'value' 		=> get_search_query(),
+			'name' 			=> 's',
+			'title' 		=> esc_attr_x( 'Search', 'text for input title attribute', 'smart-docs' ),
+			'autocomplete' 	=> 'off',
+			'autocapitalize' => 'off',
+			'autocorrect' 	=> 'off',
+		),
+		(array) $args
 	);
 
-	$args = apply_filters( 'smartdocs_search_input_args', $args );
+	$args['class'] = trim( sanitize_html_class( $args['class'] ) . ' smartdocs-search-input' );
+
+	/**
+	 * Filter to modify/add attributes for search input.
+	 *
+	 * @param array $args Attributes for search input.
+	 */
+	$args = (array) apply_filters( 'smartdocs_search_input_attrs', $args );
+
+	$attrs = '';
+
+	if ( ! empty( $args ) ) {
+		foreach ( $args as $key => $value ) {
+			$attrs .= ' ' . $key . '="' . $value . '"';
+		}
+	}
 
 	ob_start();
-	smartdocs_get_template( 'search-form', $args );
+
+	smartdocs_get_template( 'search-form', array(
+		'attributes' => $attrs,
+	) );
+
 	return ob_get_clean();
 }
 add_shortcode( 'smartdocs_search', 'smartdocs_render_search_box' );
 
 /**
- * Render category list for smartdocs categories.
+ * Renders a grid of SmartDocs categories.
  *
  * @param array $args Array of shortcode arguments.
  * @return string
@@ -53,6 +80,11 @@ function smartdocs_render_categories( $args = array() ) {
 		'pad_counts' => 1,
 	);
 
+	/**
+	 * Filter term query args.
+	 *
+	 * @param array $term_args Term arguments.
+	 */
 	$terms_args = apply_filters( 'smartdocs_categories_query_args', $terms_args );
 
 	if ( is_tax( 'smartdocs_category' ) ) {

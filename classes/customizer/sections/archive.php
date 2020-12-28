@@ -1,4 +1,10 @@
 <?php
+/**
+ * SmartDocs Customizer Controls for Archive layout.
+ *
+ * @package SmartDocs\Classes\Customizer
+ * @since 1.0.0
+ */
 
 use SmartDocs\Customizer_Control;
 

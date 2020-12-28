@@ -1,33 +1,28 @@
 <?php
 /**
- * Widget Manager
- * 
+ * Widget Manager.
+ *
  * Responsible for loading and running Category Widget.
- * 
+ *
+ * @package SmartDocs\Classes\Widgets
  * @since 1.0.0
- * @package SmartDocs
  */
 
 namespace SmartDocs\Widgets;
 
 use SmartDocs\Plugin;
 
-/**
- * Register and load the widget.
- *
- * @package SmartDocs/Widgets
- * @author IdeaBox
- */
-
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
 /**
- * Creating the widget for categories.
+ * Category_Widget class extending WP_Widget class.
  */
 class Category_Widget extends \WP_Widget {
-
+	/**
+	 * Class constructor.
+	 */
 	public function __construct() {
 		parent::__construct(
 			'smartdocs-categories-widget',
@@ -116,7 +111,7 @@ class Category_Widget extends \WP_Widget {
 			'dropdown' 	=> '0',
 			'count' 	=> '1',
 			'empty' 	=> '0',
-			'hierarchical' => '1'
+			'hierarchical' => '1',
 		);
 
 		$instance = array_merge( $default, $instance );

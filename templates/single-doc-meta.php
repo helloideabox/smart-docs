@@ -15,7 +15,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
 $modified_time_string = sprintf( __( 'Updated on %s', 'smart-docs' ), get_the_modified_date( 'F j, Y' ) );

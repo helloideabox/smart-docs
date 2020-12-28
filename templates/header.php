@@ -15,7 +15,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit; // Exit if accessed directly.
 }
 
 $title_tag = is_smartdocs_archive() ? 'h1' : 'h2';
