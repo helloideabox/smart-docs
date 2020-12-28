@@ -6,6 +6,7 @@ import {
 	ToggleControl,
 } from "@wordpress/components";
 import { withSelect, useDispatch } from '@wordpress/data';
+import { getEntityRecord } from "@wordpress/core-data";
 import { useState } from "@wordpress/element";
 import { compose } from '@wordpress/compose';
 import { __ } from "@wordpress/i18n";
