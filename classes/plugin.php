@@ -347,6 +347,7 @@ class Plugin {
 	/**
 	 * Handle Customizer Styles.
 	 *
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public function handle_customizer_styles() {
