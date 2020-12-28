@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: SmartDocs
+ * Plugin Name: Smart Docs
  * Plugin URI: https://wpsmartdocs.com/
  * Author: IdeaBox Creations
  * Author URI: https://ideabox.io/
