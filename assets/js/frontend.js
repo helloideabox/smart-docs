@@ -13,6 +13,11 @@
 		} );
 
 		$( '.smartdocs-search-form input.smartdocs-search-input' ).on( 'keyup', function() {
+			// Disable our AJAX search when the search form is associated with SearchWP live.
+			if ( $(this).data( 'swp-live' ) ) {
+				return;
+			}
+
 			var $input = $(this);
 
 			if ( $input.val().length >= 3 && $input.val() !== lastValue ) {
