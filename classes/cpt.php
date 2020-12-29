@@ -31,7 +31,7 @@ class Cpt {
 	public function __construct() {
 		// Action to register custom post type.
 		add_action( 'init', array( $this, 'register_cpt' ) );
-		add_action( 'init', array( $this, 'enable_category_thumbnail' ) );
+		add_action( 'admin_head', array( $this, 'print_admin_menu_style' ) );
 		add_action( 'admin_print_scripts', array( $this, 'taxonomy_admin_scripts' ) );
 
 		add_filter( 'rewrite_rules_array', array( $this, 'fix_rewrite_rules' ) );
@@ -45,6 +45,7 @@ class Cpt {
 	 * Register custom post type and taxonomies.
 	 *
 	 * @since 1.0.0
+	 * @see "init"
 	 */
 	public function register_cpt() {
 		if ( ! is_blog_installed() || post_type_exists( $this->post_type ) ) {
@@ -85,6 +86,7 @@ class Cpt {
 			'exclude_from_search' => false,
 			'has_archive'         => $rewrite_slug,
 			'menu_position'       => null,
+			'menu_icon'			  => SMART_DOCS_URL . 'assets/images/admin-menu-icon.png',
 			'show_in_rest'        => true, // For accessing the cpt in wp rest api.
 			'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'revisions', 'custom-fields' ),
 		);
@@ -137,6 +139,8 @@ class Cpt {
 
 		register_taxonomy( 'smartdocs_category', $this->post_type, $category_args );
 
+		$this->enable_category_thumbnail();
+
 		if ( ! get_option( 'smartdocs_rewrite_rules_flushed' ) ) {
 			flush_rewrite_rules();
 			update_option( 'smartdocs_rewrite_rules_flushed', 1 );
@@ -148,6 +152,7 @@ class Cpt {
 	 *
 	 * @since 1.0.0
 	 * @param array $rules Rules.
+	 * @see "rewrite_rules_array"
 	 * @return array
 	 */
 	public function fix_rewrite_rules( $rules ) {
@@ -175,6 +180,7 @@ class Cpt {
 	 * @since 1.0.0
 	 * @param  string  $permalink The existing permalink URL.
 	 * @param  WP_Post $post WP_Post object.
+	 * @see "post_type_link"
 	 * @return string
 	 */
 	public function filter_post_type_link( $permalink, $post ) {
@@ -310,11 +316,28 @@ class Cpt {
 	}
 
 	/**
+	 * Print admin menu style.
+	 *
+	 * Renders necessary CSS to fix admin menu icon.
+	 *
+	 * @since 1.0.0
+	 * @see "admin_head"
+	 */
+	public function print_admin_menu_style() {
+		?>
+		<style type="text/css">
+		#menu-posts-smart-docs .wp-menu-image img { padding-top: 6px; }
+		</style>
+		<?php
+	}
+
+	/**
 	 * Taxonomy admin scripts.
 	 *
 	 * Enqueue docs taxonomy thumbnail related scripts.
 	 *
 	 * @since 1.0.0
+	 * @see "admin_print_scripts"
 	 */
 	public function taxonomy_admin_scripts() {
 		if ( ! did_action( 'wp_enqueue_media' ) ) {
