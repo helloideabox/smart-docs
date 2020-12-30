@@ -130,7 +130,7 @@ if ( ! function_exists( 'smartdocs_output_content_area_wrapper_start' ) ) {
 	function smartdocs_output_content_area_wrapper_start() {
 		if ( ! is_post_type_archive( SmartDocs\Plugin::instance()->cpt->post_type ) ) {
 			?>
-			<div id="primary" class="content-area">
+			<div id="primary">
 				<?php
 				/**
 				 * Hook: smartdocs_primary_content_area
