@@ -30,10 +30,16 @@ $darken20: darken( #3F51B5, 20% );
 }
 
 /* Main Tabs */
-.smartdocs-settings-tabs {
+#smartdocs-setting-root {
 	--wp-admin-theme-color: #{$accentColor};
 	--wp-admin-theme-color-darker-10: #{$darken10};
 	--wp-admin-theme-color-darker-20: #{$darken20};
+	a {
+		color: $accentColor;
+		text-decoration: none;
+	}
+}
+.smartdocs-settings-tabs {
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
 		rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
 	height: fit-content;
@@ -107,6 +113,10 @@ $darken20: darken( #3F51B5, 20% );
 			justify-content: space-between;
 			align-items: center;
 		}
+	}
+
+	p:last-of-type {
+		margin-bottom: 0;
 	}
 }
 
