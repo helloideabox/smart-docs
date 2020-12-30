@@ -168,7 +168,7 @@ function smartdocs_get_current_terms() {
  * @param string $class CSS class names.
  */
 function smartdocs_post_class( $class = '' ) {
-	echo sanitize_html_class( $class );
+	echo $class;
 }
 
 /**
