@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div class="widget-area sidebar smartdocs-sidebar" itemscope="itemscope" itemtype="https://schema.org/WPSideBar">
-	<div class="sidebar-main content-area">
+	<div class="sidebar-main">
 		<?php
 		if ( is_active_sidebar( 'smart-docs-sidebar' ) ) :
 			dynamic_sidebar( 'smart-docs-sidebar' );

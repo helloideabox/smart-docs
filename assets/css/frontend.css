@@ -113,7 +113,7 @@
 }
 
 /** Sidebar Widgets */
-.smartdocs-template .smartdocs-sidebar .content-area {
+.smartdocs-template .smartdocs-sidebar .sidebar-main {
 	width: 100%;
 }
 .smartdocs-template .smartdocs-sidebar .widget {
