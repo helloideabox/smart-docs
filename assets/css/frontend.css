@@ -71,6 +71,7 @@
 /** Header */
 .smartdocs-header {
 	background-color: #eee;
+	border-bottom: 1px solid #eee;
 	position: relative;
 }
 
