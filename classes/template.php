@@ -105,6 +105,9 @@ class Template {
 		if ( ! empty( $template_file ) ) {
 			$this->has_docs_template = true;
 
+			// Theme compatibilities.
+			$this->theme_compats();
+
 			$exists_in_theme = locate_template(
 				array(
 					$template_file,
@@ -178,5 +181,15 @@ class Template {
 		}
 
 		return $classes;
+	}
+
+	/**
+	 * Theme compatibilities.
+	 *
+	 * @since 1.0.0
+	 */
+	protected function theme_compats() {
+		// Remove OceanWP page header.
+		remove_action( 'ocean_page_header', 'oceanwp_page_header_template' );
 	}
 }
