@@ -359,14 +359,17 @@ class Plugin {
 
 			$this->dynamic_css->build_hero_section_style();
 			$this->dynamic_css->build_categories_grid_style();
+			$this->dynamic_css->build_responsive_styles();
 
 		} elseif ( is_singular( $post_type ) ) {
 
 			$this->dynamic_css->build_hero_section_style();
+			$this->dynamic_css->build_responsive_styles();
 
 		} elseif ( is_a( $post, 'WP_Post' ) ) {
 			if ( has_shortcode( $post->post_content, 'smartdocs_categories' ) ) {
 				$this->dynamic_css->build_categories_grid_style();
+				$this->dynamic_css->build_responsive_styles();
 			}
 		}
 

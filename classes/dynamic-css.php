@@ -254,6 +254,38 @@ class Dynamic_CSS {
 	}
 
 	/**
+	 * Build responsive styles.
+	 *
+	 * @since 1.0.0
+	 */
+	public function build_responsive_styles() {
+		$this->add_rule( '.smartdocs-template .smartdocs-inner, .smartdocs-template .smartdocs-content .smartdocs-inner', array(
+			'padding-left' 	=> '30px',
+			'padding-right' => '30px',
+		), 'tablet' );
+
+		$this->add_rule( '.smartdocs-template .smartdocs-inner, .smartdocs-template .smartdocs-content .smartdocs-inner', array(
+			'padding-left' 	=> '30px',
+			'padding-right' => '30px',
+		), 'mobile' );
+
+		$this->add_rule( '.smartdocs-template .smartdocs-content .smartdocs-inner', array(
+			'flex-direction' => 'column',
+		), 'mobile' );
+
+		$this->add_rule( '.smartdocs-template.smartdocs-has-sidebar .smartdocs-content #primary', array(
+			'width' => '100%',
+		), 'mobile' );
+
+		$this->add_rule( '.smartdocs-template .smartdocs-content .sidebar', array(
+			'width' 		=> '100%',
+			'border' 		=> '0px',
+			'padding-left' 	=> '0px',
+		), 'mobile' );
+	}
+
+
+	/**
 	 * Iterate through built styles and render with media queries.
 	 *
 	 * @since 1.0.0
