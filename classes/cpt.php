@@ -86,7 +86,7 @@ class Cpt {
 			'exclude_from_search' => false,
 			'has_archive'         => $rewrite_slug,
 			'menu_position'       => null,
-			'menu_icon'			  => SMART_DOCS_URL . 'assets/images/admin-menu-icon.png',
+			'menu_icon'			  => $this->get_post_type_icon(),
 			'show_in_rest'        => true, // For accessing the cpt in wp rest api.
 			'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'revisions', 'custom-fields' ),
 		);
@@ -230,13 +230,24 @@ class Cpt {
 	}
 
 	/**
+	 * Base64 encoded svg icon.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string Base64-encoded SVG icon.
+	 */
+	protected function get_post_type_icon() {
+		return 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOS43NCIgaGVpZ2h0PSIxOS43NCIgdmlld0JveD0iMCAwIDE5Ljc0IDE5Ljc0Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTkuODcsMGE5Ljg3LDkuODcsMCwxLDAsOS44Nyw5Ljg3QTkuODcsOS44NywwLDAsMCw5Ljg3LDBabTUuMDcsMTQuODJhMS4zNiwxLjM2LDAsMCwxLTEuMzUsMS4zNkg2LjQzYTEuMzYsMS4zNiwwLDAsMS0xLjM2LTEuMzZWNC43QTEuMzYsMS4zNiwwLDAsMSw2LjQzLDMuMzRoNS42NGEuNy43LDAsMCwxLC4xNCwwVjYuMDhoMi43YS43LjcsMCwwLDEsMCwuMTRaTTYuNDQsOS4zNFY5YS40Mi40MiwwLDAsMSwuNDItLjQyaDYuNGEuNDIuNDIsMCwwLDEsLjQyLjQydi4zNmEuNDIuNDIsMCwwLDEtLjQyLjQySDYuODZBLjQyLjQyLDAsMCwxLDYuNDQsOS4zNFptMCwxLjkzVjEwLjlhLjQxLjQxLDAsMCwxLC40Mi0uNDFIMTJhLjQxLjQxLDAsMCwxLC40Mi40MXYuMzdhLjQyLjQyLDAsMCwxLS40Mi40Mkg2Ljg2QS40Mi40MiwwLDAsMSw2LjQ0LDExLjI3Wm03LjM0LDEuNTZ2LjM3YS40Mi40MiwwLDAsMS0uNDIuNDJIN2EuNDIuNDIsMCwwLDEtLjQyLS40MnYtLjM3QS40Mi40MiwwLDAsMSw3LDEyLjQxaDYuNEEuNDIuNDIsMCwwLDEsMTMuNzgsMTIuODNaIiBmaWxsPSIjQTlBREIyIi8+PC9zdmc+';
+	}
+
+	/**
 	 * CPT Columns
 	 *
 	 * Displays Feedback column.
 	 *
 	 * @since 1.0.0
-	 * @access public
 	 * @param int $columns contains the column names.
+	 * @return array $columns
 	 */
 	public function cpt_columns( $columns ) {
 		$columns['doc_feedback'] = __( 'Feedback', 'smart-docs' );
