@@ -500,7 +500,7 @@ $wp_customize->add_control(
 		$wp_customize,
 		'smartdocs_archive_category_action_border_color_control',
 		array(
-			'label'    => __( 'Category Action Border Color', 'smart-docs' ),
+			'label'    => __( 'Separator Color', 'smart-docs' ),
 			'section'  => 'smartdocs_archive_settings',
 			'settings' => 'smartdocs_archive_category_action_border_color',
 			'type'     => 'smartdocs-color',
