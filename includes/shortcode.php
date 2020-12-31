@@ -71,6 +71,8 @@ function smartdocs_render_categories( $args = array() ) {
 			'columns'    => '3,2,1',
 			'hide_empty' => 'yes',
 			'title_tag'  => 'h5',
+			'include'	 => 'all', // Comma separated term IDs. Example: "4,9,13".
+			'exclude'	 => 'all', // Comma separated term IDs. Example: "4,9,13".
 		),
 		$args
 	);
@@ -85,7 +87,9 @@ function smartdocs_render_categories( $args = array() ) {
 	 *
 	 * @param array $term_args Term arguments.
 	 */
-	$terms_args = apply_filters( 'smartdocs_categories_query_args', $terms_args );
+	$terms_args = (array) apply_filters( 'smartdocs_categories_query_args', $terms_args );
+
+	$terms_args['taxonomy'] = 'smartdocs_category';
 
 	if ( is_tax( 'smartdocs_category' ) ) {
 		// Query only child terms if we are on taxonomy archive.
@@ -96,7 +100,7 @@ function smartdocs_render_categories( $args = array() ) {
 			}
 		}
 	} else {
-		$terms = get_terms( 'smartdocs_category', $terms_args );
+		$terms = get_terms( $terms_args );
 	}
 
 	if ( ! isset( $terms ) || is_wp_error( $terms ) || empty( $terms ) ) {
