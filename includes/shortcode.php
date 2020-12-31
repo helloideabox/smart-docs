@@ -80,6 +80,8 @@ function smartdocs_render_categories( $args = array() ) {
 	$terms_args = array(
 		'hide_empty' => 'no' === $args['hide_empty'] ? false : true,
 		'pad_counts' => 1,
+		'include'	 => $args['include'],
+		'exclude'	 => $args['exclude'],
 	);
 
 	/**
