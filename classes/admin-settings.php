@@ -47,6 +47,8 @@ class Admin {
 	 * @return void
 	 */
 	public function register_options_menu() {
+		global $submenu;
+
 		// Adding sub menu to the cpt.
 		add_submenu_page(
 			'edit.php?post_type=smart-docs', // Parent slug.
@@ -55,6 +57,12 @@ class Admin {
 			'manage_options', // Capability.
 			'smart_docs_settings', // Menu slug.
 			array( $this, 'render_settings_content' ) // Callback function.
+		);
+
+		$submenu['edit.php?post_type=smart-docs'][20] = array(
+			__( 'Customize', 'smart-docs' ),
+			'customize',
+			admin_url( 'customize.php?url=' . smartdocs_get_docs_page_link() . '&autofocus[panel]=smartdocs_style_options' ),
 		);
 	}
 
