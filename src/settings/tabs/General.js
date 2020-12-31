@@ -130,21 +130,6 @@ const General = ( props ) => {
 			</BaseControl>
 
 			<BaseControl
-				label=""
-				className="mt-3 smartdocs-field--customize"
-			>
-				<div className="col-1">
-					<span className="components-base-control__label">{ __( 'Style & Customize', 'smart-docs' ) }</span>
-					<p className="components-base-control__help">
-						{ __( 'You can style and customize the docs elements to suit your needs.', 'smart-docs' ) }
-					</p>
-				</div>
-				<div className="col-2">
-					<a href={ smartdocs_admin.customizer_url } className="components-button is-secondary" target="_blank">{ __( 'Customize', 'smart-docs' ) }</a>
-				</div>
-			</BaseControl>
-
-			<BaseControl
 				label={ __( 'Your Support Page URL', 'smart-docs' ) }
 				help={ __( 'Please enter your support or contact page URL.', 'smart-docs' ) }
 				className="smartdocs-field--support-page"
