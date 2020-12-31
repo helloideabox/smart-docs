@@ -71,8 +71,10 @@ function smartdocs_render_categories( $args = array() ) {
 			'columns'    => '3,2,1',
 			'hide_empty' => 'yes',
 			'title_tag'  => 'h5',
-			'include'	 => 'all', // Comma separated term IDs. Example: "4,9,13".
-			'exclude'	 => 'all', // Comma separated term IDs. Example: "4,9,13".
+			'include'	 => 'all', 	// Comma separated term IDs. Example: "4,9,13".
+			'exclude'	 => 'all', 	// Comma separated term IDs. Example: "4,9,13".
+			'orderby'	 => 'name', // @see https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
+			'order'		 => 'ASC', 	// @see https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
 		),
 		$args
 	);
@@ -82,6 +84,8 @@ function smartdocs_render_categories( $args = array() ) {
 		'pad_counts' => 1,
 		'include'	 => $args['include'],
 		'exclude'	 => $args['exclude'],
+		'orderby'	 => $args['orderby'],
+		'order'	 	 => $args['order'],
 	);
 
 	/**
