@@ -140,6 +140,7 @@ class Dynamic_CSS {
 	 */
 	public function build_categories_grid_style() {
 		$gap 						= $this->get_mod( 'archive_columns_gap' );
+		$bg_color 					= $this->get_mod( 'archive_category_bg_color' );
 		$title_font_size 			= $this->get_mod( 'archive_category_title_font_size' );
 		$title_font_size_tablet 	= $this->get_mod( 'archive_category_title_font_size_tablet' );
 		$title_font_size_mobile 	= $this->get_mod( 'archive_category_title_font_size_mobile' );
@@ -158,6 +159,12 @@ class Dynamic_CSS {
 		if ( false !== $gap ) {
 			$this->add_rule( '.smartdocs-categories', array(
 				'gap' => "{$gap}px",
+			) );
+		}
+
+		if ( ! empty( $bg_color ) ) {
+			$this->add_rule( '.smartdocs-categories .smartdocs-category', array(
+				'background-color' => esc_attr( $bg_color ),
 			) );
 		}
 

@@ -61,6 +61,13 @@
 		});
 	});
 
+	/* Category */
+	wp.customize("smartdocs_archive_category_bg_color", function (value) {
+		value.bind(function (new_value) {
+			$(".smartdocs-categories .smartdocs-category").css("background-color", new_value);
+		});
+	});
+
 	/**
 	 * Category title
 	 */

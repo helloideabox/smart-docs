@@ -131,6 +131,30 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting(
+	'smartdocs_archive_category_bg_color',
+	array(
+		'default'    => '',
+		'capability' => 'edit_theme_options',
+		'transport'  => 'postMessage',
+	)
+);
+
+$wp_customize->add_control(
+	new Customizer_Control(
+		$wp_customize,
+		'smartdocs_archive_category_bg_color_control',
+		array(
+			'label'    => __( 'Category Background Color', 'smart-docs' ),
+			'section'  => 'smartdocs_archive_settings',
+			'settings' => 'smartdocs_archive_category_bg_color',
+			'type'     => 'smartdocs-color',
+			'choices'  => array(
+				'alpha' => true,
+			),
+		)
+	)
+);
 
 $wp_customize->add_setting(
 	'smartdocs_archive_category_title_tag',
