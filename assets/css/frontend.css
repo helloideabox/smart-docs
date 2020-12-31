@@ -97,6 +97,7 @@
 
 .smartdocs-template .smartdocs-content #primary {
 	padding-top: 30px;
+	padding-bottom: 30px;
 	padding-right: 30px;
 	width: 100%;
 }
@@ -146,8 +147,13 @@
     background: #eee;
 }
 
+.widget_smartdocs-categories-widget ul ul {
+	border: 0;
+}
 .widget_smartdocs-categories-widget ul li {
+	margin-top: 0;
 	margin-bottom: 0;
+	padding-top: 0;
 }
 .widget_smartdocs-categories-widget li li {
 	margin-left: 0;
@@ -218,6 +224,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 }
 .smartdocs-search form {
 	margin-bottom: 0;
+	padding: 0;
 }
 .smartdocs-search .search-icon,
 .smartdocs-search .loading-spinner {
