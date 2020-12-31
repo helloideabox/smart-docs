@@ -264,11 +264,6 @@ class Dynamic_CSS {
 			'padding-right' => '30px',
 		), 'tablet' );
 
-		$this->add_rule( '.smartdocs-template .smartdocs-inner, .smartdocs-template .smartdocs-content .smartdocs-inner', array(
-			'padding-left' 	=> '30px',
-			'padding-right' => '30px',
-		), 'mobile' );
-
 		$this->add_rule( '.smartdocs-template .smartdocs-content .smartdocs-inner', array(
 			'flex-direction' => 'column',
 		), 'mobile' );
