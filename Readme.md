@@ -71,10 +71,10 @@ We bet you do! Your appreciation is always motivating for our team.
 
 If you liked SmartDocs, consider checking out our other WordPress plugins:
 
-**PowerPack Addon for Elementor**: A powerful add-on for Elementor with more than 70 widgets and 150+ professionally designed templates.
+**[PowerPack Addon for Elementor](https://powerpackelements.com/)**: A powerful add-on for Elementor with more than 70 widgets and 150+ professionally designed templates.
 
-**PowerPack Addon for Beaver Builder**: A library of 65+ creative modules and 350+ beautifully designed templates.
+**[PowerPack Addon for Beaver Builder](https://wpbeaveraddons.com/)**: A library of 65+ creative modules and 350+ beautifully designed templates.
 
-**WPfomify**: A Social Proofing tool helps in the website's conversion by displaying recent sales and signup notifications.
+**[WPfomify](https://wpfomify.com/)**: A Social Proofing tool helps in the website's conversion by displaying recent sales and signup notifications.
 
-**DiviMonk**: A professionally designed templates library for Divi website builder with more than 250 templates.
+**[DiviMonk]((https://divimonk.com/))**: A professionally designed templates library for Divi website builder with more than 250 templates.
