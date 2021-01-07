@@ -56,9 +56,9 @@ The plugin is developed and brought to you by IdeaBox Creations, the company beh
 We will love to see you build great Documentations & Knowledge bases with the SmartDocs plugin, and if there are any hiccups, we will be right here to help 👨‍🔧
 
 ### DOCUMENTATION AND SUPPORT
-- For Documentation and support, check out our [Documentation.](https://www.wpsmartdocs.com/docs)
-- If you have any questions, visit our plugin's support forum.
-- For more information, visit our website at [SmartDocs.](https://www.wpsmartdocs.com/)
+- For Documentation and support, check out our [Documentation](https://www.wpsmartdocs.com/docs)
+- If you have any questions, visit our plugin's support forum
+- For more information, visit our website at [SmartDocs](https://www.wpsmartdocs.com/)
 
 ### LIKE SmartDocs? ❤
 We bet you do! Your appreciation is always motivating for our team.
