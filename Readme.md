@@ -77,4 +77,4 @@ If you liked SmartDocs, consider checking out our other WordPress plugins:
 
 **[WPfomify](https://wpfomify.com/)**: A Social Proofing tool helps in the website's conversion by displaying recent sales and signup notifications.
 
-**[DiviMonk]((https://divimonk.com/))**: A professionally designed templates library for Divi website builder with more than 250 templates.
+**[DiviMonk](https://divimonk.com/)**: A professionally designed templates library for Divi website builder with more than 250 templates.
