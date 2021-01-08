@@ -18,7 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 function smartdocs_render_search_box( $args = array() ) {
 	$args = array_merge(
 		array(
-			'type' 			=> 'text',
 			'class' 		=> '',
 			'placeholder' 	=> esc_attr_x( 'Search for answers..', 'placeholder', 'smart-docs' ),
 			'value' 		=> get_search_query(),
@@ -39,6 +38,8 @@ function smartdocs_render_search_box( $args = array() ) {
 	 * @param array $args Attributes for search input.
 	 */
 	$args = (array) apply_filters( 'smartdocs_search_input_attrs', $args );
+
+	$args['type'] = 'text';
 
 	$attrs = '';
 
