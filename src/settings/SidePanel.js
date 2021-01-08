@@ -13,16 +13,24 @@ export default function SidePanel() {
 		<Card className="smartdocs-side-card col-span-1 m-5 h-fit-content">
 			<CardHeader className="smartdocs-card-header font-bold text-lg pl-5 pt-4 pb-3">{ __( 'Help or Support', 'smart-docs' ) }</CardHeader>
 			<CardBody>
+				{ __( 'Stuck at somewhere? Need help?', 'smart-docs' ) }
+				<br />
+				<ExternalLink href="https://www.wpsmartdocs.com/docs/">
+					{ __( 'Check out our Documentation', 'smart-docs' ) }
+				</ExternalLink>
+				<br /><br />
+				{ __( 'Have any questions? Need basic support?', 'smart-docs' ) }
+				<br />
+				<ExternalLink href="https://wordpress.org/support/plugin/smart-docs/">
+					{ __( 'Visit plugin\'s support forum', 'smart-docs' ) }
+				</ExternalLink>
+				<br /><br />
 				{ __( 'Found an issue? or Have a suggestion?', 'smart-docs' ) }
 				<br />
-				<br />
-				{ __( 'We use GitHub to track issues and suggestions. Click the link below to go to our GitHub Page and post issue/suggestion.', 'smart-docs' ) }
-			</CardBody>
-			<CardFooter className="smartdocs-card-footer pt-4 pb-4">
-				<ExternalLink className="w-full inline-flex font-medium text-sm" href="https://github.com/helloideabox/smart-docs/issues">
-					{ __( 'Raise a Ticket', 'smart-docs' ) }
+				<ExternalLink href="https://github.com/helloideabox/smart-docs/issues">
+					{ __( 'Headover to GitHub Repository', 'smart-docs' ) }
 				</ExternalLink>
-			</CardFooter>
+			</CardBody>
 		</Card>
 	);
 }

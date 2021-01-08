@@ -78,7 +78,7 @@ const General = ( props ) => {
 		<>
 			<BaseControl
 				label={ __( 'Hero Title', 'smart-docs' ) }
-				help={ __( 'Edit to change the default title for the header section.', 'smart-docs' ) }
+				help={ __( 'Edit to change the default title for the header.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<TextControl
@@ -91,7 +91,7 @@ const General = ( props ) => {
 
 			<BaseControl
 				label={ __( 'Hero Description', 'smart-docs' ) }
-				help={ __( 'Edit to change or add description for header.', 'smart-docs' ) }
+				help={ __( 'Edit to change or add description for the header.', 'smart-docs' ) }
 				className="mb-3"
 			>
 				<TextareaControl

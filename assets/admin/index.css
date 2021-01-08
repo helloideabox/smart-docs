@@ -40,10 +40,6 @@
   display:flex !important
 }
 
-.inline-flex{
-  display:inline-flex !important
-}
-
 .table{
   display:table !important
 }
@@ -58,10 +54,6 @@
 
 .justify-center{
   justify-content:center !important
-}
-
-.font-medium{
-  font-weight:500 !important
 }
 
 .font-bold{
@@ -126,10 +118,6 @@
   padding-top:1rem !important
 }
 
-.pb-4{
-  padding-bottom:1rem !important
-}
-
 .pl-5{
   padding-left:1.25rem !important
 }
@@ -138,10 +126,6 @@
   --text-opacity:1 !important;
   color:#a0aec0 !important;
   color:rgba(160, 174, 192, var(--text-opacity)) !important
-}
-
-.w-full{
-  width:100% !important
 }
 
 .grid-cols-3{
