@@ -390,6 +390,15 @@ class Plugin {
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
+
+			/**
+			 * SmartDocs loaded.
+			 *
+			 * Fires when SmartDocs was fully loaded and instantiated.
+			 *
+			 * @since 1.0.0
+			 */
+			do_action( 'smartdocs_loaded' );
 		}
 
 		return self::$instance;
