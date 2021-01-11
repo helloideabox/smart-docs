@@ -213,6 +213,16 @@ class Plugin {
 	 */
 	public function init() {
 		$this->init_components();
+
+		/**
+		 * SmartDocs init.
+		 *
+		 * Fires on SmartDocs init, after SmartDocs has finished loading but
+		 * before any headers are sent.
+		 *
+		 * @since 1.0.0
+		 */
+		do_action( 'smartdocs_init' );
 	}
 
 	/**
