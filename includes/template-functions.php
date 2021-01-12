@@ -284,7 +284,10 @@ if ( ! function_exists( 'smartdocs_print_button' ) ) {
 	 * */
 	function smartdocs_print_button() {
 		?>
-		<button class="smartdocs-print-button" onclick="window.print();" > <span class="dashicons dashicons-printer"></span> </button>
+		<button class="smartdocs-print-button" onclick="window.print();">
+			<?php echo file_get_contents( SMART_DOCS_PATH . 'assets/images/print-icon.svg' ); ?>
+			<span class="sr-only"><?php _e( 'Print this Document', 'smart-docs' ); ?></span>
+		</button>
 		<?php
 	}
 }
