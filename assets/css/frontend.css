@@ -550,3 +550,42 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	max-width: 100%;
 	padding: 0;
 }
+
+@media only print {
+
+	#header {
+		display: none;
+	}
+	
+	.smartdocs-header {
+		display: none;
+	}
+	
+	.smartdocs-sidebar {
+		display: none;
+	}
+	
+	.smartdocs-template .smartdocs-content .smartdocs-inner #primary {
+		width: 100%;
+	}
+	
+	.entry-meta {
+		border-top: 1px solid #ccc;
+		padding-top: 10px;
+		font-size: 12px;
+		color: #c0c0c0;
+	}
+	
+	.smartdocs-print-button {
+		display: none;
+	}
+	
+	.smartdocs-doc-feedback {
+		display: none;
+	}
+	
+	#footer {
+		display: none;
+	}
+
+}
