@@ -89,6 +89,7 @@ add_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 )
  * @see smartdocs_entry_meta()
  */
 add_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta', 5 );
+add_action( 'smartdocs_single_doc_footer', 'smartdocs_single_doc_print_button', 10 );
 
 /**
  * Action content for single doc.

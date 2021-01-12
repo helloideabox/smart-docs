@@ -99,7 +99,7 @@ if ( ! function_exists( 'smartdocs_archive_content' ) ) {
 			$columns_mobile = get_theme_mod( 'smartdocs_archive_columns_mobile', 1 );
 
 			$args = array(
-				'columns' => "$columns,$columns_tablet,$columns_mobile",
+				'columns'   => "$columns,$columns_tablet,$columns_mobile",
 				'title_tag' => get_theme_mod( 'smartdocs_archive_category_title_tag', 'h5' ),
 			);
 
@@ -275,5 +275,16 @@ if ( ! function_exists( 'smartdocs_breadcrumb' ) ) {
 		do_action( 'smartdocs_breadcrumb', $breadcrumbs, $args );
 
 		smartdocs_get_template( 'breadcrumb', $args );
+	}
+}
+
+if ( ! function_exists( 'smartdocs_single_doc_print_button' ) ) {
+	/**
+	 * Output Print this Page button on Single Docs.
+	 * */
+	function smartdocs_single_doc_print_button() {
+		?>
+		<button class="smartdocs-print-button" onclick="window.print();" > <span class="dashicons dashicons-printer"></span> Print This Page</button>
+		<?php
 	}
 }

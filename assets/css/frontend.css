@@ -387,6 +387,23 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-template .smartdocs-entry {
 	margin-bottom: 40px;
 }
+
+.smartdocs-template .smartdocs-entry .smartdocs-entry-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.smartdocs-print-button {
+	opacity: 0.5;
+	cursor: pointer;
+	transition: opacity 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.smartdocs-print-button:hover {
+	opacity: 1;
+}
+
 .smartdocs-entry-content img {
     padding: 10px;
     background: #eee;
