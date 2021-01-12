@@ -278,13 +278,13 @@ if ( ! function_exists( 'smartdocs_breadcrumb' ) ) {
 	}
 }
 
-if ( ! function_exists( 'smartdocs_single_doc_print_button' ) ) {
+if ( ! function_exists( 'smartdocs_print_button' ) ) {
 	/**
 	 * Output Print this Page button on Single Docs.
 	 * */
-	function smartdocs_single_doc_print_button() {
+	function smartdocs_print_button() {
 		?>
-		<button class="smartdocs-print-button" onclick="window.print();" > <span class="dashicons dashicons-printer"></span> Print This Page</button>
+		<button class="smartdocs-print-button" onclick="window.print();" > <span class="dashicons dashicons-printer"></span> </button>
 		<?php
 	}
 }

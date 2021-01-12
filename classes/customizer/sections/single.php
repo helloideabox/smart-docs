@@ -18,6 +18,28 @@ $wp_customize->add_section(
 );
 
 $wp_customize->add_setting(
+	'smartdocs_single_doc_display_print_button',
+	array(
+		'default'    => 'yes',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_single_doc_display_print_button_control',
+	array(
+		'label'       => __( 'Show Print Button', 'smart-docs' ),
+		'section'     => 'smartdocs_single_doc_settings',
+		'settings'    => 'smartdocs_single_doc_display_print_button',
+		'type'        => 'select',
+		'choices'     => array(
+			'yes' => __( 'Yes', 'smart-docs' ),
+			'no' => __( 'No', 'smart-docs' ),
+		),
+	)
+);
+
+$wp_customize->add_setting(
 	'smartdocs_single_doc_display_meta',
 	array(
 		'default'    => 'after_content',
