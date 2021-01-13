@@ -344,6 +344,24 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	text-align: center;
 }
 
+.smartdocs-categories .smartdocs-category-articles {
+	list-style: none;
+	padding: 0;
+	align-self: self-end;
+}
+
+.smartdocs-categories .smartdocs-category-articles li::before {
+    content: "\e926";
+    font-family: 'smartdocs' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    margin-right: 10px;
+	color: #c0c0c0;
+}
+
 .smartdocs-categories .smartdocs-posts-info {
 	display: flex;
 	justify-content: center;
