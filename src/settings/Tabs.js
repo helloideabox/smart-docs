@@ -44,7 +44,7 @@ export default function Tabs() {
 					return <Advanced />;
 				} else {
 					return (
-						<div className={`smartdocs-tab-content-${ tab.name }`}></div>
+						<div id={`smartdocs-tab-content-${ tab.name }`}></div>
 					)
 				}
 			} }
