@@ -350,7 +350,15 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	align-self: self-end;
 }
 
+.smartdocs-categories .smartdocs-category-article {
+	padding-left: 30px;
+	position: relative;
+}
+
 .smartdocs-categories .smartdocs-category-articles li::before {
+	position:absolute;
+	left: 0;
+	margin-top: 5px;
     content: "\e926";
     font-family: 'smartdocs' !important;
     font-style: normal;
