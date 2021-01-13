@@ -337,3 +337,42 @@ function smartdocs_list_categories( $args, $count ) {
 		} // End foreach().
 	} // End if().
 }
+
+/**
+ * Get all the docs in a term id.
+ *
+ * @param integer $term_id ID of the smartdocs_category category.
+ *
+ * @since 1.0.0
+ */
+function smartdocs_get_docs( $term_id ) {
+
+	$args = array(
+		"post_type" => "smart-docs",
+		"tax_query" => array (
+			array (
+				"taxonomy" => "smartdocs_category",
+				"field"    => "term_id",
+				"terms"  => $term_id,
+			)
+		)
+	);
+
+	$query = new WP_Query( $args );
+
+	$posts = $query->posts;
+
+	if ( ! empty( $posts ) ) {
+		foreach ( $posts as $post ) {
+			?>
+			<li class="smartdocs-category-article doc-<?php echo esc_html( $post->ID ); ?>">
+				<a href="<?php echo esc_url( get_post_permalink( $post ) ); ?>" target="_blank">
+					<?php echo esc_html( $post->post_title ); ?>
+				</a>
+			</li>
+			<?php
+		}
+	}
+
+	wp_reset_query();
+}
