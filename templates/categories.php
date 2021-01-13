@@ -21,6 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="smartdocs-categories <?php echo $columns_class; ?>">
 	<?php
+
+	$show_docs_list = get_theme_mod( 'smartdocs_archive_category_docs_list_setting', 'yes' );
+
 	foreach ( $terms as $term ) :
 		if ( $term->parent ) {
 			continue;
@@ -46,6 +49,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 						<?php endif; ?>
 					</div>
+					<?php
+					if ( 'yes' === $show_docs_list ) {
+
+						echo '<ul class="smartdocs-category-articles">';
+						smartdocs_get_docs( $term->term_id );
+						echo '</ul>';
+					}
+					?>
 				</div>
 				<div class="smartdocs-posts-info<?php echo 'yes' === $args['show_count'] ? ' with-count' : ''; ?>">
 					<?php if ( $args['show_count'] ) { ?>
