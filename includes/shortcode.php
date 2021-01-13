@@ -129,6 +129,7 @@ function smartdocs_render_categories( $args = array() ) {
 			'terms' => $terms,
 			'args'	=> $args,
 			'columns_class' => $columns_class,
+			'show_articles' => get_theme_mod( 'smartdocs_archive_category_articles', 'yes' ),
 		)
 	);
 

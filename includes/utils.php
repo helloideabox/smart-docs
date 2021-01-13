@@ -345,12 +345,12 @@ function smartdocs_list_categories( $args, $count ) {
  *
  * @since 1.0.0
  */
-function smartdocs_get_docs( $term_id ) {
+function smartdocs_category_articles( $term_id ) {
 
 	$args = array(
-		"post_type" => "smart-docs",
-		"tax_query" => array (
-			array (
+		"post_type" => SmartDocs\Plugin::instance()->cpt->post_type,
+		"tax_query" => array(
+			array(
 				"taxonomy" => "smartdocs_category",
 				"field"    => "term_id",
 				"terms"  => $term_id,
@@ -363,6 +363,9 @@ function smartdocs_get_docs( $term_id ) {
 	$posts = $query->posts;
 
 	if ( ! empty( $posts ) ) {
+		?>
+		<ul class="smartdocs-category-articles">
+		<?php
 		foreach ( $posts as $post ) {
 			?>
 			<li class="smartdocs-category-article doc-<?php echo esc_html( $post->ID ); ?>">
@@ -372,6 +375,9 @@ function smartdocs_get_docs( $term_id ) {
 			</li>
 			<?php
 		}
+		?>
+		</ul>
+		<?php
 	}
 
 	wp_reset_query();

@@ -18,7 +18,7 @@ $wp_customize->add_section(
 );
 
 $wp_customize->add_setting(
-	'smartdocs_archive_category_articles_setting',
+	'smartdocs_archive_category_articles',
 	array(
 		'default'    => 'yes',
 		'capability' => 'edit_theme_options',
@@ -28,9 +28,9 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_archive_category_articles_control',
 	array(
-		'label'       => __( 'Show Docs List', 'smart-docs' ),
+		'label'       => __( 'Show Articles', 'smart-docs' ),
 		'section'     => 'smartdocs_archive_settings',
-		'settings'    => 'smartdocs_archive_category_articles_setting',
+		'settings'    => 'smartdocs_archive_category_articles',
 		'type'        => 'select',
 		'choices'     => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
@@ -389,6 +389,29 @@ $wp_customize->add_control(
 				'alpha' => true,
 			),
 		)
+	)
+);
+
+$wp_customize->add_setting(
+	'smartdocs_archive_category_text_alignment',
+	array(
+		'default'    => 'center',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_archive_category_text_alignment_control',
+	array(
+		'label'       => __( 'Alignment', 'smart-docs' ),
+		'section'     => 'smartdocs_archive_settings',
+		'settings'    => 'smartdocs_archive_category_text_alignment',
+		'type'        => 'select',
+		'choices'     => array(
+			'left'   => __( 'Left', 'smart-docs' ),
+			'center'    => __( 'Center', 'smart-docs' ),
+			'right' => __( 'Right', 'smart-docs' ),
+		),
 	)
 );
 
