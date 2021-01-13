@@ -192,6 +192,36 @@ class Admin {
 	}
 
 	/**
+	 * Get setting tabs.
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	public function get_setting_tabs() {
+		$tabs = apply_filters( 'smartdocs_admin_setting_tabs', array(
+			'general'	=> array(
+				'title'		=> __( 'General', 'smart-docs' ),
+				'priority' 	=> 5,
+			),
+			'advanced'	=> array(
+				'title'		=> __( 'Advanced', 'smart-docs' ),
+				'priority'	=> 50
+			),
+		) );
+
+		$count = 0;
+		foreach ( $tabs as $key => $tab ) {
+			if ( ! isset( $tab['priority'] ) ) {
+				$tab['priority'] = 40 + $count;
+			}
+			$tabs[ $key ] = $tab;
+			$count++;
+		}
+
+		return $tabs;
+	}
+
+	/**
 	 * Enqueue scripts on SmartDocs settings page.
 	 *
 	 * @since 1.0.0
@@ -242,7 +272,8 @@ class Admin {
 				'ajax_nonce' => wp_create_nonce( 'docs_option' ),
 				'version'    => SMART_DOCS_VERSION,
 				'logo_url'	 => SMART_DOCS_URL . 'assets/images/smartdocs-logo.png',
-				'customizer_url' => admin_url( 'customize.php?url=' . smartdocs_get_docs_page_link() . '&autofocus[panel]=smartdocs_style_options' )
+				'customizer_url' => admin_url( 'customize.php?url=' . smartdocs_get_docs_page_link() . '&autofocus[panel]=smartdocs_style_options' ),
+				'setting_tabs' => $this->get_setting_tabs(),
 			)
 		);
 	}
