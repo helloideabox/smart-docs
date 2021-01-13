@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="smartdocs-categories <?php echo $columns_class; ?>">
 	<?php
 
-	$show_docs_list = get_theme_mod( 'smartdocs_archive_category_docs_list_setting', 'yes' );
+	$show_docs_list = get_theme_mod( 'smartdocs_archive_category_articles_setting', 'yes' );
 
 	foreach ( $terms as $term ) :
 		if ( $term->parent ) {
