@@ -348,9 +348,13 @@ class Plugin {
 		}
 
 		if ( $should_enqueue ) {
+			do_action( 'smartdocs_frontend_before_enqueue_scripts' );
+
 			wp_enqueue_style( 'smartdocs-frontend' );
 			wp_enqueue_script( 'smartdocs-frontend' );
 			wp_localize_script( 'smartdocs-frontend', 'smartdocs', $localized_vars );
+
+			do_action( 'smartdocs_frontend_after_enqueue_scripts' );
 		}
 	}
 
