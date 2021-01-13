@@ -314,7 +314,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	border-color: #c0c0c0;
 }
 
-.smartdocs-categories .smartdocs-category .smartdocs-category-info {
+.smartdocs-categories .smartdocs-category-info {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -322,6 +322,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	flex-grow: 1;
 	width: 100%;
 	padding: 25px 40px 0;
+	text-align: center;
 }
 
 .smartdocs-categories .smartdocs-category-thumb {
@@ -331,23 +332,19 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	max-width: 64px;
 }
 
-.smartdocs-categories .smartdocs-category-text {
-	text-align: center;
-}
-
 .smartdocs-categories .smartdocs-category-text .smartdocs-category-title {
 	margin-bottom: 10px;
 }
 
 .smartdocs-categories .smartdocs-category-text .smartdocs-category-description {
 	color: #777;
-	text-align: center;
 }
 
 .smartdocs-categories .smartdocs-category-articles {
 	list-style: none;
 	padding: 0;
 	align-self: self-end;
+	text-align: left;
 }
 
 .smartdocs-categories .smartdocs-category-article {
