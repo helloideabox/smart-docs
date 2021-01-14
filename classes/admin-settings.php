@@ -276,6 +276,8 @@ class Admin {
 				'setting_tabs' => $this->get_setting_tabs(),
 			)
 		);
+
+		do_action( 'smartdocs_admin_after_enqueue_scripts' );
 	}
 
 	/**
