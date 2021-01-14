@@ -172,6 +172,13 @@ function smartdocs_post_class( $class = '' ) {
 }
 
 /**
+ * Get the smart-docs cpt name.
+ */
+function smartdocs_get_post_type() {
+	return SmartDocs\Plugin::instance()->cpt->post_type;
+}
+
+/**
  * Get docs page link based on SmartDocs template setting.
  *
  * @return string
@@ -336,4 +343,34 @@ function smartdocs_list_categories( $args, $count ) {
 			<?php
 		} // End foreach().
 	} // End if().
+}
+
+/**
+ * Get related articles.
+ * 
+ * @param integer $post_id ID of the current post.
+ */
+function smartdocs_get_related_articles( $post_id ) {
+
+	$terms			= get_the_terms( $post_id, 'smartdocs_category' );
+	$terms_list     = wp_list_pluck( $terms, 'term_id' );
+
+		// Create a new WP_Query.
+
+		$args = array(
+			'post_type' => smartdocs_get_post_type(),
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'smartdocs_category',
+					'field'    => 'term_id',
+					'terms'    => $terms_list,
+				),
+			),
+			'numberposts' => 10,
+			'post__not_in' => array( $post_id ),
+		);
+
+		$query = new WP_Query( $args );
+
+		return $query->posts;
 }
