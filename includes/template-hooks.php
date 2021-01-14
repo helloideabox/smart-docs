@@ -105,6 +105,13 @@ add_action( 'smartdocs_after_single_doc', 'smartdocs_doc_actions', 5 );
 add_action( 'smartdocs_after_single_doc', 'smartdocs_doc_feedback', 6 );
 
 /**
+ * Related Articles.
+ *
+ * @see smartdocs_related_articles()
+ */
+add_action( 'smartdocs_after_single_doc', 'smartdocs_related_articles', 7 );
+
+/**
  * Breadcrumbs.
  *
  * @see smartdocs_breadcrumb()

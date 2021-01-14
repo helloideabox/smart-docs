@@ -277,3 +277,38 @@ if ( ! function_exists( 'smartdocs_breadcrumb' ) ) {
 		smartdocs_get_template( 'breadcrumb', $args );
 	}
 }
+
+if ( ! function_exists( 'smartdocs_related_articles' ) ) {
+	/**
+	 * Output the Related Articles.
+	 */
+	function smartdocs_related_articles() {
+
+		if ( is_smartdocs_single() ) {			
+			global $post;
+
+			$posts = smartdocs_get_related_articles( $post->ID );
+
+			if ( ! empty( $posts ) && ! is_wp_error( $posts ) ) {
+				?>
+				<div class="smartdocs-related-articles">
+					<h4 class="related-articles-heading"><?php _e( 'Related Articles', 'smart-docs' ); ?></h4>
+					<ul class="related-articles">
+					<?php
+					foreach( $posts as $post ) {
+						?>
+						<li class="related-article doc-<?php echo esc_html($post->ID); ?>">
+							<a href="<?php echo esc_url( get_post_permalink($post->ID) );?>" rel="bookmark">
+								<?php echo esc_attr( $post->post_title ); ?>
+							</a>
+						</li>
+						<?php
+					}
+					?>
+					</ul>
+				</div>
+				<?php
+			}
+		}
+	}
+}
