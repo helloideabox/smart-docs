@@ -18,6 +18,56 @@ $wp_customize->add_section(
 );
 
 /**
+ * Ordering settings for archive
+ */
+$wp_customize->add_setting(
+	'smartdocs_archive_orderby',
+	array(
+		'default'    => 'none',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_archive_orderby_control',
+	array(
+		'label'       => __( 'Order By', 'smart-docs' ),
+		'section'     => 'smartdocs_archive_settings',
+		'settings'    => 'smartdocs_archive_orderby',
+		'type'        => 'select',
+		'choices'     => array(
+			'name'		=> __( 'Name', 'smart-docs' ),
+			'slug'		=> __( 'Slug', 'smart-docs' ),
+			'term_id'	=> __( 'Term ID', 'smart-docs' ),
+			'count'		=> __( 'Count', 'smart-docs' ),
+			'none' 		=> __( 'Default', 'smart-docs' ),
+		),
+	)
+);
+
+$wp_customize->add_setting(
+	'smartdocs_archive_sort_order',
+	array(
+		'default'    => 'ASC',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_archive_sort_order_control',
+	array(
+		'label'       => __( 'Sorting Order', 'smart-docs' ),
+		'section'     => 'smartdocs_archive_settings',
+		'settings'    => 'smartdocs_archive_sort_order',
+		'type'        => 'select',
+		'choices'     => array(
+			'ASC' => __( 'Ascending', 'smart-docs' ),
+			'DESC' => __( 'Descending', 'smart-docs' ),
+		),
+	)
+);
+
+/**
  * Grid Settings
  */
 $wp_customize->add_setting(
