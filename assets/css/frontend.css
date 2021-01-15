@@ -690,3 +690,95 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	}
 
 }
+
+/* RTL CSS */
+
+/** Hero Section **/
+
+.rtl .smartdocs-search .loading-spinner {
+	left: 15px;
+	right: auto;
+}
+
+.rtl .smartdocs-search .search-icon + input {
+    padding-right: 35px;
+}
+
+.rtl .smartdocs-search .search-icon {
+	right: 15px;
+	left: auto;
+}
+
+/** Archive categories */
+.rtl .smartdocs-categories .smartdocs-category-article {
+	padding-left: 0;
+	padding-right: 30px;
+}
+.rtl .smartdocs-categories .smartdocs-category-articles li::before {
+	left: auto;
+	right: 0;
+	margin-right: 0;
+	margin-left: 10px;
+}
+
+/** Category Widget **/
+
+.rtl.smartdocs-template .smartdocs-content .sidebar {
+	padding-left: 0;
+	padding-right: 30px;
+	border-right: 1px solid #eee;
+	border-left: 0;
+}
+
+body.rtl:not(.single) .widget_smartdocs-categories-widget .cat-item .children .cat-item a, 
+body.rtl.single .widget_smartdocs-categories-widget .cat-item .has-posts li a {
+	padding-left: 0;
+	padding-right: 20px;
+	border-left: 0;
+	border-right: 1px solid #ddd;
+}
+
+body.rtl:not(.single) .widget_smartdocs-categories-widget .children .cat-item.active:before, 
+body.rtl.single .widget_smartdocs-categories-widget .has-posts li.active:before {
+	left: auto;
+	right: -1px;
+}
+
+.rtl.smartdocs-template .smartdocs-sidebar .widget ul.children {
+	padding-left: 0;
+	padding-right: 30px;
+}
+
+/** Single Doc Primary Content **/
+
+.rtl.smartdocs-template .smartdocs-content #primary {
+	padding-right: 0;
+	padding-left: 30px;
+}
+
+.rtl .smartdocs-doc-feedback .doc-vote-links a.doc-upvote {
+	margin-right: 0;
+	margin-left: 10px;
+}
+
+/** Breadcrumbs */
+.rtl .smartdocs-breadcrumb {
+	display: flex;
+}
+
+/** Category archive articles */
+.smartdocs-template.archive .smartdocs-entry-title:before {
+	content: none;
+}
+.smartdocs-template.archive .smartdocs-entry-title:after {
+    content: "\e926";
+    font-family: 'smartdocs' !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    margin-left: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

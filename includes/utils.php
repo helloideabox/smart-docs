@@ -442,8 +442,14 @@ function smartdocs_anchor_links( $content ) {
 			$hash_link = '<a href="#' . $id . '" class="smartdocs-anchor-link">#</a>';
 
 			// translators: %1$s Opening HTML tag, %2$s HTML attributes, %3$s HTML id attribute, %4$s title, %5$s anchor link, %6$s Closing HTML tag.
-			return sprintf( '<%1$s%2$s id="%3$s">%4$s%5$s</%6$s>', $tag, $matches[2], $id, $matches[3], $hash_link, $tag );
+			$heading = sprintf( '<%1$s%2$s id="%3$s">%4$s%5$s</%6$s>', $tag, $matches[2], $id, $matches[3], $hash_link, $tag );
 
+			if ( is_rtl() ) {
+				// translators: %1$s Opening HTML tag, %2$s HTML attributes, %3$s HTML id attribute, %4$s anchor link, %5$s title,  %6$s Closing HTML tag.
+				$heading = sprintf( '<%1$s%2$s id="%3$s">%4$s%5$s</%6$s>', $tag, $matches[2], $id, $hash_link, $matches[3], $tag );
+			}
+
+			return $heading;
 		},
 		$content
 	);

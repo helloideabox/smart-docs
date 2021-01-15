@@ -21,9 +21,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="smartdocs-navigation-links">
 	<div class="smartdocs-link smartdocs-link-previous">
-		<span><?php previous_post_link( '← %link', '%title' ); ?></span>
+		<?php if ( ! is_rtl() ) { ?>
+			<span><?php previous_post_link( '← %link', '%title' ); ?></span>
+		<?php } else { ?>
+			<span><?php previous_post_link( '→ %link', '%title' ); ?></span>
+		<?php } ?>
 	</div>
 	<div class="smartdocs-link smartdocs-link-next">
-		<span><?php next_post_link( '%link →', '%title' ); ?></span>
+		<?php if ( ! is_rtl() ) { ?>
+			<span><?php next_post_link( '%link →', '%title' ); ?></span>
+		<?php } else { ?>
+			<span><?php next_post_link( '%link ←', '%title' ); ?></span>
+		<?php } ?>
 	</div>
 </div>
