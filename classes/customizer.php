@@ -303,6 +303,10 @@ class Customizer {
 			remove_action( 'smartdocs_after_single_doc', 'smartdocs_doc_feedback', 6 );
 		}
 
+		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_navigation_links' ) ) {
+			remove_action( 'smartdocs_single_doc_footer', 'smartdocs_navigation_links', 10 );
+		}
+
 		$entry_meta = get_theme_mod( 'smartdocs_single_doc_display_meta' );
 
 		if ( 'after_content' === $entry_meta ) {

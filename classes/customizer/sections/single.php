@@ -41,6 +41,28 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
+	'smartdocs_single_doc_navigation_links',
+	array(
+		'default'    => 'yes',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_single_doc_navigation_links_control',
+	array(
+		'label'       => __( 'Show Doc Navigation Links', 'smart-docs' ),
+		'section'     => 'smartdocs_single_doc_settings',
+		'settings'    => 'smartdocs_single_doc_navigation_links',
+		'type'        => 'select',
+		'choices'     => array(
+			'yes' => __( 'Yes', 'smart-docs' ),
+			'no' => __( 'No', 'smart-docs' ),
+		),
+	)
+);
+
+$wp_customize->add_setting(
 	'smartdocs_single_doc_display_action_section',
 	array(
 		'default'    => 'yes',
