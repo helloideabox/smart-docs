@@ -767,10 +767,10 @@ body.rtl.single .widget_smartdocs-categories-widget .has-posts li.active:before 
 }
 
 /** Category archive articles */
-.smartdocs-template.archive .smartdocs-entry-title:before {
+.rtl.smartdocs-template.archive .smartdocs-entry-title:before {
 	content: none;
 }
-.smartdocs-template.archive .smartdocs-entry-title:after {
+.rtl.smartdocs-template.archive .smartdocs-entry-title:after {
     content: "\e926";
     font-family: 'smartdocs' !important;
     font-style: normal;
