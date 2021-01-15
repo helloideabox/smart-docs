@@ -547,6 +547,15 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	padding: 5%;
 }
 
+.smartdocs-related-articles .related-articles-heading {
+	margin-bottom: 20px;
+}
+
+.smartdocs-related-articles .related-articles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 
 /*********************************
  * Theme Compatibility

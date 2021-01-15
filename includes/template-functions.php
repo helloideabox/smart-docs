@@ -291,3 +291,23 @@ if ( ! function_exists( 'smartdocs_print_button' ) ) {
 		<?php
 	}
 }
+
+if ( ! function_exists( 'smartdocs_related_articles' ) ) {
+	/**
+	 * Output the Related Articles.
+	 */
+	function smartdocs_related_articles() {
+
+		if ( is_smartdocs_single() ) {			
+			global $post;
+
+			$articles = smartdocs_query_related_articles( $post->ID );
+
+			if ( ! empty( $articles ) && ! is_wp_error( $articles ) ) {
+				smartdocs_get_template( 'related-articles', array(
+					'articles' => $articles,
+				) );
+			}
+		}
+	}
+}

@@ -306,6 +306,9 @@ class Customizer {
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_print_button' ) ) {
 			remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_print_button', 5 );
 		}
+		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_related_articles' ) ) {
+			remove_action( 'smartdocs_after_single_doc', 'smartdocs_related_articles', 7 );
+		}		
 
 		$entry_meta = get_theme_mod( 'smartdocs_single_doc_display_meta' );
 
