@@ -128,6 +128,29 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting(
+	'smartdocs_single_doc_anchor_links',
+	array(
+		'default'    => 'yes',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_single_doc_anchor_links_control',
+	array(
+		'label'       => __( 'Show Anchor Links', 'smart-docs' ),
+		'description' => __( 'Add anchor links to heading for readers to easily share them.', 'smart-docs' ),
+		'section'     => 'smartdocs_single_doc_settings',
+		'settings'    => 'smartdocs_single_doc_anchor_links',
+		'type'        => 'select',
+		'choices'     => array(
+			'yes' => __( 'Yes', 'smart-docs' ),
+			'no' => __( 'No', 'smart-docs' ),
+		),
+	)
+);
+
 /**
  * Register Sections.
  */

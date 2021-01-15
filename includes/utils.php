@@ -417,3 +417,36 @@ function smartdocs_category_articles( $term_id ) {
 		<?php
 	}
 }
+
+/**
+ * Add anchor links to headings on single doc.
+ * 
+ * @param string $content Mixed string of Post Data.
+ */
+function smartdocs_anchor_links( $content ) {
+	$tags = 'h1, h2, h3, h4, h5, h6';
+
+	$content = preg_replace_callback(
+		'#<(h[' . $tags . '])(.*?)>(.*?)</\1>#si',
+		function ( $matches ) use ( &$index ) {
+			$index  = 0;
+			$tag    = $matches[1];
+			$title  = strip_tags( $matches[3] );
+			$has_id = preg_match( '/id=(["\'])(.*?)\1[\s>]/si', $matches[2], $matched_ids );
+			$id     = $has_id ? $matched_ids[2] : sanitize_title( $title );
+
+			if ( $has_id ) {
+				return $matches[0];
+			}
+
+			$hash_link = '<a href="#' . $id . '" class="smartdocs-anchor-link">#</a>';
+
+			// translators: %1$s Opening HTML tag, %2$s HTML attributes, %3$s HTML id attribute, %4$s title, %5$s anchor link, %6$s Closing HTML tag.
+			return sprintf( '<%1$s%2$s id="%3$s">%4$s%5$s</%6$s>', $tag, $matches[2], $id, $matches[3], $hash_link, $tag );
+
+		},
+		$content
+	);
+
+	return $content;
+}

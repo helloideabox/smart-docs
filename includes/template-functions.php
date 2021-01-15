@@ -193,7 +193,17 @@ if ( ! function_exists( 'smartdocs_entry_content' ) ) {
 	 * Single doc entry content.
 	 */
 	function smartdocs_entry_content() {
+		$show_anchor_link = get_theme_mod( 'smartdocs_single_doc_anchor_links', 'yes' );
+
+		if ( 'yes' === $show_anchor_link ) {
+			add_filter( 'the_content', 'smartdocs_anchor_links' );
+		}
+
 		the_content();
+
+		if ( 'yes' === $show_anchor_link ) {
+			remove_filter( 'the_content', 'smartdocs_anchor_links' );
+		}
 	}
 }
 
@@ -221,6 +231,40 @@ if ( ! function_exists( 'smartdocs_doc_feedback' ) ) {
 	 */
 	function smartdocs_doc_feedback() {
 		smartdocs_get_template( 'single-doc-feedback' );
+	}
+}
+
+if ( ! function_exists( 'smartdocs_print_button' ) ) {
+	/**
+	 * Output Print this Page button on Single Docs.
+	 * */
+	function smartdocs_print_button() {
+		?>
+		<button class="smartdocs-print-button" onclick="window.print();">
+			<?php echo file_get_contents( SMART_DOCS_PATH . 'assets/images/print-icon.svg' ); ?>
+			<span class="sr-only"><?php _e( 'Print this Document', 'smart-docs' ); ?></span>
+		</button>
+		<?php
+	}
+}
+
+if ( ! function_exists( 'smartdocs_related_articles' ) ) {
+	/**
+	 * Output the Related Articles.
+	 */
+	function smartdocs_related_articles() {
+
+		if ( is_smartdocs_single() ) {			
+			global $post;
+
+			$articles = smartdocs_query_related_articles( $post->ID );
+
+			if ( ! empty( $articles ) && ! is_wp_error( $articles ) ) {
+				smartdocs_get_template( 'related-articles', array(
+					'articles' => $articles,
+				) );
+			}
+		}
 	}
 }
 
@@ -284,39 +328,5 @@ if ( ! function_exists( 'smartdocs_breadcrumb' ) ) {
 		do_action( 'smartdocs_breadcrumb', $breadcrumbs, $args );
 
 		smartdocs_get_template( 'breadcrumb', $args );
-	}
-}
-
-if ( ! function_exists( 'smartdocs_print_button' ) ) {
-	/**
-	 * Output Print this Page button on Single Docs.
-	 * */
-	function smartdocs_print_button() {
-		?>
-		<button class="smartdocs-print-button" onclick="window.print();">
-			<?php echo file_get_contents( SMART_DOCS_PATH . 'assets/images/print-icon.svg' ); ?>
-			<span class="sr-only"><?php _e( 'Print this Document', 'smart-docs' ); ?></span>
-		</button>
-		<?php
-	}
-}
-
-if ( ! function_exists( 'smartdocs_related_articles' ) ) {
-	/**
-	 * Output the Related Articles.
-	 */
-	function smartdocs_related_articles() {
-
-		if ( is_smartdocs_single() ) {			
-			global $post;
-
-			$articles = smartdocs_query_related_articles( $post->ID );
-
-			if ( ! empty( $articles ) && ! is_wp_error( $articles ) ) {
-				smartdocs_get_template( 'related-articles', array(
-					'articles' => $articles,
-				) );
-			}
-		}
 	}
 }

@@ -446,6 +446,22 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     background: #eee;
 }
 
+.smartdocs-entry-content .smartdocs-anchor-link {
+	display: inline;
+	margin-left: 8px;
+	opacity: 0;
+	transition: none;
+	text-decoration: underline;
+}
+.smartdocs-entry-content h1:hover .smartdocs-anchor-link,
+.smartdocs-entry-content h2:hover .smartdocs-anchor-link,
+.smartdocs-entry-content h3:hover .smartdocs-anchor-link,
+.smartdocs-entry-content h4:hover .smartdocs-anchor-link,
+.smartdocs-entry-content h5:hover .smartdocs-anchor-link,
+.smartdocs-entry-content h6:hover .smartdocs-anchor-link {
+	opacity: 1;
+}
+
 /** Meta */
 .smartdocs-entry .entry-meta {
 	margin-bottom: 20px;
