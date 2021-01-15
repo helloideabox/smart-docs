@@ -70,6 +70,13 @@ add_action( 'smartdocs_after_single_doc', 'smartdocs_output_content_area_wrapper
 add_action( 'smartdocs_before_single_doc_content', 'smartdocs_entry_header', 5 );
 
 /**
+ * Print Button for Single Doc.
+ *
+ * @see smartdocs_print_button()
+ */
+add_action( 'smartdocs_after_single_doc_title', 'smartdocs_print_button', 5 );
+
+/**
  * Entry content for single doc.
  *
  * @see smartdocs_entry_content()
