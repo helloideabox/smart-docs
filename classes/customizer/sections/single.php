@@ -140,7 +140,7 @@ $wp_customize->add_control(
 	'smartdocs_single_doc_anchor_links_control',
 	array(
 		'label'       => __( 'Show Anchor Links', 'smart-docs' ),
-		'description' => __( 'Add anchor links to heading for readers to easily share them.', 'smart-docs' ),
+		'description' => __( 'Add anchor links to headings in content for readers to easily share them.', 'smart-docs' ),
 		'section'     => 'smartdocs_single_doc_settings',
 		'settings'    => 'smartdocs_single_doc_anchor_links',
 		'type'        => 'select',
