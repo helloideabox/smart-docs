@@ -112,11 +112,18 @@ add_action( 'smartdocs_after_single_doc', 'smartdocs_doc_actions', 5 );
 add_action( 'smartdocs_after_single_doc', 'smartdocs_doc_feedback', 6 );
 
 /**
+ * Navigation links.
+ *
+ * @see smartdocs_navigation_links()
+ */
+add_action( 'smartdocs_after_single_doc', 'smartdocs_navigation_links', 7 );
+
+/**
  * Related Articles.
  *
  * @see smartdocs_related_articles()
  */
-add_action( 'smartdocs_after_single_doc', 'smartdocs_related_articles', 7 );
+add_action( 'smartdocs_after_single_doc', 'smartdocs_related_articles', 8 );
 
 /**
  * Breadcrumbs.

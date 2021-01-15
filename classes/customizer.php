@@ -308,7 +308,11 @@ class Customizer {
 		}
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_related_articles' ) ) {
 			remove_action( 'smartdocs_after_single_doc', 'smartdocs_related_articles', 7 );
-		}		
+		}	
+		
+		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_navigation_links' ) ) {
+			remove_action( 'smartdocs_single_doc_footer', 'smartdocs_navigation_links', 10 );
+		}
 
 		$entry_meta = get_theme_mod( 'smartdocs_single_doc_display_meta' );
 

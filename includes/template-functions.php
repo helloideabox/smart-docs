@@ -234,6 +234,15 @@ if ( ! function_exists( 'smartdocs_doc_feedback' ) ) {
 	}
 }
 
+if ( ! function_exists( 'smartdocs_navigation_links' ) ) {
+	/**
+	 * Single doc post navigation links.
+	 */
+	function smartdocs_navigation_links() {
+		smartdocs_get_template( 'single-doc-navigation' );
+	}
+}
+
 if ( ! function_exists( 'smartdocs_print_button' ) ) {
 	/**
 	 * Output Print this Page button on Single Docs.

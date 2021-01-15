@@ -544,6 +544,28 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     color: #F44336;
 }
 
+/** Navigation links */
+.smartdocs-navigation-links {
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 0;
+	margin-bottom: 20px;
+    border-top: 1px solid #eee;
+}
+
+.smartdocs-navigation-links .smartdocs-link {
+	display: inline-flex;
+	flex-direction: column;
+}
+
+.smartdocs-navigation-links .smartdocs-link-previous {
+	align-items: flex-start;
+}
+
+.smartdocs-navigation-links .smartdocs-link-next {
+	align-items: flex-end;
+}
+
 /** pre, code, etc */
 .smartdocs-template code,
 .smartdocs-template kbd,
