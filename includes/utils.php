@@ -337,3 +337,36 @@ function smartdocs_list_categories( $args, $count ) {
 		} // End foreach().
 	} // End if().
 }
+
+/**
+ * Add anchor links to headings on single doc.
+ * 
+ * @param string $content Mixed string of Post Data.
+ */
+function add_anchor_links( $content ) {
+
+	$tags = 'h1, h2, h3, h4, h5, h6';
+
+	$content = preg_replace_callback(
+		'#<(h[' . $tags . '])(.*?)>(.*?)</\1>#si',
+		function ( $matches ) use ( &$index ) {
+			$index  = 0;
+			$tag    = $matches[1];
+			$title  = strip_tags( $matches[3] );
+			$has_id = preg_match( '/id=(["\'])(.*?)\1[\s>]/si', $matches[2], $matched_ids );
+			$id     = $has_id ? $matched_ids[2] : sanitize_title( $title );
+
+			if ( $has_id ) {
+				return $matches[0];
+			}
+
+			$hash_link = '<a href="#' . $id . '" class="anchor smartdocs-copy-link" data-clipboard-text="' . get_permalink() . '#' . $id . '" data-title="' . esc_html__( 'Copy URL', 'smart-docs' ) . '">#</a>';
+
+			return sprintf( '<%s%s id="%s">%s %s</%s>', $tag, $matches[2], $id, $hash_link, $matches[3], $tag );
+
+		},
+		$content
+	);
+
+	return $content;
+}
