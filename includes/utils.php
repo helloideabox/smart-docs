@@ -345,11 +345,11 @@ function smartdocs_single_doc_navigation() {
 	?>
 	<div class="smartdocs-navigation-links">
 		<div class="smartdocs-link smartdocs-link-previous">
-			<span><?php esc_html_e( 'Previous Doc', 'smart-docs' ); ?></span>
+			<span><?php ( ! empty( get_previous_post_link() ) ) ? esc_html_e( 'Previous Doc', 'smart-docs' ) : ''; ?></span>
 			<span><?php previous_post_link( '&laquo; %link', '%title' ); ?></span>
 		</div>
 		<div class="smartdocs-link smartdocs-link-next">
-			<span><?php esc_html_e( 'Next Doc', 'smart-docs' ); ?></span>
+			<span><?php ( ! empty( get_next_post_link() ) ) ? esc_html_e( 'Next Doc', 'smart-docs' ) : ''; ?></span>
 			<span><?php next_post_link( '%link &raquo;', '%title' ); ?></span>
 		</div>
 	</div>
