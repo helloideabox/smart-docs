@@ -184,6 +184,11 @@ if ( ! function_exists( 'smartdocs_entry_content' ) ) {
 	 * Single doc entry content.
 	 */
 	function smartdocs_entry_content() {
+
+		if ( 'yes' === get_theme_mod( 'smartdocs_single_doc_anchor_links', 'yes' ) ) {
+			add_filter( 'the_content', 'add_anchor_links' );
+		}
+		
 		the_content();
 	}
 }
