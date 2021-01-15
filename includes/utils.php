@@ -431,7 +431,7 @@ function smartdocs_anchor_links( $content ) {
 		function ( $matches ) use ( &$index ) {
 			$index  = 0;
 			$tag    = $matches[1];
-			$title  = strip_tags( $matches[3] );
+			$title  = wp_strip_all_tags( $matches[3] );
 			$has_id = preg_match( '/id=(["\'])(.*?)\1[\s>]/si', $matches[2], $matched_ids );
 			$id     = $has_id ? $matched_ids[2] : sanitize_title( $title );
 
