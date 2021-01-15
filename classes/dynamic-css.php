@@ -155,6 +155,8 @@ class Dynamic_CSS {
 		$action_color 				= $this->get_mod( 'archive_category_action_color' );
 		$action_bg_color 			= $this->get_mod( 'archive_category_action_bg_color' );
 		$action_border_color 		= $this->get_mod( 'archive_category_action_border_color' );
+		$alignment 					= $this->get_mod( 'archive_category_text_alignment' );
+		$show_articles 				= $this->get_mod( 'archive_category_articles', 'yes' );
 
 		if ( false !== $gap ) {
 			$this->add_rule( '.smartdocs-categories', array(
@@ -209,6 +211,21 @@ class Dynamic_CSS {
 		if ( ! empty( $description_color ) ) {
 			$this->add_rule( '.smartdocs-categories .smartdocs-category-description', array(
 				'color' => esc_attr( $description_color ),
+			) );
+		}
+
+		// Alignment.
+		$align_items = ( 'left' === $alignment ) ? 'flex-start' : 'center';
+		$align_items = ( 'right' === $alignment ) ? 'flex-end' : $align_items;
+		
+		$this->add_rule( '.smartdocs-categories .smartdocs-category-info', array(
+			'text-align' => esc_attr( $alignment ),
+			'align-items' => esc_attr( $align_items ),
+		) );
+
+		if ( 'yes' === $show_articles ) {
+			$this->add_rule( '.smartdocs-categories .smartdocs-category-info', array(
+				'justify-content' => 'flex-start',
 			) );
 		}
 

@@ -348,7 +348,7 @@ function smartdocs_list_categories( $args, $count ) {
 /**
  * Get related articles.
  * 
- * @param integer $post_id ID of the current post.
+ * @param int $post_id ID of the current post.
  */
 function smartdocs_query_related_articles( $post_id ) {
 
@@ -370,6 +370,50 @@ function smartdocs_query_related_articles( $post_id ) {
 	);
 
 	$query = new WP_Query( $args );
+	$posts = array();
 
-	return $query->posts;
+	if ( $query->have_posts() ) {
+		$posts = $query->posts;
+	}
+
+	return $posts;
+}
+
+/**
+ * Get all the docs in a term id.
+ *
+ * @param int $term_id ID of the smartdocs_category category.
+ */
+function smartdocs_category_articles( $term_id ) {
+	$args = array(
+		'post_type' => smartdocs_get_post_type(),
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'smartdocs_category',
+				'field'    => 'term_id',
+				'terms'    => $term_id,
+			),
+		),
+		'numberposts' => 10,
+	);
+
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() ) {
+		?>
+		<ul class="smartdocs-category-articles">
+		<?php
+		foreach ( $query->posts as $post ) {
+			?>
+			<li class="smartdocs-category-article doc-<?php echo esc_html( $post->ID ); ?>">
+				<a href="<?php echo esc_url( get_post_permalink( $post ) ); ?>">
+					<?php echo esc_html( $post->post_title ); ?>
+				</a>
+			</li>
+			<?php
+		}
+		?>
+		</ul>
+		<?php
+	}
 }

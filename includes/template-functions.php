@@ -102,11 +102,14 @@ if ( ! function_exists( 'smartdocs_archive_content' ) ) {
 			$orderby		= get_theme_mod( 'smartdocs_archive_orderby', 'none' );
 			$sort_order		= get_theme_mod( 'smartdocs_archive_sort_order', 'ASC' );
 
+			$show_articles 	= get_theme_mod( 'smartdocs_archive_category_articles', 'yes' );
+
 			$args = array(
 				'columns'   => "$columns,$columns_tablet,$columns_mobile",
 				'title_tag' => get_theme_mod( 'smartdocs_archive_category_title_tag', 'h5' ),
 				'orderby'	=> $orderby,
 				'order'		=> $sort_order,
+				'show_articles' => $show_articles,
 			);
 
 			echo smartdocs_render_categories( $args ); // WPCS: XSS ok.

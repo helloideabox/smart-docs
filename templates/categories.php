@@ -46,6 +46,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 						<?php endif; ?>
 					</div>
+					<?php
+					if ( 'yes' === $args['show_articles'] ) {
+						smartdocs_category_articles( $term->term_id );
+					}
+					?>
 				</div>
 				<div class="smartdocs-posts-info<?php echo 'yes' === $args['show_count'] ? ' with-count' : ''; ?>">
 					<?php if ( $args['show_count'] ) { ?>
