@@ -517,6 +517,23 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	padding: 5%;
 }
 
+.smartdocs-navigation-links {
+	display: flex;
+	justify-content: space-between;
+}
+
+.smartdocs-navigation-links .smartdocs-link {
+	display: inline-flex;
+	flex-direction: column;
+}
+
+.smartdocs-navigation-links .smartdocs-link-previous {
+	align-items: flex-start;
+}
+
+.smartdocs-navigation-links .smartdocs-link-next {
+	align-items: flex-end;
+}
 
 /*********************************
  * Theme Compatibility

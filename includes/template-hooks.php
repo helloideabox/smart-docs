@@ -91,6 +91,13 @@ add_action( 'smartdocs_after_single_doc_content', 'smartdocs_entry_footer', 10 )
 add_action( 'smartdocs_single_doc_footer', 'smartdocs_entry_meta', 5 );
 
 /**
+ * Doc navigation links for single doc.
+ *
+ * @see smartdocs_navigation_links()
+ */
+add_action( 'smartdocs_single_doc_footer', 'smartdocs_navigation_links', 10 );
+
+/**
  * Action content for single doc.
  *
  * @see smartdocs_doc_actions()

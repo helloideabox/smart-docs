@@ -277,3 +277,14 @@ if ( ! function_exists( 'smartdocs_breadcrumb' ) ) {
 		smartdocs_get_template( 'breadcrumb', $args );
 	}
 }
+
+if ( ! function_exists( 'smartdocs_navigation_links' ) ) {
+	/**
+	 * Output the SmartDocs Breadcrumb.
+	 *
+	 * @param array $args Arguments.
+	 */
+	function smartdocs_navigation_links() {
+		smartdocs_single_doc_navigation();
+	}
+}
