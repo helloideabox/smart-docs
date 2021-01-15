@@ -401,16 +401,19 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-template .smartdocs-entry .smartdocs-entry-header {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .smartdocs-print-button {
-	opacity: 0.5;
+	opacity: 0.4;
 	cursor: pointer;
-	transition: opacity 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+	background: none;
+	color: #000;
+	transition: opacity 0.2s ease-in-out;
 }
 
-.smartdocs-print-button:hover {
+.smartdocs-print-button:hover,
+.smartdocs-print-button:focus {
 	opacity: 1;
 }
 
