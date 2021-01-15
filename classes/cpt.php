@@ -39,6 +39,8 @@ class Cpt {
 
 		add_filter( 'manage_' . $this->post_type . '_posts_columns', array( $this, 'cpt_columns' ) );
 		add_action( 'manage_' . $this->post_type . '_posts_custom_column', array( $this, 'cpt_columns_data' ), 10, 2 );
+
+		add_action( 'pre_get_posts', array( $this, 'posts_per_page' ) );
 	}
 
 	/**
@@ -546,5 +548,20 @@ class Cpt {
 			</span>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Posts Per Page.
+	 *
+	 * Set posts_per_page for smartdocs_category archive page.
+	 * Hooked into the pre_get_posts.
+	 *
+	 * @since 1.0.0
+	 * @param object $query WP_Query Object.
+	 */
+	public function posts_per_page( $query ) {
+		if ( ! is_admin() && $query->is_main_query() && is_smartdocs_category() ) {
+			$query->set( 'posts_per_page', '-1' );
+		}
 	}
 }
