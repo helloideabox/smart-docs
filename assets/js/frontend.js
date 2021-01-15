@@ -95,9 +95,45 @@
 		} );
 	};
 
+	var initCopyLink = function () {
+
+		if ( 0 === $('.smartdocs-copy-link').length ) {
+			return;
+		}
+
+		$('.smartdocs-copy-link').on('click', function (e) {
+
+			e.preventDefault();
+			var copyText = $(this).data('clipboard-text');
+
+			document.addEventListener('copy', function (e) {
+				e.clipboardData.setData('text/plain', copyText);
+				e.preventDefault();
+			}, true);
+
+			try {
+				document.execCommand('copy');
+
+				var tooltip = $(this).append('<div class="smartdocs-tooltip ">Copied</div>');
+
+				$(this).children('.smartdocs-tooltip').fadeOut(
+					1000,
+					function () {
+						$(this).remove();
+					}
+				);
+			}
+			catch (e) {
+				console.log("Error in copying link. Please check the error below for reference");
+				console.log(e);
+			}
+		});
+	}
+
 	$( document ).ready( function() {
 		initSearch();
 		initFeedback();
+		initCopyLink();
 	} );
 
 })(jQuery);
