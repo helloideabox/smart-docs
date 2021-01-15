@@ -100,7 +100,7 @@ if ( ! function_exists( 'smartdocs_archive_content' ) ) {
 
 			// Ordering settings
 			$orderby		= get_theme_mod( 'smartdocs_archive_orderby', 'none' );
-			$sort_order		= get_theme_mod( 'smartdocs_archive_sort_order', 'asc' );
+			$sort_order		= get_theme_mod( 'smartdocs_archive_sort_order', 'ASC' );
 
 			$args = array(
 				'columns'   => "$columns,$columns_tablet,$columns_mobile",

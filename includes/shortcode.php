@@ -74,7 +74,7 @@ function smartdocs_render_categories( $args = array() ) {
 			'title_tag'  => 'h5',
 			'include'	 => 'all', 	// Comma separated term IDs. Example: "4,9,13".
 			'exclude'	 => 'all', 	// Comma separated term IDs. Example: "4,9,13".
-			'orderby'	 => 'name', // @see https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
+			'orderby'	 => 'none', // @see https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
 			'order'		 => 'ASC', 	// @see https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
 		),
 		$args
