@@ -98,9 +98,15 @@ if ( ! function_exists( 'smartdocs_archive_content' ) ) {
 			$columns_tablet = get_theme_mod( 'smartdocs_archive_columns_tablet', 2 );
 			$columns_mobile = get_theme_mod( 'smartdocs_archive_columns_mobile', 1 );
 
+			// Ordering settings
+			$orderby		= get_theme_mod( 'smartdocs_archive_orderby', 'none' );
+			$sort_order		= get_theme_mod( 'smartdocs_archive_sort_order', 'asc' );
+
 			$args = array(
 				'columns'   => "$columns,$columns_tablet,$columns_mobile",
 				'title_tag' => get_theme_mod( 'smartdocs_archive_category_title_tag', 'h5' ),
+				'orderby'	=> $orderby,
+				'order'		=> $sort_order,
 			);
 
 			echo smartdocs_render_categories( $args ); // WPCS: XSS ok.
