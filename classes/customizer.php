@@ -299,19 +299,20 @@ class Customizer {
 			remove_action( 'smartdocs_after_single_doc', 'smartdocs_doc_actions', 5 );
 		}
 
-		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_feedback_section' ) ) {
-			remove_action( 'smartdocs_after_single_doc', 'smartdocs_doc_feedback', 6 );
-		}
-
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_print_button' ) ) {
 			remove_action( 'smartdocs_after_single_doc_title', 'smartdocs_print_button', 5 );
 		}
-		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_related_articles' ) ) {
-			remove_action( 'smartdocs_after_single_doc', 'smartdocs_related_articles', 7 );
-		}	
+
+		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_display_feedback_section' ) ) {
+			remove_action( 'smartdocs_after_single_doc', 'smartdocs_doc_feedback', 6 );
+		}			
 		
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_navigation_links' ) ) {
-			remove_action( 'smartdocs_single_doc_footer', 'smartdocs_navigation_links', 10 );
+			remove_action( 'smartdocs_after_single_doc', 'smartdocs_navigation_links', 7 );
+		}
+
+		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_related_articles' ) ) {
+			remove_action( 'smartdocs_after_single_doc', 'smartdocs_related_articles', 8 );
 		}
 
 		$entry_meta = get_theme_mod( 'smartdocs_single_doc_display_meta' );
