@@ -517,6 +517,15 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	padding: 5%;
 }
 
+.smartdocs-copy-link {
+	color: #c0c0c0;
+	transition: all 0.3s linear;
+}
+
+.smartdocs-copy-link:hover {
+	color: #0d0d0d;
+}
+
 
 /*********************************
  * Theme Compatibility
@@ -549,4 +558,25 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-template #content .col-full {
 	max-width: 100%;
 	padding: 0;
+}
+
+/** Tooltips **/
+
+.smartdocs-copy-link {
+    position: relative;
+}
+
+.smartdocs-tooltip {
+    position: absolute;
+    border: 1px solid;
+    display: block;
+    top: 23px;
+    left: -60px;
+    background-color: #0e0e0e;
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 12px;
+    color: #fff;
+
+    transition: all 0.5s linear;
 }
