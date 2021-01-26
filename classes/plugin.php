@@ -356,6 +356,8 @@ class Plugin {
 
 			do_action( 'smartdocs_frontend_after_enqueue_scripts' );
 		}
+
+		do_action( 'smartdocs_frontend_enqueue_scripts' );
 	}
 
 	/**
