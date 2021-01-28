@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+use SmartDocs\Plugin;
+
 /**
  * Global.
  */
@@ -188,22 +190,38 @@ if ( ! function_exists( 'smartdocs_entry_footer' ) ) {
 	}
 }
 
+if ( ! function_exists( 'smartdocs_render_toc' ) ) {
+	/**
+	 * Render Toc.
+	 */
+	function smartdocs_render_toc() {
+		$toc_data = SmartDocs\Plugin::instance()->content->get_toc_data();
+		if ( empty( $toc_data ) ) {
+			return;
+		}
+		?>
+		<div class="smartdocs-toc">
+			<div clas="smartdocs-toc-title"><?php esc_html_e( 'Table of Contents', 'smart-docs' ); ?></div>
+			<ul>
+			<?php foreach ( $toc_data as $anchor ) { ?>
+			<li><?php echo  $anchor; ?></li>
+			<?php } ?>
+			</ul>
+		</div>
+		<?php
+	}
+}
+
+
 if ( ! function_exists( 'smartdocs_entry_content' ) ) {
 	/**
 	 * Single doc entry content.
 	 */
 	function smartdocs_entry_content() {
-		$show_anchor_link = get_theme_mod( 'smartdocs_single_doc_anchor_links', 'yes' );
 
-		if ( 'yes' === $show_anchor_link ) {
-			add_filter( 'the_content', 'smartdocs_anchor_links' );
-		}
+		$content = SmartDocs\Plugin::instance()->content->get_the_content();
 
-		the_content();
-
-		if ( 'yes' === $show_anchor_link ) {
-			remove_filter( 'the_content', 'smartdocs_anchor_links' );
-		}
+		echo $content;
 	}
 }
 
