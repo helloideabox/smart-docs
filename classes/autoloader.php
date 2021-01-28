@@ -69,20 +69,22 @@ class Autoloader {
 	private static function init_classes_map() {
 
 		self::$classes_map = array(
-			'Autoloader'                => 'classes/autoloader.php',
-			'Admin'                     => 'classes/admin-settings.php',
-			'Cpt'                       => 'classes/cpt.php',
-			'Breadcrumb'				=> 'classes/breadcrumb.php',
-			'Ajax'                    	=> 'classes/ajax.php',
-			'Structured_Data'			=> 'classes/structured-data.php',
-			'Template'                 	=> 'classes/template.php',
-			'Widget'      					=> 'classes/widget.php',
-			'Widgets\Category_Widget'      	=> 'classes/widgets/category.php',
-			'Customizer'                	=> 'classes/customizer.php',
-			'Customizer_Control' 			=> 'classes/customizer/custom-controls.php',
-			'Dynamic_CSS' 					=> 'classes/dynamic-css.php',
+			'Autoloader'              => 'classes/autoloader.php',
+			'Admin'                   => 'classes/admin-settings.php',
+			'Cpt'                     => 'classes/cpt.php',
+			'Breadcrumb'              => 'classes/breadcrumb.php',
+			'Ajax'                    => 'classes/ajax.php',
+			'Structured_Data'         => 'classes/structured-data.php',
+			'Template'                => 'classes/template.php',
+			'Widget'                  => 'classes/widget.php',
+			'Widgets\Category_Widget' => 'classes/widgets/category.php',
+			'Customizer'              => 'classes/customizer.php',
+			'Customizer_Control'      => 'classes/customizer/custom-controls.php',
+			'Dynamic_CSS'             => 'classes/dynamic-css.php',
+			'Content'                 => 'classes/content.php',
 		);
-	}
+}
+
 
 	/**
 	 * Load class.
