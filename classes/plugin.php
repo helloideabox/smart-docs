@@ -18,6 +18,7 @@ use SmartDocs\Template;
 use SmartDocs\Customizer;
 use SmartDocs\Ajax;
 use SmartDocs\Structured_Data;
+use SmartDocs\Content;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -154,6 +155,18 @@ class Plugin {
 	public $dynamic_css = null;
 
 	/**
+	 * Instance.
+	 *
+	 * Holds the Content Class instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @var object $content
+	 */
+	public $content = null;
+
+	/**
 	 * Clone.
 	 *
 	 * Disable class cloning and throw an error on object clone.
@@ -248,7 +261,10 @@ class Plugin {
 	 */
 	private function init_components() {
 
-		$this->cpt             = new Cpt();
+		// Load Utilities.
+		include_once SMART_DOCS_PATH . 'includes/utils.php';
+
+		$this->cpt                     = new Cpt();
 		$this->admin           = new Admin();
 		$this->template        = new Template();
 		$this->ajax            = new Ajax();
@@ -256,12 +272,10 @@ class Plugin {
 		$this->dynamic_css     = new Dynamic_CSS();
 		$this->widget          = new Widget();
 		$this->structured_data = new Structured_Data();
+		$this->content         = new Content();
 
 		// Action to include script.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-
-		// Load Utilities.
-		include_once SMART_DOCS_PATH . 'includes/utils.php';
 
 		// Load template functions.
 		if ( ! is_admin() ) {
