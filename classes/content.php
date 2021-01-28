@@ -60,7 +60,7 @@ class Content {
 	 */
 	private function filter_content() {
 		$show_anchor_link = get_theme_mod( 'smartdocs_single_doc_anchor_links', 'yes' );
-		$show_toc = get_theme_mod( 'smartdocs_single_doc_table_of_contents', 'yes' );
+		$show_toc = get_theme_mod( 'smartdocs_single_doc_toc', 'yes' );
 		$toc_data = array();
 		$tags = 'h1, h2, h3, h4, h5, h6';
 
