@@ -202,16 +202,11 @@ if ( ! function_exists( 'smartdocs_render_toc' ) ) {
 		?>
 		<div class="smartdocs-toc">
 			<div clas="smartdocs-toc-title"><?php esc_html_e( 'Table of Contents', 'smart-docs' ); ?></div>
-			<ul>
-			<?php foreach ( $toc_data as $anchor ) { ?>
-			<li><?php echo  $anchor; ?></li>
-			<?php } ?>
-			</ul>
+			<?php echo wp_kses_post( smartdocs_generate_toc( $toc_data ) ); ?>
 		</div>
 		<?php
 	}
 }
-
 
 if ( ! function_exists( 'smartdocs_entry_content' ) ) {
 	/**
