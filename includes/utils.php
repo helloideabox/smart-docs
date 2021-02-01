@@ -456,3 +456,37 @@ function smartdocs_anchor_links( $content ) {
 
 	return $content;
 }
+
+/**
+ * Generate TOC HTML.
+ *
+ * @param array $toc_data Array containg toc data.
+ */
+function smartdocs_generate_toc( $toc_data ) {
+
+	$last_level = 0;
+	$toc_html   = '';
+
+	foreach ( $toc_data as $toc_item ) {
+
+		$id    = $toc_item['id'];
+		$title = $toc_item['title'];
+		$level = $toc_item['level'];
+		$tag   = $toc_item['tag'];
+
+		if ( $level > $last_level ) {
+			$toc_html .= "<ol class='level-$level'>";
+		} else {
+			$toc_html .= str_repeat( '</li></ol>', $last_level - $level );
+			$toc_html .= '</li>';
+		}
+
+		$toc_html .= "<li><a href='#{$id}'>{$title} {$tag}</a>";
+
+		$last_level = $level;
+	}
+	$toc_html .= str_repeat( '</li></ol>', $last_level );
+
+	return $toc_html;
+
+}
