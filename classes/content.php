@@ -77,7 +77,37 @@ class Content {
 				$has_id = preg_match( '/id=(["\'])(.*?)\1[\s>]/si', $matches[2], $matched_ids );
 				$id     = $has_id ? $matched_ids[2] : sanitize_title( $title );
 
-				$toc_data[] = '<a href="#' . $id . '" class="smartdocs-toc-link">' . $title . '</a>';
+				//$toc_data[] = '<a href="#' . $id . '" class="smartdocs-toc-link" data-tag="' . $tag . '">' . $title . '</a>';
+				$level = 0;
+				
+				switch( $tag ) {
+					case 'h1':
+						$level = 1;
+						break;
+					case 'h2':
+						$level = 2;
+						break;
+					case 'h3':
+						$level = 3;
+						break;
+					case 'h4':
+						$level = 4;
+						break;
+					case 'h5':
+						$level = 5;
+						break;
+					case 'h6':
+						$level = 6;
+						break;
+				}
+
+				$toc_data[] = array (
+					'id'    => $id,
+					'tag'   => $tag,
+					'title' => $title,
+					'level' => $level,
+				);
+
 
 				if ( $has_id ) {
 					return $matches[0];
