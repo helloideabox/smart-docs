@@ -199,9 +199,12 @@ if ( ! function_exists( 'smartdocs_render_toc' ) ) {
 		if ( empty( $toc_data ) ) {
 			return;
 		}
+
+		$collapsible = 'yes' === get_theme_mod( 'smartdocs_toc_collapsible', 'yes' ) ? 'toc-collapsible' : '';
+		$title = get_theme_mod( 'smartdocs_toc_title', 'Table of Contents' );
 		?>
-		<div class="smartdocs-toc">
-			<div clas="smartdocs-toc-title"><?php esc_html_e( 'Table of Contents', 'smart-docs' ); ?></div>
+		<div class="smartdocs-toc <?php echo $collapsible;?>">
+			<div clas="smartdocs-toc-title"><?php esc_html_e( $title, 'smart-docs' ); ?></div>
 			<?php echo wp_kses_post( smartdocs_generate_toc( $toc_data ) ); ?>
 		</div>
 		<?php
