@@ -40,6 +40,29 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
+	'smartdocs_toc_collapsible',
+	array(
+		'default'    => 'yes',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_toc_collapsible_control',
+	array(
+		'label'       => __( 'Collapsible Table of Contents', 'smart-docs' ),
+		'description' => __( 'Enable to make Table of Contents collapsible on click and by default when document is loaded.', 'smart-docs' ),
+		'section'     => 'smartdocs_single_doc_settings',
+		'settings'    => 'smartdocs_toc_collapsible',
+		'type'        => 'select',
+		'choices'     => array(
+			'yes' => __( 'Yes', 'smart-docs' ),
+			'no' => __( 'No', 'smart-docs' ),
+		),
+	)
+);
+
+$wp_customize->add_setting(
 	'smartdocs_single_doc_display_print_button',
 	array(
 		'default'    => 'yes',
