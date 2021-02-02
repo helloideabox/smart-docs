@@ -433,6 +433,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	cursor: pointer;
 	background: none;
 	color: #000;
+	border: none;
 	transition: opacity 0.2s ease-in-out;
 }
 
