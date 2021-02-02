@@ -463,7 +463,6 @@ function smartdocs_anchor_links( $content ) {
  * @param array $toc_data Array containg toc data.
  */
 function smartdocs_generate_toc( $toc_data ) {
-
 	$last_level = 0;
 	$toc_html   = '';
 
@@ -488,5 +487,5 @@ function smartdocs_generate_toc( $toc_data ) {
 	$toc_html .= str_repeat( '</li></ol>', $last_level );
 
 	return $toc_html;
-
 }
+
