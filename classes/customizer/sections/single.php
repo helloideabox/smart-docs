@@ -63,6 +63,24 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
+	'smartdocs_toc_title',
+	array(
+		'default'    => 'Table of Contents',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_toc_title_control',
+	array(
+		'label'       => __( 'Table of Contents Title', 'smart-docs' ),
+		'section'     => 'smartdocs_single_doc_settings',
+		'settings'    => 'smartdocs_toc_title',
+		'type'        => 'text',
+	)
+);
+
+$wp_customize->add_setting(
 	'smartdocs_single_doc_display_print_button',
 	array(
 		'default'    => 'yes',
