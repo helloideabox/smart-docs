@@ -98,7 +98,7 @@
 	var initToc = function(){
 		
 		$('.smartdocs-toc').on('click', function(){
-			$('.toc-collapsible > ol').slideToggle();
+			$('.smartdocs-toc-anchors > ol').slideToggle();
 		});
 
 	}
