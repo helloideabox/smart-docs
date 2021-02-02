@@ -481,7 +481,7 @@ function smartdocs_generate_toc( $toc_data ) {
 			$toc_html .= '</li>';
 		}
 
-		$toc_html .= "<li><a href='#{$id}'>{$title} {$tag}</a>";
+		$toc_html .= "<li><a href='#{$id}'>{$title}</a>";
 
 		$last_level = $level;
 	}
