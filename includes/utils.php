@@ -475,7 +475,7 @@ function smartdocs_generate_toc( $toc_data ) {
 		$tag   = $toc_item['tag'];
 
 		if ( $level > $last_level ) {
-			$toc_html .= "<ol class='level-$level'>";
+			$toc_html .= "<ol class='smartdocs-toc-level-$level'>";
 		} else {
 			$toc_html .= str_repeat( '</li></ol>', $last_level - $level );
 			$toc_html .= '</li>';
