@@ -1,7 +1,7 @@
 {
     "plugins": [
         ".",
-        "https://downloads.wordpress.org/plugin/query-monitor.3.6.5.zip"
+        "https://downloads.wordpress.org/plugin/query-monitor.3.6.7.zip"
     ],
     "port": 9000,
     "env": {

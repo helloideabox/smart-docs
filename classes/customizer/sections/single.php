@@ -174,6 +174,28 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting(
+	'smartdocs_single_doc_toc',
+	array(
+		'default'    => 'yes',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_single_doc_toc_control',
+	array(
+		'label'       => __( 'Show Table of Contents', 'smart-docs' ),
+		'section'     => 'smartdocs_single_doc_settings',
+		'settings'    => 'smartdocs_single_doc_toc',
+		'type'        => 'select',
+		'choices'     => array(
+			'yes' => __( 'Yes', 'smart-docs' ),
+			'no' => __( 'No', 'smart-docs' ),
+		),
+	)
+);
+
 /**
  * Register Sections.
  */
