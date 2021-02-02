@@ -620,9 +620,12 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 
 /* Table of Contents */
 
+.smartdocs-toc {
+	margin-bottom: 20px;
+}
+
 .smartdocs-toc.toc-collapsible {
 	cursor: pointer;
-	margin-bottom: 20px;
 }
 
 .smartdocs-toc.toc-collapsible > ol {
