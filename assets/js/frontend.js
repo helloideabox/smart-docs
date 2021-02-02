@@ -95,9 +95,18 @@
 		} );
 	};
 
+	var initToc = function(){
+		
+		$('.smartdocs-toc').on('click', function(){
+			$('.toc-collapsible > ol').slideToggle();
+		});
+
+	}
+
 	$( document ).ready( function() {
 		initSearch();
 		initFeedback();
+		initToc();
 	} );
 
 })(jQuery);
