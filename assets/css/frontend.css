@@ -618,6 +618,50 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     grid-template-columns: repeat(2, 1fr);
 }
 
+/* Table of Contents */
+
+.smartdocs-toc.toc-collapsible {
+    cursor: pointer;
+}
+
+.smartdocs-toc.toc-collapsible > ol {
+	display: none;
+}
+
+/* Table of Contents Numbering */
+
+/* Ordered List Numbers */
+
+.smartdocs-toc ol li a {
+	text-decoration: none;
+}
+
+.smartdocs-toc ol {
+	list-style: none;
+	counter-reset: item;
+}
+
+.smartdocs-toc  ol {
+	list-style: none;
+	counter-reset: item;
+}
+
+.smartdocs-toc li::before {
+	content: counters(item, ".") " ";
+	color: #000;
+	width: 2em;
+	margin-left: -1.5em;
+	margin-right: 0.5em;
+	text-align: right;
+}
+.smartdocs-toc > li::before {
+	content: counters(item, ".") ". ";
+}
+
+.smartdocs-toc li {
+	counter-increment: item;
+}
+
 
 /*********************************
  * Theme Compatibility
