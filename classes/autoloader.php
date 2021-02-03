@@ -82,6 +82,7 @@ class Autoloader {
 			'Customizer_Control'      => 'classes/customizer/custom-controls.php',
 			'Dynamic_CSS'             => 'classes/dynamic-css.php',
 			'Content'                 => 'classes/content.php',
+			'Blocks'                  => 'classes/blocks.php',
 		);
 }
 

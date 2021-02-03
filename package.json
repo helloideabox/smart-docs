@@ -7,15 +7,15 @@
   "license": "GPL-2.0-only",
   "main": "build/index.js",
   "scripts": {
-    "build": "npm run build:settings && npm run build:block",
+    "build": "npm run build:settings && npm run build:blocks",
     "build:settings": "wp-scripts build src/settings/index.js --output-path=assets/admin/",
-    "build:block": "wp-scripts build src/block/index.js --output-path=assets/block/",
+    "build:blocks": "wp-scripts build src/blocks/index.js --output-path=assets/blocks/",
     "format:js": "wp-scripts format-js",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
-    "start": "npm run start:settings && npm run start:block",
+    "start": "npm run start:settings && npm run start:blocks",
     "start:settings": "wp-scripts start src/settings/index.js --output-path=assets/admin/ ",
-    "start:block": "wp-scripts start src/block/index.js --output-path=assets/block/",
+    "start:blocks": "wp-scripts start src/blocks/index.js --output-path=assets/blocks/",
     "packages-update": "wp-scripts packages-update"
   },
   "dependencies": {

@@ -167,6 +167,18 @@ class Plugin {
 	public $content = null;
 
 	/**
+	 * Instance.
+	 *
+	 * Holds the Blocks Class instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @var object $blocks
+	 */
+	public $blocks = null;
+
+	/**
 	 * Clone.
 	 *
 	 * Disable class cloning and throw an error on object clone.
@@ -273,6 +285,7 @@ class Plugin {
 		$this->widget          = new Widget();
 		$this->structured_data = new Structured_Data();
 		$this->content         = new Content();
+		$this->blocks          = new Blocks();
 
 		// Action to include script.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );

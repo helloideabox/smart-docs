@@ -1,0 +1,23 @@
+.smartdocs-block-notice {
+	padding: 13px;
+	border-left: 6px solid currentColor;
+	&.notice-warn {
+		background-color: rgb(255, 242, 215);
+		color: rgb(206, 113, 41);
+	}
+	&.notice-error {
+		background-color: rgb(255, 227, 226);
+		color: rgb(157, 31, 26);
+	}
+	&.notice-info {
+		background-color: rgb(214, 237, 255);
+		color: rgb(3, 64, 119);
+	}
+	&.notice-success {
+		background-color: rgb(227, 251, 238);
+		color: rgb(16, 98, 54);
+	}
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+}
