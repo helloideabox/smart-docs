@@ -624,12 +624,35 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	margin-bottom: 20px;
 }
 
+.smartdocs-toc-title {
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	width: 50%;
+}
+
 .smartdocs-toc.toc-collapsible {
 	cursor: pointer;
 }
 
-.smartdocs-toc.toc-collapsible > ol {
+.smartdocs-toc.toc-collapsible .smartdocs-toc-anchors > ol {
 	display: none;
+}
+
+.smartdocs-toc-open {
+	display: none;
+}
+
+.smartdocs-toc-open.toc-opened {
+	display: inline-block;
+}
+
+.smartdocs-toc-close {
+	display: none;
+}
+
+.smartdocs-toc-close.toc-closed {
+	display: inline-block;
 }
 
 /* Table of Contents Numbering */
