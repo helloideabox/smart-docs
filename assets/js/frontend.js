@@ -97,8 +97,10 @@
 
 	var initToc = function(){
 		
-		$('.smartdocs-toc').on('click', function(){
+		$('.smartdocs-toc-title').on('click', function() {
 			$('.smartdocs-toc-anchors > ol').slideToggle();
+			$('.smartdocs-toc-open').toggleClass('toc-opened')
+			$('.smartdocs-toc-close').toggleClass('toc-closed');
 		});
 
 	}
