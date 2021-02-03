@@ -95,14 +95,16 @@
 		} );
 	};
 
-	var initToc = function(){
-		
-		$('.smartdocs-toc-title').on('click', function() {
-			$('.smartdocs-toc-anchors > ol').slideToggle();
+	var initToc = function() {
+		if ( $( '.smartdocs-toc' ).length === 0 ) {
+			return;
+		}
+
+		$('.smartdocs-toc.toc-collapsible .smartdocs-toc-title').on('click', function() {
+			$('.smartdocs-toc-anchors').slideToggle();
 			$('.smartdocs-toc-open').toggleClass('toc-opened')
 			$('.smartdocs-toc-close').toggleClass('toc-closed');
 		});
-
 	}
 
 	$( document ).ready( function() {
