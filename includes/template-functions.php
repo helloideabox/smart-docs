@@ -200,12 +200,28 @@ if ( ! function_exists( 'smartdocs_render_toc' ) ) {
 			return;
 		}
 
-		$collapsible = 'yes' === get_theme_mod( 'smartdocs_toc_collapsible', 'yes' ) ? 'toc-collapsible' : '';
+		$collapsible = 'yes' === get_theme_mod( 'smartdocs_toc_collapsible', 'yes' ) ? ' toc-collapsible' : '';
 		$title = get_theme_mod( 'smartdocs_toc_title', 'Table of Contents' );
 		?>
-		<div class="smartdocs-toc <?php echo $collapsible;?>">
-			<div clas="smartdocs-toc-title"><?php esc_html_e( $title, 'smart-docs' ); ?></div>
+		<div class="smartdocs-toc<?php echo $collapsible;?>">
+			<div class="smartdocs-toc-title">
+				<span><?php esc_html_e( $title, 'smart-docs' ); ?></span>
+				<?php if ( 'yes' === get_theme_mod( 'smartdocs_toc_collapsible' ) ) :?>
+				<span class="smartdocs-toc-open toc-opened">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+					</svg>
+				</span>
+				<span class="smartdocs-toc-close">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+					</svg>
+				</span>
+				<?php endif; ?>
+			</div>
+			<div class='smartdocs-toc-anchors'>
 			<?php echo wp_kses_post( smartdocs_generate_toc( $toc_data ) ); ?>
+			</div>
 		</div>
 		<?php
 	}
