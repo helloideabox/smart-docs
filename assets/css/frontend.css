@@ -629,7 +629,6 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	padding: 20px;
 	display: flex;
 	justify-content: space-between;
-	width: 50%;
 }
 
 .smartdocs-toc.toc-collapsible {
