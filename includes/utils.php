@@ -466,7 +466,6 @@ function smartdocs_generate_toc( $toc_data ) {
 	$last_level = 0;
 	$toc_html   = '';
 
-	$toc_html .= "<div class='smartdocs-toc-anchors'>";
 	foreach ( $toc_data as $toc_item ) {
 
 		$id    = $toc_item['id'];
@@ -486,8 +485,6 @@ function smartdocs_generate_toc( $toc_data ) {
 		$last_level = $level;
 	}
 	$toc_html .= str_repeat( '</li></ol>', $last_level );
-
-	$toc_html .= '</div>';
 
 	return $toc_html;
 }
