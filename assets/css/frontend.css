@@ -623,12 +623,15 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 
 .smartdocs-toc {
 	margin-bottom: 20px;
+	border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .smartdocs-toc-title {
 	padding: 20px;
 	display: flex;
 	justify-content: space-between;
+	border-bottom: 1px solid #ddd;
 }
 
 .smartdocs-toc.toc-collapsible {
@@ -636,7 +639,9 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 }
 
 .smartdocs-toc.toc-collapsible .smartdocs-toc-anchors > ol {
-	display: none;
+	display: block;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .smartdocs-toc-open {
