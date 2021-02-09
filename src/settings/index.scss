@@ -46,8 +46,7 @@ $darken20: darken( #3B12FF, 20% );
 	}
 }
 .smartdocs-settings-tabs {
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
-		rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
+	box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
 	height: fit-content;
 
 	.components-tab-panel__tab-content {
@@ -129,5 +128,5 @@ $darken20: darken( #3B12FF, 20% );
 .smartdocs-side-card {
 	border: none !important;
 	border-radius: 0 !important;
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
+	box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
 }
