@@ -425,7 +425,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-template .smartdocs-entry .smartdocs-entry-header {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
 }
 
 .smartdocs-print-button {
@@ -434,12 +434,14 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	background: none;
 	color: #000;
 	border: none;
+	padding: 0;
 	transition: opacity 0.2s ease-in-out;
 }
 
 .smartdocs-print-button:hover,
 .smartdocs-print-button:focus {
 	opacity: 1;
+	background: none;
 }
 
 .smartdocs-entry-content img {
