@@ -678,8 +678,11 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	counter-reset: item;
 }
 
-.smartdocs-toc li::before {
+.smartdocs-toc li::before,
+.smartdocs-toc ol > li ol li::before {
 	content: counters(item, ".") " ";
+}
+.smartdocs-toc li::before {
 	color: #000;
 	width: 2em;
 	margin-left: -1.5em;
