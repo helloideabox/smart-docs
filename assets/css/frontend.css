@@ -620,6 +620,8 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-related-articles .related-articles {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+	grid-gap: 30px;
+	padding-left: 20px;
 }
 
 /* Table of Contents */
