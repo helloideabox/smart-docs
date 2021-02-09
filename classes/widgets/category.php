@@ -55,7 +55,7 @@ class Category_Widget extends \WP_Widget {
 		}
 
 		$cat_args = array(
-			'orderby'      => 'name',
+			'orderby'      => 'term_id',
 			'show_count'   => $count,
 			'hierarchical' => $hierarchical,
 			'taxonomy'     => 'smartdocs_category',
