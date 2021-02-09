@@ -188,7 +188,8 @@ body.single .widget_smartdocs-categories-widget .cat-item .has-posts li a {
 	border-left: 1px solid #ddd;
 }
 
-.widget_smartdocs-categories-widget .cat-item.active>a>.cat-label {
+.widget_smartdocs-categories-widget .cat-item.active>a>.cat-label,
+.widget_smartdocs-categories-widget .cat-item .has-posts li.active a {
 	font-weight: bold;
 }
 
