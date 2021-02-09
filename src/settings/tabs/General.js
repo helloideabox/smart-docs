@@ -33,13 +33,13 @@ const General = ( props ) => {
 	const [ selectedTypes, setSelectedTypes ] = useState( savedPostTypes || [] );
 
 	if ( selectedTypes !== savedPostTypes ) {
-		setPostTypes( selectedTypes );
+		setOptions( { ...options, smartdocs_search_post_types: selectedTypes } );
 	}
 
 	const { createSuccessNotice, createErrorNotice } = useDispatch(
 		"core/notices"
 	);
-	
+
 	/**
 	 * Button Saving state
 	 *
