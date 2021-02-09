@@ -2,10 +2,12 @@
 /**
  * Plugin Name: Smart Docs
  * Plugin URI: https://wpsmartdocs.com/
+ * Description: Knowledge Base and Documentation plugin for WordPress.
  * Author: IdeaBox Creations
  * Author URI: https://ideabox.io/
  * Version: 1.0.0
- * Description: A documentation plugin for WordPress.
+ * License: GNU General Public License v3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: smart-docs
  *
  * @package SmartDocs
