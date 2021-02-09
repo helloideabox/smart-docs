@@ -5,7 +5,7 @@
  * Author: IdeaBox Creations
  * Author URI: https://ideabox.io/
  * Version: 1.0.0
- * Description: Simple documentation plugin for WordPress.
+ * Description: A documentation plugin for WordPress.
  * Text Domain: smart-docs
  *
  * @package SmartDocs
