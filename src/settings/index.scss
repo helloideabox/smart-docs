@@ -1,6 +1,6 @@
-$accentColor: #3F51B5;
-$darken10: darken( #3F51B5, 10% );
-$darken20: darken( #3F51B5, 20% );
+$accentColor: #3B12FF;
+$darken10: darken( #3B12FF, 10% );
+$darken20: darken( #3B12FF, 20% );
 
 @import "tailwindcss/components";
 
@@ -26,6 +26,12 @@ $darken20: darken( #3F51B5, 20% );
 		background: #eee;
 		padding: 1px 5px;
 		color: #888;
+	}
+	.smartdocs-logo {
+		margin-right: 10px;
+		img {
+			width: 200px;
+		}
 	}
 }
 
