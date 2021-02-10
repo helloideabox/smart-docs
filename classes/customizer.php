@@ -60,6 +60,7 @@ class Customizer {
 			)
 		);
 
+		require SMART_DOCS_PATH . 'classes/customizer/sections/layout.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/hero-section.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/archive.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/single.php';

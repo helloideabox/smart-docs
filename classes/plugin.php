@@ -400,12 +400,14 @@ class Plugin {
 
 		if ( is_post_type_archive( $post_type ) || is_tax( 'smartdocs_category' ) ) {
 
+			$this->dynamic_css->build_common_styles();
 			$this->dynamic_css->build_hero_section_style();
 			$this->dynamic_css->build_categories_grid_style();
 			$this->dynamic_css->build_responsive_styles();
 
 		} elseif ( is_singular( $post_type ) ) {
 
+			$this->dynamic_css->build_common_styles();
 			$this->dynamic_css->build_hero_section_style();
 			$this->dynamic_css->build_responsive_styles();
 
