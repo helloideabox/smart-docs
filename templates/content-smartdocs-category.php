@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<article class="<?php smartdocs_post_class(); ?>">
+<article class="<?php smartdocs_post_class('smartdocs-entry'); ?>">
 	<h2 class="smartdocs-entry-title">
 		<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
 	</h2>
