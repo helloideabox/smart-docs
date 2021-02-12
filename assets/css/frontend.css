@@ -289,9 +289,13 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	padding: 3px 10px;
     display: block;
 	text-decoration: none;
+	border-bottom: 1px solid #eee;
 }
 .smartdocs-search .smartdocs-search-result li a:hover {
 	background-color: #f7f7f7;
+}
+.smartdocs-search .smartdocs-search-result li:last-of-type a {
+    border-bottom: 0;
 }
 
 /*********************************
