@@ -3,7 +3,7 @@
 ## Description
 Create powerful Documentation for your products and services right in WordPress with features like Live Search, Breadcrumbs, User Feedback, Styling with Customizer, etc.
 
-Whether you are building a small or large Knowledge Base, SmartDocs will help you manage docs easily and help your customers find answers quickly, even in the in-depth Documentation of your products and services.
+Whether you are building a small or large Knowledge Base, [SmartDocs](http://wpsmartdocs.com/?utm_source=repo-readme&utm_medium=smartdocslite&utm_campaign=repo-demo-link) will help you manage docs easily and help your customers find answers quickly, even in the in-depth Documentation of your products and services.
 
 SmartDocs **keeps everything simple and minimal.** You can get started with it in a few clicks without feeling lost and overwhelmed. 
 
@@ -19,7 +19,7 @@ There is no doubt that well-maintained Documentation can reduce the support team
  4. Tweak settings a bit to your taste and
  5. Visit Docs Homepage
 
-You are done with a flawlessly Docs page!
+You are done with a flawlessly working Docs page!
 
 Let your customers find the answers to their questions quickly without interacting with the support representatives for known issues or queries. *It's a win-win!* 🏆
 
@@ -56,25 +56,24 @@ The plugin is developed and brought to you by IdeaBox Creations, the company beh
 We will love to see you build great Documentations & Knowledge bases with the SmartDocs plugin, and if there are any hiccups, we will be right here to help 👨‍🔧
 
 ### DOCUMENTATION AND SUPPORT
-- For Documentation and support, check out our [Documentation](https://www.wpsmartdocs.com/docs)
+- For Documentation and support, check out our [Documentation](https://wpsmartdocs.com/docs/?utm_source=repo-readme&utm_medium=smartdocslite&utm_campaign=repo-demo-link)
 - If you have any questions, visit our plugin's support forum
-- For more information, visit our website at [SmartDocs](https://www.wpsmartdocs.com/)
+- For more information, visit our website at [SmartDocs](http://wpsmartdocs.com/?utm_source=repo-readme&utm_medium=smartdocslite&utm_campaign=repo-demo-link)
 
 ### LIKE SmartDocs? ❤
 We bet you do! Your appreciation is always motivating for our team.
 
-- Join our Facebook Group.
 - Don't forget to **Rate us on WordPress** and show your love.
-- Check out our [website.](https://www.wpsmartdocs.com/)
+- Check out our [website.](http://wpsmartdocs.com/?utm_source=repo-readme&utm_medium=smartdocslite&utm_campaign=repo-demo-link)
 
 ### WHAT’S NEXT? 
 
 If you liked SmartDocs, consider checking out our other WordPress plugins:
 
-**[PowerPack Addon for Elementor](https://powerpackelements.com/)**: A powerful add-on for Elementor with more than 70 widgets and 150+ professionally designed templates.
+**[PowerPack Addon for Elementor](http://powerpackelements.com/?utm_source=repo-readme&utm_medium=smartdocslite&utm_campaign=repo-demo-link)**: A powerful add-on for Elementor with more than 70 widgets and 150+ professionally designed templates.
 
-**[PowerPack Addon for Beaver Builder](https://wpbeaveraddons.com/)**: A library of 65+ creative modules and 350+ beautifully designed templates.
+**[PowerPack Addon for Beaver Builder](http://wpbeaveraddons.com/?utm_source=repo-readme&utm_medium=smartdocslite&utm_campaign=repo-demo-link)**: A library of 65+ creative modules and 350+ beautifully designed templates.
 
-**[WPfomify](https://wpfomify.com/)**: A Social Proofing tool helps in the website's conversion by displaying recent sales and signup notifications.
+**[WPfomify](https://wpfomify.com/?utm_source=repo-readme&utm_medium=smartdocslite&utm_campaign=repo-demo-link)**: A Social Proofing tool helps in the website's conversion by displaying recent sales and signup notifications.
 
-**[DiviMonk](https://divimonk.com/)**: A professionally designed templates library for Divi website builder with more than 250 templates.
+**[DiviMonk](https://divimonk.com/?utm_source=repo-readme&utm_medium=smartdocslite&utm_campaign=repo-demo-link)**: A professionally designed templates library for Divi website builder with more than 250 templates.
