@@ -564,6 +564,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-navigation-links .smartdocs-link {
 	display: inline-flex;
 	flex-direction: column;
+	max-width: 50%;
 }
 
 .smartdocs-navigation-links .smartdocs-link-previous {
