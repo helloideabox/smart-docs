@@ -50,7 +50,7 @@ class Blocks {
 				array(
 					array(
 						'slug'  => $this->block_category_slug,
-						'title' => __( 'Smart Blocks', 'smart-blocks' ),
+						'title' => __( 'Smart Docs', 'smart-docs' ),
 					),
 				)
 			);
