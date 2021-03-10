@@ -340,7 +340,8 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	margin-bottom: 10px;
 }
 .smartdocs-categories .smartdocs-category-thumb img {
-	max-width: 64px;
+	height: 100px;
+	width: auto;
 }
 
 .smartdocs-categories .smartdocs-category-text .smartdocs-category-title {

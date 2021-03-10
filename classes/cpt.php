@@ -505,7 +505,7 @@ class Cpt {
 				<span class="description">
 					<?php
 					// translators: %1$s for label.
-					printf( esc_html__( 'Add an image from media library to this %1$s.', 'smart-docs' ), esc_html( $name ) );
+					printf( esc_html__( 'Add an image from media library to this %1$s. Recommended image size is minimum 100px and maximum 200px.', 'smart-docs' ), esc_html( $name ) );
 					?>
 				</span>
 			</td>
@@ -543,7 +543,7 @@ class Cpt {
 			<span class="description">
 				<?php
 				// translators: %1$s for label.
-				printf( esc_html__( 'Add an image from media library to this %1$s.', 'smart-docs' ), esc_html( $name ) );
+				printf( esc_html__( 'Add an image from media library to this %1$s. Recommended image size is minimum 100px and maximum 200px.', 'smart-docs' ), esc_html( $name ) );
 				?>
 			</span>
 		</div>
