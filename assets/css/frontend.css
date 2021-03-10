@@ -738,7 +738,23 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 
 @media only print {
 
+	body {
+		padding: 40px;
+	}
+
 	#header {
+		display: none;
+	}
+
+	header {
+		display: none;
+	}
+
+	#footer {
+		display: none;
+	}
+
+	footer {
 		display: none;
 	}
 	
@@ -766,10 +782,6 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	}
 	
 	.smartdocs-doc-feedback {
-		display: none;
-	}
-	
-	#footer {
 		display: none;
 	}
 
