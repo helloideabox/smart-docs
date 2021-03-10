@@ -32,6 +32,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 					$cat_thumb = smartdocs_get_category_thumbnail_url( $term->term_id );
 
+					if ( ! is_array( $cat_thumb ) && empty( $cat_thumb ) ) {
+						$cat_thumb[0] = SMART_DOCS_URL . 'assets/images/placeholder.png';
+					}
+
 					if ( is_array( $cat_thumb ) && ! empty( $cat_thumb ) ) :
 					?>
 					<div class="smartdocs-category-thumb">
