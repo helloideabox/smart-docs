@@ -12,8 +12,12 @@ use SmartDocs\Customizer_Control;
 $wp_customize->add_section(
 	'smartdocs_hero_section',
 	array(
-		'title'    => __( 'Hero Section', 'smart-docs' ),
-		'priority' => 1,
+		'title'       => __( 'Hero Section', 'smart-docs' ),
+		'description' => __(
+			'Hero Section is the first section after the header of the site which contains Documentation Title, Description, and Search Form.',
+			'smart-docs'
+		),
+		'priority'    => 1,
 	)
 );
 
