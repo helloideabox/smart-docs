@@ -320,6 +320,10 @@ class Customizer {
 			remove_action( 'smartdocs_before_single_doc_content', 'smartdocs_render_toc', 5 );
 		}
 
+		if ( 'none' === get_theme_mod( 'smartdocs_single_doc_sidebar' ) ) {
+			remove_action( 'smartdocs_sidebar', 'smartdocs_get_sidebar', 10 );
+		}
+
 		$entry_meta = get_theme_mod( 'smartdocs_single_doc_display_meta' );
 
 		if ( 'after_content' === $entry_meta ) {
