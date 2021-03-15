@@ -105,21 +105,21 @@
 	display: flex;
 }
 
-.smartdocs-template .smartdocs-content .smartdocs-sidebar-right #primary {
+.smartdocs-template.smartdocs-sidebar-right #primary {
 	padding-top: 30px;
 	padding-bottom: 30px;
 	padding-right: 30px;
 	width: 100%;
 }
 
-.smartdocs-template .smartdocs-content .smartdocs-sidebar-left #primary {
+.smartdocs-template.smartdocs-sidebar-left #primary {
 	padding-top: 30px;
 	padding-bottom: 30px;
 	padding-left: 30px;
 	width: 100%;
 }
 
-.smartdocs-template .smartdocs-content .smartdocs-sidebar-none #primary {
+.smartdocs-template #primary {
 	padding-top: 30px;
 	padding-bottom: 30px;
 	width: 100%;
@@ -130,18 +130,18 @@
 	margin: 0;
 }
 
-.smartdocs-template.smartdocs-template .smartdocs-content .smartdocs-sidebar-left {
+.smartdocs-template.smartdocs-sidebar-left .smartdocs-inner {
 	flex-direction: row-reverse;
 }
 
-.smartdocs-template .smartdocs-content .smartdocs-sidebar-right .sidebar {
+.smartdocs-template.smartdocs-sidebar-right .sidebar {
 	width: 33.33333%;
 	padding-top: 30px;
 	padding-left: 30px;
 	border-left: 1px solid #eee;
 }
 
-.smartdocs-template .smartdocs-content .smartdocs-sidebar-left .sidebar {
+.smartdocs-template.smartdocs-sidebar-left .sidebar {
 	width: 33.33333%;
 	padding-top: 30px;
 	padding-right: 30px;
@@ -368,7 +368,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	margin-bottom: 10px;
 }
 .smartdocs-categories .smartdocs-category-thumb img {
-	height: 100px;
+	max-width: 200px;
 	width: auto;
 }
 

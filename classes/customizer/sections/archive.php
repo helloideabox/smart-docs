@@ -39,6 +39,28 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting(
+	'smartdocs_archive_category_image',
+	array(
+		'default'    => 'yes',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_archive_category_image_control',
+	array(
+		'label'    => __( 'Show Category Image', 'smart-docs' ),
+		'section'  => 'smartdocs_archive_settings',
+		'settings' => 'smartdocs_archive_category_image',
+		'type'     => 'select',
+		'choices'  => array(
+			'yes' => __( 'Yes', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
+		),
+	)
+);
+
 /**
  * Ordering settings for archive
  */

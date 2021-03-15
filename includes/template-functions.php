@@ -69,10 +69,9 @@ if ( ! function_exists( 'smartdocs_output_content_wrapper_start' ) ) {
 	 * Content wrappers start.
 	 */
 	function smartdocs_output_content_wrapper_start() {
-		$sidebar_type = get_theme_mod('smartdocs_single_doc_sidebar', 'right');
 		?>
 		<div class="smartdocs-content">
-			<div class="smartdocs-inner smartdocs-sidebar-<?php echo $sidebar_type;?>">
+			<div class="smartdocs-inner">
 		<?php
 	}
 }
