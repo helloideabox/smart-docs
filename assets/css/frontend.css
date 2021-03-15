@@ -426,6 +426,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     font-weight: 400;
     margin: 0;
     margin-bottom: 10px;
+	position: relative;
 }
 .smartdocs-template.archive .smartdocs-entry-title:before {
 	content: "\e926";
@@ -438,6 +439,9 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	margin-right: 10px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	position: absolute;
+    left: 0;
+    transform: translateY(8px);
 }
 
 .smartdocs-template .smartdocs-category-title {

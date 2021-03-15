@@ -216,16 +216,20 @@ function smartdocs_get_support_page_link() {
  */
 function smartdocs_get_category_thumbnail_url( $term_id ) {
 
-	$smartdocs_category_thumb_id     = get_term_meta( $term_id, 'thumbnail_id', true );
-	$smartdocs_taxonomy_thumbnail_id = get_term_meta( $term_id, 'taxonomy_thumbnail_id', true );
+	$thumb_id     = get_term_meta( $term_id, 'thumbnail_id', true );
+	$thumbnail_id = get_term_meta( $term_id, 'taxonomy_thumbnail_id', true );
 
-	if ( empty( $smartdocs_category_thumb_id ) ) {
-		$smartdocs_category_thumb_id = $smartdocs_taxonomy_thumbnail_id;
+	if ( empty( $thumb_id ) ) {
+		$thumb_id = $thumbnail_id;
 	}
 
-	$smartdocs_category_image = wp_get_attachment_image_src( $smartdocs_category_thumb_id, 'thumbnail' );
+	$image = wp_get_attachment_image_src( $thumb_id, 'thumbnail' );
 
-	return $smartdocs_category_image;
+	if ( ! is_array( $image ) || empty( $image ) ) {
+		return apply_filters( 'smartdocs_category_placeholder_image_src', SMART_DOCS_URL . 'assets/images/placeholder.png' );
+	}
+
+	return $image[0];
 }
 
 /**

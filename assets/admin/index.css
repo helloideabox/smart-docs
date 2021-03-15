@@ -353,6 +353,17 @@
   box-shadow:0 2px 14px 0 rgba(0,0,0,0.05)
 }
 
+.smartdocs-settings-help{
+  padding:10px;
+  background:#f0f0f1;
+  margin-bottom:10px;
+  border-radius:5px
+}
+
+.smartdocs-settings-help p{
+  margin:0
+}
+
 @media (min-width: 640px){
 }
 

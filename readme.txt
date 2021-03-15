@@ -127,8 +127,17 @@ If you encounter issues with the docs/category pages after an update, flush the 
 
 == Changelog ==
 
-= 1.0.1 - TBA =
-* Fix: PHP warning when a post is not assigned with any category
+= 1.0.1 - March 15, 2021 =
+* Enhancement: Added container width option under Customizer > Smart Docs > Layout
+* Enhancement: Added sidebar display option under Customizer > Smart Docs > Layout
+* Enhancement: Added default placeholder image as category featured image
+* Enhancement: Added an option to enable/disable the category thumbnail on frontend under Customizer > Smart Docs > Docs Archive
+* Fix: PHP warning when a post is not assigned to any category
+* Fix: Removed site's header and footer from getting outputted in print media
+* Fix: Minor CSS issues
+* Development: Added hook smartdocs_search_before_query
+* Development: Added hook smartdocs_search_after_query
+* Development: Added filter smartdocs_search_query_args
 
 = 1.0.0 - February 9, 2021 =
 

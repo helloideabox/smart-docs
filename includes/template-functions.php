@@ -278,7 +278,7 @@ if ( ! function_exists( 'smartdocs_navigation_links' ) ) {
 if ( ! function_exists( 'smartdocs_print_button' ) ) {
 	/**
 	 * Output Print this Page button on Single Docs.
-	 * */
+	 */
 	function smartdocs_print_button() {
 		?>
 		<button class="smartdocs-print-button" onclick="window.print();">

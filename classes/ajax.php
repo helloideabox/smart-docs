@@ -57,30 +57,55 @@ class Ajax {
 			wp_send_json_error();
 		}
 
-		$query = sanitize_text_field( wp_unslash( $_POST['query'] ) );
+		$search_term = sanitize_text_field( wp_unslash( $_POST['query'] ) );
 
 		// Post types to include.
 		$post_types = get_option( 'smartdocs_search_post_types' );
 		$post_types = empty( $post_types ) ? array( Plugin::instance()->cpt->post_type ) : $post_types;
+
+		/**
+		 * Hook: smartdocs_search_before_query
+		 *
+		 * @param string $search_term
+		 * @since 1.0.1
+		 */
+		do_action( 'smartdocs_search_before_query', $search_term );
 
 		// WP_Query arguments.
 		$query_args = array(
 			'post_type'   => $post_types,
 			'post_status' => 'publish',
 			'posts_per_page' => '-1',
-			's'           => $query,
+			's'           => $search_term,
 		);
 
-		$search_results = new \WP_Query( $query_args );
+		/**
+		 * Filter: smartdocs_search_query_args
+		 *
+		 * @param array $query_args
+		 * @since 1.0.1
+		 */
+		$query_args = apply_filters( 'smartdocs_search_query_args', $query_args );
+
+		$query = new \WP_Query( $query_args );
+
+		/**
+		 * Hook: smartdocs_search_after_query
+		 *
+		 * @param string $search_term
+		 * @param WP_Query $query
+		 * @since 1.0.1
+		 */
+		do_action( 'smartdocs_search_after_query', $search_term, $query );
 
 		ob_start();
 		?>
 
 		<ul class="smartdocs-search-result">
 			<?php
-			if ( $search_results->have_posts() ) :
-				while ( $search_results->have_posts() ) :
-					$search_results->the_post();
+			if ( $query->have_posts() ) :
+				while ( $query->have_posts() ) :
+					$query->the_post();
 					?>
 					<li>
 						<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>

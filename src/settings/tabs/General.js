@@ -76,6 +76,9 @@ const General = ( props ) => {
 
 	return (
 		<>
+			<div className="smartdocs-settings-help">
+				<p>{ __( 'Hero section will appear underneath the header of the site containing Documentation Title, Description, and the Search Form.', 'smart-docs' ) }</p>
+			</div>
 			<BaseControl
 				label={ __( 'Hero Title', 'smart-docs' ) }
 				help={ __( 'Edit to change the default title for the header.', 'smart-docs' ) }

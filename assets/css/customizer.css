@@ -1,3 +1,7 @@
+.customize-control-smartdocs-slider .wrapper {
+	display: flex;
+	align-items: center;
+}
 .customize-control-smartdocs-slider .smartdocs-range-input {
 	-webkit-appearance: none;
 	-webkit-transition: background 0.3s;
@@ -5,7 +9,7 @@
 	transition: background 0.3s;
 	background-color: rgba(0, 0, 0, 0.1);
 	height: 5px;
-	width: calc(100% - 85px);
+	width: calc(100% - 100px);
 	padding: 0;
 	border-radius: 10px;
 }
@@ -61,7 +65,7 @@
 	top: 1px;
 }
 .customize-control-smartdocs-slider input.smartdocs-range-value-input {
-	width: 52px;
+	width: 65px;
 	height: 23px;
 	font-size: 13px;
 }

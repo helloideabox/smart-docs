@@ -45,6 +45,30 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting(
+	'smartdocs_sidebar',
+	array(
+		'default'    => 'right',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_sidebar_control',
+	array(
+		'label'    => __( 'Display Sidebar', 'smart-docs' ),
+		'description' => __( 'Sidebar will be appear on category archive and single page.', 'smart-docs' ),
+		'section'  => 'smartdocs_layout_settings',
+		'settings' => 'smartdocs_sidebar',
+		'type'     => 'select',
+		'choices'  => array(
+			'none'  => __( 'No Sidebar', 'smart-docs' ),
+			'left'  => __( 'Left', 'smart-docs' ),
+			'right' => __( 'Right', 'smart-docs' ),
+		),
+	)
+);
+
 /**
  * Register Sections.
  */

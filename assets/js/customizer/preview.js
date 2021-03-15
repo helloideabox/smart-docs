@@ -4,7 +4,7 @@
 	 */
 	wp.customize("smartdocs_container_width", function (value) {
 		value.bind(function (new_value) {
-			$(".smartdocs-inner").css("max-width", parseInt(new_value));
+			$(".smartdocs-inner").css("max-width", parseInt(new_value) + 'px');
 		});
 	});
 

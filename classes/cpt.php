@@ -502,12 +502,12 @@ class Cpt {
 				?>
 				<input style="<?php echo esc_attr( $delete_button_inline_css ); ?>" id="delete_taxonomy_thumbnail_button" type="button" class="button button-danger" value="<?php echo esc_html__( 'Delete', 'smart-docs' ); ?>" />
 				<div class="clear"></div>
-				<span class="description">
+				<p class="description">
 					<?php
 					// translators: %1$s for label.
-					printf( esc_html__( 'Add an image from media library to this %1$s. Recommended image size is minimum 100px and maximum 200px.', 'smart-docs' ), esc_html( $name ) );
+					printf( esc_html__( 'Add an image from media library to this %1$s. Recommended maximum image size is 150x150 pixels.', 'smart-docs' ), esc_html( $name ) );
 					?>
-				</span>
+				</p>
 			</td>
 		</tr>
 		<?php
@@ -540,12 +540,12 @@ class Cpt {
 			?>
 			<input style="<?php echo esc_attr( $delete_button_inline_css ); ?>" id="delete_taxonomy_thumbnail_button" type="button" class="button button-danger" value="<?php echo esc_html__( 'Delete', 'smart-docs' ); ?>" />
 			<div class="clear"></div>
-			<span class="description">
+			<p class="description">
 				<?php
 				// translators: %1$s for label.
-				printf( esc_html__( 'Add an image from media library to this %1$s. Recommended image size is minimum 100px and maximum 200px.', 'smart-docs' ), esc_html( $name ) );
+				printf( esc_html__( 'Add an image from media library to this %1$s. Recommended maximum image size is 150x150 pixels.', 'smart-docs' ), esc_html( $name ) );
 				?>
-			</span>
+			</p>
 		</div>
 		<?php
 	}
