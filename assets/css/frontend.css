@@ -423,11 +423,11 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 /*********************************
  * Single
  ********************************/
-.smartdocs-template .smartdocs-entry {
+.single.smartdocs-template .smartdocs-entry {
 	margin-bottom: 40px;
 }
 
-.smartdocs-template .smartdocs-entry .smartdocs-entry-header {
+.single.smartdocs-template .smartdocs-entry .smartdocs-entry-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
