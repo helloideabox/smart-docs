@@ -11,7 +11,7 @@
  * the readme will list any important changes.
  *
  * @package     SmartDocs\Templates
- * @version     1.0.0		
+ * @version     1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,22 +25,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( $term->parent ) {
 			continue;
 		}
-	?>
+		?>
 		<div class="smartdocs-category">
 			<div class="smartdocs-category-inner">
 				<div class="smartdocs-category-info">
 					<?php
-					$cat_thumb = smartdocs_get_category_thumbnail_url( $term->term_id );
+					if ( 'yes' === get_theme_mod( 'smartdocs_archive_category_image' ) ) :
+						$cat_thumb = smartdocs_get_category_thumbnail_url( $term->term_id );
 
-					if ( ! is_array( $cat_thumb ) && empty( $cat_thumb ) ) {
-						$cat_thumb[0] = SMART_DOCS_URL . 'assets/images/placeholder.png';
-					}
+						if ( ! is_array( $cat_thumb ) && empty( $cat_thumb ) ) {
+							$cat_thumb[0] = SMART_DOCS_URL . 'assets/images/placeholder.png';
+						}
 
-					if ( is_array( $cat_thumb ) && ! empty( $cat_thumb ) ) :
-					?>
-					<div class="smartdocs-category-thumb">
-						<img src="<?php echo $cat_thumb[0]; ?>" alt="<?php echo $term->name; ?>" />
-					</div>
+						if ( is_array( $cat_thumb ) && ! empty( $cat_thumb ) ) :
+							?>
+						<div class="smartdocs-category-thumb">
+							<img src="<?php echo esc_url( $cat_thumb[0] ); ?>" alt="<?php echo esc_attr( $term->name ); ?>" />
+						</div>
+						<?php endif; ?>
 					<?php endif; ?>
 					<div class="smartdocs-category-text">
 						<<?php echo esc_html( $args['title_tag'] ); ?> class="smartdocs-category-title"><?php echo esc_html( $term->name ); ?></<?php echo esc_html( $args['title_tag'] ); ?>>
