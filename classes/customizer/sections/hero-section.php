@@ -14,7 +14,7 @@ $wp_customize->add_section(
 	array(
 		'title'       => __( 'Hero Section', 'smart-docs' ),
 		'description' => __(
-			'Hero Section is the first section after the header of the site which contains Documentation Title, Description, and Search Form.',
+			'Hero Section will appear underneath the header of the site containing Documentation Title, Description, and the Search Form.',
 			'smart-docs'
 		),
 		'priority'    => 1,
