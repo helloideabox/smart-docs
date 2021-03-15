@@ -127,6 +127,9 @@ If you encounter issues with the docs/category pages after an update, flush the 
 
 == Changelog ==
 
+= 1.0.1 - TBA =
+* Fix: PHP warning when a post is not assigned with any category
+
 = 1.0.0 - February 9, 2021 =
 
 * Initial version

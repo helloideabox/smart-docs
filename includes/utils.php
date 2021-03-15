@@ -141,7 +141,7 @@ function smartdocs_get_current_terms() {
 			$post,
 			'smartdocs_category'
 		);
-		if ( ! is_wp_error( $current_terms ) || ! empty( $current_terms ) ) {
+		if ( ! is_wp_error( $current_terms ) && is_array( $current_terms ) && ! empty( $current_terms ) ) {
 			$current_terms = wp_list_pluck( $current_terms , 'slug' );
 		}
 	} elseif ( is_tax( 'smartdocs_category' ) ) {
@@ -352,8 +352,14 @@ function smartdocs_list_categories( $args, $count ) {
  */
 function smartdocs_query_related_articles( $post_id ) {
 
-	$terms			= get_the_terms( $post_id, 'smartdocs_category' );
-	$terms_list     = wp_list_pluck( $terms, 'term_id' );
+	$posts = array();
+	$terms = get_the_terms( $post_id, 'smartdocs_category' );
+
+	if ( is_wp_error( $terms ) || ! is_array( $terms ) ) {
+		return $posts;
+	}
+
+	$terms_list = wp_list_pluck( $terms, 'term_id' );
 
 	// Create a new WP_Query.
 	$args = array(
@@ -370,7 +376,6 @@ function smartdocs_query_related_articles( $post_id ) {
 	);
 
 	$query = new WP_Query( $args );
-	$posts = array();
 
 	if ( $query->have_posts() ) {
 		$posts = $query->posts;
