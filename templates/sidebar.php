@@ -19,11 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<?php
-	$sidebar_type = get_theme_mod('smartdocs_single_doc_sidebar', 'right');
-?>
-
-<div class="widget-area sidebar smartdocs-sidebar sidebar-<?php echo $sidebar_type;?>" itemscope="itemscope" itemtype="https://schema.org/WPSideBar">
+<div class="widget-area sidebar smartdocs-sidebar" itemscope="itemscope" itemtype="https://schema.org/WPSideBar">
 	<div class="sidebar-main">
 		<?php
 		if ( is_active_sidebar( 'smart-docs-sidebar' ) ) :

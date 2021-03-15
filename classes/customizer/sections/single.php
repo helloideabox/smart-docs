@@ -238,7 +238,7 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
-	'smartdocs_single_doc_sidebar',
+	'smartdocs_sidebar',
 	array(
 		'default'    => 'right',
 		'capability' => 'edit_theme_options',
@@ -246,11 +246,11 @@ $wp_customize->add_setting(
 );
 
 $wp_customize->add_control(
-	'smartdocs_single_doc_sidebar_control',
+	'smartdocs_sidebar_control',
 	array(
 		'label'    => __( 'Display Sidebar', 'smart-docs' ),
 		'section'  => 'smartdocs_single_doc_settings',
-		'settings' => 'smartdocs_single_doc_sidebar',
+		'settings' => 'smartdocs_sidebar',
 		'type'     => 'select',
 		'choices'  => array(
 			'none'    => __( 'No Sidebar', 'smart-docs'),
