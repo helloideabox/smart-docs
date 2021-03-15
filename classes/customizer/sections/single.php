@@ -253,7 +253,7 @@ $wp_customize->add_control(
 		'settings' => 'smartdocs_sidebar',
 		'type'     => 'select',
 		'choices'  => array(
-			'none'    => __( 'No Sidebar', 'smart-docs'),
+			'none'  => __( 'No Sidebar', 'smart-docs' ),
 			'left'  => __( 'Left', 'smart-docs' ),
 			'right' => __( 'Right', 'smart-docs' ),
 		),

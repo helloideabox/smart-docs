@@ -176,8 +176,21 @@ class Template {
 			$classes[] = 'smartdocs-template';
 		}
 
-		if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( $this->post_type ) ) {
-			$classes[] = 'smartdocs-has-sidebar';
+		if ( 'none' !== get_theme_mod( 'smartdocs_sidebar', 'right' ) ) {
+			if ( is_active_sidebar( 'smart-docs-sidebar' ) && ! is_post_type_archive( $this->post_type ) ) {
+				$classes[] = 'smartdocs-has-sidebar';
+
+				$sidebar_type = get_theme_mod( 'smartdocs_sidebar', 'right' );
+
+				switch ( $sidebar_type ) {
+					case 'left':
+							$classes[] = 'smartdocs-sidebar-left';
+						break;
+					case 'right':
+							$classes[] = 'smartdocs-sidebar-right';
+						break;
+				}
+			}
 		}
 
 		return $classes;
