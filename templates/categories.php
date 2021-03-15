@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					if ( is_array( $cat_thumb ) && ! empty( $cat_thumb ) ) :
 					?>
 					<div class="smartdocs-category-thumb">
-						<img src="<?php echo $cat_thumb[0]; ?>" alt="<?php echo $term->name; ?>" width="100px" />
+						<img src="<?php echo $cat_thumb[0]; ?>" alt="<?php echo $term->name; ?>" />
 					</div>
 					<?php endif; ?>
 					<div class="smartdocs-category-text">
