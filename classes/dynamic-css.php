@@ -173,7 +173,7 @@ class Dynamic_CSS {
 		$action_color 				= $this->get_mod( 'archive_category_action_color' );
 		$action_bg_color 			= $this->get_mod( 'archive_category_action_bg_color' );
 		$action_border_color 		= $this->get_mod( 'archive_category_action_border_color' );
-		$alignment 					= $this->get_mod( 'archive_category_text_alignment' );
+		$alignment 					= $this->get_mod( 'archive_category_text_alignment', 'center' );
 		$show_articles 				= $this->get_mod( 'archive_category_articles', 'yes' );
 
 		if ( false !== $gap ) {
