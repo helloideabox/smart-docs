@@ -83,6 +83,24 @@ class Dynamic_CSS {
 	}
 
 	/**
+	 * Build Common Styles
+	 * 
+	 * @since 1.0.0
+	 */
+	public function build_common_styles() {
+		$container_width = $this->get_mod( 'container_width', 1200 );
+
+		if( ! empty( $container_width ) ) {
+			$this->add_rule(
+				'.smartdocs-template .smartdocs-inner',
+				array(
+					'max-width' => "{$container_width}px",
+				)
+			);
+		}
+	}
+
+	/**
 	 * Build style for Hero section.
 	 *
 	 * @since 1.0.0

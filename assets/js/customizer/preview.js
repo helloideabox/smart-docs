@@ -1,5 +1,14 @@
 (function ($) {
 	/**
+	 * Layout Section
+	 */
+	wp.customize("smartdocs_container_width", function (value) {
+		value.bind(function (new_value) {
+			$(".smartdocs-inner").css("max-width", parseInt(new_value));
+		});
+	});
+
+	/**
 	 * Hero Section
 	 */
 	wp.customize("smartdocs_hero_background_color", function (value) {

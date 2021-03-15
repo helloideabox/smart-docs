@@ -28,13 +28,13 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_single_doc_toc_control',
 	array(
-		'label'       => __( 'Show Table of Contents', 'smart-docs' ),
-		'section'     => 'smartdocs_single_doc_settings',
-		'settings'    => 'smartdocs_single_doc_toc',
-		'type'        => 'select',
-		'choices'     => array(
+		'label'    => __( 'Show Table of Contents', 'smart-docs' ),
+		'section'  => 'smartdocs_single_doc_settings',
+		'settings' => 'smartdocs_single_doc_toc',
+		'type'     => 'select',
+		'choices'  => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no' => __( 'No', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
 		),
 	)
 );
@@ -57,7 +57,7 @@ $wp_customize->add_control(
 		'type'        => 'select',
 		'choices'     => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no' => __( 'No', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
 		),
 	)
 );
@@ -73,10 +73,10 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_toc_title_control',
 	array(
-		'label'       => __( 'Table of Contents Title', 'smart-docs' ),
-		'section'     => 'smartdocs_single_doc_settings',
-		'settings'    => 'smartdocs_toc_title',
-		'type'        => 'text',
+		'label'    => __( 'Table of Contents Title', 'smart-docs' ),
+		'section'  => 'smartdocs_single_doc_settings',
+		'settings' => 'smartdocs_toc_title',
+		'type'     => 'text',
 	)
 );
 
@@ -91,13 +91,13 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_single_doc_display_print_button_control',
 	array(
-		'label'       => __( 'Show Print Button', 'smart-docs' ),
-		'section'     => 'smartdocs_single_doc_settings',
-		'settings'    => 'smartdocs_single_doc_display_print_button',
-		'type'        => 'select',
-		'choices'     => array(
+		'label'    => __( 'Show Print Button', 'smart-docs' ),
+		'section'  => 'smartdocs_single_doc_settings',
+		'settings' => 'smartdocs_single_doc_display_print_button',
+		'type'     => 'select',
+		'choices'  => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no' => __( 'No', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
 		),
 	)
 );
@@ -113,14 +113,14 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_single_doc_display_meta_control',
 	array(
-		'label'       => __( 'Show Meta Data', 'smart-docs' ),
-		'section'     => 'smartdocs_single_doc_settings',
-		'settings'    => 'smartdocs_single_doc_display_meta',
-		'type'        => 'select',
-		'choices'     => array(
+		'label'    => __( 'Show Meta Data', 'smart-docs' ),
+		'section'  => 'smartdocs_single_doc_settings',
+		'settings' => 'smartdocs_single_doc_display_meta',
+		'type'     => 'select',
+		'choices'  => array(
 			'after_content' => __( 'After Content', 'smart-docs' ),
-			'after_title' => __( 'After Title', 'smart-docs' ),
-			'hide' => __( 'Hide', 'smart-docs' ),
+			'after_title'   => __( 'After Title', 'smart-docs' ),
+			'hide'          => __( 'Hide', 'smart-docs' ),
 		),
 	)
 );
@@ -136,13 +136,13 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_single_doc_display_action_section_control',
 	array(
-		'label'       => __( 'Show Action Content', 'smart-docs' ),
-		'section'     => 'smartdocs_single_doc_settings',
-		'settings'    => 'smartdocs_single_doc_display_action_section',
-		'type'        => 'select',
-		'choices'     => array(
+		'label'    => __( 'Show Action Content', 'smart-docs' ),
+		'section'  => 'smartdocs_single_doc_settings',
+		'settings' => 'smartdocs_single_doc_display_action_section',
+		'type'     => 'select',
+		'choices'  => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no' => __( 'No', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
 		),
 	)
 );
@@ -158,13 +158,13 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_single_doc_display_feedback_section_control',
 	array(
-		'label'       => __( 'Show Feedback Content', 'smart-docs' ),
-		'section'     => 'smartdocs_single_doc_settings',
-		'settings'    => 'smartdocs_single_doc_display_feedback_section',
-		'type'        => 'select',
-		'choices'     => array(
+		'label'    => __( 'Show Feedback Content', 'smart-docs' ),
+		'section'  => 'smartdocs_single_doc_settings',
+		'settings' => 'smartdocs_single_doc_display_feedback_section',
+		'type'     => 'select',
+		'choices'  => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no' => __( 'No', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
 		),
 	)
 );
@@ -180,13 +180,13 @@ $wp_customize->add_setting(
 $wp_customize->add_control(
 	'smartdocs_single_doc_related_articles_control',
 	array(
-		'label'       => __( 'Show Related Articles', 'smart-docs' ),
-		'section'     => 'smartdocs_single_doc_settings',
-		'settings'    => 'smartdocs_single_doc_related_articles',
-		'type'        => 'select',
-		'choices'     => array(
+		'label'    => __( 'Show Related Articles', 'smart-docs' ),
+		'section'  => 'smartdocs_single_doc_settings',
+		'settings' => 'smartdocs_single_doc_related_articles',
+		'type'     => 'select',
+		'choices'  => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no' => __( 'No', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
 		),
 	)
 );
@@ -209,7 +209,7 @@ $wp_customize->add_control(
 		'type'        => 'select',
 		'choices'     => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no' => __( 'No', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
 		),
 	)
 );
@@ -232,7 +232,30 @@ $wp_customize->add_control(
 		'type'        => 'select',
 		'choices'     => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no' => __( 'No', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
+		),
+	)
+);
+
+$wp_customize->add_setting(
+	'smartdocs_single_doc_sidebar',
+	array(
+		'default'    => 'right',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_single_doc_sidebar_control',
+	array(
+		'label'    => __( 'Display Sidebar', 'smart-docs' ),
+		'section'  => 'smartdocs_single_doc_settings',
+		'settings' => 'smartdocs_single_doc_sidebar',
+		'type'     => 'select',
+		'choices'  => array(
+			'none'    => __( 'No Sidebar', 'smart-docs'),
+			'left'  => __( 'Left', 'smart-docs' ),
+			'right' => __( 'Right', 'smart-docs' ),
 		),
 	)
 );

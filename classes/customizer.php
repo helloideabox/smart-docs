@@ -60,6 +60,7 @@ class Customizer {
 			)
 		);
 
+		require SMART_DOCS_PATH . 'classes/customizer/sections/layout.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/hero-section.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/archive.php';
 		require SMART_DOCS_PATH . 'classes/customizer/sections/single.php';
@@ -317,6 +318,10 @@ class Customizer {
 
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_toc' ) ) {
 			remove_action( 'smartdocs_before_single_doc_content', 'smartdocs_render_toc', 5 );
+		}
+
+		if ( 'none' === get_theme_mod( 'smartdocs_single_doc_sidebar' ) ) {
+			remove_action( 'smartdocs_sidebar', 'smartdocs_get_sidebar', 10 );
 		}
 
 		$entry_meta = get_theme_mod( 'smartdocs_single_doc_display_meta' );
