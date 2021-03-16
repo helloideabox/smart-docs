@@ -317,7 +317,7 @@ class Customizer {
 		}
 
 		if ( 'no' === get_theme_mod( 'smartdocs_single_doc_toc' ) ) {
-			remove_action( 'smartdocs_before_single_doc_content', 'smartdocs_render_toc', 5 );
+			remove_action( 'smartdocs_before_single_doc_content', 'smartdocs_render_toc', 10 );
 		}
 
 		if ( 'none' === get_theme_mod( 'smartdocs_sidebar' ) ) {

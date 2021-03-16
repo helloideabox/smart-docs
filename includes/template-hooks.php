@@ -77,13 +77,18 @@ add_action( 'smartdocs_before_single_doc_content', 'smartdocs_entry_header', 5 )
 add_action( 'smartdocs_after_single_doc_title', 'smartdocs_print_button', 5 );
 
 /**
+ * Table of Contents
+ *
+ * @see smartdocs_render_toc()
+ */
+add_action( 'smartdocs_before_single_doc_content', 'smartdocs_render_toc', 10 );
+
+/**
  * Entry content for single doc.
  *
  * @see smartdocs_entry_content()
  */
 add_action( 'smartdocs_single_doc_content', 'smartdocs_entry_content', 10 );
-
-add_action( 'smartdocs_before_single_doc_content', 'smartdocs_render_toc', 5 );
 
 /**
  * Entry footer for single doc.
