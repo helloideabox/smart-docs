@@ -272,11 +272,10 @@ class Plugin {
 	 * @access private
 	 */
 	private function init_components() {
-
 		// Load Utilities.
 		include_once SMART_DOCS_PATH . 'includes/utils.php';
 
-		$this->cpt                     = new Cpt();
+		$this->cpt             = new Cpt();
 		$this->admin           = new Admin();
 		$this->template        = new Template();
 		$this->ajax            = new Ajax();
@@ -327,6 +326,15 @@ class Plugin {
 		if ( ! $installed ) {
 			update_option( 'smartdocs_installed_time', time() );
 		}
+
+		/**
+		 * SmartDocs plugin deactivation.
+		 *
+		 * Fires when activating SmartDocs plugin.
+		 *
+		 * @since 1.0.1
+		 */
+		do_action( 'smartdocs_plugin_activation' );
 	}
 
 	/**
@@ -341,6 +349,15 @@ class Plugin {
 		 * @see SmartDocs\Cpt\register_cpt()
 		 */
 		delete_option( 'smartdocs_rewrite_rules_flushed' );
+
+		/**
+		 * SmartDocs plugin deactivation.
+		 *
+		 * Fires when deactivating SmartDocs plugin.
+		 *
+		 * @since 1.0.1
+		 */
+		do_action( 'smartdocs_plugin_deactivation' );
 	}
 
 	/**
@@ -375,15 +392,37 @@ class Plugin {
 		}
 
 		if ( $should_enqueue ) {
+			/**
+			 * SmartDocs frontend before enqueue scripts.
+			 *
+			 * Fires immediately before enqueuing SmartDocs frontend assets.
+			 *
+			 * @since 1.0.1
+			 */
 			do_action( 'smartdocs_frontend_before_enqueue_scripts' );
 
 			wp_enqueue_style( 'smartdocs-frontend' );
 			wp_enqueue_script( 'smartdocs-frontend' );
 			wp_localize_script( 'smartdocs-frontend', 'smartdocs', $localized_vars );
 
+			/**
+			 * SmartDocs frontend after enqueue scripts.
+			 *
+			 * Fires immediately after enqueuing SmartDocs frontend assets.
+			 *
+			 * @since 1.0.1
+			 */
 			do_action( 'smartdocs_frontend_after_enqueue_scripts' );
 		}
 
+		/**
+		 * SmartDocs frontend enqueue scripts.
+		 *
+		 * To hook additional scripts site-wide.
+		 * Fires immediately after enqueuing SmartDocs frontend assets.
+		 *
+		 * @since 1.0.1
+		 */
 		do_action( 'smartdocs_frontend_enqueue_scripts' );
 	}
 
