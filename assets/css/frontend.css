@@ -426,6 +426,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     margin: 0;
     margin-bottom: 10px;
 	position: relative;
+	padding-left: 30px;
 }
 .smartdocs-template.archive .smartdocs-entry-title:before {
 	content: "\e926";
