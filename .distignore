@@ -14,6 +14,7 @@
 .DS_Store
 
 README.md
+Readme.md
 package.json
 package-lock.json
 composer.json
@@ -21,3 +22,4 @@ composer.lock
 phpcs.xml
 postcss.config.js
 tailwind.config.js
+Gruntfile.js
