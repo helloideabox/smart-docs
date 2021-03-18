@@ -127,7 +127,7 @@ If you encounter issues with the docs/category pages after an update, flush the 
 
 == Changelog ==
 
-= 1.0.1 - March 15, 2021 =
+= 1.0.1 - March 18, 2021 =
 * Enhancement: Added container width option under Customizer > Smart Docs > Layout
 * Enhancement: Added sidebar display option under Customizer > Smart Docs > Layout
 * Enhancement: Added default placeholder image as category featured image
