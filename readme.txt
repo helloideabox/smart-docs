@@ -1,4 +1,4 @@
-=== Smart Docs ===
+=== SmartDocs - Knowledge base & Documentation Plugin for WordPress ===
 Contributors: ideaboxcreations, ibachal, nirbhay18
 Tags: documentation, docs, documents, knowledge base, wiki
 Requires at least: 5.0
@@ -12,9 +12,9 @@ Knowledge Base & Documentation Plugin for WordPress.
 
 == Description ==
 
-Create powerful Documentation for your products and services right in WordPress with features like Live Search, Breadcrumbs, User Feedback, Styling with Customizer, etc.
+Create powerful documentation for your products and services right in WordPress with features like **Live Search**, **Breadcrumbs**, **User Feedback**, Styling with Customizer, etc.
 
-Whether you are building a small or large Knowledge Base, SmartDocs will help you manage docs easily and help your customers find answers quickly, even in the in-depth Documentation of your products and services.
+Whether you are building a small or large Knowledge Base, our documentation plugin will help you manage docs easily and help your customers find answers quickly, even in the in-depth documentation of your products and services.
 
 SmartDocs **keeps everything simple and minimal**. You can get started with it in a few clicks without feeling lost and overwhelmed. 
 
@@ -30,7 +30,7 @@ There is no doubt that well-maintained Documentation can reduce the support team
  4. Tweak settings a bit to your taste and
  5. Visit Docs Homepage
 
-You are done with a flawlessly Docs page!
+You are done with a flawlessly working Docs page!
 
 Let your customers find the answers to their questions quickly without interacting with the support representatives for known issues or queries. *It's a win-win!* 🏆
 
@@ -62,7 +62,7 @@ We definitely do 😉 While managing Documentation for our existing plugins, we 
 *Rewrite, Modify, or Customize; whatever you want to do, you'll find a way in SmartDocs to do it.*
 
 ### PRODUCT BY IDEABOX  💛
-The plugin is developed and brought to you by IdeaBox Creations, the company behind many great WordPress plugins. Our motivated and customer friendly team is trusted by more than 200,000 customers worldwide.
+SmartDocs is developed and brought to you by IdeaBox Creations, the company behind many great WordPress plugins. Our motivated and customer friendly team is trusted by more than 200,000 customers worldwide.
 
 We will love to see you build great Documentations & Knowledge bases with the SmartDocs plugin, and if there are any hiccups, we will be right here to help 👨‍🔧
 
