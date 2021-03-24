@@ -67,12 +67,12 @@ class Dynamic_CSS {
 	 * Add CSS rule.
 	 *
 	 * @since 1.0.0
-	 * @access private
+	 * @access protected
 	 * @param string $selector CSS selector.
 	 * @param array  $props Array of CSS properties.
 	 * @param string $device Device type (desktop, tablet, mobile).
 	 */
-	private function add_rule( $selector, $props, $device = 'desktop' ) {
+	protected function add_rule( $selector, $props, $device = 'desktop' ) {
 		if ( ! isset( $this->styles[ $device ][ $selector ] ) ) {
 			$this->styles[ $device ][ $selector ] = array();
 		}
