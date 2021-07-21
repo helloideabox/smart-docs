@@ -5,7 +5,7 @@
  * Description: Knowledge Base and Documentation plugin for WordPress.
  * Author: IdeaBox Creations
  * Author URI: https://ideabox.io/
- * Version: 1.0.1
+ * Version: 1.0.2
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: smart-docs
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'SMART_DOCS_VERSION', '1.0.1' );
+define( 'SMART_DOCS_VERSION', '1.0.2' );
 define( 'SMART_DOCS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SMART_DOCS_URL', plugin_dir_url( __FILE__ ) );
 define( 'SMART_DOCS_FILE', __FILE__ );

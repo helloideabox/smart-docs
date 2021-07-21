@@ -2,8 +2,8 @@
 Contributors: ideaboxcreations, ibachal, nirbhay18
 Tags: documentation, docs, documents, knowledge base, wiki
 Requires at least: 5.0
-Tested up to: 5.7
-Requires PHP: 7.3
+Tested up to: 5.8
+Requires PHP: 7.4
 Stable tag: trunk
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -126,6 +126,10 @@ Automatic updates should work smoothly, but we still recommend you back up your 
 If you encounter issues with the docs/category pages after an update, flush the permalinks by going to WordPress > Settings > Permalinks and hitting "Save". That should return things to normal.
 
 == Changelog ==
+
+= 1.0.2 - July 21, 2021 =
+* Development: Added filter hook smartdocs_get_template
+* Development: Added filter hook smartdocs_get_template_part
 
 = 1.0.1 - March 18, 2021 =
 * Enhancement: Added container width option under Customizer > Smart Docs > Layout

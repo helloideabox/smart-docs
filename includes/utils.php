@@ -43,6 +43,9 @@ function smartdocs_get_template_part( $slug, $name = '' ) {
 		}
 	}
 
+	// Allow 3rd party plugins to filter template file from their plugin.
+	$template = apply_filters( 'smartdocs_get_template_part', $template, $slug, $name );
+
 	if ( $template ) {
 		load_template( $template, false );
 	}
@@ -64,6 +67,13 @@ function smartdocs_get_template( $template_name, $args = array() ) {
 	if ( empty( $template ) ) {
 		$fallback = SMART_DOCS_PATH . "templates/{$template_name}.php";
 		$template = file_exists( $fallback ) ? $fallback : '';
+	}
+
+	// Allow 3rd party plugin filter template file from their plugin.
+	$filter_template = apply_filters( 'smartdocs_get_template', $template, $template_name, $args );
+
+	if ( $filter_template !== $template && file_exists( $filter_template ) ) {
+		$template = $filter_template;
 	}
 
 	if ( ! empty( $template ) ) {
