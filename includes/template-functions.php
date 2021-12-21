@@ -105,6 +105,7 @@ if ( ! function_exists( 'smartdocs_archive_content' ) ) {
 			$sort_order		= get_theme_mod( 'smartdocs_archive_sort_order', 'ASC' );
 
 			$show_articles 	= get_theme_mod( 'smartdocs_archive_category_articles', 'yes' );
+			$show_children 	= get_theme_mod( 'smartdocs_archive_category_children', 'no' );
 
 			$args = array(
 				'columns'   => "$columns,$columns_tablet,$columns_mobile",
@@ -112,6 +113,7 @@ if ( ! function_exists( 'smartdocs_archive_content' ) ) {
 				'orderby'	=> $orderby,
 				'order'		=> $sort_order,
 				'show_articles' => $show_articles,
+				'show_children' => $show_children,
 			);
 
 			echo smartdocs_render_categories( $args ); // WPCS: XSS ok.

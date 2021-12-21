@@ -401,9 +401,11 @@ function smartdocs_query_related_articles( $post_id ) {
 /**
  * Get all the docs in a term id.
  *
- * @param int $term_id ID of the smartdocs_category category.
+ * @param int|object $term ID or object of the smartdocs_category category.
  */
-function smartdocs_category_articles( $term_id ) {
+function smartdocs_category_articles( $term ) {
+	$term_id = is_object( $term ) ? $term->term_id : $term;
+
 	$args = array(
 		'post_type' => smartdocs_get_post_type(),
 		'tax_query' => array(
@@ -428,6 +430,35 @@ function smartdocs_category_articles( $term_id ) {
 				<a href="<?php echo esc_url( get_post_permalink( $post ) ); ?>">
 					<?php echo esc_html( $post->post_title ); ?>
 				</a>
+			</li>
+			<?php
+		}
+		?>
+		</ul>
+		<?php
+	}
+}
+
+/**
+ * Get the children of the term.
+ *
+ * @param int|object $term ID or object of the smartdocs_category category.
+ */
+function smartdocs_category_children( $term ) {
+	$children = get_term_children( $term->term_id, $term->taxonomy );
+
+	if ( ! is_wp_error( $children ) && ! empty( $children ) ) {
+		?>
+		<ul class="smartdocs-category-articles smartdocs-category-children">
+		<?php
+		foreach ( $children as $child ) {
+			$child_term = get_term_by( 'term_id', $child, $term->taxonomy );
+			if ( $child_term->count <= 0 ) {
+				continue;
+			}
+			?>
+			<li class="smartdocs-category-article">
+				<a href="<?php echo get_term_link($child, $term->taxonomy); ?>"><?php echo $child_term->name; ?></a>
 			</li>
 			<?php
 		}

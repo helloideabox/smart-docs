@@ -127,6 +127,9 @@ If you encounter issues with the docs/category pages after an update, flush the 
 
 == Changelog ==
 
+= 1.0.3 - TBA =
+* Enhancement: Added option in the Customizer to show child categories in category grid on archive
+
 = 1.0.2 - July 21, 2021 =
 * Development: Added filter hook smartdocs_get_template
 * Development: Added filter hook smartdocs_get_template_part

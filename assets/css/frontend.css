@@ -385,6 +385,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	align-self: self-end;
 	text-align: left;
 	margin: 0 0 20px 0;
+	width: 100%;
 }
 
 .smartdocs-categories .smartdocs-category-article {

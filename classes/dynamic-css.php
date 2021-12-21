@@ -175,6 +175,7 @@ class Dynamic_CSS {
 		$action_border_color 		= $this->get_mod( 'archive_category_action_border_color' );
 		$alignment 					= $this->get_mod( 'archive_category_text_alignment', 'center' );
 		$show_articles 				= $this->get_mod( 'archive_category_articles', 'yes' );
+		$show_children 				= $this->get_mod( 'archive_category_children', 'no' );
 
 		if ( false !== $gap ) {
 			$this->add_rule( '.smartdocs-categories', array(
@@ -241,7 +242,7 @@ class Dynamic_CSS {
 			'align-items' => esc_attr( $align_items ),
 		) );
 
-		if ( 'yes' === $show_articles ) {
+		if ( 'yes' === $show_articles || 'yes' === $show_children ) {
 			$this->add_rule( '.smartdocs-categories .smartdocs-category-info', array(
 				'justify-content' => 'flex-start',
 			) );

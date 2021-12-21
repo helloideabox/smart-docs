@@ -18,6 +18,28 @@ $wp_customize->add_section(
 );
 
 $wp_customize->add_setting(
+	'smartdocs_archive_category_image',
+	array(
+		'default'    => 'yes',
+		'capability' => 'edit_theme_options',
+	)
+);
+
+$wp_customize->add_control(
+	'smartdocs_archive_category_image_control',
+	array(
+		'label'    => __( 'Show Category Image', 'smart-docs' ),
+		'section'  => 'smartdocs_archive_settings',
+		'settings' => 'smartdocs_archive_category_image',
+		'type'     => 'select',
+		'choices'  => array(
+			'yes' => __( 'Yes', 'smart-docs' ),
+			'no'  => __( 'No', 'smart-docs' ),
+		),
+	)
+);
+
+$wp_customize->add_setting(
 	'smartdocs_archive_category_articles',
 	array(
 		'default'    => 'yes',
@@ -40,23 +62,23 @@ $wp_customize->add_control(
 );
 
 $wp_customize->add_setting(
-	'smartdocs_archive_category_image',
+	'smartdocs_archive_category_children',
 	array(
-		'default'    => 'yes',
+		'default'    => 'no',
 		'capability' => 'edit_theme_options',
 	)
 );
 
 $wp_customize->add_control(
-	'smartdocs_archive_category_image_control',
+	'smartdocs_archive_category_children_control',
 	array(
-		'label'    => __( 'Show Category Image', 'smart-docs' ),
-		'section'  => 'smartdocs_archive_settings',
-		'settings' => 'smartdocs_archive_category_image',
-		'type'     => 'select',
-		'choices'  => array(
+		'label'       => __( 'Show Child Categories', 'smart-docs' ),
+		'section'     => 'smartdocs_archive_settings',
+		'settings'    => 'smartdocs_archive_category_children',
+		'type'        => 'select',
+		'choices'     => array(
 			'yes' => __( 'Yes', 'smart-docs' ),
-			'no'  => __( 'No', 'smart-docs' ),
+			'no' => __( 'No', 'smart-docs' ),
 		),
 	)
 );

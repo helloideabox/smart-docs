@@ -50,7 +50,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 					<?php
 					if ( 'yes' === $args['show_articles'] ) {
-						smartdocs_category_articles( $term->term_id );
+						smartdocs_category_articles( $term );
+					}
+
+					if ( 'yes' === $args['show_children'] ) {
+						smartdocs_category_children( $term );
 					}
 					?>
 				</div>

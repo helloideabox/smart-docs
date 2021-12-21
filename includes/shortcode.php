@@ -77,6 +77,7 @@ function smartdocs_render_categories( $args = array() ) {
 			'orderby'	 => 'none', // @see https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
 			'order'		 => 'ASC', 	// @see https://developer.wordpress.org/reference/classes/wp_term_query/__construct/
 			'show_articles' => 'yes',
+			'show_children' => 'no',
 		),
 		$args
 	);
