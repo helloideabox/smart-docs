@@ -246,7 +246,9 @@ if ( ! function_exists( 'smartdocs_entry_content' ) ) {
 
 		$content = SmartDocs\Plugin::instance()->content->get_the_content();
 
-		echo wpautop( $content );
+		global $wp_embed;
+
+		echo wpautop( $wp_embed->autoembed( $content ) );
 	}
 }
 

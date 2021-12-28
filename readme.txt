@@ -135,6 +135,7 @@ If you encounter issues with the docs/category pages after an update, flush the 
 * Enhancement: Minor CSS improvements
 * Fix: Articles alignment issue on docs archive
 * Fix: Paragraph output issue on single doc page
+* Fix: oEmbed issue in the docs content
 * Development: Added filter hook smartdocs_list_docs_query_args
 * Development: Added filter hook smartdocs_related_posts_query_args
 * Development: Added filter hook smartdocs_tax_render_articles
