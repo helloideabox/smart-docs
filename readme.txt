@@ -136,6 +136,7 @@ If you encounter issues with the docs/category pages after an update, flush the 
 * Fix: Articles alignment issue on docs archive
 * Fix: Paragraph output issue on single doc page
 * Development: Added filter hook smartdocs_list_docs_query_args
+* Development: Added filter hook smartdocs_related_posts_query_args
 
 = 1.0.2 - July 21, 2021 =
 * Development: Added filter hook smartdocs_get_template

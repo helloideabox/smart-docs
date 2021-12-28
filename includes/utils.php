@@ -377,7 +377,7 @@ function smartdocs_query_related_articles( $post_id ) {
 	$terms_list = wp_list_pluck( $terms, 'term_id' );
 
 	// Create a new WP_Query.
-	$args = array(
+	$args = apply_filters( 'smartdocs_related_posts_query_args', array(
 		'post_type' => smartdocs_get_post_type(),
 		'tax_query' => array(
 			array(
@@ -388,7 +388,7 @@ function smartdocs_query_related_articles( $post_id ) {
 		),
 		'numberposts' => 10,
 		'post__not_in' => array( $post_id ),
-	);
+	) );
 
 	$query = new WP_Query( $args );
 
