@@ -656,6 +656,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 	grid-column-gap: 30px;
+	grid-row-gap: 10px;
 	padding-left: 20px;
 	margin-left: 0px;
 }
