@@ -128,8 +128,10 @@ If you encounter issues with the docs/category pages after an update, flush the 
 == Changelog ==
 
 = 1.1.0 - TBA =
-* New: Implemented drag and drop category ordering feature, Menu Order option is now available in Customizer
+* New: Implemented drag and drop category ordering feature
+* Enhancement: Added new sorting option in Customizer for docs archive - Menu Order
 * Enhancement: Added option in the Customizer to show child categories in category grid on archive
+* Enhancement: Category widget will display categories in menu order
 * Fix: Articles alignment issue on docs archive
 
 = 1.0.2 - July 21, 2021 =
