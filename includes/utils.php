@@ -255,7 +255,7 @@ function smartdocs_list_docs( $term ) {
 	}
 
 	$current_post_id = get_the_ID();
-	$posts = get_posts( array(
+	$args = apply_filters( 'smartdocs_list_docs_query_args', array(
 		'post_type' 	=> $post_type,
 		'numberposts' 	=> -1,
 		'tax_query' 	=> array(
@@ -267,6 +267,7 @@ function smartdocs_list_docs( $term ) {
 			),
 		),
 	) );
+	$posts = get_posts( $args );
 
 	if ( is_array( $posts ) && ! empty( $posts ) ) {
 		foreach ( $posts as $doc ) {
