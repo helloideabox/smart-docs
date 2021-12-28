@@ -132,6 +132,7 @@ If you encounter issues with the docs/category pages after an update, flush the 
 * Enhancement: Added new sorting option in Customizer for docs archive - Menu Order
 * Enhancement: Added option in the Customizer to show child categories in category grid on archive
 * Enhancement: Category widget will display categories in menu order
+* Enhancement: Minor CSS improvements
 * Fix: Articles alignment issue on docs archive
 * Fix: Paragraph output issue on single doc page
 
