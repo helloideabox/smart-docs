@@ -386,9 +386,9 @@ function smartdocs_query_related_articles( $post_id ) {
 				'terms'    => $terms_list,
 			),
 		),
-		'numberposts' => 10,
+		'posts_per_page' => 10,
 		'post__not_in' => array( $post_id ),
-	) );
+	), $terms );
 
 	$query = new WP_Query( $args );
 
