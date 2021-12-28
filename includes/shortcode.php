@@ -108,6 +108,8 @@ function smartdocs_render_categories( $args = array() ) {
 				$terms[] = get_term( $term_child );
 			}
 		}
+
+		$args['is_smartdocs_category'] = true;
 	} else {
 		$terms = get_terms( $terms_args );
 	}

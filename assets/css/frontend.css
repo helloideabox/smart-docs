@@ -379,7 +379,8 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	color: #777;
 }
 
-.smartdocs-categories .smartdocs-category-articles {
+.smartdocs-categories .smartdocs-category-articles,
+.smartdocs-template.archive .smartdocs-category-articles {
 	list-style: none;
 	padding: 0;
 	align-self: auto;
@@ -388,12 +389,14 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 	width: 100%;
 }
 
-.smartdocs-categories .smartdocs-category-article {
+.smartdocs-categories .smartdocs-category-article,
+.smartdocs-template.archive .smartdocs-category-article {
 	padding-left: 30px;
 	position: relative;
 }
 
-.smartdocs-categories .smartdocs-category-articles li::before {
+.smartdocs-categories .smartdocs-category-articles li::before,
+.smartdocs-template.archive .smartdocs-category-articles li::before {
 	position:absolute;
 	left: 0;
 	margin-top: 5px;
@@ -711,11 +714,6 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 }
 
 .smartdocs-toc ol {
-	list-style: none;
-	counter-reset: item;
-}
-
-.smartdocs-toc  ol {
 	list-style: none;
 	counter-reset: item;
 }

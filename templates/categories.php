@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="smartdocs-categories <?php echo $columns_class; ?>">
 	<?php
 	foreach ( $terms as $term ) :
-		if ( $term->parent ) {
+		if ( ( ! isset( $args['is_smartdocs_category'] ) || ! $args['is_smartdocs_category'] ) && $term->parent ) {
 			continue;
 		}
 		?>

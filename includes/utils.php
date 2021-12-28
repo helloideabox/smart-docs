@@ -446,20 +446,19 @@ function smartdocs_category_articles( $term ) {
  * @param int|object $term ID or object of the smartdocs_category category.
  */
 function smartdocs_category_children( $term ) {
-	$children = get_term_children( $term->term_id, $term->taxonomy );
+	$children = get_terms( array( 'taxonomy' => $term->taxonomy, 'child_of' => $term->term_id ) );
 
 	if ( ! is_wp_error( $children ) && ! empty( $children ) ) {
 		?>
 		<ul class="smartdocs-category-articles smartdocs-category-children">
 		<?php
-		foreach ( $children as $child ) {
-			$child_term = get_term_by( 'term_id', $child, $term->taxonomy );
+		foreach ( $children as $child_term ) {
 			if ( $child_term->count <= 0 ) {
 				continue;
 			}
 			?>
-			<li class="smartdocs-category-article">
-				<a href="<?php echo get_term_link($child, $term->taxonomy); ?>"><?php echo $child_term->name; ?></a>
+			<li class="smartdocs-category-article smartdocs-category-child cat-<?php echo $child_term->term_id; ?>">
+				<a href="<?php echo get_term_link($child_term->term_id, $term->taxonomy); ?>"><?php echo $child_term->name; ?></a>
 			</li>
 			<?php
 		}

@@ -95,7 +95,9 @@ if ( ! function_exists( 'smartdocs_archive_content' ) ) {
 	 * @see smartdocs_categorized_articles()
 	 */
 	function smartdocs_archive_content() {
-		if ( ! is_tax( 'smartdocs_category' ) || apply_filters( 'smartdocs_tax_render_categories', false ) ) {
+		$render_categories = apply_filters( 'smartdocs_tax_render_categories', false );
+
+		if ( ! is_tax( 'smartdocs_category' ) || $render_categories ) {
 			$columns        = get_theme_mod( 'smartdocs_archive_columns', 3 );
 			$columns_tablet = get_theme_mod( 'smartdocs_archive_columns_tablet', 2 );
 			$columns_mobile = get_theme_mod( 'smartdocs_archive_columns_mobile', 1 );
@@ -116,10 +118,17 @@ if ( ! function_exists( 'smartdocs_archive_content' ) ) {
 				'show_children' => $show_children,
 			);
 
+			if ( $render_categories ) {
+				$args['show_articles'] = 'no';
+				$args['show_children'] = 'yes';
+			}
+
 			echo smartdocs_render_categories( $args ); // WPCS: XSS ok.
 		}
 
-		if ( is_tax( 'smartdocs_category' ) ) {
+		$render_articles = ! $render_categories && apply_filters( 'smartdocs_tax_render_articles', true );
+
+		if ( is_tax( 'smartdocs_category' ) && $render_articles ) {
 			smartdocs_categorized_articles();
 		}
 	}
