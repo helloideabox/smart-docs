@@ -1,0 +1,23 @@
+.column-taxonomy_thumbnail {
+	width: 80px;
+}
+table.wp-list-table .column-handle {
+	width: 17px;
+}
+table.wp-list-table tbody td.column-handle {
+	cursor: move;
+	width: 17px;
+	text-align: center;
+	vertical-align: text-top;
+}
+table.wp-list-table tbody td.column-handle::before {
+	content: "\f333";
+	font-family: Dashicons;
+	text-align: center;
+	line-height: 1;
+	color: #999;
+	display: block;
+	width: 17px;
+	height: 100%;
+	margin: 4px 0 0 0;
+}

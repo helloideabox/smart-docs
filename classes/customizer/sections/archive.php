@@ -106,6 +106,7 @@ $wp_customize->add_control(
 			'slug'		=> __( 'Slug', 'smart-docs' ),
 			'term_id'	=> __( 'Term ID', 'smart-docs' ),
 			'count'		=> __( 'Count', 'smart-docs' ),
+			'menu_order' => __( 'Menu Order', 'smart-docs' ),
 			'none' 		=> __( 'Default', 'smart-docs' ),
 		),
 	)

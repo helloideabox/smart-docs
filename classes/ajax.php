@@ -20,7 +20,11 @@ class Ajax {
 	 * Constructor.
 	 */
 	public function __construct() {
+		// On settings save.
 		add_action( 'wp_ajax_smartdocs_on_settings_save', array( $this, 'on_settings_save' ) );
+
+		// Term ordering.
+		add_action( 'wp_ajax_smartdocs_term_ordering', array( $this, 'term_ordering' ) );
 
 		// To load search results from ajax request.
 		add_action( 'wp_ajax_smartdocs_search_results', array( $this, 'get_search_results' ) );
@@ -39,6 +43,37 @@ class Ajax {
 	public function on_settings_save() {
 		flush_rewrite_rules();
 		wp_send_json_success();
+	}
+
+	/**
+	 * Handle taxonomy term ordering.
+	 *
+	 * @since 1.1.0
+	 */
+	public function term_ordering() {
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		if ( ! current_user_can( 'edit_posts' ) || ! isset( $_POST['id'] ) || empty( $_POST['id'] ) ) {
+			wp_die( -1 );
+		}
+
+		$id       = (int) $_POST['id'];
+		$next_id  = isset( $_POST['nextid'] ) && (int) $_POST['nextid'] ? (int) $_POST['nextid'] : null;
+		$taxonomy = 'smartdocs_category';
+		$term     = get_term_by( 'id', $id, $taxonomy );
+
+		if ( ! $id || ! $term || ! $taxonomy ) {
+			wp_die( 0 );
+		}
+
+		smartdocs_reorder_terms( $term, $next_id, $taxonomy );
+
+		$children = get_terms( $taxonomy, "child_of=$id&menu_order=ASC&hide_empty=0" );
+
+		if ( $term && count( $children ) ) {
+			echo 'children';
+			wp_die();
+		}
+		// phpcs:enable
 	}
 
 	/**

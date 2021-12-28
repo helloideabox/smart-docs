@@ -26,9 +26,19 @@ class Cpt {
 	public $post_type = 'smart-docs';
 
 	/**
+	 * Docs taxonomy.
+	 *
+	 * @var string $taxonomy
+	 */
+	public $taxonomy = 'smartdocs_category';
+	public $taxonomy_thumb = true;
+
+	/**
 	 * Class constructor.
 	 */
 	public function __construct() {
+		$this->taxonomy_thumb = apply_filters( 'smartdocs_enable_category_thumbnail', true );
+
 		// Action to register custom post type.
 		add_action( 'init', array( $this, 'register_cpt' ) );
 		add_action( 'admin_head', array( $this, 'print_admin_menu_style' ) );
@@ -40,7 +50,14 @@ class Cpt {
 		add_filter( 'manage_' . $this->post_type . '_posts_columns', array( $this, 'cpt_columns' ) );
 		add_action( 'manage_' . $this->post_type . '_posts_custom_column', array( $this, 'cpt_columns_data' ), 10, 2 );
 
+		add_filter( 'manage_' . $this->taxonomy . '_custom_column', array( $this, 'manage_taxonomy_custom_column' ), 15, 3 );
+		add_filter( 'manage_edit-' . $this->taxonomy . '_columns', array( $this, 'manage_taxonomy_columns' ) );
+
 		add_action( 'pre_get_posts', array( $this, 'posts_per_page' ) );
+
+		add_action( 'get_terms_defaults', array( $this, 'get_terms_defaults' ), 10, 2 );
+		add_action( 'pre_get_terms', array( $this, 'pre_get_terms' ) );
+		add_action( 'terms_clauses', array( $this, 'terms_clauses' ), 99, 3 );
 	}
 
 	/**
@@ -139,7 +156,7 @@ class Cpt {
 			)
 		);
 
-		register_taxonomy( 'smartdocs_category', $this->post_type, $category_args );
+		register_taxonomy( $this->taxonomy, $this->post_type, $category_args );
 
 		$this->enable_category_thumbnail();
 
@@ -197,7 +214,7 @@ class Cpt {
 		}
 
 		// Get the custom taxonomy terms in use by this post.
-		$terms = get_the_terms( $post->ID, 'smartdocs_category' );
+		$terms = get_the_terms( $post->ID, $this->taxonomy );
 
 		if ( ! empty( $terms ) ) {
 			$terms           = wp_list_sort(
@@ -211,9 +228,9 @@ class Cpt {
 			$category_slug   = $category_object->slug;
 
 			if ( $category_object->parent ) {
-				$ancestors = get_ancestors( $category_object->term_id, 'smartdocs_category' );
+				$ancestors = get_ancestors( $category_object->term_id, $this->taxonomy );
 				foreach ( $ancestors as $ancestor ) {
-					$ancestor_object = get_term( $ancestor, 'smartdocs_category' );
+					$ancestor_object = get_term( $ancestor, $this->taxonomy );
 					if ( apply_filters( 'smartdocs_post_type_link_parent_category_only', false ) ) {
 						$category_slug = $ancestor_object->slug;
 					} else {
@@ -360,23 +377,6 @@ class Cpt {
 	}
 
 	/**
-	 * Taxonomy admin styles.
-	 *
-	 * Print docs taxonomy thumbnail related styles.
-	 *
-	 * @since 1.0.0
-	 */
-	public function taxonomy_admin_styles() {
-		?>
-		<style>
-			.column-taxonomy_thumbnail {
-				width: 80px;
-			}
-		</style>
-		<?php
-	}
-
-	/**
 	 * Enable category thumbnail.
 	 *
 	 * Enable the image interface for SmartDocs taxonomy terms.
@@ -384,14 +384,9 @@ class Cpt {
 	 * @since 1.0.0
 	 */
 	public function enable_category_thumbnail() {
-		$enable_thumbnail = apply_filters( 'smartdocs_enable_category_thumbnail', true );
-		$taxonomy         = 'smartdocs_category';
-
-		if ( $enable_thumbnail ) {
-			add_filter( 'manage_' . $taxonomy . '_custom_column', array( $this, 'manage_taxonomy_custom_column' ), 15, 3 );
-			add_filter( 'manage_edit-' . $taxonomy . '_columns', array( $this, 'manage_taxonomy_columns' ) );
-			add_action( $taxonomy . '_edit_form_fields', array( $this, 'taxonomy_thumbnail_edit_tag_form' ), 10, 2 );
-			add_action( $taxonomy . '_add_form_fields', array( $this, 'taxonomy_thumbnail_add_tag_form' ), 10 );
+		if ( $this->taxonomy_thumb ) {
+			add_action( $this->taxonomy . '_edit_form_fields', array( $this, 'taxonomy_thumbnail_edit_tag_form' ), 10, 2 );
+			add_action( $this->taxonomy . '_add_form_fields', array( $this, 'taxonomy_thumbnail_add_tag_form' ), 10 );
 			add_action( 'edit_term', array( $this, 'taxonomy_thumbnail_save_term' ), 10, 3 );
 			add_action( 'create_term', array( $this, 'taxonomy_thumbnail_save_term' ), 10, 3 );
 		}
@@ -421,10 +416,22 @@ class Cpt {
 	 * @return array List of columns with "Images" inserted after the checkbox.
 	 */
 	public function manage_taxonomy_columns( $columns ) {
-		$new_columns = $columns;
-		array_splice( $new_columns, 1 );
-		$new_columns['taxonomy_thumbnail'] = esc_html__( 'Image', 'smart-docs' );
-		return array_merge( $new_columns, $columns );
+		if ( $this->taxonomy_thumb ) {
+			$new_columns = array();
+
+			if ( isset( $columns['cb'] ) ) {
+				$new_columns['cb'] = $columns['cb'];
+				unset( $columns['cb'] );
+			}
+
+			$new_columns['taxonomy_thumbnail'] = __( 'Image', 'smart-docs' );
+
+			$columns = array_merge( $new_columns, $columns );
+		}
+
+		$columns['handle'] = '';
+
+		return $columns;
 	}
 
 	/**
@@ -433,12 +440,12 @@ class Cpt {
 	 * Create image control for each term row of wp-admin/edit-tags.php.
 	 *
 	 * @since 1.0.0
-	 * @param string $row Current row.
+	 * @param string $columns Column HTML output.
 	 * @param string $column_name Name of the current column.
 	 * @param int 	 $term_id Term ID.
 	 * @return string
 	 */
-	public function manage_taxonomy_custom_column( $row, $column_name, $term_id ) {
+	public function manage_taxonomy_custom_column( $columns, $column_name, $term_id ) {
 		if ( 'taxonomy_thumbnail' === $column_name ) {
 			$html                  = '<div id="taxonomy_thumbnail_preview">';
 			$taxonomy_thumbnail_id = '';
@@ -452,9 +459,14 @@ class Cpt {
 				}
 			}
 			$html .= '</div>';
-			return $row . $html;
+			return $columns . $html;
 		}
-		return $row;
+
+		if ( 'handle' === $column_name ) {
+			$columns .= '<input type="hidden" name="term_id" value="' . esc_attr( $term_id ) . '" />';
+		}
+
+		return $columns;
 	}
 
 	/**
@@ -563,5 +575,88 @@ class Cpt {
 		if ( ! is_admin() && $query->is_main_query() && is_smartdocs_category() ) {
 			$query->set( 'posts_per_page', '-1' );
 		}
+	}
+
+	/**
+	 * Change get_terms order by defaults to menu_order for sortable taxonomies.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param array $defaults   An array of default get_terms() arguments.
+	 * @param array $taxonomies An array of taxonomies.
+	 * @return array
+	 */
+	public function get_terms_defaults( $defaults, $taxonomies ) {
+		if ( is_array( $taxonomies ) && 1 < count( $taxonomies ) ) {
+			return $defaults;
+		}
+
+		$taxonomy = is_array( $taxonomies ) ? (string) current( $taxonomies ) : $taxonomies;
+	
+		if ( $taxonomy === $this->taxonomy ) {
+			$orderby = 'menu_order';
+			$defaults['orderby'] = $orderby;
+		}
+	
+		return $defaults;
+	}
+
+	/**
+	 * Adds support to get_terms for menu_order argument.
+	 *
+	 * @since 1.1.0
+	 * @param WP_Term_Query $terms_query Instance of WP_Term_Query.
+	 */
+	public function pre_get_terms( $terms_query ) {
+		$args = &$terms_query->query_vars;
+
+		// Put back valid orderby values.
+		if ( 'menu_order' === $args['orderby'] ) {
+			$args['orderby']               = 'name';
+			$args['force_menu_order_sort'] = true;
+		}
+
+		// When COUNTING, disable custom sorting.
+		if ( 'count' === $args['fields'] ) {
+			return;
+		}
+	
+		// Support menu_order arg.
+		if ( ! empty( $args['menu_order'] ) ) {
+			$args['order']                 = 'DESC' === strtoupper( $args['menu_order'] ) ? 'DESC' : 'ASC';
+			$args['force_menu_order_sort'] = true;
+		}
+	
+		if ( ! empty( $args['force_menu_order_sort'] ) ) {
+			$args['orderby']  = 'meta_value_num';
+			$args['meta_key'] = 'order'; // phpcs:ignore
+			$terms_query->meta_query->parse_query_vars( $args );
+		}
+	}
+
+	/**
+	 * Adjust term query to handle custom sorting parameters.
+	 *
+	 * @param array $clauses    Clauses.
+	 * @param array $taxonomies Taxonomies.
+	 * @param array $args       Arguments.
+	 * @return array
+	 */
+	function terms_clauses( $clauses, $taxonomies, $args ) {
+		global $wpdb;
+
+		// No need to filter when counting.
+		if ( strpos( $clauses['fields'], 'COUNT(*)' ) !== false ) {
+			return $clauses;
+		}
+
+		// For sorting, force left join in case order meta is missing.
+		if ( ! empty( $args['force_menu_order_sort'] ) ) {
+			$clauses['join']    = str_replace( "INNER JOIN {$wpdb->termmeta} ON ( t.term_id = {$wpdb->termmeta}.term_id )", "LEFT JOIN {$wpdb->termmeta} ON ( t.term_id = {$wpdb->termmeta}.term_id AND {$wpdb->termmeta}.meta_key='order')", $clauses['join'] );
+			$clauses['where']   = str_replace( "{$wpdb->termmeta}.meta_key = 'order'", "( {$wpdb->termmeta}.meta_key = 'order' OR {$wpdb->termmeta}.meta_key IS NULL )", $clauses['where'] );
+			$clauses['orderby'] = 'DESC' === $args['order'] ? str_replace( 'meta_value+0', 'meta_value+0 DESC, t.name', $clauses['orderby'] ) : str_replace( 'meta_value+0', 'meta_value+0 ASC, t.name', $clauses['orderby'] );
+		}
+
+		return $clauses;
 	}
 }

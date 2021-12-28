@@ -127,7 +127,8 @@ If you encounter issues with the docs/category pages after an update, flush the 
 
 == Changelog ==
 
-= 1.0.3 - TBA =
+= 1.1.0 - TBA =
+* New: Implemented drag and drop category ordering feature, Menu Order option is now available in Customizer
 * Enhancement: Added option in the Customizer to show child categories in category grid on archive
 
 = 1.0.2 - July 21, 2021 =

@@ -230,6 +230,14 @@ class Admin {
 	 * @return void
 	 */
 	public function admin_enqueue_scripts( $hook ) {
+		// Enqueue term ordering script.
+		$screen = get_current_screen();
+		
+		if ( 'edit-smartdocs_category' === $screen->id && ! isset( $_GET['orderby'] ) ) {
+			wp_enqueue_style( 'smartdocs-term-ordering', SMART_DOCS_URL . 'assets/css/admin/term-ordering.css', array(), SMART_DOCS_VERSION );
+			wp_enqueue_script( 'smartdocs-term-ordering', SMART_DOCS_URL . 'assets/js/admin/term-ordering.js', array( 'jquery-ui-sortable' ), SMART_DOCS_VERSION );
+		}
+
 		// To check if the current page is SmartDocs setting or not.
 		if ( 'smart-docs_page_smart_docs_settings' !== $hook ) {
 			return;

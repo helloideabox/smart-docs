@@ -539,3 +539,93 @@ function smartdocs_generate_toc( $toc_data ) {
 	return $toc_html;
 }
 
+/**
+ * Move a term before the a given element of its hierarchy level.
+ *
+ * @param int    $the_term Term ID.
+ * @param int    $next_id  The id of the next sibling element in save hierarchy level.
+ * @param string $taxonomy Taxnomy.
+ * @param int    $index    Term index (default: 0).
+ * @param mixed  $terms    List of terms. (default: null).
+ * @return int
+ */
+function smartdocs_reorder_terms( $the_term, $next_id, $taxonomy, $index = 0, $terms = null ) {
+	if ( ! $terms ) {
+		$terms = get_terms( $taxonomy, 'hide_empty=0&parent=0&menu_order=ASC' );
+	}
+	if ( empty( $terms ) ) {
+		return $index;
+	}
+
+	$id = intval( $the_term->term_id );
+
+	$term_in_level = false; // Flag: is our term to order in this level of terms.
+
+	foreach ( $terms as $term ) {
+		$term_id = intval( $term->term_id );
+
+		if ( $term_id === $id ) { // Our term to order, we skip.
+			$term_in_level = true;
+			continue; // Our term to order, we skip.
+		}
+		// the nextid of our term to order, lets move our term here.
+		if ( null !== $next_id && $term_id === $next_id ) {
+			$index++;
+			$index = smartdocs_set_term_order( $id, $index, $taxonomy, true );
+		}
+
+		// Set order.
+		$index++;
+		$index = smartdocs_set_term_order( $term_id, $index, $taxonomy );
+
+		/**
+		 * After a term has had it's order set.
+		*/
+		do_action( 'smartdocs_after_set_term_order', $term, $index, $taxonomy );
+
+		// If that term has children we walk through them.
+		$children = get_terms( $taxonomy, "parent={$term_id}&hide_empty=0&menu_order=ASC" );
+		if ( ! empty( $children ) ) {
+			$index = smartdocs_reorder_terms( $the_term, $next_id, $taxonomy, $index, $children );
+		}
+	}
+
+	// No nextid meaning our term is in last position.
+	if ( $term_in_level && null === $next_id ) {
+		$index = smartdocs_set_term_order( $id, $index + 1, $taxonomy, true );
+	}
+
+	return $index;
+}
+
+/**
+ * Set the sort order of a term.
+ *
+ * @param int    $term_id   Term ID.
+ * @param int    $index     Index.
+ * @param string $taxonomy  Taxonomy.
+ * @param bool   $recursive Recursive (default: false).
+ * @return int
+ */
+function smartdocs_set_term_order( $term_id, $index, $taxonomy, $recursive = false ) {
+
+	$term_id = (int) $term_id;
+	$index   = (int) $index;
+
+	update_term_meta( $term_id, 'order', $index );
+
+	if ( ! $recursive ) {
+		return $index;
+	}
+
+	$children = get_terms( $taxonomy, "parent=$term_id&hide_empty=0&menu_order=ASC" );
+
+	foreach ( $children as $term ) {
+		$index++;
+		$index = smartdocs_set_term_order( $term->term_id, $index, $taxonomy, true );
+	}
+
+	clean_term_cache( $term_id, $taxonomy );
+
+	return $index;
+}

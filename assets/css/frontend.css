@@ -382,7 +382,7 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 .smartdocs-categories .smartdocs-category-articles {
 	list-style: none;
 	padding: 0;
-	align-self: self-end;
+	align-self: auto;
 	text-align: left;
 	margin: 0 0 20px 0;
 	width: 100%;
