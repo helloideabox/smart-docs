@@ -237,7 +237,7 @@ if ( ! function_exists( 'smartdocs_entry_content' ) ) {
 
 		$content = SmartDocs\Plugin::instance()->content->get_the_content();
 
-		echo $content;
+		echo wpautop( $content );
 	}
 }
 

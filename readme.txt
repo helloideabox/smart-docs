@@ -133,6 +133,7 @@ If you encounter issues with the docs/category pages after an update, flush the 
 * Enhancement: Added option in the Customizer to show child categories in category grid on archive
 * Enhancement: Category widget will display categories in menu order
 * Fix: Articles alignment issue on docs archive
+* Fix: Paragraph output issue on single doc page
 
 = 1.0.2 - July 21, 2021 =
 * Development: Added filter hook smartdocs_get_template
