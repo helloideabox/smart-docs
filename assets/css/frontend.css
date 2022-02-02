@@ -301,6 +301,8 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
     width: 100%;
 	margin: 0;
     margin-top: 4px;
+	max-height: 440px;
+	overflow-y: auto;
     border-radius: 4px;
     z-index: 99;
     border: 1px solid #eee;
@@ -308,6 +310,9 @@ body.single .widget_smartdocs-categories-widget .has-posts li.active:before {
 }
 .smartdocs-search .smartdocs-search-result li {
 	margin: 0;
+}
+.smartdocs-search .smartdocs-no-result .smartdocs-search-result li {
+	padding: 10px;
 }
 .smartdocs-search .smartdocs-search-result li a {
 	padding: 10px;

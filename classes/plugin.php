@@ -371,9 +371,17 @@ class Plugin {
 		$post_type      = $this->cpt->post_type;
 		$should_enqueue = false;
 		$localized_vars = array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'nonce'   => wp_create_nonce( 'smartdocs_front' ),
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'resturl' => get_rest_url(),
 		);
+
+		$search_post_types = get_option( 'smartdocs_search_post_types' );
+		$search_post_types = empty( $post_types ) ? array( Plugin::instance()->cpt->post_type ) : $post_types;
+
+		$localized_vars['search_subtypes'] = $search_post_types;
+		$localized_vars['search_perpage'] = apply_filters( 'smartdocs_search_result_limit', 30 );
+		$localized_vars['search_no_result'] = apply_filters( 'smartdocs_search_no_result', esc_html__( 'No result found.', 'smart-docs' ) );
 
 		wp_register_style( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/css/frontend.css', array(), SMART_DOCS_VERSION );
 		wp_register_script( 'smartdocs-frontend', SMART_DOCS_URL . 'assets/js/frontend.js', array( 'jquery' ), SMART_DOCS_VERSION, true );

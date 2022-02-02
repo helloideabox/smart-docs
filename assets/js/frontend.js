@@ -5,8 +5,18 @@
 			return;
 		}
 
-		var lastValue = '';
-		var timeout = null;
+		var lastValue = '',
+			timeout = null,
+			subtypes = [],
+			searchUrl = '';
+
+		smartdocs.search_subtypes.forEach(function(type) {
+			if ( 'undefined' !== typeof type ) {
+				subtypes.push( 'subtype[]=' + type );
+			}
+		});
+
+		searchUrl = smartdocs.resturl + 'wp/v2/search?' + subtypes.join('&') + '&per_page=' + smartdocs.search_perpage + '&orderby=relevance&order=asc';
 
 		$( '.smartdocs-search-form' ).on( 'submit', function( e ) {
 			e.preventDefault();
@@ -23,25 +33,36 @@
 			if ( $input.val().length >= 3 && $input.val() !== lastValue ) {
 				$input.addClass( 'loading' );
 				var query = $input.val();
+				var url = searchUrl + '&search=' + query;
 				if ( timeout ) {
 					clearTimeout( timeout );
 				}
 				timeout = setTimeout( function() {
-					$.post(
-						smartdocs.ajaxurl,
-						{
-							query: query,
-							nonce: smartdocs.nonce,
-							action: 'smartdocs_search_results'
-						},
-						function( response ) {
-							if ( response.success ) {
-								$input.removeClass( 'loading' );
-								$input.parent().find( '.smartdocs-search-result' ).remove();
-								$input.parent().append( $( response.data ) );
-							}
+					var result = $.getJSON( url, function( response ) {
+						$input.removeClass( 'loading' );
+						$input.parent().removeClass( 'smartdocs-no-result' );
+						$input.parent().find( '.smartdocs-search-result' ).remove();
+						$input.parent().append( $('<ul class="smartdocs-search-result" />') );
+
+						if ( response.length > 0 ) {
+							response.forEach(function(item) {
+								if ( 'undefined' !== typeof item ) {
+									var $item = '<li><a href="' + item.url + '" rel="bookmark">' + item.title + '</a></li>';
+									$input.parent().find( '.smartdocs-search-result' ).append( $item );
+								}
+							});
+						} else {
+							$input.parent().addClass( 'smartdocs-no-result' );
+
+							var $item = '<li>' + smartdocs.search_no_result + '</li>';
+							$input.parent().find( '.smartdocs-search-result' ).append( $item );
 						}
-					);
+					} )
+						.fail( function( xhr ) {
+							$input.removeClass( 'loading' );
+							$input.parent().find( '.smartdocs-search-result' ).remove();
+						} );
+
 				}, 250 );
 				lastValue = query;
 			}
