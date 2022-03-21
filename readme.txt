@@ -2,7 +2,7 @@
 Contributors: ideaboxcreations, ibachal, nirbhay18
 Tags: documentation, docs, documents, knowledge base, wiki
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.9.2
 Requires PHP: 7.4
 Stable tag: trunk
 License: GPLv3
