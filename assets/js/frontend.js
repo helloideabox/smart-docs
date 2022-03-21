@@ -68,6 +68,9 @@
 			}
 		} ).on( 'focus click', function() {
 			var $input = $(this);
+
+			$input.closest('form').addClass( 'has-focus' );
+
 			if ( '' !== $input.val() ) {
 				if ( $input.parent().find( '.smartdocs-search-result' ).length === 0 ) {
 					$input.trigger( 'keyup' );
@@ -77,6 +80,10 @@
 					}, 10 );
 				}
 			}
+		} ).on( 'blur', function() {
+			var $input = $(this);
+
+			$input.closest('form').removeClass( 'has-focus' );
 		} );
 
 		$( document ).on( 'click', function(e) {
